@@ -1,12 +1,13 @@
 package com.nhnacademy.jminsoo.excercise8;
 
 import javafx.application.Application;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.layout.BorderPane;
+
 
 /**
  * This file can be used to draw simple pictures. Just fill in
