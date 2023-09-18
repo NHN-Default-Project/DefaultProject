@@ -24,10 +24,10 @@ public class QuizGame {
         poseQuiz();
     }
 
-    public static void poseQuiz() {
+    public void poseQuiz() {
         for (int i = 0; i < firstNum.length; i++) { //문제 출제
-            firstNum[i] = random.nextInt(100);
-            secondNum[i] = random.nextInt(100);
+            this.firstNum[i] = random.nextInt(100);
+            this.secondNum[i] = random.nextInt(100);
         }
     }
 

@@ -8,17 +8,26 @@ public class Main {
 
         String userInput = scanner.nextLine();
         printCapitalized(userInput);
+        scanner.close();
     }
 
     public static void printCapitalized(String sentence) {
-        char[] checkSentence = sentence.toCharArray();
-        String newString = "";
-        for (int i = 0; i < sentence.length(); i++) {
-            if (Character.isLetter(checkSentence[i])) {
-                newString += Character.toUpperCase(checkSentence[i]);
-            } else {
-                newString += checkSentence[i];
+        StringBuilder newString = new StringBuilder("");
+        while (true) {
+            int index = sentence.indexOf(" ");
+
+            newString.append(Character.toUpperCase(sentence.charAt(0)));
+            if (index == -1) {
+                for (int i = 1; i < sentence.length(); i++) {
+                    newString.append(sentence.charAt(i));
+                }
+                break;
             }
+            for (int i = 1; i < index; i++) {
+                newString.append(sentence.charAt(i));
+            }
+            newString.append(" ");
+            sentence = sentence.substring(sentence.indexOf(" ") + 1);
         }
         System.out.println(newString);
     }

@@ -31,19 +31,21 @@ public class Main {
             case '9':
                 return character - '0';
             case 'A':
-                return 10;
             case 'B':
-                return 11;
             case 'C':
-                return 12;
             case 'D':
-                return 13;
             case 'E':
-                return 14;
             case 'F':
-                return 15;
+                return character - 55;
+            case 'a':
+            case 'b':
+            case 'c':
+            case 'd':
+            case 'e':
+            case 'f':
+                return character - 87;
             default:
-                return 0;
+                throw new IllegalArgumentException("16진수를 입력해주세요!");
         }
     }
 }
