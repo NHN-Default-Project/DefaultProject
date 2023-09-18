@@ -1,0 +1,132 @@
+= Chapter3
+
+1. JAVA FileIO
+image::StreamFlow.png
+
+2. git 원격저장소에서 수정할 경우 발생하는 에러
+```bash
+힌트: You have divergent branches and need to specify how to reconcile them.
+힌트: You can do so by running one of the following commands sometime before
+힌트: your next pull:
+힌트: 
+힌트:   git config pull.rebase false  # merge
+힌트:   git config pull.rebase true   # rebase
+힌트:   git config pull.ff only       # fast-forward only
+힌트: 
+힌트: You can replace "git config" with "git config --global" to set a default
+힌트: preference for all repositories. You can also pass --rebase, --no-rebase,
+힌트: or --ff-only on the command line to override the configured default per
+힌트: invocation.
+``` 
+
+```bash
+git fetch --prune origin 
+git reset --hard origin/main
+```
+
+3. 메소드 참조
+- 정적 메소드의 경우 클래스::메소드
+- 인스턴스 메소드의 경우에는 참조변수::메소드
+```java
+//Computer.java
+public class Computer {
+    public static double staticMethod(double x, double y) {
+        return x + y;
+    }
+    public double instanceMethod(double x, double y) {
+        return x * y;
+    }
+}
+```
+
+```java
+//MethodReferenceExample.java
+public class MethodReferenceExample {
+    public static void main(String[] args) {
+        Person person = new Person();
+
+        person.action(Computer::staticMethod);
+        //person.action((x, y) -> Computer.staticMethod(x, y));
+        //정적 메소드 참조
+
+        Computer com = new Computer();
+        person.action(com::instanceMethod);
+        //person.action((x, y) -> com.instanceMethod(x, y));
+        //인스턴스 메소드 참조
+    }
+}
+```
+
+4. 정규표현식 (Regular Expression)
+: 특정한 규칙을 가진 문자열의 집합을 표현하는 데 사용하는 형식 언어
+: 가장 많이 사용하는 예시가 이메일, 핸드폰 번호 등의 유효성 검사를 위해 사용합니다.
+- 정규 표현식 문법
+[abc] a, b, c중 하나의 문자
+[^abc] a, b, c 이외 하나의 문자
+[a-zA-Z] a~z, A~Z중 하나의 문자
+\d 한 개의 숫자, [0-9]와 동일
+\s 공백
+\w 한 개의 알파벳 또는 한 개의 숫자 [a-zA-Z_0-9]와 동일
+? 없음 또는 한 개
+
+^[0-9]*$ == \\d	숫자
+^[a-zA-Z]*$	알파벳
+^[가-힣]*$	한글
+^[a-zA-Z0-9]	알파벳이나 숫자
+^[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-z]+$	이메일(Email)
+\w+@\w+\.\w+(\\.\\w+)?	이메일(Email)
+^01(?:0|1|[6-9])-(?:\\d{3}|\\d{4})-\\d{4}$	휴대폰 번호
+
+5. 메소드 체이닝(Method chaining)
+: 메소드를 고리마냥 줄줄이 엮어서 메소드를 계속해서 사용할 수 있게끔 하는 방법
+: 자기자신을 리턴하여, 연이어 메소드 호출을 가능케하는 메소드 설계,
+  보통 setter와 이와 같은 동작을 수행하는 메소드들에 적용하면 좋다.
+* this는 자기자신 인스턴스이다. 메소드에서 this를 return하면 호출한쪽에서 곧바로 연이어 호출이 가능하다.
+ ex) 객체.메소드1().메소드2().메소드2()...
+* 메소드체이닝을 사용하면, 반복되는 지루한 코딩을 줄여줄 수 있다.
+
+6. 연속 호출(Cascade)
+: 일부 메소드는 반환값이 없습니다. 예를 들어 객체의 상태를 변경하거나 설정하는 메소드들은 일반적으로 반환값이 없습니다.
+만약 이러한 메소드들이 undefined 대신에 this를 반환한다면 연속 호출이 가능합니다.
+연속 호출을 사용하면 같은 객체에 대해 문장 하나로 연속되는 많은 메소드를 호출할 수 있습니다.
+
+```java
+StringBuilder stringbuilder = new StringBuilder();
+stringbuilder.append("Hi ")
+              .append("My name is ")
+              .append("kaeun");
+```
+
+7. 단축키 정리
+[intellij] 정렬: 옵션 + command + L
+           자동완성: command + shift + enter
+
+8. '의 문자열 출력
+=> '\''
+
+9. 스트림(Stream)
+: 스트림은 자바 8부터 추가된 컬렉션(배열 포함)의 저장 요소를 하나씩 참조해서
+람다식으로 처리할 수 있도록 해주는 반복자이다. (개울, 시내, 물줄기)
+
+10. 함수형 인터페이스
+: 추상 메서드가 딱 1개만 있는 인터페이스 (default메서드와 static메서드는 존재 가능)
+- 장점: 스트림은 데이터 소스가 다르더라도, 일단 스트림을 생성하기만 한다면, 과거에 그 데이터의 형태가
+무엇이었던 같은 방식으로 다룰 수 있게 되어 코드의 재사용성이 높아진다.
+컬렉션, 배열, 숫자, 람다식, 파일 => 스트림 => 스트림 연산
+
+- 사용방법
+생성 => 중간연산 => 최종연산
+```java
+List<String> names = crews.stream() // 생성
+    .filter(crew -> crew.getCourse().equals(Course.BACKEND))
+    .map(Crew::getName)
+    .limit(10)
+    .collect(toList());
+```
+
+중간연산:
+distinct(중복 검사, 예외 던짐)
+filter(Predicate<T> predicate) 조건에 만족하는 데이터만 남기고 나머지는 제외
+
+
+
