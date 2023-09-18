@@ -1,4 +1,4 @@
-package Excercise3_1;
+package com.nhnacademy.jminsoo.excercise1;
 
 public class Excercise3_1 {
 
