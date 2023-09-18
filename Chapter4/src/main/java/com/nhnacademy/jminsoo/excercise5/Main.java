@@ -27,9 +27,9 @@ public class Main {
 
     public static ArrayProcessor sum = (x) -> Arrays.stream(x).sum();
 
-    public static ArrayProcessor max = (x) -> Arrays.stream(x).reduce(x[0], Double::max);
+    public static ArrayProcessor max = (x) -> Arrays.stream(x).max().orElse(0.0);
 
-    public static ArrayProcessor min = (x) -> Arrays.stream(x).reduce(x[0], Double::min);
+    public static ArrayProcessor min = (x) -> Arrays.stream(x).min().orElse(0.0);
 
-    public static ArrayProcessor average = (x) -> Arrays.stream(x).average().orElse(0);
+    public static ArrayProcessor average = (x) -> Arrays.stream(x).average().orElse(0.0);
 }
