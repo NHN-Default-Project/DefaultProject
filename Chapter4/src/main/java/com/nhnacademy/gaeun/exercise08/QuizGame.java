@@ -20,29 +20,30 @@ public class QuizGame {
         return answer;
     }
 
-    QuizGame () {
+    QuizGame() {
         poseQuiz();
     }
+
     public static void poseQuiz() {
-        for(int i = 0; i < firstNum.length; i++) { //문제 출제
+        for (int i = 0; i < firstNum.length; i++) { //문제 출제
             firstNum[i] = random.nextInt(100);
             secondNum[i] = random.nextInt(100);
         }
     }
 
-    public static String[] administerQuiz () { //퀴즈 목록 관리
+    public static String[] administerQuiz() { //퀴즈 목록 관리
         String[] strings = new String[firstNum.length];
-        for(int i = 0; i < firstNum.length; i++) {
-            strings[i] = "[Quiz " + (i+1) + "] "+getFirstNum()[i] + " + " + getSecondNum()[i] + " = ";
+        for (int i = 0; i < firstNum.length; i++) {
+            strings[i] = "[Quiz " + (i + 1) + "] " + getFirstNum()[i] + " + " + getSecondNum()[i] + " = ";
             answer[i] = getFirstNum()[i] + getSecondNum()[i];
         }
         return strings;
     }
 
-    public static int gradQuiz (int[] inputAnswers) {
+    public static int gradQuiz(int[] inputAnswers) {
         int totalPoints = 0;
-        for(int i = 0; i < getanswer().length; i++) {
-            if(getanswer()[i] == inputAnswers[i]) {
+        for (int i = 0; i < getanswer().length; i++) {
+            if (getanswer()[i] == inputAnswers[i]) {
                 totalPoints += 10;
             }
         }
