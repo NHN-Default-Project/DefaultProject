@@ -1,10 +1,6 @@
 package com.nhnacademy.jminsoo;
 
-<<<<<<< HEAD
 import com.nhnacademy.jminsoo.textio.TextIO;
-=======
-import textio.TextIO;
->>>>>>> 2930d4a (main rebasing)
 
 public class Exercise2_6 {
     public static void main(String[] args) {
