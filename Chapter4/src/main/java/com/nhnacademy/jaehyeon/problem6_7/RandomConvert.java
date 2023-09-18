@@ -1,4 +1,6 @@
-package com.nhnacademy.jaehyeon;
+package com.nhnacademy.jaehyeon.problem6_7;
+
+import com.nhnacademy.jaehyeon.problem6_7.Mosaic;
 
 public class RandomConvert {
 

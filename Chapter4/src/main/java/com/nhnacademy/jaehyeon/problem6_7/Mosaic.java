@@ -1,4 +1,4 @@
-package com.nhnacademy.jaehyeon;
+package com.nhnacademy.jaehyeon.problem6_7;
 
 
 import java.util.List;
