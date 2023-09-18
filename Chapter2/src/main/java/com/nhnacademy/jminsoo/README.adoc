@@ -1,0 +1,52 @@
+.*9월 12일 일일학습내용*
+
+* 퀴즈 1 +
+ One of the components of a computer is its CPU. What is a CPU and what role does it play in a computer? +
+(CPU란 무엇이며 컴퓨터에서 어떤 역할을 갖는가?) +
+* 답 : CPU, 즉 중앙처리장치는 컴퓨터의 시스템을 통제하고 연산을 실행, 처리하는 장치이다. CPU가 처리하기 위한 연산은 Memory Unit(RAM, DISK)에 저장되어 있어 프로그램 실행에 따라 CPU가 읽어들인다. 이 연산은 기계어로 이뤄져있다.
+
+* 퀴즈 2 +
+Explain what is meant by an "asynchronous event." Give some examples. +
+(비동기 이벤트가 무엇을 의미하는지 예를 들어 설명하라.) +
+* 답 : Asynchronous Event는 컴파일러 또는 CPU가 프로그램을 실행하는 도중에 발생하는 이벤트이다. 예측이 불가하며, 요청과 결과 반환이 동시에 일어나지 않는다. CPU는 Asynchronous Event를 처리하기 위해 입력 요청을 하고, 다른 연산을 처리한다. 이 과정을 Interrupt라고 한다.
+ 예시로는 프로그램 실행 중 키보드 입력, 마우스 입력, 파일 읽기 등이 있다.
+
+퀴즈 3
+ What is the difference between a "compiler" and an "interpreter"?
+컴파일러와 인터프리터의 차이?
+답 : 컴파일러는 모든 명령어를 한번에 기계어로 변경하고 이를 실행하며, 인터프리터는 한 줄씩 코드를 기계어로 변환하고 실행한다. 자바에서는 컴파일러처럼 .class 파일들을 모두 읽어들이고 JVM용 기계어인 Java Bytecode로 변환하고, 이를 인터프리터처럼 실행한다.
+
+퀴즈 4
+Explain the difference between high-level languages and machine language.
+고급언어와 기계어의 차이를 설명하라.
+답 : 고급 언어는 컴퓨터가 이해하는 언어인 기계어를 사람들이 이해하기 편하도록 변환한 것이다. 컴퓨터가 사용하는 기계어에 가까울 수록 저급언어(low-level languages)라고 하며, High-level language - low-level language - assembly language - machine language 순서로 서로 번역된다.
+
+퀴즈 5
+If you have the source code for a Java program, and you want to run that program, you will need both a compiler and an interpreter. What does the Java compiler do, and what does the Java interpreter do?
+ Java Compiler와 Java Interpreter의 특징
+답 : Java Compiler는 자바 프로그램을 Java byte Code로 컴파일한다. Java Interpreter는 Java Byte Code를 실행하는 데에 사용한다.
+
+퀴즈 6
+What is a subroutine?
+서브루틴이란?
+답 : 서브루틴은 클래스나 객체에 포함되어있는 프로그램 명령어 집합을(Method) 의미한다. Class.method처럼 '.'을 사용하여 표기하고 호출한다.
+
+퀴즈 7
+Java is an object-oriented programming language. What is an object?
+자바에서의 객체(Object)란?
+답 : 객체는 상태 데이터(멤버 변수)와 서브루틴(Method)으로 이루어진 모듈로 클래스를 통해 생성된다. 이를 인스터스라고 하며, 객체는 일관된 개념과 의미를 갖고 있어야 한다.
+
+퀴즈 8
+What is a variable? (There are four different ideas associated with variables in Java. Try to mention all four aspects in your answer. Hint: One of the aspects is the variable's name.)
+변수란 무엇인가?
+답 : 변수는 프로그램이 참조할 수 있도록 이름이 지정되어있는 메모리의 위치를 나타낸다. premitive의 경우엔 이름과 값이 매칭이 되지만, Object일 경우에는 이름과 값의 위치가 매칭된다.
+
+퀴즈 9
+Java is a "platform-independent language." What does this mean?
+자바는 플랫폼에 독립적인 언어이다. 이 의미는?
+답 : Java 프로그램은 특정 OS에 종속적으로 실행되는 것이 아닌, JVM에서 실행된다. 이는 JVM의 Java Compiler, Java Interpreter를 통해 코드를 컴파일한다는 것을 의미하고, 만약 특정 OS나 플랫폼이 JVM을 지원할 경우 모든 플랫폼에 대응하여 실행될 수 있음을 의마한다.
+
+퀴즈 10
+What is the "Internet"? Give some examples of how it is used. (What kind of services does it provide?)
+인터넷의 정의와 사용 예시
+답 : 인터넷은 컴퓨터 간을 연결하여 통신할 수 있는 네트워크를 의미한다. 이에 이메일 전송, 파일 전송, 정보 전시(www) 등의 사용 예시가 있다.
