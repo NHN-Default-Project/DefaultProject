@@ -1,14 +1,11 @@
 package com.nhnacademy.jminsoo.excercise5;
-
 import com.nhnacademy.jminsoo.textio.TextIO;
-import java.util.ArrayList;
 import java.util.List;
-
-
+import java.util.ArrayList;
 
 public class Excerciese3_5 {
     public static void main(String[] args) {
-        TextIO.readFile("Chapter3/src/main/java/com/nhnacademy/jminsoo/excercise5/sales.dat");
+        TextIO.readFile("week1/Chapter3/Excercise3_5/sales.dat");
         List<CitySales> citySales = new ArrayList<>();
 
         double salesSum = 0;
