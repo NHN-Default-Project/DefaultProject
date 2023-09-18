@@ -1,6 +1,6 @@
 package com.nhnacademy.jminsoo;
 
-import textio.TextIO;
+import com.nhnacademy.jminsoo.textio.TextIO;
 
 public class Exercise2_7 {
     public static void main(String[] args) {
