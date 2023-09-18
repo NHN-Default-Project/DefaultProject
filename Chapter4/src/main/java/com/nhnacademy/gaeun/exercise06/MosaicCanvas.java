@@ -1,9 +1,9 @@
-package com.nhnacademy.geaun.exercise06;
+package com.nhnacademy.gaeun.exercise06;
 
+import javafx.application.Platform;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.application.Platform;
 
 /**
  *  A MosaicCanvas object represents a grid containing rows

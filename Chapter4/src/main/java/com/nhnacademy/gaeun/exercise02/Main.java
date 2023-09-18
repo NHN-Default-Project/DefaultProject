@@ -13,7 +13,7 @@ public class Main {
     public static int calculateDecimal(String hexString) {
         int decimalNumber = 0;
         for(int i = 0; i < hexString.length(); i++) {
-            decimalNumber = decimalNumber*16 + hexValue(hexString.charAt(i));
+            decimalNumber = decimalNumber * 16 + hexValue(hexString.charAt(i));
         }
         return decimalNumber;
     }

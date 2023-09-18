@@ -1,11 +1,10 @@
-package com.nhnacademy.geaun.exercise06;
-
+package com.nhnacademy.gaeun.exercise06;
 /**
  * This program opens a window full of randomly colored squares.  A "disturbance"
  * moves randomly around in the window, randomly changing the color of each
  * square that it visits.  The program runs until the user closes the window.
  */
-public class RandomMosaicWalk2 {
+public class RandomMosaicWalk3 {
 
     final static int ROWS = 80;        // Number of rows in mosaic.
     final static int COLUMNS = 80;     // Number of columns in mosaic.
@@ -26,12 +25,15 @@ public class RandomMosaicWalk2 {
         currentRow = ROWS / 2;   // start at center of window
         currentColumn = COLUMNS / 2;
         while (true) {
-            changeToRandomColor(currentRow, currentColumn);
             randomMove();
             Mosaic.delay(5);
         }
     }  // end main
 
+    public static void changeToCurrentColor(int preRow, int preCol, int rowNum, int colNum) {
+        Mosaic.setColor(rowNum, colNum, Mosaic.getRed(preRow, preCol),
+                Mosaic.getGreen(preRow, preCol), Mosaic.getBlue(preRow, preCol));
+    }
     /**
      * Fills the window with randomly colored squares.
      * Precondition:   The mosaic window is open.
@@ -40,8 +42,7 @@ public class RandomMosaicWalk2 {
     static void fillWithRandomColors() {
         for (int row=0; row < ROWS; row++) {
             for (int column=0; column < COLUMNS; column++) {
-                //changeToRandomColor(row, column);
-                Mosaic.setColor(row, column, 0,0, 0);
+                changeToRandomColor(row, column);
             }
         }
     }  // end fillWithRandomColors
@@ -58,12 +59,9 @@ public class RandomMosaicWalk2 {
      *      from 0 at the left
      */
     static void changeToRandomColor(int rowNum, int colNum) {
-        int red = 0;  // Choose random levels in range
-        int green = Mosaic.getGreen(rowNum, colNum) + 25; //     0 to 255 for red, green,
-        int blue = 0;  //     and blue color components.
-        if(green > 255) {
-            green = 255;
-        }
+        int red = (int)(256*Math.random());  // Choose random levels in range
+        int green = (int)(256*Math.random()); //     0 to 255 for red, green,
+        int blue = (int)(256*Math.random());
         Mosaic.setColor(rowNum,colNum,red,green,blue);
     }  // end changeToRandomColor
 
@@ -80,6 +78,8 @@ public class RandomMosaicWalk2 {
     static void randomMove() {
         int directionNum; // Randomly set to 0, 1, 2, or 3 to choose direction.
         directionNum = (int)(4*Math.random());
+        int preRow = currentRow;
+        int preCol = currentColumn;
         switch (directionNum) {
             case 0 : {  // move up
                 currentRow--;
@@ -102,6 +102,7 @@ public class RandomMosaicWalk2 {
                     currentColumn = COLUMNS - 1;
             }
         }
+        changeToCurrentColor(preRow, preCol, currentRow, currentColumn);
     }  // end randomMove
 
 } // end class RandomMosaicWalk2

@@ -1,14 +1,14 @@
-package com.nhnacademy.geaun.exercise06;
+package com.nhnacademy.gaeun.exercise06;
 
 
+import java.util.List;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import java.util.List;
+import javafx.stage.Stage;
 
 
 /**
