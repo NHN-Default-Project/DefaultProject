@@ -2,8 +2,9 @@ package com.nhnacademy.jminsoo.excercise4;
 
 public class Main {
 
-    public final static int DICE_COUNT = 2;
-    public final static int EYES = 6;
+    public static final int DICE_COUNT = 2;
+    public static final int EYES = 6;
+
     public static void main(String[] args) {
         Dice[] dice = new Dice[DICE_COUNT];
         DiceApp diceApp = new DiceApp(DICE_COUNT, EYES, dice);
