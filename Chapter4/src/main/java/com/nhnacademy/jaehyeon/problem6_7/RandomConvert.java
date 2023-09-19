@@ -1,22 +1,27 @@
 package com.nhnacademy.jaehyeon.problem6_7;
 
-import com.nhnacademy.jaehyeon.problem6_7.Mosaic;
-
 public class RandomConvert {
 
-    final static int ROWS = 40;
-    final static int COLUMNS = 40;
-    final static int SQUARE_SIZE = 10;
+    static final int ROWS = 80;
+    static final int COLUMNS = 80;
+    static final int SQUARE_SIZE = 5;
+
+    static int currentRow;    // Row currently containing the disturbance.
+    static int currentColumn; // Column currently containing disturbance.
 
 
     public static void main(String[] args) {
         Mosaic.setUse3DEffect(false);
         Mosaic.open(ROWS, COLUMNS, SQUARE_SIZE, SQUARE_SIZE);
         fillWithRandomColors();
+
+        currentRow = ROWS / 2;   // start at center of window
+        currentColumn = COLUMNS / 2;
+
         while (true) {
-            int randomRow = (int) (ROWS * Math.random());
-            int randomColumn = (int) (COLUMNS * Math.random());
-            convertRandomNeighbor(randomRow, randomColumn);
+
+            changeToOneColor(currentRow, currentColumn);
+            convertRandomNeighbor();
             Mosaic.delay(1);
         }
     }
@@ -24,48 +29,70 @@ public class RandomConvert {
     static void fillWithRandomColors() {
         for (int row = 0; row < ROWS; row++) {
             for (int col = 0; col < COLUMNS; col++) {
-                int r = (int) (256 * Math.random());
-                int g = (int) (256 * Math.random());
-                int b = (int) (256 * Math.random());
-                Mosaic.setColor(row, col, r, g, b);
+                changeToRandomColor(row, col);
             }
         }
     }
 
+    static void changeToRandomColor(int rowNum, int colNum) {
+        int red = (int) (256 * Math.random());
+        int green = (int) (256 * Math.random());
+        int blue = (int) (256 * Math.random());
+        Mosaic.setColor(rowNum, colNum, red, green, blue);
+    }
 
-    static void convertRandomNeighbor(int row, int col) {
+    static void changeToOneColor(int rowNum, int colNum) {
+        int row = rowNum;
+        int col = colNum + 1;
+        if (row > 0 && col >= COLUMNS) {
+            row -= 1;
+            col -= 1;
+        } else if (row < ROWS - 1 && col >= COLUMNS) {
+            row += 1;
+            col -= 1;
+        }
+
         int red = Mosaic.getRed(row, col);
         int green = Mosaic.getGreen(row, col);
         int blue = Mosaic.getBlue(row, col);
 
+        Mosaic.setColor(rowNum, colNum, red, green, blue);
+    }
+
+
+    static void convertRandomNeighbor() {
+
         int directionNum = (int) (4 * Math.random());
         switch (directionNum) {
             case 0: {
-                row--;
-                if (row < 0) {
-                    row = ROWS - 1;
+                currentRow--;
+                if (currentRow < 0) {
+                    currentRow = ROWS - 1;
                 }
+                break;
             }
             case 1: {
-                col++;
-                if (col >= COLUMNS) {
-                    col = 0;
+                currentColumn++;
+                if (currentColumn >= COLUMNS) {
+                    currentColumn = 0;
                 }
+                break;
             }
             case 2: {
-                row++;
-                if (row >= ROWS) {
-                    row = 0;
+                currentRow++;
+                if (currentRow >= ROWS) {
+                    currentRow = 0;
                 }
+                break;
             }
             case 3: {
-                col--;
-                if (col < 0) {
-                    col = COLUMNS - 1;
+                currentColumn--;
+                if (currentColumn < 0) {
+                    currentColumn = COLUMNS - 1;
                 }
+                break;
             }
         }
-        Mosaic.setColor(row, col, red, green, blue);
     }
 
 }

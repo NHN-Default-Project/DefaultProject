@@ -7,6 +7,11 @@ package com.nhnacademy.jaehyeon.problem6_7;
  */
 public class RandomMosaicWalk {
 
+    static final int ROWS = 80;        // Number of rows in mosaic.
+    static final int COLUMNS = 80;     // Number of columns in mosaic.
+    static final int SQUARE_SIZE = 5; // Size of each square in mosaic.
+
+
     static int currentRow;    // Row currently containing the disturbance.
     static int currentColumn; // Column currently containing disturbance.
 
@@ -16,14 +21,15 @@ public class RandomMosaicWalk {
      * as long as the window is open.
      */
     public static void main(String[] args) {
-        Mosaic.open(16, 20, 25, 25);
-        fillWithRandomColors();
-        currentRow = 80;   // start at center of window
-        currentColumn = 80;
+        Mosaic.open(ROWS, COLUMNS, SQUARE_SIZE, SQUARE_SIZE);
+        Mosaic.setUse3DEffect(false);
+        fillWithBlackColor();
+        currentRow = ROWS / 2;   // start at center of window
+        currentColumn = COLUMNS / 2;
         while (true) {
-            brightenSquare(currentRow, currentColumn);
+            changeToGreenColor(currentRow, currentColumn);
             randomMove();
-            Mosaic.delay(10);  // Remove this line to speed things up!
+            Mosaic.delay(5);  // Remove this line to speed things up!
         }
     }  // end main
 
@@ -32,11 +38,13 @@ public class RandomMosaicWalk {
      * Precondition:   The mosaic window is open.
      * Postcondition:  Each square has been set to a random color.
      */
-    static void fillWithRandomColors() {
-        int row, column;
-        for (row = 0; row < 80; row++) {
-            for (column = 0; column < 80; column++) {
-                changeToRandomColor(row, column);
+
+
+    static void fillWithBlackColor() {
+
+        for (int row = 0; row < ROWS; row++) {
+            for (int column = 0; column < COLUMNS; column++) {
+                Mosaic.setColor(row, column, 0, 0, 0);
             }
         }
     }  // end fillWithRandomColors
@@ -54,29 +62,14 @@ public class RandomMosaicWalk {
      *               from 0 at the left
      */
 
-    static void brightenSquare(int row, int col) {
-        int green = Mosaic.getGreen(row, col);
-        green += 25;
+    static void changeToGreenColor(int row, int col) {
+        int green = 25 + Mosaic.getGreen(row, col);
         if (green > 255) {
             green = 255;
         }
         Mosaic.setColor(row, col, 0, green, 0);
     }
 
-
-    static void changeToRandomColor(int rowNum, int colNum) {
-        int red = (int) (256 * Math.random());    // Choose random levels in range
-        int green = Mosaic.getGreen(rowNum, colNum) + 25;  //     0 to 255 for red, green,
-        int blue = (int) (256 * Math.random());   //     and blue color components.
-        Mosaic.setColor(rowNum, colNum, red, green, blue);
-    }  // end changeToRandomColor
-
-    static void changeToColor(int rowNum, int colNum) {
-        int red = 0;    // Choose random levels in range
-        int green = Mosaic.getGreen(rowNum, colNum) + 25;  //     0 to 255 for red, green,
-        int blue = 0;   //     and blue color components.
-        Mosaic.setColor(rowNum, colNum, red, green, blue);
-    }  // end changeToRandomColor
 
     /**
      * Move the disturbance.
@@ -95,21 +88,21 @@ public class RandomMosaicWalk {
             case 0: { // move up
                 currentRow--;
                 if (currentRow < 0) {
-                    currentRow = 15;   // move it to the opposite edge.
+                    currentRow = ROWS - 1;   // move it to the opposite edge.
                 }
                 break;
             }
 
             case 1: {  // move right
                 currentColumn++;
-                if (currentColumn >= 20) {
+                if (currentColumn >= COLUMNS) {
                     currentColumn = 0;
                 }
                 break;
             }
             case 2: {  // move down
                 currentRow++;
-                if (currentRow >= 16) {
+                if (currentRow >= ROWS) {
                     currentRow = 0;
                 }
                 break;
@@ -117,7 +110,7 @@ public class RandomMosaicWalk {
             case 3: {  // move left
                 currentColumn--;
                 if (currentColumn < 0) {
-                    currentColumn = 19;
+                    currentColumn = COLUMNS - 1;
                 }
                 break;
             }
