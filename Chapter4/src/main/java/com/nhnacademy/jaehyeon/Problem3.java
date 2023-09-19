@@ -14,6 +14,8 @@ public class Problem3 {
         verifySumRange(inputNumber);
 
         playDiceGame(inputNumber);
+
+        scanner.close();
     }
 
 
