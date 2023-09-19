@@ -68,6 +68,7 @@ public class BlackjackTest {
                 }
                 return (dealer.getBlackjackValue() >= user.getBlackjackValue()) ? false : true;
             }
+            scanner.close();
         }
 
 
