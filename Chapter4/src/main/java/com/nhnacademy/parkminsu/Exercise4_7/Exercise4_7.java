@@ -8,8 +8,8 @@ package com.nhnacademy.parkminsu.Exercise4_7;
 public class Exercise4_7 {
 
 
-    static final int ROWS = 30;        // Number of rows in mosaic.
-    static final int COLUMNS = 30;     // Number of columns in mosaic.
+    static final int ROWS = 80;        // Number of rows in mosaic.
+    static final int COLUMNS = 80;     // Number of columns in mosaic.
     static final int SQUARE_SIZE = 5; // Size of each square in mosaic.
 
     static int currentRow;    // Row currently containing the disturbance.
