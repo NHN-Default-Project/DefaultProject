@@ -79,5 +79,15 @@ public class StatCalc {
         return this.min;
     }
 
-
+    @Override
+    public String toString() {
+        return "StatCalc{" +
+                "count=" + count +
+                ", sum=" + sum +
+                ", average = " + getMean() +
+                ", squareSum=" + getStandardDeviation() +
+                ", max=" + max +
+                ", min=" + min +
+                '}';
+    }
 }  // end class StatCalc

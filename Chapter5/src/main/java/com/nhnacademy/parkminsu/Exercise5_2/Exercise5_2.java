@@ -12,12 +12,8 @@ public class Exercise5_2 {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println(statCalc.getCount());
-        System.out.println(statCalc.getSum());
-        System.out.println(statCalc.getMean());
-        System.out.println(statCalc.getStandardDeviation());
-        System.out.println(statCalc.getMax());
-        System.out.println(statCalc.getMin());
+
+        System.out.println(statCalc.toString());
 
     }
 }
