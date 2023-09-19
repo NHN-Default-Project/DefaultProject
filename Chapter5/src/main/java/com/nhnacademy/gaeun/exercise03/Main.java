@@ -15,7 +15,7 @@ public class Main {
             System.out.printf("      ");
             System.out.printf("%.4f      ", statCalc.getStandardDeviation());
             System.out.printf("      ");
-            System.out.printf("%.4f      \n", (int) statCalc.getMax());
+            System.out.printf("%d      \n", (int) statCalc.getMax());
         }
     }
 

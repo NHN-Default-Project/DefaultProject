@@ -20,6 +20,7 @@ public class Main {
         totalPoints = quizGame.gradQuiz(inputAnswer);
 
         System.out.printf("Total points: %d", totalPoints);
+        scanner.close();
     }
 
 

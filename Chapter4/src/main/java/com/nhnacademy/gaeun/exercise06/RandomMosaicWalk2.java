@@ -22,7 +22,7 @@ public class RandomMosaicWalk2 {
     public static void main(String[] args) {
         Mosaic.open(ROWS, COLUMNS, SQUARE_SIZE, SQUARE_SIZE);
         Mosaic.setUse3DEffect(false);
-        fillWithRandomColors();
+        fillWithBlackColors();
         currentRow = ROWS / 2;   // start at center of window
         currentColumn = COLUMNS / 2;
         while (true) {
@@ -37,7 +37,7 @@ public class RandomMosaicWalk2 {
      * Precondition:   The mosaic window is open.
      * Postcondition:  Each square has been set to a random color.
      */
-    static void fillWithRandomColors() {
+    static void fillWithBlackColors() {
         for (int row = 0; row < ROWS; row++) {
             for (int column = 0; column < COLUMNS; column++) {
                 //changeToRandomColor(row, column);
@@ -87,24 +87,28 @@ public class RandomMosaicWalk2 {
                 if (currentRow < 0) {
                     currentRow = ROWS - 1;
                 }
+                break;
             }
             case 1: {  // move right
                 currentColumn++;
                 if (currentColumn >= COLUMNS) {
                     currentColumn = 0;
                 }
+                break;
             }
             case 2: {  // move down
                 currentRow++;
                 if (currentRow >= ROWS) {
                     currentRow = 0;
                 }
+                break;
             }
             case 3: {  // move left
                 currentColumn--;
                 if (currentColumn < 0) {
                     currentColumn = COLUMNS - 1;
                 }
+                break;
             }
         }
     }  // end randomMove

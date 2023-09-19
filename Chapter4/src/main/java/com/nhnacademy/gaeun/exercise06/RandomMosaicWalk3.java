@@ -26,6 +26,8 @@ public class RandomMosaicWalk3 {
         currentRow = ROWS / 2;   // start at center of window
         currentColumn = COLUMNS / 2;
         while (true) {
+            currentRow = (int) (ROWS * Math.random());
+            currentColumn = (int) (COLUMNS * Math.random());
             randomMove();
             Mosaic.delay(5);
         }
@@ -89,24 +91,28 @@ public class RandomMosaicWalk3 {
                 if (currentRow < 0) {
                     currentRow = ROWS - 1;
                 }
+                break;
             }
             case 1: {  // move right
                 currentColumn++;
                 if (currentColumn >= COLUMNS) {
                     currentColumn = 0;
                 }
+                break;
             }
             case 2: {  // move down
                 currentRow++;
                 if (currentRow >= ROWS) {
                     currentRow = 0;
                 }
+                break;
             }
             case 3: {  // move left
                 currentColumn--;
                 if (currentColumn < 0) {
                     currentColumn = COLUMNS - 1;
                 }
+                break;
             }
         }
         changeToCurrentColor(preRow, preCol, currentRow, currentColumn);

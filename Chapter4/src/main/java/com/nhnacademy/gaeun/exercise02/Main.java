@@ -8,6 +8,7 @@ public class Main {
         String hexString = scanner.nextLine();
 
         System.out.println(calculateDecimal(hexString));
+        scanner.close();
     }
 
     public static int calculateDecimal(String hexString) {
@@ -45,7 +46,7 @@ public class Main {
             case 'f':
                 return character - 87;
             default:
-                throw new IllegalArgumentException("16진수를 입력해주세요!");
+                return -1;
         }
     }
 }

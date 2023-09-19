@@ -4,6 +4,8 @@ import java.util.Random;
 
 @SuppressWarnings("java:S106")
 public class Main {
+    static final int ROLL_NUM = 10000;
+
     public static void main(String[] args) {
         System.out.println("Total On Dice    Average Number of Rolls");
         System.out.println("--------------   ------------------------");
@@ -17,10 +19,10 @@ public class Main {
 
     public static double diceAverage(int goalValue) {
         double sum = 0;
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < ROLL_NUM; i++) {
             sum += diceRoll(goalValue);
         }
-        return sum / 10000;
+        return sum / ROLL_NUM;
     }
 
     public static int diceRoll(int goalValue) {
