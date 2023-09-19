@@ -55,7 +55,7 @@ public class DiceCollection {
         }
     }
 
-    public void averageTotalDice() {
+    public void findAverageTotalDice() {
         for (int i = this.totalBeginRange; i <= this.totalEndRange; i++) {
             this.averageNumOfRoll.put(i, (this.averageNumOfRoll.get(i) / this.endDiceRolled) * this.endDiceRolled);
         }

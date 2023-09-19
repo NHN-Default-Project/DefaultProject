@@ -20,8 +20,9 @@ public class Exercise4_3 {
                 break;
             }
 
-            System.out.printf("굴린 횟수: %d\n주사위1 눈: %d\n주사위2 눈: %d\n\n",
-                    dice.getNumOfDiceRolled(), dice.getFirstDice().getDiceEye(), dice.getSecondDice().getDiceEye());
+            System.out.printf("굴린 횟수: %d\n", dice.getNumOfDiceRolled());
+            System.out.printf("주사위1 눈: %d\n", dice.getFirstDice().getDiceEye());
+            System.out.printf("주사위2 눈: %d\n\n", dice.getSecondDice().getDiceEye());
         }
         System.out.printf("최종 굴린 횟수: %d\n주사위1 눈: %d\n주사위2 눈: %d\n\n",
                 dice.getNumOfDiceRolled(), dice.getFirstDice().getDiceEye(), dice.getSecondDice().getDiceEye());

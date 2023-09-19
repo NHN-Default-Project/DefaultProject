@@ -10,7 +10,7 @@ public class Exercise4_4 {
 
     public static void simulation(DiceCollection diceCollection) {
         diceCollection.totalNumofDice();
-        diceCollection.averageTotalDice();
+        diceCollection.findAverageTotalDice();
         System.out.println("주사위 총합 \t평균 굴림 횟수");
         System.out.println("---------\t------------");
         for (int i : diceCollection.getAverageNumOfRoll().keySet()) {
