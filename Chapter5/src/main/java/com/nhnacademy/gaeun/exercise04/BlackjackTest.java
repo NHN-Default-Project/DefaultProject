@@ -11,9 +11,10 @@ public class BlackjackTest {
         System.out.println("2~6개 중에 몇 개의 카드를 받으실 건가요?");
         int cardAmount = scanner.nextInt();
 
-        for(int i = 0; i < cardAmount; i++) {
+        for (int i = 0; i < cardAmount; i++) {
             blackjackHand.addCard(deck.dealCard());
         }
         System.out.println(blackjackHand.getBlackjackValue());
+        scanner.close();
     }
 }

@@ -29,6 +29,7 @@ public class Hand {
 
     /**
      * Add a card to the hand.  It is added at the end of the current hand.
+     *
      * @param c the non-null card to be added.
      * @throws NullPointerException if the parameter c is null.
      */
@@ -40,8 +41,9 @@ public class Hand {
 
     /**
      * Remove a card from the hand, if present.
+     *
      * @param c the card to be removed.  If c is null or if the card is not in
-     * the hand, then nothing is done.
+     *          the hand, then nothing is done.
      */
     public void removeCard(Card c) {
         hand.remove(c);
@@ -49,11 +51,12 @@ public class Hand {
 
     /**
      * Remove the card in a specified position from the hand.
+     *
      * @param position the position of the card that is to be removed, where
-     * positions are numbered starting from zero.
+     *                 positions are numbered starting from zero.
      * @throws IllegalArgumentException if the position does not exist in
-     * the hand, that is if the position is less than 0 or greater than
-     * or equal to the number of cards in the hand.
+     *                                  the hand, that is if the position is less than 0 or greater than
+     *                                  or equal to the number of cards in the hand.
      */
     public void removeCard(int position) {
         if (position < 0 || position >= hand.size())
@@ -72,6 +75,7 @@ public class Hand {
     /**
      * Gets the card in a specified position in the hand.  (Note that this card
      * is not removed from the hand!)
+     *
      * @param position the position of the card that is to be returned
      * @throws IllegalArgumentException if position does not exist in the hand
      */
@@ -94,8 +98,8 @@ public class Hand {
             Card c = hand.get(0);  // Minimal card.
             for (int i = 1; i < hand.size(); i++) {
                 Card c1 = hand.get(i);
-                if ( c1.getSuit() < c.getSuit() ||
-                        (c1.getSuit() == c.getSuit() && c1.getValue() < c.getValue()) ) {
+                if (c1.getSuit() < c.getSuit() ||
+                        (c1.getSuit() == c.getSuit() && c1.getValue() < c.getValue())) {
                     pos = i;
                     c = c1;
                 }
@@ -118,8 +122,8 @@ public class Hand {
             Card c = hand.get(0);  // Minimal card.
             for (int i = 1; i < hand.size(); i++) {
                 Card c1 = hand.get(i);
-                if ( c1.getValue() < c.getValue() ||
-                        (c1.getValue() == c.getValue() && c1.getSuit() < c.getSuit()) ) {
+                if (c1.getValue() < c.getValue() ||
+                        (c1.getValue() == c.getValue() && c1.getSuit() < c.getSuit())) {
                     pos = i;
                     c = c1;
                 }

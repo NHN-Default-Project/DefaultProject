@@ -13,10 +13,10 @@ public class HighLow {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println(" This program lets you play the simple card game, HighLow.  " +
-                        "A card is dealt from a deck of cards. " +
-                        "You have to predict whether the next card will be higher or lower.  " +
-                        "Your score in the game is the number of correct predictions " +
-                        "you make before you guess wrong. ");
+                "A card is dealt from a deck of cards. " +
+                "You have to predict whether the next card will be higher or lower.  " +
+                "Your score in the game is the number of correct predictions " +
+                "you make before you guess wrong. ");
 
         int gamesPlayed = 0;     // Number of games user has played.
         int sumOfScores = 0;     // The sum of all the scores from
@@ -36,7 +36,7 @@ public class HighLow {
             playAgain = scanner.nextBoolean();
         } while (playAgain);
 
-        averageScore = ((double)sumOfScores) / gamesPlayed;
+        averageScore = ((double) sumOfScores) / gamesPlayed;
 
         System.out.println();
         System.out.println("You played " + gamesPlayed + " games.");
@@ -63,7 +63,7 @@ public class HighLow {
         //    to predict whether this is higher or lower
         //    than the current card.
 
-        int correctGuesses ;  // The number of correct predictions the
+        int correctGuesses;  // The number of correct predictions the
         //   user has made.  At the end of the game,
         //   this will be the user's score.
 
@@ -101,23 +101,19 @@ public class HighLow {
                 System.out.println("The value is the same as the previous card.");
                 System.out.println("You lose on ties.  Sorry!");
                 break;  // End the game.
-            }
-            else if (nextCard.getValue() > currentCard.getValue()) {
+            } else if (nextCard.getValue() > currentCard.getValue()) {
                 if (guess == 'H') {
                     System.out.println("Your prediction was correct.");
                     correctGuesses++;
-                }
-                else {
+                } else {
                     System.out.println("Your prediction was incorrect.");
                     break;  // End the game.
                 }
-            }
-            else {  // nextCard is lower
+            } else {  // nextCard is lower
                 if (guess == 'L') {
                     System.out.println("Your prediction was correct.");
                     correctGuesses++;
-                }
-                else {
+                } else {
                     System.out.println("Your prediction was incorrect.");
                     break;  // End the game.
                 }

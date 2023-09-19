@@ -1,8 +1,5 @@
 package com.nhnacademy.gaeun.exercise02;
 
-import static java.lang.System.exit;
-import static java.lang.System.in;
-
 import java.util.Scanner;
 
 public class Main {
@@ -11,9 +8,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         int inputValue = 1;
-        while(true) {
+        while (true) {
             inputValue = scanner.nextInt();
-            if(inputValue == 0) {
+            if (inputValue == 0) {
                 break;
             }
             statCalc.enter(inputValue);

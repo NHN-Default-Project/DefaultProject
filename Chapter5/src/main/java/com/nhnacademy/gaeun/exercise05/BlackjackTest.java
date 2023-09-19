@@ -73,9 +73,11 @@ public class BlackjackTest {
 
 
     }
+
     public static boolean isAddDealer(int getBlackjackNum) {
         return getBlackjackNum <= 16;
     }
+
     public static void openAllCanrds() {
         System.out.println("===== " + user.getName() + " =====");
         for (int i = 0; i < user.getCardCount(); i++) {

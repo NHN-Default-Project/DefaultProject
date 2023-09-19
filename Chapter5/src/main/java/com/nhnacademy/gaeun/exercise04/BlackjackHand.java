@@ -17,7 +17,7 @@ public class BlackjackHand extends Hand {
         ace = false;
         cards = getCardCount();  // (method defined in class Hand.)
 
-        for ( int i = 0;  i < cards;  i++ ) {
+        for (int i = 0; i < cards; i++) {
             // Add the value of the i-th card in the hand.
             Card card;    // The i-th card;
             int cardVal;  // The blackjack value of the i-th card.
@@ -37,7 +37,7 @@ public class BlackjackHand extends Hand {
         // 11 would leave the score less than or equal to 21,
         // then do so by adding the extra 10 points to val.
 
-        if ( ace == true  &&  val + 10 <= 21 )
+        if (ace == true && val + 10 <= 21)
             val = val + 10;
 
         return val;
