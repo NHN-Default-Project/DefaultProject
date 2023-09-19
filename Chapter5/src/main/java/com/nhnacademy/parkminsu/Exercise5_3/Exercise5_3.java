@@ -14,7 +14,7 @@ public class Exercise5_3 {
 
         StatCalc[] statCalc = new StatCalc[arraySize];
         StatCalc standardDeviation = new StatCalc();
-        PairOfDice pairOfDice = new PairOfDice();
+        PairOfDice pairOfDice = new PairOfDice(2);
 
 
         for (int i = 0; i < arraySize; i++) {
