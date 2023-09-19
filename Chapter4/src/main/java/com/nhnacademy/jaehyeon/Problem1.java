@@ -1,10 +1,14 @@
 package com.nhnacademy.jaehyeon;
 
+import java.util.Scanner;
+
 public class Problem1 {
 
 
     public static void main(String[] args) {
-        String str = "Now is the time to act!";
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("문자를 입력해주세요");
+        String str = scanner.nextLine();
 
         printCapitalized(str);
     }
@@ -24,21 +28,19 @@ public class Problem1 {
 
     public static StringBuilder upperFirstString(String str) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < str.length(); i++) {
-            if (i == 0) {
-                if (Character.isLetter(str.charAt(i))) {
-                    if ('a' <= str.charAt(i) && str.charAt(i) <= 'z') {
-                        sb.append(Character.toUpperCase(str.charAt(i)));
-                    } else {
-                        sb.append(str.charAt(i));
-                    }
-                } else {
-                    sb.append(str.charAt(i));
-                }
 
+        if (Character.isLetter(str.charAt(0))) {
+            if ('a' <= str.charAt(0) && str.charAt(0) <= 'z') {
+                sb.append(Character.toUpperCase(str.charAt(0)));
             } else {
-                sb.append(str.charAt(i));
+                sb.append(str.charAt(0));
             }
+        } else {
+            sb.append(str.charAt(0));
+        }
+
+        for (int i = 1; i < str.length(); i++) {
+            sb.append(str.charAt(i));
         }
 
         return sb;
