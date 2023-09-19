@@ -62,14 +62,15 @@ public class BlackjackHand extends Hand {
         System.out.println();
         System.out.println("===== " + blackjackHand.getName() + " =====");
         for (int i = 1; i < blackjackHand.getCardCount(); i++) {
-            System.out.printf("%s : %s, %s\n", blackjackHand.getName(),
+            System.out.printf("%s, %s\n",
                     blackjackHand.getCard(i).getSuitAsString(), blackjackHand.getCard(i).getValueAsString());
         }
     }
 
-    public boolean isWin() {
-        System.out.println(getName() + ": " + getBlackjackValue());
-        return (getBlackjackValue() == 21);
+    public int whoIsWin() {
+        if (this.getBlackjackValue() == 21) return 0;
+        if (this.getBlackjackValue() > 21) return 1;
+        else return -1;
     }
 
     public String getName() {
