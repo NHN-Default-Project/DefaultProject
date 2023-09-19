@@ -1,7 +1,5 @@
 package com.nhnacademy.jaehyeon;
 
-import com.nhnacademy.jaehyeon.problem6_7.ArrayProcessor;
-
 public class Problem5 {
 
     public static ArrayProcessor counter(double value) {

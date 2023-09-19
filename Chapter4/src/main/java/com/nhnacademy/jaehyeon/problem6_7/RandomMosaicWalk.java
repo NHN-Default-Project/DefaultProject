@@ -1,7 +1,5 @@
 package com.nhnacademy.jaehyeon.problem6_7;
 
-import com.nhnacademy.jaehyeon.problem6_7.Mosaic;
-
 /**
  * This program opens a window full of randomly colored squares.  A "disturbance"
  * moves randomly around in the window, randomly changing the color of each
@@ -20,8 +18,8 @@ public class RandomMosaicWalk {
     public static void main(String[] args) {
         Mosaic.open(16, 20, 25, 25);
         fillWithRandomColors();
-        currentRow = 8;   // start at center of window
-        currentColumn = 10;
+        currentRow = 80;   // start at center of window
+        currentColumn = 80;
         while (true) {
             brightenSquare(currentRow, currentColumn);
             randomMove();
@@ -36,8 +34,8 @@ public class RandomMosaicWalk {
      */
     static void fillWithRandomColors() {
         int row, column;
-        for (row = 0; row < 16; row++) {
-            for (column = 0; column < 20; column++) {
+        for (row = 0; row < 80; row++) {
+            for (column = 0; column < 80; column++) {
                 changeToRandomColor(row, column);
             }
         }
@@ -99,6 +97,7 @@ public class RandomMosaicWalk {
                 if (currentRow < 0) {
                     currentRow = 15;   // move it to the opposite edge.
                 }
+                break;
             }
 
             case 1: {  // move right
@@ -106,18 +105,21 @@ public class RandomMosaicWalk {
                 if (currentColumn >= 20) {
                     currentColumn = 0;
                 }
+                break;
             }
             case 2: {  // move down
                 currentRow++;
                 if (currentRow >= 16) {
                     currentRow = 0;
                 }
+                break;
             }
             case 3: {  // move left
                 currentColumn--;
                 if (currentColumn < 0) {
                     currentColumn = 19;
                 }
+                break;
             }
         }
     }  // end randomMove
