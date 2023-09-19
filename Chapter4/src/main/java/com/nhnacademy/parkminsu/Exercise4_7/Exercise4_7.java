@@ -27,7 +27,7 @@ public class Exercise4_7 {
         currentRow = ROWS / 2;   // start at center of window
         currentColumn = COLUMNS / 2;
         while (true) {
-            changeToGreen(currentRow, currentColumn);
+            changeToNearbyColor(currentRow, currentColumn);
             randomMove();
             Mosaic.delay(5);
         }
@@ -67,7 +67,7 @@ public class Exercise4_7 {
     }  // end changeToRandomColor
 
     // 코드 추가
-    static void changeToGreen(int rowNum, int colNum) {
+    static void changeToNearbyColor(int rowNum, int colNum) {
         int row = rowNum + 1;
         int col = colNum;
         if (row >= ROWS && col > 0) {
