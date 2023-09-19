@@ -57,12 +57,17 @@ public class Game {
     }
 
     public void gameFirstStep() {
-        for (int i = 0; i < cardNum; i++) {
+        for (int i = 0; i < this.cardNum; i++) {
             giveOneCard(this.user, this.deck);
             giveOneCard(this.dealer, this.deck);
         }
-        System.out.printf("딜러의 패 : %d \n", dealer.getCard(0).getValue());
-        System.out.printf("유저의 패 : %d %d \n", this.user.getCard(0).getValue(), this.user.getCard(1).getValue());
+
+        System.out.printf("딜러의 패: %d \n", dealer.getCard(0).getValue());
+        System.out.print("유저의 패: ");
+        for (int i = 0; i < this.cardNum; i++) {
+            System.out.printf("%d ", this.user.getCard(i).getValue());
+        }
+        System.out.println();
     }
 
 
