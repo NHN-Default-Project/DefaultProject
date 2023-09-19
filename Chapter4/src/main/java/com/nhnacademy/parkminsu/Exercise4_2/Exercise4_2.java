@@ -12,14 +12,13 @@ public class Exercise4_2 {
         }
     }
 
-    public static boolean stringCheck(String str) {
+    public static boolean checkHexValue(String str) {
         int cnt = 0;
         for (int idx = 0; idx < str.length(); idx++) {
             if ((str.charAt(idx) >= '0' && str.charAt(idx) <= '9') || (str.charAt(idx) >= 'A' && str.charAt(idx) <= 'F')
                     || (str.charAt(idx) >= 'a' && str.charAt(idx) <= 'f')) {
                 cnt++;
             }
-
 
         }
         if (cnt == str.length()) {
@@ -41,10 +40,11 @@ public class Exercise4_2 {
     }
 
     public static int calculator(String str) {
-        if (!stringCheck(str)) {
+        if (!checkHexValue(str)) {
             return -1;
         }
         int value = 0;
+        str = str.toLowerCase();
         for (int i = 0; i < str.length(); i++) {
             value = value * 16 + hexValue(str.charAt(i));
 
