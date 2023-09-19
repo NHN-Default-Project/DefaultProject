@@ -13,13 +13,13 @@ public class Problem4 {
     }
 
 
-    public static double totalCount(int n) {
+    public static double totalCount(int sumNumber) {
         int count = 0;
         double totalCount = 0;
         while (count != ROLL_COUNT) {
             totalCount++;
             int sum = sumDiceNumber();
-            if (sum == n) {
+            if (sum == sumNumber) {
                 count++;
             }
         }
