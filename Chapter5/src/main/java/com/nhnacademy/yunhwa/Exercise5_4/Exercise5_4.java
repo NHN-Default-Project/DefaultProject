@@ -2,7 +2,8 @@ package com.nhnacademy.yunhwa.Exercise5_4;
 
 import java.util.Scanner;
 
-import Chapter4.Exercise3.Range;
+//import Chapter4.src.main.java.com.nhnacademy.yunhwa.Exercise4_3.Range;
+import com.nhnacademy.yunhwa.Exercise5_3.Range;
 
 public class Exercise5_4 {
     // BlackjackHand : Hand 클래스를 extends 한 것 -> getBlackjackValue() 메서드 추가됨

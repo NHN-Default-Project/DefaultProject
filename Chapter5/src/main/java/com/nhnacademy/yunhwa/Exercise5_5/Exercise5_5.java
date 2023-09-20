@@ -1,14 +1,13 @@
 package com.nhnacademy.yunhwa.Exercise5_5;
 
-import Chapter5.Exercise5_4.Card;
-import Chapter5.Exercise5_4.Deck;
-import Chapter5.Exercise5_4.Hand;
+import com.nhnacademy.yunhwa.Exercise5_4.Card;
+import com.nhnacademy.yunhwa.Exercise5_4.Deck;
+import com.nhnacademy.yunhwa.Exercise5_4.Hand;
+import com.nhnacademy.yunhwa.Exercise5_4.BlackjackHand;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import Chapter5.Exercise5_4.BlackjackHand;
 
 public class Exercise5_5 {
 

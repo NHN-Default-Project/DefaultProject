@@ -2,8 +2,9 @@ package com.nhnacademy.yunhwa.Exercise5_5;
 
 import java.util.Scanner;
 
-import Chapter5.Exercise5_4.BlackjackHand;
-import Chapter5.Exercise5_4.Deck;
+
+import com.nhnacademy.yunhwa.Exercise5_4.BlackjackHand;
+import com.nhnacademy.yunhwa.Exercise5_4.Deck;
 
 public class BlackjackGame {
 
