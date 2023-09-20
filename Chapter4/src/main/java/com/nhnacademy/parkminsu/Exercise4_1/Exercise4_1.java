@@ -16,7 +16,7 @@ public class Exercise4_1 {
         boolean upperCheck = false;
         for (int idx = 0; idx < str.length(); idx++) {
             if (Character.isLetter(str.charAt(idx))) {
-                if (!upperCheck || idx == str.indexOf(" ")) {
+                if (!upperCheck) {
                     upperCheck = true;
                     resultString.append(Character.toUpperCase(str.charAt(idx)));
                 } else {
