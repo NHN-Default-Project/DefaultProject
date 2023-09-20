@@ -48,11 +48,4 @@ public class DiceApp {
         return count;
     }
 
-    public double calculateDiceAverage(int times, int number) {
-        int countSum = 0;
-        for (int i = 0; i < times; i++) {
-            countSum += countCorrectNumber(number);
-        }
-        return ((double) countSum) / times;
-    }
 }

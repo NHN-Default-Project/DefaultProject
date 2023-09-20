@@ -24,12 +24,7 @@ public class Main {
         } catch (NoSuchElementException | IllegalStateException e) {
             System.out.println("잘못된 값이 들어갔습니다 ! 오류 메세지 : " + e.getMessage());
         }
-        System.out.printf("넣은 개수 : %d\n", calc.getCount());
-        System.out.printf("평균 : %.2f\n", calc.getMean());
-        System.out.printf("합계 : %.2f\n", calc.getSum());
-        System.out.printf("표준편차 : %.2f\n", calc.getStandardDeviation());
-        System.out.printf("최대값 : %.2f\n", calc.getMax());
-        System.out.printf("최소값 : %.2f\n", calc.getMin());
+        System.out.println(calc);
 
     }
 }

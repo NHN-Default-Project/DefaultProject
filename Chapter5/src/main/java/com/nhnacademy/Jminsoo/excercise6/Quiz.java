@@ -10,8 +10,8 @@ public class Quiz implements SkeletonQuiz {
     private int[] answer;
 
     public Quiz(int count) {
-        quizzes = new AdditionQuestion[count];
-        answer = new int[count];
+        this.quizzes = new AdditionQuestion[count];
+        this.answer = new int[count];
     }
 
     @Override
@@ -24,20 +24,17 @@ public class Quiz implements SkeletonQuiz {
     @Override
     public void quizControl() {
         int answer = 0;
-        Scanner scanner = new Scanner(System.in);
 
         for (int i = 0; i < quizzes.length; i++) {
             System.out.println(quizzes[i].getQuestion());
-            try {
+            try (Scanner scanner = new Scanner(System.in)) {
                 answer = scanner.nextInt();
             } catch (InputMismatchException e) {
-                scanner.close();
                 throw new IllegalArgumentException();
             }
             this.answer[i] = answer;
             System.out.println();
         }
-        scanner.close();
     }
 
     @Override

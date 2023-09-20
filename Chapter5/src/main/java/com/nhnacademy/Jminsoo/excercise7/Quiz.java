@@ -10,20 +10,20 @@ public class Quiz implements SkeletonQuiz {
     private int[] answer;
 
     public Quiz(int count) {
-        quizzes = new AdditionQuestion[count];
+        quizzes = new IntQuestion[count];
         answer = new int[count];
     }
 
     @Override
     public void quizGenerate() {
-        for (int i = 0; i < quizzes.length / 2 - 1; i++) {
-            quizzes[i] = new AdditionQuestion();
+        for (int i = 0; i < quizzes.length - 1; i++) {
+            if (i > quizzes.length / 2) {
+                quizzes[i] = new SubtractionQuestion();
+            } else {
+                quizzes[i] = new AdditionQuestion();
+            }
         }
-        for (int i = 0; i < quizzes.length / 2; i++) {
-            quizzes[i] = new SubtractionQuestion();
-        }
-
-        quizzes[quizzes.length] = new IntQuestion() {
+        quizzes[quizzes.length - 1] = new IntQuestion() {
             @Override
             public String getQuestion() {
                 return "만든 사람의 나이는 몇살???";
@@ -69,6 +69,6 @@ public class Quiz implements SkeletonQuiz {
             }
         }
 
-        System.out.printf("최종 점수 : %.2f %%", (correct / quizzes.length) * 100.0);
+        System.out.printf("정답률 : %.2f %%", (correct / quizzes.length) * 100.0);
     }
 }

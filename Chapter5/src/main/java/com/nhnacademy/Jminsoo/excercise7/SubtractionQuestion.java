@@ -5,18 +5,20 @@ public class SubtractionQuestion implements IntQuestion {
     private int b;
 
     public SubtractionQuestion() { // constructor
-        while (this.a - this.b > 0) {
+        do {
             this.a = (int) (Math.random() * 50 + 1);
             this.b = (int) (Math.random() * 50);
         }
+        while (this.a - this.b < 0);
+
     }
 
     @Override
     public String getQuestion() {
         StringBuilder sb = new StringBuilder();
-        sb.append("What is")
+        sb.append("What is ")
                 .append(this.a)
-                .append("-")
+                .append(" - ")
                 .append(this.b)
                 .append(" ?");
         return sb.toString();

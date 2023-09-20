@@ -10,10 +10,11 @@ public class Main {
 
         int money = 100;
         int bet = 0;
+        int sumBet = 0;
 
 
         double averageScore;
-        boolean playAgain = false;
+        boolean playAgain = true;
         Player player;
         Dealer dealer;
 
@@ -33,6 +34,10 @@ public class Main {
             if (bet > money) {
                 System.out.printf("베팅 금액은 현재 금액보다 많을 수 없습니다. 현재 돈 : %d\n", money);
                 continue;
+            } else if (bet <= 0) {
+                System.out.printf("베팅 금액은 0보다 작을 수 없습니다.");
+                continue;
+
             }
 
             isVictory = play(player, dealer);   // Play the game and get the score.
@@ -41,10 +46,12 @@ public class Main {
                 money += bet;
                 sumOfScores++;
             } else {
-                System.out.printf("베팅 금액을 잃습니다. -%d\n", bet);
                 money -= bet;
+                System.out.printf("베팅 금액을 잃습니다. -%d\n", bet);
             }
+            System.out.printf("현재 돈 : %d\n", money);
             gamesPlayed++;
+            sumBet += bet;
             System.out.print("다시 플레이하겠습니까?(다시하기 : true, 그만두기 : false) : ");
             playAgain = TextIO.getlnBoolean();
         } while (playAgain);
@@ -54,6 +61,8 @@ public class Main {
         System.out.println();
         System.out.println("게임 횟수 :  " + gamesPlayed + " games.");
         System.out.printf("평균 승률 : %1.3f.\n", averageScore * 100);
+        System.out.printf("플레이어가 건 베팅 :%d\n", sumBet);
+        System.out.printf("플레이어의 돈 : %d\n", money);
     }
 
     //손패 출력
