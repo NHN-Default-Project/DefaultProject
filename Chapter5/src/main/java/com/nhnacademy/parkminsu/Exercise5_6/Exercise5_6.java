@@ -3,18 +3,18 @@ package com.nhnacademy.parkminsu.Exercise5_6;
 import java.util.Scanner;
 
 public class Exercise5_6 {
-    private static final int questionCount = 10;
+    private static final int QUSETION_COUNT = 10;
 
     public static void main(String[] args) {
-        AdditionQuestion[] additionQuestion = new AdditionQuestion[questionCount];
-        int[] answer = new int[questionCount];
+        AdditionQuestion[] additionQuestion = new AdditionQuestion[QUSETION_COUNT];
+        int[] answer = new int[QUSETION_COUNT];
         solution(additionQuestion, answer);
         answerCheck(additionQuestion, answer);
 
     }
 
     public static void answerCheck(AdditionQuestion[] additionQuestion, int[] answer) {
-        for (int i = 0; i < questionCount; i++) {
+        for (int i = 0; i < QUSETION_COUNT; i++) {
             if (additionQuestion[i].getCorrectAnswer() == answer[i]) {
                 System.out.println(i + 1 + "번은 정답입니다.");
             } else {
@@ -26,7 +26,7 @@ public class Exercise5_6 {
 
     public static int[] solution(AdditionQuestion[] additionQuestion, int[] answer) {
         Scanner scanner = new Scanner(System.in);
-        for (int i = 0; i < questionCount; i++) {
+        for (int i = 0; i < QUSETION_COUNT; i++) {
             additionQuestion[i] = new AdditionQuestion();
             System.out.println(additionQuestion[i].getQuestion());
             answer[i] = scanner.nextInt();
