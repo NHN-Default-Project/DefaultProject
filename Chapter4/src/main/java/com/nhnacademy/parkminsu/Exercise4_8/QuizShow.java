@@ -1,5 +1,6 @@
 package com.nhnacademy.parkminsu.Exercise4_8;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class QuizShow {
@@ -20,13 +21,16 @@ public class QuizShow {
     }
 
     public void write() {
-        Scanner scanner = new Scanner(System.in);
+        try (Scanner scanner = new Scanner(System.in);) {
 
-        for (int i = 1; i <= quiz.getQuestionNum(); i++) {
-            System.out.printf("%d + %d= ", quiz.getProblemList().get(i).get(0).getFirstNum(), quiz.getProblemList().get(i).get(0).getSecondNum());
-            user.writeAnswer(i, scanner.nextInt());
+            for (int i = 1; i <= quiz.getQuestionNum(); i++) {
+                System.out.printf("%d + %d= ", quiz.getProblemList().get(i).get(0).getFirstNum(), quiz.getProblemList().get(i).get(0).getSecondNum());
+                user.writeAnswer(i, scanner.nextInt());
+            }
+        } catch (InputMismatchException e) {
+            throw new InputMismatchException("입력을 잘못했습니다");
         }
-        scanner.close();
+
     }
 
     public int questionMark() {
