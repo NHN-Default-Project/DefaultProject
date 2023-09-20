@@ -1,46 +1,38 @@
 package com.nhnacademy.gaeun.exercise07;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
-    private static final int QUIZ_NUM = 12;
+    private static final int ADD_QUIZ_NUM = 5;
+    private static final int MINUS_QUIZ_NUM = 5;
+    private static final int MULTIPLY_QUIZ_NUM = 5;
+    private  static final double SCORE_UNIT = 100 / (ADD_QUIZ_NUM + MINUS_QUIZ_NUM + MULTIPLY_QUIZ_NUM);
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        IntQuestion[] intQuestions = new IntQuestion[QUIZ_NUM];
-        int score = 0;
+        IntQuestion[] intQuestions = new IntQuestion[ADD_QUIZ_NUM + MINUS_QUIZ_NUM + MULTIPLY_QUIZ_NUM];
+        double score = 0;
 
-        for (int i = 0; i < QUIZ_NUM - 2; i++) {
-            intQuestions[i] = new AdditionQuestion();
+        for (int i = 0; i < ADD_QUIZ_NUM; i++) {
+            intQuestions[i] = new AddQuestion();
         }
-        intQuestions[QUIZ_NUM - 2] = new IntQuestion() {
-            @Override
-            public String getQuestion() {
-                return "What is " + 5 + " - " + 3 + " ?";
-            }
-
-            @Override
-            public int getCorrectAnswer() {
-                return 2;
-            }
-        };
-        intQuestions[QUIZ_NUM - 1] = new IntQuestion() {
-            @Override
-            public String getQuestion() {
-                return "What is " + 5 + " * " + 3 + " ?";
-            }
-
-            @Override
-            public int getCorrectAnswer() {
-                return 15;
-            }
-        };
+        for (int i = ADD_QUIZ_NUM; i < ADD_QUIZ_NUM + MINUS_QUIZ_NUM; i++) {
+            intQuestions[i] = new MinusQuestion();
+        }
+        for (int i = ADD_QUIZ_NUM + MINUS_QUIZ_NUM; i < ADD_QUIZ_NUM + MINUS_QUIZ_NUM + MULTIPLY_QUIZ_NUM; i++) {
+            intQuestions[i] = new MultiplyQuestion();
+        }
         //문제 풀이 및 확인
-        for (IntQuestion intQ : intQuestions) {
-            System.out.println(intQ.getQuestion());
-            if (scanner.nextInt() == intQ.getCorrectAnswer()) score += 10;
+        try {
+            for (IntQuestion intQ : intQuestions) {
+                System.out.println(intQ.getQuestion());
+                if (scanner.nextInt() == intQ.getCorrectAnswer()) score += SCORE_UNIT;
+            }
+            System.out.println("Your score : " + score);
+        } catch (InputMismatchException ime) {
+            System.out.println(ime.getMessage());
         }
-        System.out.println("Your score : " + score);
-        scanner.close();
+
     }
 }
