@@ -15,20 +15,17 @@ public class Game {
     private final int cardEndRange = 6;
     private String callSign;
 
-    public Game(int cardNum) {
-        if (cardNum < this.cardFirstRange && cardNum > this.cardEndRange) {
-            throw new IllegalArgumentException("나눠주는 카드의 장 수 범위가 잘못 입력됐습니다.");
-        }
+    public Game() {
         this.dealer = new BlackjackHand();
         this.user = new BlackjackHand();
         this.deck = new Deck(false);
-        this.cardNum = cardNum;
+        this.cardNum = 2;
         this.callSign = "";
     }
 
     public void start(String str) {
         this.deck.shuffle();
-        String answer = "YES";
+        String answer = "";
         Scanner scanner = new Scanner(System.in);
         do {
 
@@ -99,7 +96,7 @@ public class Game {
             this.user.addCard(this.deck.dealCard());
             showCard(this.user);
 
-            if (!bustCondtion(this.user)) {
+            if (!notBustCondtion(this.user)) {
                 showCard(this.user);
                 System.out.println(this.user.getBlackjackValue());
                 System.out.println("사용자는 21을 초과했습니다.");

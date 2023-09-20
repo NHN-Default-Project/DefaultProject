@@ -11,8 +11,7 @@ public class Exercise5_5 {
             if (!start.equals("YES")) {
                 throw new IllegalArgumentException("잘못 입력하셨습니다");
             }
-            System.out.print("카드 장 수를 고르세요");
-            Game game = new Game(scanner.nextInt());
+            Game game = new Game();
             game.start(start);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());

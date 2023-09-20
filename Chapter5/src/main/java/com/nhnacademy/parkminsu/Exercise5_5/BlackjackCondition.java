@@ -6,7 +6,7 @@ public class BlackjackCondition {
         return userOrDealer.getBlackjackValue() == 21;
     }
 
-    public static boolean bustCondtion(BlackjackHand userOrDealer) {
+    public static boolean notBustCondtion(BlackjackHand userOrDealer) {
         return userOrDealer.getBlackjackValue() <= 21;
     }
 
@@ -20,15 +20,14 @@ public class BlackjackCondition {
     }
 
     public static boolean victoryCondition(BlackjackHand user, BlackjackHand dealer) {
-        if (bustCondtion(user) && bustCondtion(dealer)) {
+        if (notBustCondtion(user) && notBustCondtion(dealer)) {
             return user.getBlackjackValue() > dealer.getBlackjackValue();
-        } else if (bustCondtion(user) && !bustCondtion(dealer)) { // dealer bust
+        } else if (notBustCondtion(user) && !notBustCondtion(dealer)) { // dealer bust
             return true;
-        } else if (!bustCondtion(user) && bustCondtion(dealer)) { // user bust
+        } else if (!notBustCondtion(user) && notBustCondtion(dealer)) { // user bust
             return false;
-        } else { // 둘다 bust
-            return user.getBlackjackValue() < dealer.getBlackjackValue();
         }
+        return false;
     }
 
 
