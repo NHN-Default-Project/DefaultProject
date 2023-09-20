@@ -14,7 +14,9 @@ public class BlackjackTest {
         for (int i = 0; i < cardAmount; i++) {
             blackjackHand.addCard(deck.dealCard());
         }
+        blackjackHand.openCard();
         System.out.println(blackjackHand.getBlackjackValue());
         scanner.close();
     }
+
 }

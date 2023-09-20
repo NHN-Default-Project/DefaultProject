@@ -44,4 +44,10 @@ public class BlackjackHand extends Hand {
 
     }  // end getBlackjackValue()
 
+    public void openCard() {
+        for (int i = 0; i < getCardCount(); i++) {
+            System.out.printf("%s, %s\n", getCard(i).getSuitAsString(), getCard(i).getValueAsString());
+        }
+    }
+
 } // end class BlackjackHand

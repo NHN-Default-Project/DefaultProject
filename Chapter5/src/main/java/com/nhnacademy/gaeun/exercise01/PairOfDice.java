@@ -21,7 +21,6 @@ public class PairOfDice {
     public PairOfDice() {
         // Constructor.  Rolls the dice, so that they initially
         // show some random values.
-        roll();  // Call the roll() method to roll the dice.
     }
 
     public void roll() {
