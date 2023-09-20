@@ -1015,7 +1015,7 @@ public class TextIO {
     private static Matcher floatMatcher; // Used for reading floating point numbers; created from the floatRegex
     // Pattern.
     private static final Pattern integerRegex = Pattern.compile("(\\+|-)?[0-9]+");
-    private static ßfinal Pattern floatRegex = Pattern
+    private static final Pattern floatRegex = Pattern
             .compile("(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?");
 
     private static String buffer = null; // One line read from input.
