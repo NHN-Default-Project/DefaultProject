@@ -1,5 +1,6 @@
 package com.nhnacademy.gaeun.exercise05;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BlackjackTest {
@@ -27,22 +28,33 @@ public class BlackjackTest {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("======================================================");
-        System.out.println("                      GAME START                      ");
+        System.out.println("\t\t\t\t\t  GAME START  \t\t\t\t\t");
         System.out.println("======================================================");
 
-        user.addCard(deck.dealCard());
-        user.addCard(deck.dealCard());
-        dealer.addCard(deck.dealCard());
-        dealer.addCard(deck.dealCard());
-        user.openCard(dealer);
-        if (user.whoIsWin() >= 0) return user.whoIsWin() == 0 ? true : false;
+        for (int i = 0; i < 2; i++) {
+            user.addCard(deck.dealCard());
+        }
+        for (int i = 0; i < 2; i++) {
+            dealer.addCard(deck.dealCard());
+        }
+        user.openCard();
+        System.out.printf("%s, %s\n",
+                dealer.getCard(0).getSuitAsString(), dealer.getCard(0).getValueAsString());
         if (dealer.whoIsWin() >= 0) return dealer.whoIsWin() == 0 ? false : true;
+        if (user.whoIsWin() >= 0) return user.whoIsWin() == 0 ? true : false;
 
         while (true) {
-            System.out.println("[ Hit or Stand 여부를 결정해주세요. (1: Hit / 2: Stand) ]");
-            int userInput = scanner.nextInt();
-            if (userInput < 1 || userInput > 2) {
-                System.out.println(("[ (1: Hit / 2: Stand) 올바른 숫자를 입력하세요. ]"));
+            int userInput;
+            try {
+                System.out.println("[ Hit or Stand 여부를 결정해주세요. (1: Hit / 2: Stand) ]");
+                userInput = scanner.nextInt();
+                if (userInput != 1 && userInput != 2) {
+                    System.out.println("[ (1: Hit / 2: Stand) 올바른 숫자를 입력하세요. ]");
+                    continue;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("[ (1: Hit / 2: Stand) 올바른 숫자를 입력하세요. ]");
+                scanner.nextLine();
                 continue;
             }
             if (userInput == 1) { //Hit
@@ -50,11 +62,13 @@ public class BlackjackTest {
 
                 user.addCard(deck.dealCard());
                 if (user.whoIsWin() >= 0) return user.whoIsWin() == 0 ? true : false;
-                user.openCard(dealer);
+                user.openCard();
+                dealer.openCard();
 
                 if (isAddDealer(dealer.getBlackjackValue())) {
                     dealer.addCard(deck.dealCard());
-                    user.openCard(dealer);
+                    user.openCard();
+                    dealer.openCard();
                     if (dealer.whoIsWin() >= 0) return dealer.whoIsWin() == 0 ? false : true;
                 }
                 continue;
@@ -63,12 +77,12 @@ public class BlackjackTest {
                 System.out.println("[ Stand!! 딜러의 카드를 확인합니다.]");
                 if (isAddDealer(dealer.getBlackjackValue())) {
                     dealer.addCard(deck.dealCard());
-                    user.openCard(dealer);
+                    user.openCard();
+                    dealer.openCard();
                     if (dealer.whoIsWin() >= 0) return dealer.whoIsWin() == 0 ? false : true;
                 }
                 return (dealer.getBlackjackValue() >= user.getBlackjackValue()) ? false : true;
             }
-            scanner.close();
         }
 
 
