@@ -5,13 +5,12 @@ import java.util.Scanner;
 public class Exercise4_1 {
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
-            Exercise4_1 main = new Exercise4_1();
-            System.out.println(main.printCapialized(scanner.nextLine()));
+            System.out.println(printCapialized(scanner.nextLine()));
         }
 
     }
 
-    public StringBuilder printCapialized(String str) {
+    public static StringBuilder printCapialized(String str) {
         StringBuilder resultString = new StringBuilder();
         boolean upperCheck = false;
         for (int idx = 0; idx < str.length(); idx++) {
