@@ -7,10 +7,10 @@ public class PairOfDice {
     private int die2;   // Number showing on the second die.
     private int rollDiceCount;
 
-    private final int snakeSum;
+    private final int diceSum;
 
-    public PairOfDice(int snakeSum) {
-        this.snakeSum = snakeSum;
+    public PairOfDice(int diceSum) {
+        this.diceSum = diceSum;
     }
 
     public void roll() {
@@ -40,7 +40,7 @@ public class PairOfDice {
         while (true) {
             roll();
             this.rollDiceCount++;
-            if (sumDice() == this.snakeSum) {
+            if (sumDice() == this.diceSum) {
                 break;
             }
         }
