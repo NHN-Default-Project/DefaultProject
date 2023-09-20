@@ -18,6 +18,8 @@ public class PairOfDice {
         // a random number between 1 and 6.
         this.die1 = (int) (Math.random() * 6) + 1;
         this.die2 = (int) (Math.random() * 6) + 1;
+        this.rollDiceCount++;
+
     }
 
     public int sumDice() {
@@ -36,15 +38,17 @@ public class PairOfDice {
         return rollDiceCount;
     }
 
-    public void start() {
+    public void start(int num) {
         while (true) {
             roll();
-            this.rollDiceCount++;
             if (sumDice() == this.diceSum) {
                 break;
             }
         }
     }
 
+    public void initRollDiceCount() {
+        this.rollDiceCount = 0;
+    }
 
 } // end class PairOfDice
