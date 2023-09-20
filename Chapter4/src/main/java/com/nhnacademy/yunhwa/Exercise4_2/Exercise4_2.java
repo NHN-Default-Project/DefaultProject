@@ -21,7 +21,7 @@ public class Exercise4_2 {
         try (Scanner sc = new Scanner(System.in);) {
             System.out.print("16진수 값을 입력해주세요 : ");
 
-            String str = sc.nextLine();
+            String str = sc.nextLine().trim();
 
             System.out.println("16진수 -> 10진수 변환 결과 : " + hexdecimalToDecimal(str));
 
