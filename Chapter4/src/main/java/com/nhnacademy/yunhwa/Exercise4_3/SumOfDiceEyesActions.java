@@ -43,7 +43,7 @@ public class SumOfDiceEyesActions {
         int sumEyes = 0; // 주사위 눈들의 합
 
         while (sumEyes != targetSum) { // 타겟 합과 같아질 때까지
-            RollDices rollDices = new RollDices(dicesCount);
+            RollDices rollDices = new RollDices(dicesCount, totalEyesNum);
             sumEyes = 0; // 다시 초기화
 
             rollDices.rollManyDice(dicesCount, totalEyesNum); // 주사위를 다 돌리고
