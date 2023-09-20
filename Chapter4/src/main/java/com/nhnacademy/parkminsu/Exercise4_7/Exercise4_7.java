@@ -24,8 +24,8 @@ public class Exercise4_7 {
         Mosaic.open(ROWS, COLUMNS, SQUARE_SIZE, SQUARE_SIZE);
         Mosaic.setUse3DEffect(false);
         fillWithRandomColors();
-        currentRow = ROWS / 2;   // start at center of window
-        currentColumn = COLUMNS / 2;
+        currentRow = (int) (Math.random() * ROWS);   // start at center of window
+        currentColumn = (int) (Math.random() * COLUMNS);
         while (true) {
             changeToNearbyColor(currentRow, currentColumn);
             randomMove();
