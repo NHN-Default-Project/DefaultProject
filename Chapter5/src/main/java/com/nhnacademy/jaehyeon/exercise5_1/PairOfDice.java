@@ -14,7 +14,7 @@ public class PairOfDice {
     }
 
     public PairOfDice() {
-        roll();
+
     }
 
     public void roll() {
