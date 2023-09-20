@@ -5,13 +5,21 @@ import java.util.List;
 
 public class RollDices { // 주사위를 돌리자
     private List<Dice> dices; // 돌릴 주사위들이 필요해
+    private int dicesCount;
+    private int totalEyesNum;
 
     public RollDices(int dicesCount, int totalEyesNum) { // 주사위 개수만큼 돌릴래
+        this.dicesCount = dicesCount;
+        this.totalEyesNum = totalEyesNum;
         dices = new ArrayList<Dice>(dicesCount);
 
         for (int i = 0; i < dicesCount; i++) {
             dices.add(new Dice(totalEyesNum));
         }
+    }
+
+    public int getDicesCount() {
+        return this.dicesCount;
     }
 
     public List<Dice> getDices() { // 주사위들의 정보를 얻어오자
