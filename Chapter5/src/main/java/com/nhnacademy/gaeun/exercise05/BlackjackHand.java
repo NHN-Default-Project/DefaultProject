@@ -2,8 +2,6 @@ package com.nhnacademy.gaeun.exercise05;
 
 public class BlackjackHand extends Hand {
     private String name;
-    private int sumBlackjackValues;
-    int openCardNum = 0;
 
     @SuppressWarnings("checkstyle:EmptyLineSeparator")
     BlackjackHand(String name) {
@@ -39,17 +37,12 @@ public class BlackjackHand extends Hand {
         return val;
     }  // end getBlackjackValue()
 
-    public void openCard(BlackjackHand blackjackHand) {
-        System.out.println("===== " + getName() + " =====");
+    public void openCard() {
+        System.out.println("===== " + this.getName() + " =====");
         for (int i = 0; i < getCardCount(); i++) {
             System.out.printf("%s, %s\n", getCard(i).getSuitAsString(), getCard(i).getValueAsString());
         }
         System.out.println();
-        System.out.println("===== " + blackjackHand.getName() + " =====");
-        for (int i = 1; i < blackjackHand.getCardCount(); i++) {
-            System.out.printf("%s, %s\n",
-                    blackjackHand.getCard(i).getSuitAsString(), blackjackHand.getCard(i).getValueAsString());
-        }
     }
 
     public int whoIsWin() {

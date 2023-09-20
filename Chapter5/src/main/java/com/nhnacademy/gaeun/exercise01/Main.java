@@ -7,11 +7,9 @@ public class Main {
 
     public static int diceToSum(int sumValue) {
         PairOfDice pairOfDice = new PairOfDice();
-        int tmpSum = 0;
         int countToSum = 0;
-        while (tmpSum != sumValue) {
+        while (pairOfDice.getSumValue() != sumValue) {
             pairOfDice.roll();
-            tmpSum = pairOfDice.getSumValue();
             countToSum++;
         }
         System.out.println(pairOfDice);
