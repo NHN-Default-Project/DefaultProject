@@ -1,5 +1,6 @@
 package com.nhnacademy.jminsoo.excercise1;
 
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 //각 문자열의 첫 글자를 대문자로 변경하는 것을 의미한다.
@@ -7,12 +8,17 @@ import java.util.Scanner;
 //사용자로부터 입력을 받는다. 
 public class Excercise4_1 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        
-        String str = scanner.nextLine();
-        printCapitalized(str);
 
-        scanner.close();
+
+        try (Scanner scanner = new Scanner(System.in)) {
+            String str = scanner.nextLine();
+            printCapitalized(str);
+        } catch (NoSuchElementException | IllegalStateException e) {
+            System.out.println("잘못된 값이 입력되었습니다.");
+            throw new RuntimeException(e);
+        }
+
+
     }
 
     private static void printCapitalized(String str) {

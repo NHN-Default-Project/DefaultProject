@@ -7,9 +7,9 @@ package com.nhnacademy.jminsoo.excercise6;
  */
 public class RandomMosaicWalk2 {
 
-    final static int ROWS = 20;        // Number of rows in mosaic.
-    final static int COLUMNS = 20;     // Number of columns in mosaic.
-    final static int SQUARE_SIZE = 20; // Size of each square in mosaic.
+    static final int ROWS = 40;        // Number of rows in mosaic.
+    static final int COLUMNS = 40;     // Number of columns in mosaic.
+    static final int SQUARE_SIZE = 20; // Size of each square in mosaic.
 
     static int currentRow;    // Row currently containing the disturbance.
     static int currentColumn; // Column currently containing disturbance.
@@ -21,7 +21,7 @@ public class RandomMosaicWalk2 {
      */
     public static void main(String[] args) {
         Mosaic.open(ROWS, COLUMNS, SQUARE_SIZE, SQUARE_SIZE);
-        fillWithRandomColors();
+        fillWithBlackColors();
 
         currentRow = ROWS / 2;   // start at center of window
         currentColumn = COLUMNS / 2;
@@ -36,7 +36,9 @@ public class RandomMosaicWalk2 {
      * 추가한 메서드
      */
     static void fillGreenColors(int rowNum, int colNum) {
-        Mosaic.setColor(rowNum, colNum, Mosaic.getRed(rowNum, colNum), Mosaic.getGreen(rowNum, colNum) + 25, Mosaic.getBlue(rowNum, colNum));
+        if (Mosaic.getGreen(rowNum, colNum) < 255) {
+            Mosaic.setColor(rowNum, colNum, Mosaic.getRed(rowNum, colNum), Mosaic.getGreen(rowNum, colNum) + 25, Mosaic.getBlue(rowNum, colNum));
+        }
     }
 
     static void fillWithBlackColors() {

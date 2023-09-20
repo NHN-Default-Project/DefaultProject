@@ -25,29 +25,14 @@ public class RandomMosaicWalk2 {
         Mosaic.open(ROWS, COLUMNS, SQUARE_SIZE, SQUARE_SIZE);
         fillWithRandomColors();
 
-        currentRow = ROWS / 2;   // start at center of window
-        currentColumn = COLUMNS / 2;
+        currentRow = (int) (Math.random() * ROWS);
+        currentColumn = (int) (Math.random() * COLUMNS);
         while (true) {
             changeToCurrentColor(currentRow, currentColumn);
             randomMove();
-            Mosaic.delay(5);
+            Mosaic.delay(2);
         }
     }  // end main
-
-    /**
-     * 추가한 메서드
-     */
-    static void fillGreenColors(int rowNum, int colNum) {
-        Mosaic.setColor(rowNum, colNum, 0, Mosaic.getGreen(rowNum, colNum) + 25, 0);
-    }
-
-    static void fillWithBlackColors() {
-        for (int row = 0; row < ROWS; row++) {
-            for (int column = 0; column < COLUMNS; column++) {
-                Mosaic.setColor(row, column, 0, 0, 0);
-            }
-        }
-    }  // end
 
     static void changeToCurrentColor(int rowNum, int colNum) {
 
@@ -60,21 +45,25 @@ public class RandomMosaicWalk2 {
                 tempRow--;
                 if (tempRow < 0)
                     tempRow = 0;
+                break;
             }
             case 1: {  // move right
                 tempCol++;
                 if (tempCol >= COLUMNS)
                     tempCol = COLUMNS - 1;
+                break;
             }
             case 2: {  // move down
                 tempRow++;
                 if (tempRow >= ROWS)
                     tempRow = ROWS - 1;
+                break;
             }
             case 3: {  // move left
                 tempCol--;
                 if (tempCol < 0)
                     tempCol = 0;
+                break;
             }
         }
 
@@ -132,21 +121,25 @@ public class RandomMosaicWalk2 {
                 currentRow--;
                 if (currentRow < 0)
                     currentRow = ROWS - 1;
+                break;
             }
             case 1: {  // move right
                 currentColumn++;
                 if (currentColumn >= COLUMNS)
                     currentColumn = 0;
+                break;
             }
             case 2: {  // move down
                 currentRow++;
                 if (currentRow >= ROWS)
                     currentRow = 0;
+                break;
             }
             case 3: {  // move left
                 currentColumn--;
                 if (currentColumn < 0)
                     currentColumn = COLUMNS - 1;
+                break;
             }
         }
     }  // end randomMove

@@ -5,29 +5,24 @@ import java.util.Scanner;
 
 public class Main {
 
-    public final static int DICE_COUNT = 2;
-    public final static int EYES = 6;
+    public static final int DICE_COUNT = 2;
+    public static final int EYES = 6;
+
     public static void main(String[] args) {
         Dice[] dice = new Dice[DICE_COUNT];
-        Scanner scanner = new Scanner(System.in);
 
         for (int i = 0; i < DICE_COUNT; i++) {
             dice[i] = new Dice(EYES);
         }
 
-        try {
+        try (Scanner scanner = new Scanner(System.in)) {
             System.out.print("주사위의 합계를 입력해주세요 : ");
-
             int number = scanner.nextInt();
-            System.out.printf("모두 %d 이(가) 나올 때까지 주사위를 굴린 횟수 : %d\n", number,  correctCount(number, dice) );
-        }catch (InputMismatchException e) {
+            System.out.printf("모두 %d 이(가) 나올 때까지 주사위를 굴린 횟수 : %d\n", number, correctCount(number, dice));
+        } catch (InputMismatchException e) {
             System.out.println("숫자 입력값이 아닙니다.");
-        }
-        catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-        }
-        finally {
-            scanner.close();
         }
     }
 
@@ -40,15 +35,15 @@ public class Main {
         int count = 0;
         boolean isCorrect = false;
 
-        while(!isCorrect) {
+        while (!isCorrect) {
             eyesSum = 0;
             count++;
             System.out.println("현재 카운트 수 : " + count);
 
             for (int i = 0; i < dice.length; i++) {
 
-                dice[i].diceRoll();
-                System.out.printf("%d 번째 주사위 넘버 : %d\n", i+1, dice[i].getDiceNum());
+                dice[i].rollDice();
+                System.out.printf("%d 번째 주사위 넘버 : %d\n", i + 1, dice[i].getDiceNum());
 
                 eyesSum += dice[i].getDiceNum();
             }
@@ -58,7 +53,7 @@ public class Main {
         }
 
         return count;
-        
+
     }
 }
 

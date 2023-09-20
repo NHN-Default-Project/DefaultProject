@@ -6,10 +6,10 @@ class Dice {
 
     public Dice(int eyes) {
         this.eyes = eyes;
-        this.diceRoll();
+        this.rollDice();
     }
 
-    public void diceRoll() {
+    public void rollDice() {
         this.diceNum = (int) (Math.random() * eyes) + 1;
     }
 

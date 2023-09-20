@@ -6,13 +6,16 @@ public class DiceApp {
 
     private final Dice[] dice;
 
-    public DiceApp(int diceCount, int eyes, Dice[] dice) {
+    public DiceApp(int diceCount, int eyes) {
         this.diceCount = diceCount;
         this.eyes = eyes;
-        this.dice = dice;
+        this.dice = new Dice[this.diceCount];
+        for (int i = 0; i < this.diceCount; i++) {
+            this.dice[i] = new Dice(this.eyes);
+        }
     }
 
-    public int correctCount(int number) {
+    public int countCorrect(int number) {
 
         if (!(number >= this.diceCount && number <= this.diceCount * this.eyes)) {
             throw new IllegalArgumentException("입력 값이 잘못되었습니다.");
@@ -22,7 +25,7 @@ public class DiceApp {
         int count = 0;
         boolean isCorrect = false;
 
-        while(!isCorrect) {
+        while (!isCorrect) {
             eyesSum = 0;
             count++;
             for (Dice die : dice) {
@@ -30,18 +33,18 @@ public class DiceApp {
                 eyesSum += die.getDiceNum();
             }
 
-            if (eyesSum == number){
+            if (eyesSum == number) {
                 isCorrect = true;
             }
         }
         return count;
     }
 
-    public double getDiceAverage(int times, int number) {
-        int countSum = 0;
+    public double calculateDiceAverage(int times, int number) {
+        int sumCount = 0;
         for (int i = 0; i < times; i++) {
-            countSum += correctCount(number);
+            sumCount += countCorrect(number);
         }
-        return ((double)countSum) / times;
+        return ((double) sumCount) / times;
     }
 }
