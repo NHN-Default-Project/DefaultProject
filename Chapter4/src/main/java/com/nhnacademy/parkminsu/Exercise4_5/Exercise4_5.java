@@ -3,10 +3,11 @@ package com.nhnacademy.parkminsu.Exercise4_5;
 import java.util.stream.DoubleStream;
 
 public class Exercise4_5 {
-    public static final ArrayProcessor ARRAYMIN = array -> DoubleStream.of(array).min().getAsDouble();
-    public static final ArrayProcessor ARRAYMAX = array -> DoubleStream.of(array).max().getAsDouble();
+    public static final ArrayProcessor ARRAYMIN = array -> DoubleStream.of(array).min().orElseThrow();
+    public static final ArrayProcessor ARRAYMAX = array -> DoubleStream.of(array).max().orElseThrow();
     public static final ArrayProcessor ARRAYSUM = array -> DoubleStream.of(array).sum();
-    public static final ArrayProcessor ARRAYAVERAGE = array -> DoubleStream.of(array).average().getAsDouble();
+    public static final ArrayProcessor ARRAYAVERAGE = array -> DoubleStream.of(array).average().orElseThrow();
+
 
     //    public static final ArrayProcessor ARRAYMIN = new ArrayMin();
 //    public static  final ArrayProcessor ARRAYMAX = new ArrayMax();

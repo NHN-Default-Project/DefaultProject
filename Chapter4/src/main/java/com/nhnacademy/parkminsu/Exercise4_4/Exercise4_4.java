@@ -1,20 +1,20 @@
 package com.nhnacademy.parkminsu.Exercise4_4;
 
-import com.nhnacademy.parkminsu.Exercise4_3.DiceCollection;
+import com.nhnacademy.parkminsu.Exercise4_3.DiceController;
+import com.nhnacademy.parkminsu.Exercise4_3.DiceView;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class Exercise4_4 {
     public static void main(String[] args) {
-        DiceCollection diceCollection = new DiceCollection();
-        simulation(diceCollection);
-    }
-
-    public static void simulation(DiceCollection diceCollection) {
-        diceCollection.totalNumofDice();
-        diceCollection.findAverageTotalDice();
-        System.out.println("주사위 총합 \t평균 굴림 횟수");
-        System.out.println("---------\t------------");
-        for (int i : diceCollection.getAverageNumOfRoll().keySet()) {
-            System.out.printf("\t%d\t\t%f\t\n", i, diceCollection.getAverageNumOfRoll().get(i));
+        try (Scanner scanner = new Scanner(System.in);) {
+            DiceView diceView = new DiceView();
+            System.out.println("반복할 횟수를 입력하세요");
+            diceView.simulationAverage(new DiceController(), scanner.nextInt());
+        } catch (InputMismatchException e) {
+            throw new InputMismatchException("잘못된 데이터 값을 넣었습니다");
         }
     }
+
 }
