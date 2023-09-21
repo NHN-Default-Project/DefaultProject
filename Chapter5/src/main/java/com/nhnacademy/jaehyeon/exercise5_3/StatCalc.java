@@ -7,12 +7,14 @@ public class StatCalc {
 
     private double max;
     private double min;
+    private int betweenCount = 0;
 
 
     public void enter(double num) {
         count++;
         sum += num;
         squareSum += num * num;
+
         if (this.max < num) {
             this.max = num;
         }
@@ -20,6 +22,8 @@ public class StatCalc {
         if (this.min > num) {
             this.min = num;
         }
+
+
     }
 
 

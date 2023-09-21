@@ -17,9 +17,20 @@ public class PairOfDice {
         roll();
     }
 
+
     public void roll() {
         this.die1 = (int) (Math.random() * 6) + 1;
         this.die2 = (int) (Math.random() * 6) + 1;
+    }
+
+    public int rollDice(int answerNumber) {
+        int rollingCount = 0;
+        while (this.die1 + this.die2 != answerNumber) {
+            rollingCount++;
+            roll();
+
+        }
+        return rollingCount;
     }
 
     @Override

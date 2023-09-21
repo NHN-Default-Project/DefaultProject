@@ -7,10 +7,9 @@ public class Exercise5_3 {
     public static void main(String[] args) {
 
 
-        System.out.println("주사위의 총합        평균 굴림 횟수     표준편차");
-        System.out.println("----------        -----------    -------");
+        System.out.println("주사위의 총합\t\t\t평균 굴림 횟수\t\t표준편차\t\t\t\t\t\t\tMax");
+        System.out.println("----------\t\t\t-----------\t\t-----\t\t\t\t\t\t\t-----");
 
-        int maxCount = 0;
 
         for (int i = 2; i <= 12; i++) {
             PairOfDice dices = new PairOfDice();
@@ -18,21 +17,17 @@ public class Exercise5_3 {
 
             int count = 0;
             while (count != ROLL_COUNT) {
+                count++;
                 dices.roll();
-                statCalc.enter(dices.getDie1());
-                statCalc.enter(dices.getDie2());
-                if (dices.getDie1() + dices.getDie2() == i) {
-                    count++;
-                }
+                statCalc.enter(dices.rollDice(i));
+
             }
 
-            if (maxCount < statCalc.getCount()) {
-                maxCount = statCalc.getCount();
-            }
             System.out.println(
-                    i + "\t\t\t\t\t" + (statCalc.getCount() / ROLL_COUNT) + "\t\t\t" + statCalc.getStandardDeviation());
+                    i + "\t\t\t\t\t" + (statCalc.getMean()) + "\t\t\t" + statCalc.getStandardDeviation()
+                            + "\t\t\t\t" + statCalc.getMax());
         }
-        System.out.printf("최대 롤수는 %d 입니다", maxCount);
+
     }
 
 
