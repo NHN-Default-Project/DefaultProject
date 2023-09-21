@@ -11,10 +11,10 @@ public class Main {
 
     public static void calcApp(StatCalc calc) {
         try (Scanner scanner = new Scanner(System.in)) {
-            int inputNum = 0;
+            double inputNum = 0;
             while (true) {
                 System.out.print("값을 입력해주세요 ! (0을 넣으면 종료됩니다.): ");
-                inputNum = scanner.nextInt();
+                inputNum = scanner.nextDouble();
                 if (inputNum == 0) {
                     break;
                 }
