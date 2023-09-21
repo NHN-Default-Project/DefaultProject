@@ -17,7 +17,7 @@ public class Exercise5_6 {
             AdditionQuestion additionQuestion = new AdditionQuestion();
 
             System.out.println(additionQuestion.getQuestion());
-            int userAnswer = scanner.nextInt();
+            int userAnswer = inputNumber();
             if (verifyAnswer(userAnswer, additionQuestion.getCorrectAnswer())) {
                 count++;
             }
@@ -29,7 +29,33 @@ public class Exercise5_6 {
 
     }
 
-    public static boolean verifyAnswer(int userAnswer, int correctAnswer) {
+    private static int inputNumber() {
+        Scanner scanner = new Scanner(System.in);
+        String getNumber;
+        while (true) {
+            getNumber = scanner.nextLine();
+            if (!isNumber(getNumber)) {
+                System.out.println("정수만 입력 바랍니다.");
+
+            } else {
+                break;
+            }
+        }
+
+        return Integer.parseInt(getNumber);
+    }
+
+    private static boolean isNumber(String number) {
+        try {
+            Integer.parseInt(number);
+            return true;
+        } catch (NumberFormatException num) {
+            return false;
+        }
+    }
+
+
+    private static boolean verifyAnswer(int userAnswer, int correctAnswer) {
         if (userAnswer == correctAnswer) {
             System.out.println("정답입니다");
             return true;
