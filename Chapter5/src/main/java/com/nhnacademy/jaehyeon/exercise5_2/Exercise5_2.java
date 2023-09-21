@@ -15,7 +15,7 @@ public class Exercise5_2 {
 
     public static void inputNumber(StatCalc statCalc) {
         Scanner scanner = new Scanner(System.in);
-
+//todo  try-catch 릴리즈
         System.out.println("숫자를 입력하세요");
         System.out.println("0을 입력하면 입력을 멈춘다는것 입니다.");
         String num = scanner.nextLine();
