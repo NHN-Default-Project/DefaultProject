@@ -1,12 +1,19 @@
 package com.nhnacademy.gaeun.exercise03;
 
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println(diceRoll(scanner.nextInt()));
+        try {
+            System.out.println(diceRoll(scanner.nextInt()));
+        } catch (IllegalArgumentException e) {
+            System.out.println("양의 정수를 입력해주세요!");
+        } catch (InputMismatchException ime) {
+            System.out.println("정수값을 입력해주세요!");
+        }
         scanner.close();
     }
 
