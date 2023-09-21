@@ -8,6 +8,7 @@ public class Dice {
 
     // 생성자 : 몇 면체인지 파라미터로 들어오면, 필드에 대입해주고, 주사위의 모든 눈들도 세팅해주기
     public Dice(int totalEyesNum) {
+
         this.totalEyesNum = totalEyesNum;
 
 //        diceNums = new int[totalEyesNum];
