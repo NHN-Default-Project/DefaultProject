@@ -30,8 +30,8 @@ public class RandomMosaicWalk {
         Mosaic.setUse3DEffect(false);
         Mosaic.open(ROWS, COLUMNS, SQUARE_SIZE, SQUARE_SIZE);
         fillWithRandomColors();
-        setCurrentRowAndColRandom();
         while (true) {
+            setCurrentRowAndColRandom();
             beforehandMoveAndFillSameColorOnIt();
             // Mosaic.delay(10); // Remove this line to speed things up!
         }
@@ -116,7 +116,6 @@ public class RandomMosaicWalk {
                 if (besideRow < 0) // besideRow is outside the mosaic;
                     besideRow = ROWS - 1; // move it to the opposite edge.
                 Mosaic.setColor(besideRow, currentColumn, myColor);
-                currentRow = besideRow;
                 break;
             }
             case 1: { // move right
@@ -124,7 +123,6 @@ public class RandomMosaicWalk {
                 if (besideColumn >= COLUMNS)
                     besideColumn = 0;
                 Mosaic.setColor(currentRow, besideColumn, myColor);
-                currentColumn = besideColumn;
                 break;
             }
             case 2: { // move down
@@ -132,7 +130,6 @@ public class RandomMosaicWalk {
                 if (besideRow >= ROWS)
                     besideRow = 0;
                 Mosaic.setColor(besideRow, currentColumn, myColor);
-                currentRow = besideRow;
                 break;
             }
             case 3: { // move left
@@ -140,7 +137,6 @@ public class RandomMosaicWalk {
                 if (besideColumn < 0)
                     besideColumn = COLUMNS - 1;
                 Mosaic.setColor(currentRow, besideColumn, myColor);
-                currentColumn = besideColumn;
                 break;
             }
         }

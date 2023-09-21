@@ -49,13 +49,14 @@ public class BasicAdditionQuiz {
     }
 
     // 질문에 다 답변하는 메서드
-    public void answerAllQuestions(Scanner scanner) {
+    public void answerAllQuestions() {
+        Scanner scanner = new Scanner(System.in);
 
         try (scanner) {
             System.out.println("------------답변을 시작합니다------------\n");
             for (int i = 0; i < userAnswers.length; i++) {
                 
-                System.out.print("질문 " + (i+1) + " : " + firstNums[i] + " + " + secondNums[i] + " = ");
+                System.out.print("질문 " + (i + 1) + " : " + firstNums[i] + " + " + secondNums[i] + " = ");
                 userAnswers[i] = scanner.nextInt();
 
                 // 사용자의 답이 정답인지 아닌지 판별

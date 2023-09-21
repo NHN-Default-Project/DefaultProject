@@ -7,27 +7,24 @@ public class IntQuizGame {
     IntQuestion[] intQuestions;
     int[] userAnswers;
     int questionsCount;
-    int addQuestionCount;
-    int subtractQuestionCount;
-    int otherQuestionCount;
 
     public IntQuizGame(int questionsCount) {
         this.questionsCount = questionsCount;
         this.intQuestions = new IntQuestion[questionsCount];
         this.userAnswers = new int[questionsCount];
-        this.otherQuestionCount = 1;
-        this.addQuestionCount = (questionsCount - otherQuestionCount) / 2;
-        this.subtractQuestionCount = questionsCount - addQuestionCount - otherQuestionCount;
+        int otherQuestionCount = 1;
+        int addQuestionCount = (questionsCount - otherQuestionCount) / 2;
+        int subtractQuestionCount = questionsCount - addQuestionCount - otherQuestionCount;
 
         for (int i = 0; i < addQuestionCount; i++) {
             intQuestions[i] = new AdditionQuestion();
         }
 
-        for (int i = addQuestionCount; i < questionsCount - otherQuestionCount; i++) {
+        for (int i = 0; i < subtractQuestionCount; i++) {
             intQuestions[i] = new SubtractionQuestion();
         }
 
-        intQuestions[questionsCount - 1] = new IntQuestion() {
+        intQuestions[questionsCount - otherQuestionCount] = new IntQuestion() {
             @Override
             public String getQuestion() {
                 return "What is the answer to the ultimate question " +
@@ -55,9 +52,8 @@ public class IntQuizGame {
     }
 
     // 질문에 다 답변하는 메서드
-    public void answerAllQuestions(Scanner scanner) {
-
-        try (scanner) {
+    public void answerAllQuestions() {
+        try (Scanner scanner = new Scanner(System.in);) {
             System.out.println("------------답변을 시작합니다------------\n");
             for (int i = 0; i < getQuestionsCount(); i++) {
                 

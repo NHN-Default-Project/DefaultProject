@@ -76,4 +76,21 @@ public class StatCalc {
         return Math.sqrt( squareSum / count - mean * mean );
     }
 
+    @Override
+    public String toString() {
+
+        return "데이터 세트 항목수  : "
+                + this.getCount() + "\n"
+                + "데이터 세트 총 합계 : "
+                + String.format("%.2f", this.getSum())  + "\n"
+                + "데이터 세트 최댓값  : "
+                + String.format("%.2f", this.getMax())  + "\n"
+                + "데이터 세트 최솟값  : "
+                + String.format("%.2f", this.getMin())  + "\n"
+                + "데이터 세트 평균값  : "
+                + String.format("%.2f", this.getMean())  + "\n"
+                + "데이터 세트 표준편차: "
+                + String.format("%.2f", this.getStandardDeviation()) + "\n";
+    }
+
 }  // end class StatCalc

@@ -1,9 +1,8 @@
 package com.nhnacademy.yunhwa.Exercise5_4;
 
-import java.util.Scanner;
 
-//import Chapter4.src.main.java.com.nhnacademy.yunhwa.Exercise4_3.Range;
 import com.nhnacademy.yunhwa.Exercise5_3.Range;
+import java.util.Scanner;
 
 public class Exercise5_4 {
     // BlackjackHand : Hand 클래스를 extends 한 것 -> getBlackjackValue() 메서드 추가됨
@@ -37,16 +36,17 @@ public class Exercise5_4 {
                 int cardCount = getRandomNum(range);
                 System.out.println("이번에 내가 가질 카드의 개수 : " + cardCount + " 개!\n");
 
+                // 처음 카드 주기 전에 한 번 카드 섞기
+                deck.shuffle();
+
                 // 카드 개수만큼 덱에서 카드를 가져와 손에 추가하기
                 for (int i = 0; i < cardCount; i++) {
-                    Card newCard = deck.dealCard();
-                    blackjackHand.addCard(newCard);
+                    blackjackHand.addCard(deck.dealCard());
                 }
 
                 // 손에 있는 모든 카드들 인쇄하기
                 for (int i = 0; i < blackjackHand.getCardCount(); i++) {
-                    Card blackjackCard = blackjackHand.getCard(i);
-                    System.out.println("손에 있는 " + (i+1) + " 번째 카드 : " + blackjackCard);
+                    System.out.println("손에 있는 " + (i + 1) + " 번째 카드 : " + blackjackHand.getCard(i));
                 }
 
                 // 블랙잭 패 값 계산한 값 받아서 출력하기
@@ -64,7 +64,7 @@ public class Exercise5_4 {
                     String tmpIsContinued = sc.nextLine();
                     tmpIsContinued = tmpIsContinued.trim().toUpperCase();
 
-                    if(tmpIsContinued.equals("YES")) {
+                    if (tmpIsContinued.equals("YES")) {
                         isContinued = true;
                         notyetEnterValidInput = false;
                     } else if (tmpIsContinued.equals("NO")) {
@@ -75,12 +75,14 @@ public class Exercise5_4 {
                     }
                 }
             }
+
+            System.out.println("------- 게임 완전히 끝!!! ------- ");
         }
     }
 
     public static int getRandomNum(Range range) {
-        int randomNum = (int) (Math.random() * range.getMaxValue() + 1 - range.getMinValue())+ range.getMinValue();
+        int randomNum = (int) (Math.random() * range.getMaxValue() + 1 - range.getMinValue()) + range.getMinValue();
         return randomNum;
     }
-    
+
 }

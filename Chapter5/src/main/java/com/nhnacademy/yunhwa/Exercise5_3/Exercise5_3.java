@@ -15,14 +15,6 @@ public class Exercise5_3 {
     
 
     public static void main(String[] args) {
-    
-        // Scanner sc = new Scanner(System.in);
-        // System.out.print("\n두 개의 주사위의 눈의 합으로 만들고 싶은 숫자를 입력해주세요 : ");
-        // int targetNum = sc.nextInt();
-        // if (targetNum < 2 || targetNum > 12) {
-        //     throw new IllegalArgumentException("두 개의 주사위의 합으로 만들 수 없는 값 " + targetNum + " 이 들어왔습니다. 2 ~ 12 까지의 숫자로 다시 입력해주세요.");
-        // }
-        
         List<StatCalc> rollCountsList = new ArrayList<>();
 
         doExperimentAboutAllValidNum(rollCountsList);
@@ -33,7 +25,7 @@ public class Exercise5_3 {
         PairOfDice pairOfDice = new PairOfDice();
         int rollCount = 1;
 
-        while(! (pairOfDice.sumEyes() == targetNum)) {
+        while (! (pairOfDice.sumEyes() == targetNum)) {
             pairOfDice.roll();
             rollCount++;
         }
@@ -46,18 +38,6 @@ public class Exercise5_3 {
         for (int i = 0; i < doCount; i++) {
             rollCounts.enter(rollCountToGetTargetNum(targetNum));
         }
-
-        // double mean = rollCounts.getMean();
-        // double standardDeviation = rollCounts.getStandardDeviation();
-        // double max = rollCounts.getMax();
-
-        // System.out.println("--------------------------------------");
-        // System.out.println("\n주어진 총합" + targetNum  + "이 나올 때까지 한 쌍의 주사위를 몇 번 굴렸는지 " + doCount + "번 수행해본 결과\n");
-        // System.out.println("--------------------------------------");
-        // System.out.format("돌린 평균 횟수는 %.2f 이고, \n", mean);
-        // System.out.format("돌린 횟수들의 표준 편차는 %.3f 이며, \n",standardDeviation);
-        // System.out.format("돌린 최대 횟수는 %.2f 입니다.\n\n", max);
-        // System.out.println("--------------------------------------");
 
         return rollCounts;
     }

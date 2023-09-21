@@ -1,7 +1,7 @@
 package com.nhnacademy.yunhwa.Exercise5_1;
 
 public class MakeSnakeEye {
-    private final static int snakeEyeNum = 2;
+    private static final int SNAKE_EYE_NUM = 2;
 
     private PairOfDice pairOfDice;
     private int rollCount;
@@ -12,11 +12,11 @@ public class MakeSnakeEye {
     }
 
     public boolean isSnakeEye() {
-        return pairOfDice.sumEyes() == snakeEyeNum;
+        return pairOfDice.sumEyes() == SNAKE_EYE_NUM;
     }
 
     public void action() {
-        while(! isSnakeEye()) {
+        while (! isSnakeEye()) {
             pairOfDice.roll();
             rollCount++;
         }

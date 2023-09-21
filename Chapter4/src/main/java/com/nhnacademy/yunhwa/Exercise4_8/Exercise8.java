@@ -3,15 +3,17 @@ package com.nhnacademy.yunhwa.Exercise4_8;
 import java.util.Scanner;
 
 public class Exercise8 {
+    public static final int QUESTIONS_COUNT = 10;
+    public static final int MAX_VALID_NUM = 100;
+
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        
+
         // create quiz
-        BasicAdditionQuiz basicAdditionQuiz = new BasicAdditionQuiz(10, 100);
+        BasicAdditionQuiz basicAdditionQuiz = new BasicAdditionQuiz(QUESTIONS_COUNT, MAX_VALID_NUM);
 
         // administer quiz
         basicAdditionQuiz.askAllQuestions();
-        basicAdditionQuiz.answerAllQuestions(sc);
+        basicAdditionQuiz.answerAllQuestions();
     
         // grade the quiz
         basicAdditionQuiz.printScore(basicAdditionQuiz.gradeQuiz());

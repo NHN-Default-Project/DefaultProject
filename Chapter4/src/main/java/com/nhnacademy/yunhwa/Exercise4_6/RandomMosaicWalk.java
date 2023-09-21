@@ -94,9 +94,11 @@ public class RandomMosaicWalk {
         int green = Mosaic.getGreen(rowNum, colNum) + 25;
         int blue = Mosaic.getBlue(rowNum, colNum);
 
-        if (green <= 255) {
-            Mosaic.setColor(rowNum, colNum, red, green, blue);
+        if (green > 255) {
+            green = 255;
         }
+        Mosaic.setColor(rowNum, colNum, red, green, blue);
+        
         
     }
     /**

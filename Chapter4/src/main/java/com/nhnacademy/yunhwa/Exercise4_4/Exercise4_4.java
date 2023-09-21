@@ -1,6 +1,7 @@
 package com.nhnacademy.yunhwa.Exercise4_4;
 
 import com.nhnacademy.yunhwa.Exercise4_3.Range;
+import com.nhnacademy.yunhwa.Exercise4_3.RollDices;
 import com.nhnacademy.yunhwa.Exercise4_3.SumOfDiceEyesActions;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,29 +30,30 @@ public class Exercise4_4 {
 
             List<Integer> targetSums = new ArrayList<>(targetSumsSize);
             List<Double> averageRollCounts = new ArrayList<>(targetSumsSize);
-            
+            RollDices rollDices = new RollDices(dicesCount, totalEyesNum);
+
             for (int targetSum = minValue; targetSum <= maxValue; targetSum++) {
                 targetSums.add(targetSum);
 
-                double averageRollCount = SumOfDiceEyesActions.averageRollCountToGetTargetSum(doTimes, targetSum, dicesCount, totalEyesNum);
+                double averageRollCount = SumOfDiceEyesActions.averageRollCountToGetTargetSum(doTimes, targetSum, rollDices);
                 averageRollCounts.add(averageRollCount);
             }
 
-            System.out.println("   Total On Dice     Average Number of Rolls  ");
-            System.out.println("   -------------     -----------------------  ");
+            System.out.println("\t\tTotal On Dice\t\t Average Number of Rolls");
+            System.out.println("\t\t-------------\t\t -----------------------");
             for (int i = 0; i < targetSumsSize; i++) {
                 int targetSum = targetSums.get(i);
 
-                StringBuilder middleSpace = new StringBuilder("               ");
+                StringBuilder middleSpace = new StringBuilder("\t\t");
 
                 while (targetSum / 10 != 0) {
                     targetSum /= 10;
                     middleSpace.deleteCharAt(middleSpace.length() - 1);
                 }
 
-                System.out.print("        " + targetSums.get(i));
+                System.out.print("\t\t" + targetSums.get(i));
                 System.out.print(middleSpace);
-                System.out.println("        " + averageRollCounts.get(i));
+                System.out.println("\t\t" + averageRollCounts.get(i));
             }
 
             System.out.println("---------------------------------------------");

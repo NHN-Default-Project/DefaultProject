@@ -11,10 +11,10 @@ public class Exercise5_2 {
             System.out.println();
 
             while (true) {
-                System.out.print("데이터 세트에 double 값을 추가해주세요 : ");
+                System.out.print("데이터 세트에 double 값을 추가해주세요 (그만 넣고 싶으면 0 을 입력해주세요) : ");
                 double inputNum = sc.nextDouble();
 
-                if(inputNum == 0) {
+                if (inputNum == 0) {
                     System.out.println("\n-- 여기까지 추가하여 데이터 세트를 완성하였습니다! --\n");
                     break;
                 }
@@ -22,19 +22,7 @@ public class Exercise5_2 {
                 statCalc.enter(inputNum);
             }
 
-            int count = statCalc.getCount();
-            double sum = statCalc.getSum();
-            double max = statCalc.getMax();
-            double min = statCalc.getMin();
-            double mean = statCalc.getMean();
-            double standardDeviation = statCalc.getStandardDeviation();
-
-            System.out.println("데이터 세트 항목수  : " + count);
-            System.out.println("데이터 세트 총 합계 : " + sum);
-            System.out.println("데이터 세트 최댓값  : " + max);
-            System.out.println("데이터 세트 최솟값  : " + min);
-            System.out.format("데이터 세트 평균값  : %.2f\n", mean);
-            System.out.format("데이터 세트 표준편차: %.5f\n\n", standardDeviation);
+            System.out.println(statCalc.toString());
 
 
         } catch (IllegalArgumentException | InputMismatchException e) {
