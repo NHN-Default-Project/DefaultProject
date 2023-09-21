@@ -1,6 +1,6 @@
 package com.nhnacademy.Jminsoo.excercise6;
 
-public class Main {
+public class Excercise5_6 {
     public static void main(String[] args) {
         Quiz quiz = new Quiz(10);
 

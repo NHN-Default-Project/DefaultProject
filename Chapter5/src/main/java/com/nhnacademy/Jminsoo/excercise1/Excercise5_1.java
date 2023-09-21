@@ -1,6 +1,6 @@
 package com.nhnacademy.Jminsoo.excercise1;
 
-public class Main {
+public class Excercise5_1 {
 
     public static final int DICE_COUNT = 2;
     public static final int EYES = 6;

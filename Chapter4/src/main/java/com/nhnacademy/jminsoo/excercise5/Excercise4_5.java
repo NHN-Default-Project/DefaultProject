@@ -2,7 +2,7 @@ package com.nhnacademy.jminsoo.excercise5;
 
 import java.util.Arrays;
 
-public class Main {
+public class Excercise4_5 {
     public static void main(String[] args) {
         double[] arr = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0};
         System.out.println("sum : " + sum.apply(arr));

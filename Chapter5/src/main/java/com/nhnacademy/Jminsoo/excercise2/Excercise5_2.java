@@ -3,7 +3,7 @@ package com.nhnacademy.Jminsoo.excercise2;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class Main {
+public class Excercise5_2 {
     public static void main(String[] args) {
         StatCalc calc = new StatCalc();
         calcApp(calc);

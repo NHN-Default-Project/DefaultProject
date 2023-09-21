@@ -3,7 +3,7 @@ package com.nhnacademy.Jminsoo.excercise3;
 
 import com.nhnacademy.Jminsoo.excercise2.StatCalc;
 
-public class Main {
+public class Excercise5_3 {
     /**
      * PairOfDice는 기능과 역할은 DiceApp에 통합시켰습니다.
      */

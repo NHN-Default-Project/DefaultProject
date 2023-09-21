@@ -2,7 +2,7 @@ package com.nhnacademy.Jminsoo.excercise4;
 
 import com.nhnacademy.Jminsoo.textio.TextIO;
 
-public class Main {
+public class Excercise5_4 {
     public static void main(String[] args) {
 
         int gamesPlayed = 0;

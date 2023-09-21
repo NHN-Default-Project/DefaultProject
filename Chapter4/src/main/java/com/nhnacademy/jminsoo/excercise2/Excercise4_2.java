@@ -2,7 +2,7 @@ package com.nhnacademy.jminsoo.excercise2;
 
 import java.util.Scanner;
 
-public class Main {
+public class Excercise4_2 {
     private static final int HEX = 16;
 
     public static void main(String[] args) {

@@ -3,7 +3,7 @@ package com.nhnacademy.jminsoo.excercise3;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Main {
+public class Excercise4_3 {
 
     public static final int DICE_COUNT = 2;
     public static final int EYES = 6;

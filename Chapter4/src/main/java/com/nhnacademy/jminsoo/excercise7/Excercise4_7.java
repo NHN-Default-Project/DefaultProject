@@ -1,11 +1,13 @@
-package com.nhnacademy.jminsoo.excercise6;
+package com.nhnacademy.jminsoo.excercise7;
+
+import com.nhnacademy.jminsoo.excercise6.Mosaic;
 
 /**
  * This program opens a window full of randomly colored squares.  A "disturbance"
  * moves randomly around in the window, randomly changing the color of each
  * square that it visits.  The program runs until the user closes the window.
  */
-public class RandomMosaicWalk2 {
+public class Excercise4_7 {
 
     static final int ROWS = 40;        // Number of rows in mosaic.
     static final int COLUMNS = 40;     // Number of columns in mosaic.
@@ -21,33 +23,53 @@ public class RandomMosaicWalk2 {
      */
     public static void main(String[] args) {
         Mosaic.open(ROWS, COLUMNS, SQUARE_SIZE, SQUARE_SIZE);
-        fillWithBlackColors();
+        fillWithRandomColors();
 
-        currentRow = ROWS / 2;   // start at center of window
-        currentColumn = COLUMNS / 2;
+        currentRow = (int) (Math.random() * ROWS);
+        currentColumn = (int) (Math.random() * COLUMNS);
         while (true) {
-            fillGreenColors(currentRow, currentColumn);
+            changeToCurrentColor(currentRow, currentColumn);
             randomMove();
-            Mosaic.delay(5);
+            Mosaic.delay(1);
         }
     }  // end main
 
-    /**
-     * 추가한 메서드
-     */
-    static void fillGreenColors(int rowNum, int colNum) {
-        if (Mosaic.getGreen(rowNum, colNum) < 255) {
-            Mosaic.setColor(rowNum, colNum, Mosaic.getRed(rowNum, colNum), Mosaic.getGreen(rowNum, colNum) + 25, Mosaic.getBlue(rowNum, colNum));
-        }
-    }
+    static void changeToCurrentColor(int rowNum, int colNum) {
 
-    static void fillWithBlackColors() {
-        for (int row = 0; row < ROWS; row++) {
-            for (int column = 0; column < COLUMNS; column++) {
-                Mosaic.setColor(row, column, 0, 0, 0);
+        int adjacentNum = (int) (4 * Math.random());
+        int tempRow = rowNum;
+        int tempCol = colNum;
+
+        switch (adjacentNum) {
+            case 0: {  // move up
+                tempRow--;
+                if (tempRow < 0)
+                    tempRow = 0;
+                break;
+            }
+            case 1: {  // move right
+                tempCol++;
+                if (tempCol >= COLUMNS)
+                    tempCol = COLUMNS - 1;
+                break;
+            }
+            case 2: {  // move down
+                tempRow++;
+                if (tempRow >= ROWS)
+                    tempRow = ROWS - 1;
+                break;
+            }
+            case 3: {  // move left
+                tempCol--;
+                if (tempCol < 0)
+                    tempCol = 0;
+                break;
             }
         }
-    }  // end fillWithRandomColors
+
+
+        Mosaic.setColor(rowNum, colNum, Mosaic.getRed(tempRow, tempCol), Mosaic.getGreen(tempRow, tempCol), Mosaic.getBlue(tempRow, tempCol));
+    }  // end changeToRandomColor
 
     /**
      * Fills the window with randomly colored squares.
@@ -81,7 +103,6 @@ public class RandomMosaicWalk2 {
         Mosaic.setColor(rowNum, colNum, red, green, blue);
     }  // end changeToRandomColor
 
-
     /**
      * Move the disturbance.
      * Precondition:   The global variables currentRow and currentColumn
@@ -100,22 +121,27 @@ public class RandomMosaicWalk2 {
                 currentRow--;
                 if (currentRow < 0)
                     currentRow = ROWS - 1;
+                break;
             }
             case 1: {  // move right
                 currentColumn++;
                 if (currentColumn >= COLUMNS)
                     currentColumn = 0;
+                break;
             }
             case 2: {  // move down
                 currentRow++;
                 if (currentRow >= ROWS)
                     currentRow = 0;
+                break;
             }
             case 3: {  // move left
                 currentColumn--;
                 if (currentColumn < 0)
                     currentColumn = COLUMNS - 1;
+                break;
             }
         }
     }  // end randomMove
+
 } // end class RandomMosaicWalk2

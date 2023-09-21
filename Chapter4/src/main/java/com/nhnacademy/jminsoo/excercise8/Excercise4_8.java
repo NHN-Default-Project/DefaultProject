@@ -1,8 +1,8 @@
-package com.nhnacademy.Jminsoo.excercise7;
+package com.nhnacademy.jminsoo.excercise8;
 
-public class Main {
+public class Excercise4_8 {
     public static void main(String[] args) {
-        Quiz addtionQuiz = new Quiz(10);
+        AddtionQuiz addtionQuiz = new AddtionQuiz(10);
 
         addtionQuiz.quizGenerate();
         addtionQuiz.quizControl();
