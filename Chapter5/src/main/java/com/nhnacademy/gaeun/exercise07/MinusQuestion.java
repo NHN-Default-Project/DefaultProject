@@ -7,6 +7,11 @@ public class MinusQuestion implements IntQuestion {
     public MinusQuestion() { // constructor
         a = (int) (Math.random() * 50 + 1);
         b = (int) (Math.random() * 50);
+        if (a < b) {
+            int tmp = a;
+            a = b;
+            b = tmp;
+        }
     }
 
     public String getQuestion() {

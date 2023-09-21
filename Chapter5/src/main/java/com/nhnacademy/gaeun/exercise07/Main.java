@@ -7,11 +7,11 @@ public class Main {
     private static final int ADD_QUIZ_NUM = 5;
     private static final int MINUS_QUIZ_NUM = 5;
     private static final int MULTIPLY_QUIZ_NUM = 5;
-    private  static final double SCORE_UNIT = 100 / (ADD_QUIZ_NUM + MINUS_QUIZ_NUM + MULTIPLY_QUIZ_NUM);
+    private static final double SCORE_UNIT = 100 / (ADD_QUIZ_NUM + MINUS_QUIZ_NUM + MULTIPLY_QUIZ_NUM + 1);
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        IntQuestion[] intQuestions = new IntQuestion[ADD_QUIZ_NUM + MINUS_QUIZ_NUM + MULTIPLY_QUIZ_NUM];
+        IntQuestion[] intQuestions = new IntQuestion[ADD_QUIZ_NUM + MINUS_QUIZ_NUM + MULTIPLY_QUIZ_NUM + 1];
         double score = 0;
 
         for (int i = 0; i < ADD_QUIZ_NUM; i++) {
@@ -23,16 +23,35 @@ public class Main {
         for (int i = ADD_QUIZ_NUM + MINUS_QUIZ_NUM; i < ADD_QUIZ_NUM + MINUS_QUIZ_NUM + MULTIPLY_QUIZ_NUM; i++) {
             intQuestions[i] = new MultiplyQuestion();
         }
-        //문제 풀이 및 확인
-        try {
-            for (IntQuestion intQ : intQuestions) {
-                System.out.println(intQ.getQuestion());
-                if (scanner.nextInt() == intQ.getCorrectAnswer()) score += SCORE_UNIT;
+        intQuestions[ADD_QUIZ_NUM + MINUS_QUIZ_NUM + MULTIPLY_QUIZ_NUM] = new IntQuestion() {
+            @Override
+            public String getQuestion() {
+                return "60 / 3";
             }
-            System.out.println("Your score : " + score);
-        } catch (InputMismatchException ime) {
-            System.out.println(ime.getMessage());
+
+            @Override
+            public int getCorrectAnswer() {
+                return 20;
+            }
+        };
+
+
+        //문제 풀이 및 확인
+        for (int i = 0; i < intQuestions.length; i++) {
+            while (true) {
+                try {
+                    System.out.println(intQuestions[i].getQuestion());
+                    if (scanner.nextInt() == intQuestions[i].getCorrectAnswer()) {
+                        score += SCORE_UNIT;
+                        break;
+                    } else break;
+                } catch (InputMismatchException ime) {
+                    System.out.println("정수값을 입력해주세요!");
+                    scanner.nextLine();
+                }
+            }
         }
+        System.out.println("Your score : " + score);
 
     }
 }
