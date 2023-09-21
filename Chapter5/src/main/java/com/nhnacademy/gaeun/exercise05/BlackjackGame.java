@@ -62,11 +62,6 @@ public class BlackjackGame {
 
         user.addCard(deck.dealCard());
         openDealerOneCard();
-
-        if (isAddDealer(dealer.getBlackjackValue())) {
-            dealer.addCard(deck.dealCard());
-            openDealerOneCard();
-        }
     }
 
     public static void printGameResult(String name) {
