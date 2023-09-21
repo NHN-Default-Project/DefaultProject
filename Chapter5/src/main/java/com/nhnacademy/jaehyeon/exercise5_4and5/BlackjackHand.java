@@ -1,7 +1,15 @@
 package com.nhnacademy.jaehyeon.exercise5_4and5;
 
 public class BlackjackHand extends Hand {
+    private String name;
 
+    public BlackjackHand(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     public int getBlackjackValue() {
 
@@ -13,7 +21,7 @@ public class BlackjackHand extends Hand {
         ace = false;
         cards = getCardCount();
 
-        for ( int i = 0;  i < cards;  i++ ) {
+        for (int i = 0; i < cards; i++) {
 
             Card card;
             int cardVal;
@@ -29,7 +37,7 @@ public class BlackjackHand extends Hand {
         }
 
 
-        if ( ace == true  &&  val + 10 <= 21 )
+        if (ace == true && val + 10 <= 21)
             val = val + 10;
 
         return val;
