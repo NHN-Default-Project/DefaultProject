@@ -52,13 +52,13 @@ public class StatCalc {
 
     @Override
     public String toString() {
-        return "StatCalc{" +
-                "count=" + count +
-                ", sum=" + sum +
-                ", squareSum=" + squareSum +
-                ", max=" + max +
-                ", min=" + min +
-                ", standardDeviation=" + getStandardDeviation() + "}";
+        return "StatCalc{"
+                + "count=" + count
+                + ", sum=" + sum
+                + ", squareSum=" + squareSum
+                + ", max=" + max
+                + ", min=" + min
+                + ", standardDeviation=" + getStandardDeviation() + "}";
     }
 }
 
