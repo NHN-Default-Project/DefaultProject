@@ -23,7 +23,7 @@ public class Exercise4_2 {
         }
         if (cnt == str.length()) {
             return true;
-        } else if (cnt < 3) {
+        } else if (cnt < str.length() - 1) {
             throw new IllegalArgumentException("데이터를 잘못 입력하셨습니다");
         } else {
             return false;
