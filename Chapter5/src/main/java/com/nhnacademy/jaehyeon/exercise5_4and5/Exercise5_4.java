@@ -8,7 +8,7 @@ public class Exercise5_4 {
 
         int cardNumber = selectCardNumber();
         Deck deck = new Deck();
-        BlackjackHand blackjackHand = new BlackjackHand();
+        BlackjackHand blackjackHand = new BlackjackHand("User");
         deck.shuffle();
 
         for (int i = 0; i < cardNumber; i++) {
