@@ -1,6 +1,6 @@
 package com.nhnacademy.Jminsoo.excercise5;
 
-public class Player {
+public class Player implements BlackjackPlayer {
     private String name;
     private BlackjackHand hand;
 

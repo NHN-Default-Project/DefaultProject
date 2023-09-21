@@ -8,6 +8,10 @@ public class Excercise4_4 {
     public static void main(String[] args) {
         DiceApp diceApp = new DiceApp(DICE_COUNT, EYES);
 
+        diceView(diceApp);
+    }
+
+    public static void diceView(DiceApp diceApp) {
         System.out.println("주사위의 총합 \t 평균 굴림 횟수");
         System.out.println("----------\t----------");
 

@@ -11,7 +11,7 @@ public class Excercise4_7 {
 
     static final int ROWS = 40;        // Number of rows in mosaic.
     static final int COLUMNS = 40;     // Number of columns in mosaic.
-    static final int SQUARE_SIZE = 20; // Size of each square in mosaic.
+    static final int SQUARE_SIZE = 10; // Size of each square in mosaic.
 
     static int currentRow;    // Row currently containing the disturbance.
     static int currentColumn; // Column currently containing disturbance.
@@ -30,9 +30,16 @@ public class Excercise4_7 {
         while (true) {
             changeToCurrentColor(currentRow, currentColumn);
             randomMove();
-            Mosaic.delay(1);
+//            Mosaic.delay(0);
         }
     }  // end main
+
+
+    static void fillGreenColors(int rowNum, int colNum) {
+        if (Mosaic.getGreen(rowNum, colNum) < 255) {
+            Mosaic.setColor(rowNum, colNum, Mosaic.getRed(rowNum, colNum), Mosaic.getGreen(rowNum, colNum) + 25, Mosaic.getBlue(rowNum, colNum));
+        }
+    }
 
     static void changeToCurrentColor(int rowNum, int colNum) {
 
