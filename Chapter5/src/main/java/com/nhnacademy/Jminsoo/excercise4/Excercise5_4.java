@@ -5,7 +5,7 @@ import com.nhnacademy.Jminsoo.textio.TextIO;
 public class Excercise5_4 {
     public static void main(String[] args) {
 
-        int gamesPlayed = 0;
+        int countGamePlayed = 0;
         int sumOfScores = 0;
 
         double averageScore;
@@ -17,15 +17,15 @@ public class Excercise5_4 {
             if (isVictory) {
                 sumOfScores++;
             }
-            gamesPlayed++;
+            countGamePlayed++;
             System.out.print("다시 플레이하겠습니까?(다시하기 : true, 그만두기 : false) : ");
             playAgain = TextIO.getlnBoolean();
         } while (playAgain);
 
-        averageScore = ((double) sumOfScores) / gamesPlayed;
+        averageScore = ((double) sumOfScores) / countGamePlayed;
 
         System.out.println();
-        System.out.println("게임 횟수 :  " + gamesPlayed + " games.");
+        System.out.println("게임 횟수 :  " + countGamePlayed + " games.");
         System.out.printf("평균 승다 : %1.3f.\n", averageScore);
     }
 
