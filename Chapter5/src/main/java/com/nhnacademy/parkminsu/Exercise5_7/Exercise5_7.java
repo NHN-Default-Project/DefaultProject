@@ -8,27 +8,38 @@ public class Exercise5_7 {
     private static final int RANGE = 10;
 
     public static void main(String[] args) {
-        IntQuestion[] substract = new IntQuestion[RANGE];
-        int[] answer = new int[RANGE];
-        substract = createArrayIntQuestion(substract);
-        answer = writeAnswer(substract, answer);
-        checkAnswerList(substract, answer);
+        IntQuestion[] substractOrAdditonQuestion = createArrayIntQuestion();
+        int[] answer = writeAnswer(substractOrAdditonQuestion);
+        checkAnswerList(substractOrAdditonQuestion, answer);
 
     }
 
 
-    public static IntQuestion[] createArrayIntQuestion(IntQuestion[] intQuestions) {
-        for (int i = 0; i < RANGE; i++) {
+    public static IntQuestion[] createArrayIntQuestion() {
+        IntQuestion[] intQuestions = new IntQuestion[RANGE];
+        for (int i = 0; i < RANGE - 1; i++) {
             if (i % 2 == 0) {
                 intQuestions[i] = new SubstractQuestion();
             } else {
                 intQuestions[i] = new AdditionQuestion();
             }
         }
+        intQuestions[RANGE - 1] = new IntQuestion() {
+            @Override
+            public String getQuestion() {
+                return "One은 한국어로? ";
+            }
+
+            @Override
+            public int getCorrectAnswer() {
+                return 11;
+            }
+        };
         return intQuestions;
     }
 
-    public static int[] writeAnswer(IntQuestion[] intQuestions, int[] answer) {
+    public static int[] writeAnswer(IntQuestion[] intQuestions) {
+        int[] answer = new int[RANGE];
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < RANGE; i++) {
             if (i % 2 == 0) {

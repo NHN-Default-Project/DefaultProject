@@ -3,108 +3,104 @@ package com.nhnacademy.parkminsu.Exercise5_5;
 
 import java.util.Scanner;
 
-import static com.nhnacademy.parkminsu.Exercise5_5.BlackjackCondition.*;
-import static com.nhnacademy.parkminsu.Exercise5_5.CardAction.*;
-
 public class Game {
-    private BlackjackHand user;
-    private BlackjackHand dealer;
-    private Deck deck;
     private final int cardNum;
     private final int cardFirstRange = 2;
     private final int cardEndRange = 6;
-    private String callSign;
+    private final BlackjackCondition blackjackCondition = new BlackjackCondition();
+    private final CardAction cardAction = new CardAction();
 
     public Game() {
-        this.dealer = new BlackjackHand();
-        this.user = new BlackjackHand();
-        this.deck = new Deck(false);
         this.cardNum = 2;
-        this.callSign = "";
     }
 
-    public void start(String str) {
-        this.deck.shuffle();
+    public void start(boolean str) {
+        BlackjackHand user = new BlackjackHand();
+        BlackjackHand dealer = new BlackjackHand();
+        Deck deck = new Deck(false);
+        deck.shuffle();
+        String callSign = "";
         String answer = "";
         Scanner scanner = new Scanner(System.in);
         do {
 
             try { //
-                gameFirstStep();
-                if (deckCondition(this.dealer)) { // 블랙잭 승리 조건 1
-                    showWin("딜러", this.dealer);
+                gameFirstStep(user, dealer, deck);
+                if (blackjackCondition.deckCondition(dealer)) { // 블랙잭 승리 조건 1
+                    cardAction.showWin("딜러", dealer);
                     break;
                 }
             } catch (IllegalStateException e) {
-                this.deck = new Deck(false);
-                this.deck.shuffle();
+                deck = new Deck(false);
+                deck.shuffle();
                 System.out.println(e.getMessage());
                 System.out.println("card shuffle"); // 카드가 없을 때
             }
-            gameSecondStep();
-            if (victoryCondition(this.user, this.dealer)) {
-                showWin("유저", this.user);
+            gameSecondStep(user, dealer, deck);
+            if (blackjackCondition.victoryCondition(user, dealer)) {
+                cardAction.showWin("유저", user);
             } else {
-                showWin("딜러", this.dealer);
+                cardAction.showWin("딜러", dealer);
             }
             System.out.println("끝내겠습니까?");
             answer = scanner.nextLine().toUpperCase();
-            userAndDealerCardRemove(this.user, this.dealer);
+            cardAction.userAndDealerCardRemove(user, dealer);
         } while (answer.equals("NO"));
     }
 
-    public void gameFirstStep() {
+    public void gameFirstStep(BlackjackHand user, BlackjackHand dealer, Deck deck) {
         for (int i = 0; i < this.cardNum; i++) {
-            giveOneCard(this.user, this.deck);
-            giveOneCard(this.dealer, this.deck);
+            cardAction.giveOneCard(user, deck);
+            cardAction.giveOneCard(dealer, deck);
         }
 
-        System.out.printf("딜러의 패: %d \n", dealer.getCard(0).getValue());
-        System.out.print("유저의 패: ");
+        System.out.println(dealer.getCard(0));
+        System.out.print("유저의 패: \n");
         for (int i = 0; i < this.cardNum; i++) {
-            System.out.printf("%d ", this.user.getCard(i).getValue());
+            System.out.println(user.getCard(i));
         }
         System.out.println();
     }
 
 
-    public void inputCallSign() {
+    public String inputCallSign() {
         Scanner scanner = new Scanner(System.in);
+        String callSign;
         while (true) {
-            System.out.printf("Hit or Standard?");
-            this.callSign = scanner.nextLine();
-            if (!checkCallValue(this.callSign)) {
+            System.out.printf("Hit or Stand? ");
+            callSign = scanner.nextLine();
+            if (!blackjackCondition.checkCallValue(callSign)) {
                 System.out.println("잘못 입력하셨습니다");
             } else {
                 break;
             }
         }
+        return callSign;
     }
 
     public boolean userCall() {
-        inputCallSign();
         String call = "HIT";
-        return hitOrStandard(this.callSign.toUpperCase(), call); // user hit
+        return blackjackCondition.hitOrStandard(inputCallSign().toUpperCase(), call); // user hit
     }
 
-    public void gameSecondStep() {
+    public void gameSecondStep(BlackjackHand user, BlackjackHand dealer, Deck deck) {
         while (true) {
-            if (userCall() == false) {
+            if (!userCall()) {
                 break;
 
             }
-            this.user.addCard(this.deck.dealCard());
-            showCard(this.user);
+            user.addCard(deck.dealCard());
+            cardAction.showCard(user);
 
-            if (!notBustCondtion(this.user)) {
-                showCard(this.user);
-                System.out.println(this.user.getBlackjackValue());
+            if (!blackjackCondition.notBustCondtion(user)) {
+                cardAction.showCard(user);
+                System.out.println(user.getBlackjackValue());
                 System.out.println("사용자는 21을 초과했습니다.");
                 return; // 사용자가 21이 넘으면
             }
         } // 유저가 standard 입력시 무한루프 나옴
-        while (dealerkDeckCheck(this.dealer)) {
-            this.dealer.addCard(deck.dealCard());
+        while (blackjackCondition.dealerDeckCheck(dealer)) {
+            dealer.addCard(deck.dealCard());
         }
     }
 

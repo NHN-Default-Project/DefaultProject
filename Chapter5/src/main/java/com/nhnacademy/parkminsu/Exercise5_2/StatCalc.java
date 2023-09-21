@@ -23,7 +23,7 @@ public class StatCalc {
      */
     public void enter(double num) {
         if (num == 0) {
-            throw new IllegalArgumentException("종료하였습니다.");
+            System.exit(0);
         }
         count++;
         sum += num;

@@ -7,25 +7,34 @@ public class DiceCollection {
     private final Dice firstDice;
     private final Dice secondDice;
     private int numOfDiceRolled;
-    private final int endDiceRolled = 10000;
+    private int targetLoop;
     private Map<Integer, Double> averageNumOfRoll;
     private final int totalBeginRange = 2;
     private final int totalEndRange = 12;
 
+    private int targerSumValue;
 
     public DiceCollection() {
         this.firstDice = new Dice();
         this.secondDice = new Dice();
         this.numOfDiceRolled = 0;
         this.averageNumOfRoll = new HashMap<>();
+        this.targerSumValue = targerSumValue;
         averageNumOfRollInit();
     }
 
-    public void rollOfDice() {
-        this.firstDice.setDiceEye((int) (Math.random() * 6) + 1);
-        this.secondDice.setDiceEye((int) (Math.random() * 6) + 1);
-        this.checkTotalRange();
-        this.numOfDiceRolled++;
+    public int getTargerSumValue() { // 목표 반복문
+        return targerSumValue;
+    }
+
+
+
+    public int rollCount(int count){
+        return count++;
+    }
+
+    public void getLoop(int numOfDiceRolled) {
+        this.targetLoop = numOfDiceRolled;
     }
 
     public void averageNumOfRollInit() {
@@ -38,22 +47,29 @@ public class DiceCollection {
         return this.firstDice.getDiceEye() + this.secondDice.getDiceEye() == total;
     }
 
-    public void checkTotalRange() {
-        if (this.getFirstDice().getDiceEye() + this.getSecondDice().getDiceEye() > 12) {
-            throw new IllegalArgumentException("totalNum >12");
+    public void checkTotalRange(int targerSumValue) {
+        if (targerSumValue > totalEndRange || targerSumValue < totalBeginRange) {
+            throw new IllegalArgumentException("targetNum < 2 or target >12 ");
         }
     }
 
-    public void totalNumofDice() {
-        for (int start = 0; start < this.endDiceRolled; start++) {
-            rollOfDice();
-            for (int i = this.totalBeginRange; i <= totalEndRange; i++) {
-                if (checkSumOfTheDice(i)) {
-                    this.averageNumOfRoll.put(i, this.averageNumOfRoll.get(i) + 1.0);
-                }
+    public void rollTargetSum(int num) {
+        int cnt = 0;
+        while (true) {
+            if (cnt == endDiceRolled) {
+                break;
             }
+            rollOfDice();
+            cnt++;
+
+            if (checkSumOfTheDice(num)) {
+                this.averageNumOfRoll.put(num, this.averageNumOfRoll.get(num) + cnt);
+            }
+
         }
     }
+
+    public void
 
     public void findAverageTotalDice() {
         for (int i = this.totalBeginRange; i <= this.totalEndRange; i++) {

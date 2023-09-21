@@ -7,9 +7,8 @@ public class Exercise5_4 {
     private static final int MAX_CARD_COUNT = 6;
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         while (true) {
-            try {
+            try (Scanner scanner = new Scanner(System.in)) {
                 BlackjackHand blackjackHand = new BlackjackHand();
                 Deck deck = new Deck(false);
                 System.out.print("카드 몇장을 받을건가요? ");
@@ -39,6 +38,5 @@ public class Exercise5_4 {
                 System.out.println(e.getMessage());
             }
         }
-        scanner.close();
     }
 }
