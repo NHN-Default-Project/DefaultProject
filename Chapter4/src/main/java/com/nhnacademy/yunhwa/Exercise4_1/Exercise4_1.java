@@ -1,5 +1,6 @@
 package com.nhnacademy.yunhwa.Exercise4_1;
 
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Exercise4_1 {
@@ -19,9 +20,11 @@ public class Exercise4_1 {
             System.out.println("대문자로 표시하고자 하는 문자열을 한 줄 입력해주세요");
             System.out.print(" : ");
 
-            String input = sc.nextLine();
+            String input = sc.nextLine().trim();
 
             printCapitalized(input);
+        } catch ( NoSuchElementException | IllegalStateException e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -30,12 +33,11 @@ public class Exercise4_1 {
         char[] charsOfLine = line.toCharArray();
 
         for (int i = 0; i < charsOfLine.length; i++) {
-            char character = charsOfLine[i];
 
-            if(Character.isLetter(character)) {
+            if(Character.isLetter(charsOfLine[i])) {
                 if (i == 0 || charsOfLine[i-1] == ' ') {
                     // 현재 위치가 대문자로 바꿔야할 위치
-                    sb.replace(i, i+1, String.valueOf(Character.toUpperCase(character)));
+                    sb.replace(i, i+1, String.valueOf(Character.toUpperCase(charsOfLine[i])));
                 }
             }
         }
