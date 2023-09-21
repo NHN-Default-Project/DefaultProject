@@ -32,6 +32,7 @@ public class Exercise4_2 {
 
     public static int hexdecimalToDecimal(String str) {
         int decimal= 0;
+
         for (int i = 0; i < str.length(); i++) {
             int hexValue = hexValue(str.charAt(i));
             if (hexValue == -1) {
