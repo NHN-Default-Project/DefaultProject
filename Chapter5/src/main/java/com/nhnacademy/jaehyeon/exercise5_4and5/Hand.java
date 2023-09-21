@@ -91,13 +91,17 @@ public class Hand {
         hand = newHand;
     }
 
+    public int getDealerHaveCard() {
+        return hand.size();
+    }
+
     public void printCard() {
         for (Card card : hand) {
             System.out.println(card.toString());
         }
     }
 
-    public void printOneCard(){
+    public void printOneCard() {
         System.out.println(hand.get(0).toString());
     }
 }
