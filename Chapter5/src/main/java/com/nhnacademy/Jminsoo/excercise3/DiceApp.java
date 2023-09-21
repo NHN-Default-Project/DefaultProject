@@ -1,7 +1,5 @@
 package com.nhnacademy.Jminsoo.excercise3;
 
-import com.nhnacademy.Jminsoo.excercise2.StatCalc;
-
 public class DiceApp {
     private final int diceCount;
     private final int eyes;

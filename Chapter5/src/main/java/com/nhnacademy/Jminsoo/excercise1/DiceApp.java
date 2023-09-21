@@ -9,10 +9,10 @@ public class DiceApp {
     public DiceApp(int diceCount, int eyes) {
         this.diceCount = diceCount;
         this.eyes = eyes;
-        DiceGenerater(diceCount, eyes);
+        diceGenerater(diceCount, eyes);
     }
 
-    private void DiceGenerater(int diceCount, int eyes) {
+    private void diceGenerater(int diceCount, int eyes) {
         Dice[] dices = new Dice[diceCount];
         for (int i = 0; i < diceCount; i++) {
             dices[i] = new Dice(eyes);
