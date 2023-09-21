@@ -37,12 +37,12 @@ public class StatCalc {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("넣은 개수 : %d\n", this.getCount()));
-        sb.append(String.format("평균 : %.2f\n", this.getMean()));
-        sb.append(String.format("합계 : %.2f\n", this.getSum()));
-        sb.append(String.format("표준편차 : %.2f\n", this.getStandardDeviation()));
-        sb.append(String.format("최대값 : %.2f\n", this.getMax()));
-        sb.append(String.format("최소값 : %.2f\n", this.getMin()));
+        sb.append(String.format("넣은 개수 : %d\n", this.getCount()))
+                .append(String.format("평균 : %.2f\n", this.getMean()))
+                .append(String.format("합계 : %.2f\n", this.getSum()))
+                .append(String.format("표준편차 : %.2f\n", this.getStandardDeviation()))
+                .append(String.format("최대값 : %.2f\n", this.getMax()))
+                .append(String.format("최소값 : %.2f\n", this.getMin()));
 
         return sb.toString();
     }
