@@ -39,10 +39,9 @@ public class BlackjackHand extends Hand {
 
     public void openCard() {
         System.out.println("===== " + this.getName() + " =====");
-        for (int i = 0; i < getCardCount(); i++) {
-            System.out.printf("%s, %s\n", getCard(i).getSuitAsString(), getCard(i).getValueAsString());
+        for (int i = 0; i < this.getCardCount(); i++) {
+            System.out.printf("%s, %s\n", getCard(i).getSuitAsString(), this.getCard(i).getValueAsString());
         }
-        System.out.println();
     }
 
     public int whoIsWin() {
