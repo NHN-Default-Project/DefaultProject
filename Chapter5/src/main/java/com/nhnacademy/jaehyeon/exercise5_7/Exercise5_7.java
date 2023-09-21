@@ -11,12 +11,12 @@ public class Exercise5_7 {
         System.out.println("덧셈 문제 몇 문제를 추가 하겠습니까?");
         int addQuestionNumber = scanner.nextInt();
         verifyQuestionNumber(addQuestionNumber);
-        add(inQuestionList, addQuestionNumber);
+        addAdditionQuiz(inQuestionList, addQuestionNumber);
 
         System.out.println("뺄셈 문제 몇 문제를 추가 하겠습니까?");
         int subQuestionNumber = scanner.nextInt();
         verifyQuestionNumber(subQuestionNumber);
-        add(inQuestionList, subQuestionNumber);
+        addSubQuiz(inQuestionList, subQuestionNumber);
 
         int totalQuestionNumber = addQuestionNumber + subQuestionNumber;
 
@@ -31,9 +31,15 @@ public class Exercise5_7 {
     }
 
 
-    private static void add(InQuestionList inQuestionList, int num) {
+    private static void addAdditionQuiz(InQuestionList inQuestionList, int num) {
         for (int i = 0; i < num; i++) {
             addQuestion(inQuestionList, new AdditionQuestion());
+        }
+    }
+
+    private static void addSubQuiz(InQuestionList inQuestionList, int num) {
+        for (int i = 0; i < num; i++) {
+            addQuestion(inQuestionList, new SubtractionQuestion());
         }
     }
 
@@ -47,7 +53,7 @@ public class Exercise5_7 {
         for (InQuestion inQuestion : inQuestionList.getQuestionList()) {
             System.out.println(inQuestion.getQuestion());
             int userAnswer = scanner.nextInt();
-            if (scoreQuestion(inQuestion, userAnswer)) {
+            if (isCorrectAnswer(inQuestion, userAnswer)) {
                 System.out.println("정답 입니다.");
                 countCorrect++;
             } else {
@@ -58,7 +64,7 @@ public class Exercise5_7 {
         return countCorrect;
     }
 
-    private static boolean scoreQuestion(InQuestion inQuestion, int userAnswer) {
+    private static boolean isCorrectAnswer(InQuestion inQuestion, int userAnswer) {
         return inQuestion.getCorrectAnswer() == userAnswer;
     }
 
