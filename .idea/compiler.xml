@@ -6,6 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+
+
+        <module name="Homework (1) (com.nhnacademy)" />
+        <module name="HomeWork (2) (org.example)" />
+
         <module name="Assignment" />
         <module name="Chapter9" />
         <module name="Chapter6" />
