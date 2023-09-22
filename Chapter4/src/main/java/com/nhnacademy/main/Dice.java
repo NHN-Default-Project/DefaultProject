@@ -1,16 +1,16 @@
 package com.nhnacademy.main;
 
 class Dice {
-    private int diceNum;
-    private final int eyes;
 
-    public Dice(int eyes) {
-        this.eyes = eyes;
-        this.diceRoll();
+    private static final int DICE_EYE = 6;
+    private int diceNum;
+
+    public Dice() {
+        this.rollDice();
     }
 
-    public void diceRoll() {
-        this.diceNum = (int) (Math.random() * eyes) + 1;
+    public void rollDice() {
+        this.diceNum = (int) (Math.random() * DICE_EYE) + 1;
     }
 
     @Override
@@ -21,6 +21,5 @@ class Dice {
     public int getDiceNum() {
         return diceNum;
     }
-
 
 }
