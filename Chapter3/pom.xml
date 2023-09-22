@@ -31,6 +31,14 @@
             <artifactId>javafx-fxml</artifactId>
             <version>${javafx.version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-fxml -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>17.0.6</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -53,4 +61,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

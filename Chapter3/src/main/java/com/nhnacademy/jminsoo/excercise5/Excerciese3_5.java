@@ -1,7 +1,13 @@
 package com.nhnacademy.jminsoo.excercise5;
+
 import com.nhnacademy.jminsoo.textio.TextIO;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> main
 
 public class Excerciese3_5 {
     public static void main(String[] args) {

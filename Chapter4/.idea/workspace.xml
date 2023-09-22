@@ -4,109 +4,49 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8f3bb15-0c10-4f2a-90c4-5a2fa849e7db" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/yunhwa/Exercise4_4/Exercise4_4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/yunhwa/Exercise4_4/Exercise4_4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/yunhwa/Exercise4_5/Exercise4_5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/yunhwa/Exercise4_5/Exercise4_5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/yunhwa/Exercise4_6/RandomMosaicWalk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/yunhwa/Exercise4_6/RandomMosaicWalk.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/yunhwa/Exercise4_7/RandomMosaicWalk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/yunhwa/Exercise4_7/RandomMosaicWalk.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/yunhwa/Exercise4_8/BasicAdditionQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/yunhwa/Exercise4_8/BasicAdditionQuiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/yunhwa/Exercise4_8/Exercise8.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/yunhwa/Exercise4_8/Exercise8.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter5/src/main/java/com/nhnacademy/yunhwa/Exercise5_1/MakeSnakeEye.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter5/src/main/java/com/nhnacademy/yunhwa/Exercise5_1/MakeSnakeEye.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter5/src/main/java/com/nhnacademy/yunhwa/Exercise5_1/PairOfDice.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter5/src/main/java/com/nhnacademy/yunhwa/Exercise5_1/PairOfDice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter5/src/main/java/com/nhnacademy/yunhwa/Exercise5_2/Exercise5_2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter5/src/main/java/com/nhnacademy/yunhwa/Exercise5_2/Exercise5_2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter5/src/main/java/com/nhnacademy/yunhwa/Exercise5_2/StatCalc.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter5/src/main/java/com/nhnacademy/yunhwa/Exercise5_2/StatCalc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter5/src/main/java/com/nhnacademy/yunhwa/Exercise5_3/Exercise5_3.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter5/src/main/java/com/nhnacademy/yunhwa/Exercise5_3/Exercise5_3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter5/src/main/java/com/nhnacademy/yunhwa/Exercise5_4/Exercise5_4.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter5/src/main/java/com/nhnacademy/yunhwa/Exercise5_4/Exercise5_4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter5/src/main/java/com/nhnacademy/yunhwa/Exercise5_5/BlackjackGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter5/src/main/java/com/nhnacademy/yunhwa/Exercise5_5/BlackjackGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter5/src/main/java/com/nhnacademy/yunhwa/Exercise5_5/Exercise5_5.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter5/src/main/java/com/nhnacademy/yunhwa/Exercise5_5/Exercise5_5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter5/src/main/java/com/nhnacademy/yunhwa/Exercise5_6/AdditionQuizGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter5/src/main/java/com/nhnacademy/yunhwa/Exercise5_6/AdditionQuizGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter5/src/main/java/com/nhnacademy/yunhwa/Exercise5_7/Exercise5_7.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter5/src/main/java/com/nhnacademy/yunhwa/Exercise5_7/Exercise5_7.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter5/src/main/java/com/nhnacademy/yunhwa/Exercise5_7/IntQuizGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter5/src/main/java/com/nhnacademy/yunhwa/Exercise5_7/IntQuizGame.java" afterDir="false" />
-    </list>
+    <list default="true" id="7d2fea38-0da1-43c2-8b65-14dedd8e34fa" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$/.." value="parkminsu" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 6
+  &quot;associatedIndex&quot;: 3
 }</component>
-  <component name="ProjectId" id="2Ve4OPUW1uMvpWb2kZelKBLb3cS" />
+  <component name="ProjectId" id="2VYUE6XaoKOfaE3pkkN0qMvBOBF" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;yunhwa&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/yoonhwachoi/Desktop/DefaultProject/Chapter4&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "gaeun",
+    "last_opened_file_path": "/Users/kaeun/DefaultProject/Chapter4",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="Application.Exercise4_3">
-    <configuration name="Exercise4_1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.nhnacademy.yunhwa.Exercise4_1.Exercise4_1" />
-      <module name="Chapter4" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.nhnacademy.yunhwa.Exercise4_1.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Exercise4_3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.nhnacademy.yunhwa.Exercise4_3.Exercise4_3" />
-      <module name="Chapter4" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.nhnacademy.yunhwa.Exercise4_3.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Exercise4_3" />
-        <item itemvalue="Application.Exercise4_1" />
-      </list>
-    </recent_temporary>
-  </component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e8f3bb15-0c10-4f2a-90c4-5a2fa849e7db" name="Changes" comment="" />
-      <created>1695183180091</created>
+      <changelist id="7d2fea38-0da1-43c2-8b65-14dedd8e34fa" name="Changes" comment="" />
+      <created>1695012393626</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1695183180091</updated>
-      <workItem from="1695183181283" duration="2562000" />
-      <workItem from="1695188527964" duration="2019000" />
-      <workItem from="1695198883379" duration="1824000" />
-      <workItem from="1695262097629" duration="9972000" />
-      <workItem from="1695308876813" duration="3307000" />
+      <updated>1695012393626</updated>
+      <workItem from="1695012394697" duration="446000" />
+      <workItem from="1695012858627" duration="154000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,73 @@
+:hardbreaks:
+= Stream
+
+*일시* : 2023-09-18
+*작성자* : 정민수
+
+*점진적 생성자 패턴*
+ 클래스 안에 멤버 변수가 많을 경우, setter를 생성하거나, 멤버 변수마다 생성자를 만들어 줬어야 했다. 코드가 많아지고 지저분해지다보니
+클래스 안에 Builder 클래스를 만들어서 Builder가 클래스를 만들 수 있도록 하는 패턴 중 하나이다.
+builder라는 라이브러리도 있기 때문에 이 과정을 단순화해주기도 한다.
+(Method cascading의 개념 활용)
+ex)
+----
+public Guitar(Builder builder) {
+  this.no = builder.no;
+  this.name = builder.name;
+}
+----
+
+----
+Guitarist guitarist = new Guitarist.Builder()
+    .no(1)
+    .name("Yngwie Malmsteen")
+    .build();
+
+----
+
+*Chainable Resposibility*
+
+*Stream*
+시간에 흐름에 따른 데이터 흐름을 추상화한 것(Streaming)
+자바에서는 데이터(Collection, Array, List)를 받을 때 for문을 쓰기도 for-each를 쓰기도 하지만, 데이터를 받는 형식을 모두 통일하고 싶어서 나온 개념이다.
+Stream.map : Stream으로 받는 값에 모두 적용시키는 수식을 의미.
+Stream.filter : Stream으로 받는 값에 Filter라는 조건을 다는 것.
+ex)
+
+[source,java]
+----
+import java.util.Arrays;public class StreamSample {
+    public static IntStream getInts (int size) {
+        public int array = new int[size];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = i;
+        }
+        return Arrays.stream(array);
+    }
+
+    public static Stream<Integer> getList() {
+        List<Integer> list = new ArrayList<>();
+
+        for (int i = 0; i < 100; i ++) {
+            list.add(i);
+        }
+
+        return list.stream();
+   }
+}
+
+
+class Test {
+    public static void main(String[] args) {
+        IntStream stream = StreamSample.getList().filter(x -> x % 2 == 0);
+        stream.forEach(x -> System.out::println);
+        Stream<Integer> stream2 = StreamSample.getList()
+                                  .filter(x -> x % 2 == 0)
+                                  .map(x -> x + 1);
+        stream2.forEach(x -> System.out::println);
+    }
+
+}
+----
+
+* 참고 : TCP와 UDP의 차이 : TCP는 연결 지향. 패킷이 유실되면 window size를 다시 불러온다. UDP는 유실되도 되돌리지 않는다.
