@@ -12,21 +12,22 @@ package com.nhnacademy.gaeun.exercise02;
 public class Main {
     public static void main(String[] args) {
         int max = 0;
-        for(int i = 1; i <= 10000; i++) {
-            if(max < divisor(i)){
+        for (int i = 1; i <= 10000; i++) {
+            if (max < divisor(i)) {
                 max = divisor(i);
             }
         }
         System.out.println(max);
     }
+
     public static int divisor(int number) {
         int count = 0;
-        for(int i = 1; i <= number; i++) {
-            if(number % i == 0) {
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) {
                 count++;
             }
         }
         return count;
     }
-    
+
 }

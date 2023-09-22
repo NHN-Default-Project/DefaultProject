@@ -10,8 +10,8 @@ package com.nhnacademy.gaeun.exercise01;
 public class Main {
     public static void main(String[] args) {
         int count = 0;
-        while(true){
-            if(dice() == 1 && dice() == 1){
+        while (true) {
+            if (dice() == 1 && dice() == 1) {
                 break;
             }
             count++;
@@ -20,6 +20,6 @@ public class Main {
     }
 
     public static int dice() {
-        return (int)(Math.random() * 6) + 1;
+        return (int) (Math.random() * 6) + 1;
     }
 }

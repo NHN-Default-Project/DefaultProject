@@ -26,7 +26,7 @@ public class BirthdayProblem {
             System.out.printf("Person %d has birthday number %d%n", count, birthday);
             if (used[birthday]) {
                 tmp++;
-                if (tmp == 2){
+                if (tmp == 2) {
                     break;
                 }
             }
@@ -44,13 +44,15 @@ public class BirthdayProblem {
         int birthday;
         used = new boolean[365];
 
-        for(int i = 0; i < 365; i++) {
+        for (int i = 0; i < 365; i++) {
             birthday = (int) (Math.random() * 365);
             used[birthday] = true;
         }
 
-        for(int i = 0; i < 365; i++) {
-            if(used[i])count++;
+        for (int i = 0; i < 365; i++) {
+            if (used[i]) {
+                count++;
+            }
         }
 
         System.out.println();
@@ -68,9 +70,9 @@ public class BirthdayProblem {
             int birthday;
             birthday = (int) (Math.random() * 365);
             count++;
-            if(used[index]){
+            if (used[index]) {
                 index++;
-                if(index >= 365){
+                if (index >= 365) {
                     break;
                 }
             }
