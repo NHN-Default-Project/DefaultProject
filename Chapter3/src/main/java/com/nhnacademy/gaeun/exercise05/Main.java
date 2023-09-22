@@ -1,6 +1,8 @@
 package com.nhnacademy.gaeun.exercise05;
 
-import com.nhnacademy.parkminsu.textio.TextIO;
+
+import com.nhnacademy.gaeun.textio.TextIO;
+
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Scanner;
@@ -15,9 +17,13 @@ public class Main {
             try {
                 money += Double.parseDouble(TextIO.getWord());
             } catch (ArithmeticException e) {
+
+                e.printStackTrace();
+
                 throw new ArithmeticException();
             } finally {
                 scanner.close();
+
             }
 
         }
