@@ -1,11 +1,14 @@
-package com.nhnacademy.jminsoo.textio;
+package com.nhnacademy.Jminsoo.textio;
 
+import javax.swing.*;
 import java.io.*;
 import java.util.IllegalFormatException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
+=======
+import javax.swing.*;
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
 
 /**
  * TextIO provides a set of static methods for reading and writing text. By
@@ -24,6 +27,7 @@ import javax.swing.JOptionPane;
  * illegal inputs and
  * will throw an IllegalArgumentException.) For the most part, any other
  * error will be translated into an IllegalArguementException.
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
  * <p>
  * For writing to standard output, the output methods in this class pretty much
  * duplicate the functionality of System.out, and System.out can be used
@@ -39,6 +43,15 @@ import javax.swing.JOptionPane;
  * try...catch statements.
  * Also for this reason, all exceptions are converted into
  * IllegalArgumentExceptions, even when this
+=======
+ * <p>For writing to standard output, the output methods in this class pretty much
+ * duplicate the functionality of System.out, and System.out can be used interchangeably with them.
+ * <p>This class does not use optimal Java programming practices.  It is designed specifically to be easily
+ * usable even by a beginning programmer who has not yet learned about objects and exceptions.  Therefore,
+ * everything is in a single source file that compiles into a single class file, all the methods are
+ * static methods, and none of the methods throw exceptions that would require try...catch statements.
+ * Also for this reason, all exceptions are converted into IllegalArgumentExceptions, even when this
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
  * exception type doesn't really make sense.
  * <p>
  * This class requires Java 5.0 or higher. (A previous version of TextIO
@@ -75,18 +88,31 @@ public class TextIO {
      * The value returned by the peek() method when the input is at end-of-file.
      * (The value of this constant is (char)0xFFFF.)
      */
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
     public final static char EOF = (char) 0xFFFF;
+=======
+    public static final char EOF = (char) 0xFFFF;
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
 
     /**
      * The value returned by the peek() method when the input is at end-of-line.
      * The value of this constant is the character '\n'.
      */
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
     public final static char EOLN = '\n'; // The value returned by peek() when at end-of-line.
 
     /**
      * After this method is called, input will be read from standard input (as it
      * is in the default state). If a file or stream was previously the input
      * source, that file
+=======
+    public static final char EOLN = '\n';          // The value returned by peek() when at end-of-line.
+
+
+    /**
+     * After this method is called, input will be read from standard input (as it
+     * is in the default state).  If a file or stream was previously the input source, that file
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
      * or stream is closed.
      */
     public static void readStandardInput() {
@@ -96,7 +122,11 @@ public class TextIO {
             in.close();
         } catch (Exception e) {
         }
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
         emptyBuffer(); // Added November 2007
+=======
+        emptyBuffer();  // Added November 2007
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
         in = standardInput;
         inputFileName = null;
         readingStandardInput = true;
@@ -138,6 +168,7 @@ public class TextIO {
     }
 
     /**
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
      * Opens a file with a specified name for input. If the file name is null, this
      * has
      * the same effect as calling readStandardInput(); that is, input will be read
@@ -148,6 +179,14 @@ public class TextIO {
      * is thrown, and the input source is not changed. If the file is opened
      * successfully, then after this method is called, all of the input routines
      * will read
+=======
+     * Opens a file with a specified name for input.  If the file name is null, this has
+     * the same effect as calling readStandardInput(); that is, input will be read from standard
+     * input.  If an
+     * error occurs while trying to open the file, an exception of type IllegalArgumentException
+     * is thrown, and the input source is not changed.  If the file is opened
+     * successfully, then after this method is called, all of the input routines will read
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
      * from the file, instead of from standard input.
      */
     public static void readFile(String fileName) {
@@ -181,6 +220,7 @@ public class TextIO {
      * an input file. If the user cancels the dialog instead of selecting a file, it
      * is
      * not considered an error, but the return value of the subroutine is false.
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
      * If the user does select a file, but there is an error while trying to open
      * the
      * file, then an exception of type IllegalArgumentException is thrown. Finally,
@@ -198,6 +238,17 @@ public class TextIO {
      * method
      * in a non-GUI program, it might be necessary to call System.exit(0) at the end
      * of the main()
+=======
+     * If the user does select a file, but there is an error while trying to open the
+     * file, then an exception of type IllegalArgumentException is thrown.  Finally, if
+     * the user selects a file and it is successfully opened, then the return value of the
+     * subroutine is true, and  the input routines will read from the file, instead of
+     * from standard input.   If the user cancels, or if any error occurs, then the
+     * previous input source is not changed.
+     * <p>NOTE: Calling this method starts a GUI user interface thread, which can continue
+     * to run even if the thread that runs the main program ends.  If you use this method
+     * in a non-GUI program, it might be necessary to call System.exit(0) at the end of the main()
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
      * routine to shut down the Java virtual machine completely.
      */
     public static boolean readUserSelectedFile() {
@@ -231,8 +282,12 @@ public class TextIO {
 
     /**
      * After this method is called, output will be written to standard output (as it
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
      * is in the default state). If a file or stream was previously open for output,
      * it
+=======
+     * is in the default state).  If a file or stream was previously open for output, it
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
      * will be closed.
      */
     public static void writeStandardOutput() {
@@ -247,6 +302,10 @@ public class TextIO {
         out = standardOutput;
         writingStandardOutput = true;
     }
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
+=======
+
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
 
     /**
      * After this method is called, output will be sent to outputStream, provided it
@@ -277,6 +336,10 @@ public class TextIO {
             writingStandardOutput = false;
         }
     }
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
+=======
+
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
 
     /**
      * Opens a file with a specified name for output. If the file name is null, this
@@ -291,6 +354,7 @@ public class TextIO {
      * all of the output routines will write to the file, instead of to standard
      * output.
      * If an error occurs, the output destination is not changed.
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
      * <p>
      * NOTE: Calling this method starts a GUI user interface thread, which can
      * continue
@@ -298,6 +362,11 @@ public class TextIO {
      * method
      * in a non-GUI program, it might be necessary to call System.exit(0) at the end
      * of the main()
+=======
+     * <p>NOTE: Calling this method starts a GUI user interface thread, which can continue
+     * to run even if the thread that runs the main program ends.  If you use this method
+     * in a non-GUI program, it might be necessary to call System.exit(0) at the end of the main()
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
      * routine to shut down the Java virtual machine completely.
      */
     public static void writeFile(String fileName) {
@@ -330,6 +399,7 @@ public class TextIO {
      * an output file. If the user cancels the dialog instead of selecting a file,
      * it is
      * not considered an error, but the return value of the subroutine is false.
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
      * If the user does select a file, but there is an error while trying to open
      * the
      * file, then an exception of type IllegalArgumentException is thrown. Finally,
@@ -340,6 +410,13 @@ public class TextIO {
      * of
      * to standard output. If the user cancels, or if an error occurs, then the
      * current
+=======
+     * If the user does select a file, but there is an error while trying to open the
+     * file, then an exception of type IllegalArgumentException is thrown.  Finally, if
+     * the user selects a file and it is successfully opened, then the return value of the
+     * subroutine is true, and  the output routines will write to the file, instead of
+     * to standard output.  If the user cancels, or if an error occurs, then the current
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
      * output destination is not changed.
      */
     public static boolean writeUserSelectedFile() {
@@ -382,26 +459,46 @@ public class TextIO {
         outputErrorCount = 0;
         return true;
     }
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
 
     /**
      * If TextIO is currently reading from a file, then the return value is the name
      * of the file.
      * If the class is reading from standard input or from a stream, then the return
      * value is null.
+=======
+
+
+    /**
+     * If TextIO is currently reading from a file, then the return value is the name of the file.
+     * If the class is reading from standard input or from a stream, then the return value is null.
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
      */
     public static String getInputFileName() {
         return inputFileName;
     }
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
 
     /**
      * If TextIO is currently writing to a file, then the return value is the name
      * of the file.
      * If the class is writing to standard output or to a stream, then the return
      * value is null.
+=======
+
+
+    /**
+     * If TextIO is currently writing to a file, then the return value is the name of the file.
+     * If the class is writing to standard output or to a stream, then the return value is null.
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
      */
     public static String getOutputFileName() {
         return outputFileName;
     }
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
+=======
+
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
 
     // *************************** Output Methods *********************************
 
@@ -426,14 +523,20 @@ public class TextIO {
      * output value if necessary). This method will handle any type of parameter,
      * even one
      * whose type is one of the primitive types.
-     * 
+     *
      * @param x        The value to be output, which can be of any type.
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
      * @param minChars The minimum number of characters to use for the output. If x
      *                 requires fewer
      *                 then this number of characters, then extra spaces are added
      *                 to the front of x to bring
      *                 the total up to minChars. If minChars is less than or equal
      *                 to zero, then x will be printed
+=======
+     * @param minChars The minimum number of characters to use for the output.  If x requires fewer
+     *                 then this number of characters, then extra spaces are added to the front of x to bring
+     *                 the total up to minChars.  If minChars is less than or equal to zero, then x will be printed
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
      *                 in the minimum number of spaces possible.
      */
     public static void put(Object x, int minChars) {
@@ -526,6 +629,7 @@ public class TextIO {
      */
     public static boolean eof() {
         return peek() == EOF;
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
     }
 
     /**
@@ -556,6 +660,29 @@ public class TextIO {
      * is something else,
      * such as '\r' or "\r\n". This method never causes an error.
      */
+=======
+    }
+
+    /**
+     * Reads the next character from the current input source.  The character can be a whitespace
+     * character; compare this to the getChar() method, which skips over whitespace and returns the
+     * next non-whitespace character.  An end-of-line is always returned as the character '\n', even
+     * when the actual end-of-line in the input source is something else, such as '\r' or "\r\n".
+     * This method will throw an IllegalArgumentException if the input is at end-of-file (which will
+     * not ordinarily happen if reading from standard input).
+     */
+    public static char getAnyChar() {
+        return readChar();
+    }
+
+    /**
+     * Returns the next character in the current input source, without actually removing that
+     * character from the input.  The character can be a whitespace character and can be the
+     * end-of-file character (specified by the constant TextIO.EOF).An end-of-line is always returned
+     * as the character '\n', even when the actual end-of-line in the input source is something else,
+     * such as '\r' or "\r\n".  This method never causes an error.
+     */
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
     public static char peek() {
         return lookChar();
     }
@@ -599,6 +726,7 @@ public class TextIO {
     }
 
     /**
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
      * Skips whitespace characters and then reads a value of type byte from input,
      * discarding the rest of
      * the current line of input (including the next end-of-line character, if any).
@@ -607,6 +735,12 @@ public class TextIO {
      * input until a legal value
      * is input. In other cases, an IllegalArgumentException will be thrown if a
      * legal value is not found.
+=======
+     * Skips whitespace characters and then reads a value of type byte from input, discarding the rest of
+     * the current line of input (including the next end-of-line character, if any).  When using standard IO,
+     * this will not produce an error; the user will be prompted repeatedly for input until a legal value
+     * is input.  In other cases, an IllegalArgumentException will be thrown if a legal value is not found.
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
      */
     public static byte getlnByte() {
         byte x = getByte();
@@ -615,6 +749,7 @@ public class TextIO {
     }
 
     /**
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
      * Skips whitespace characters and then reads a value of type short from input,
      * discarding the rest of
      * the current line of input (including the next end-of-line character, if any).
@@ -623,6 +758,12 @@ public class TextIO {
      * input until a legal value
      * is input. In other cases, an IllegalArgumentException will be thrown if a
      * legal value is not found.
+=======
+     * Skips whitespace characters and then reads a value of type short from input, discarding the rest of
+     * the current line of input (including the next end-of-line character, if any).  When using standard IO,
+     * this will not produce an error; the user will be prompted repeatedly for input until a legal value
+     * is input.  In other cases, an IllegalArgumentException will be thrown if a legal value is not found.
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
      */
     public static short getlnShort() {
         short x = getShort();
@@ -631,6 +772,7 @@ public class TextIO {
     }
 
     /**
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
      * Skips whitespace characters and then reads a value of type int from input,
      * discarding the rest of
      * the current line of input (including the next end-of-line character, if any).
@@ -639,6 +781,12 @@ public class TextIO {
      * input until a legal value
      * is input. In other cases, an IllegalArgumentException will be thrown if a
      * legal value is not found.
+=======
+     * Skips whitespace characters and then reads a value of type int from input, discarding the rest of
+     * the current line of input (including the next end-of-line character, if any).  When using standard IO,
+     * this will not produce an error; the user will be prompted repeatedly for input until a legal value
+     * is input.  In other cases, an IllegalArgumentException will be thrown if a legal value is not found.
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
      */
     public static int getlnInt() {
         int x = getInt();
@@ -647,6 +795,7 @@ public class TextIO {
     }
 
     /**
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
      * Skips whitespace characters and then reads a value of type long from input,
      * discarding the rest of
      * the current line of input (including the next end-of-line character, if any).
@@ -655,6 +804,12 @@ public class TextIO {
      * input until a legal value
      * is input. In other cases, an IllegalArgumentException will be thrown if a
      * legal value is not found.
+=======
+     * Skips whitespace characters and then reads a value of type long from input, discarding the rest of
+     * the current line of input (including the next end-of-line character, if any).  When using standard IO,
+     * this will not produce an error; the user will be prompted repeatedly for input until a legal value
+     * is input.  In other cases, an IllegalArgumentException will be thrown if a legal value is not found.
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
      */
     public static long getlnLong() {
         long x = getLong();
@@ -663,6 +818,7 @@ public class TextIO {
     }
 
     /**
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
      * Skips whitespace characters and then reads a value of type float from input,
      * discarding the rest of
      * the current line of input (including the next end-of-line character, if any).
@@ -671,6 +827,12 @@ public class TextIO {
      * input until a legal value
      * is input. In other cases, an IllegalArgumentException will be thrown if a
      * legal value is not found.
+=======
+     * Skips whitespace characters and then reads a value of type float from input, discarding the rest of
+     * the current line of input (including the next end-of-line character, if any).  When using standard IO,
+     * this will not produce an error; the user will be prompted repeatedly for input until a legal value
+     * is input.  In other cases, an IllegalArgumentException will be thrown if a legal value is not found.
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
      */
     public static float getlnFloat() {
         float x = getFloat();
@@ -679,6 +841,7 @@ public class TextIO {
     }
 
     /**
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
      * Skips whitespace characters and then reads a value of type double from input,
      * discarding the rest of
      * the current line of input (including the next end-of-line character, if any).
@@ -687,6 +850,12 @@ public class TextIO {
      * input until a legal value
      * is input. In other cases, an IllegalArgumentException will be thrown if a
      * legal value is not found.
+=======
+     * Skips whitespace characters and then reads a value of type double from input, discarding the rest of
+     * the current line of input (including the next end-of-line character, if any).  When using standard IO,
+     * this will not produce an error; the user will be prompted repeatedly for input until a legal value
+     * is input.  In other cases, an IllegalArgumentException will be thrown if a legal value is not found.
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
      */
     public static double getlnDouble() {
         double x = getDouble();
@@ -695,6 +864,7 @@ public class TextIO {
     }
 
     /**
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
      * Skips whitespace characters and then reads a value of type char from input,
      * discarding the rest of
      * the current line of input (including the next end-of-line character, if any).
@@ -703,6 +873,12 @@ public class TextIO {
      * getAnyChar() method.
      * When using standard IO, this will not produce an error. In other cases, an
      * error can occur if
+=======
+     * Skips whitespace characters and then reads a value of type char from input, discarding the rest of
+     * the current line of input (including the next end-of-line character, if any).  Note that the value
+     * that is returned will be a non-whitespace character; compare this with the getAnyChar() method.
+     * When using standard IO, this will not produce an error.  In other cases, an error can occur if
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
      * an end-of-file is encountered.
      */
     public static char getlnChar() {
@@ -712,6 +888,7 @@ public class TextIO {
     }
 
     /**
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
      * Skips whitespace characters and then reads a value of type boolean from
      * input, discarding the rest of
      * the current line of input (including the next end-of-line character, if any).
@@ -727,6 +904,15 @@ public class TextIO {
      * getWord() method, and it
      * must be one of these; note that the "word" must be terminated by a whitespace
      * character (or end-of-file).
+=======
+     * Skips whitespace characters and then reads a value of type boolean from input, discarding the rest of
+     * the current line of input (including the next end-of-line character, if any).  When using standard IO,
+     * this will not produce an error; the user will be prompted repeatedly for input until a legal value
+     * is input.  In other cases, an IllegalArgumentException will be thrown if a legal value is not found.
+     * <p>Legal inputs for a boolean input are: true, t, yes, y, 1, false, f, no, n, and 0; letters can be
+     * either upper case or lower case. One "word" of input is read, using the getWord() method, and it
+     * must be one of these; note that the "word"  must be terminated by a whitespace character (or end-of-file).
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
      */
     public static boolean getlnBoolean() {
         boolean x = getBoolean();
@@ -735,6 +921,7 @@ public class TextIO {
     }
 
     /**
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
      * Skips whitespace characters and then reads one "word" from input, discarding
      * the rest of
      * the current line of input (including the next end-of-line character, if any).
@@ -743,6 +930,12 @@ public class TextIO {
      * standard IO,
      * this will not produce an error. In other cases, an IllegalArgumentException
      * will be thrown
+=======
+     * Skips whitespace characters and then reads one "word" from input, discarding the rest of
+     * the current line of input (including the next end-of-line character, if any).  A word is defined as
+     * a sequence of non-whitespace characters (not just letters!).   When using standard IO,
+     * this will not produce an error.  In other cases, an IllegalArgumentException will be thrown
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
      * if an end-of-file is encountered.
      */
     public static String getlnWord() {
@@ -759,6 +952,7 @@ public class TextIO {
     }
 
     /**
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
      * Reads all the characters from the current input source, up to the next
      * end-of-line. The end-of-line
      * is read but is not included in the return value. Any other whitespace
@@ -769,6 +963,13 @@ public class TextIO {
      * produce an error.
      * In other cases, an IllegalArgumentException will be thrown if an end-of-file
      * is encountered.
+=======
+     * Reads all the characters from the current input source, up to the next end-of-line.  The end-of-line
+     * is read but is not included in the return value.  Any other whitespace characters on the line are retained,
+     * even if they occur at the start of input.  The return value will be an empty string if there are
+     * no characters before the end-of-line.  When using standard IO, this will not produce an error.
+     * In other cases, an IllegalArgumentException will be thrown if an end-of-file is encountered.
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
      */
     public static String getln() {
         StringBuffer s = new StringBuffer(100);
@@ -806,6 +1007,19 @@ public class TextIO {
      */
     public static short getShort() {
         return (short) readInteger(-32768L, 32767L);
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
+=======
+    }
+
+    /**
+     * Skips whitespace characters and then reads a value of type int from input.  Any additional characters on
+     * the current line of input are retained, and will be read by the next input operation.  When using standard IO,
+     * this will not produce an error; the user will be prompted repeatedly for input until a legal value
+     * is input.  In other cases, an IllegalArgumentException will be thrown if a legal value is not found.
+     */
+    public static int getInt() {
+        return (int) readInteger(Integer.MIN_VALUE, Integer.MAX_VALUE);
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
     }
 
     /**
@@ -818,8 +1032,13 @@ public class TextIO {
      * is input. In other cases, an IllegalArgumentException will be thrown if a
      * legal value is not found.
      */
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
     public static int getInt() {
         return (int) readInteger(Integer.MIN_VALUE, Integer.MAX_VALUE);
+=======
+    public static long getLong() {
+        return readInteger(Long.MIN_VALUE, Long.MAX_VALUE);
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
     }
 
     /**
@@ -984,37 +1203,54 @@ public class TextIO {
         inputErrorCount = 0;
         return ans;
     }
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
 
     // ***************** Everything beyond this point is private implementation
     // detail *******************
 
     private static String inputFileName; // Name of file that is the current input source, or null if the source is not
-                                         // a file.
+    // a file.
     private static String outputFileName; // Name of file that is the current output destination, or null if the
-                                          // destination is not a file.
+    // destination is not a file.
 
     private static JFileChooser fileDialog; // Dialog used by readUserSelectedFile() and writeUserSelectedFile()
 
     private final static BufferedReader standardInput = new BufferedReader(new InputStreamReader(System.in)); // wraps
-                                                                                                              // standard
-                                                                                                              // input
-                                                                                                              // stream
+    // standard
+    // input
+    // stream
     private final static PrintWriter standardOutput = new PrintWriter(System.out); // wraps standard output stream
 
     private static BufferedReader in = standardInput; // Stream that data is read from; the current input source.
     private static PrintWriter out = standardOutput; // Stream that data is written to; the current output destination.
+=======
+
+    // ***************** Everything beyond this point is private implementation detail *******************
+
+    private static String inputFileName;  // Name of file that is the current input source, or null if the source is not a file.
+    private static String outputFileName; // Name of file that is the current output destination, or null if the destination is not a file.
+
+    private static JFileChooser fileDialog; // Dialog used by readUserSelectedFile() and writeUserSelectedFile()
+
+    private static final BufferedReader standardInput = new BufferedReader(new InputStreamReader(System.in));  // wraps standard input stream
+    private static final PrintWriter standardOutput = new PrintWriter(System.out);  // wraps standard output stream
+
+    private static BufferedReader in = standardInput;  // Stream that data is read from; the current input source.
+    private static PrintWriter out = standardOutput;   // Stream that data is written to; the current output destination.
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
 
     private static boolean readingStandardInput = true;
     private static boolean writingStandardOutput = true;
 
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
     private static int inputErrorCount; // Number of consecutive errors on standard input; reset to 0 when a successful
-                                        // read occurs.
+    // read occurs.
     private static int outputErrorCount; // Number of errors on standard output since it was selected as the output
-                                         // destination.
+    // destination.
 
     private static Matcher integerMatcher; // Used for reading integer numbers; created from the integer Regex Pattern.
     private static Matcher floatMatcher; // Used for reading floating point numbers; created from the floatRegex
-                                         // Pattern.
+    // Pattern.
     private final static Pattern integerRegex = Pattern.compile("(\\+|-)?[0-9]+");
     private final static Pattern floatRegex = Pattern
             .compile("(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?");
@@ -1023,6 +1259,20 @@ public class TextIO {
     private static int pos = 0; // Position of next char in input line that has not yet been processed.
 
     private static String readRealString() { // read chars from input following syntax of real numbers
+=======
+    private static int inputErrorCount;  // Number of consecutive errors on standard input; reset to 0 when a successful read occurs.
+    private static int outputErrorCount;  // Number of errors on standard output since it was selected as the output destination.
+
+    private static Matcher integerMatcher;  // Used for reading integer numbers; created from the integer Regex Pattern.
+    private static Matcher floatMatcher;   // Used for reading floating point numbers; created from the floatRegex Pattern.
+    private static final Pattern integerRegex = Pattern.compile("(\\+|-)?[0-9]+");
+    private static final Pattern floatRegex = Pattern.compile("(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?");
+
+    private static String buffer = null;  // One line read from input.
+    private static int pos = 0;           // Position of next char in input line that has not yet been processed.
+
+    private static String readRealString() {   // read chars from input following syntax of real numbers
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
         skipWhitespace();
         if (lookChar() == EOF)
             return null;
@@ -1037,7 +1287,11 @@ public class TextIO {
             return null;
     }
 
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
     private static String readIntegerString() { // read chars from input following syntax of integers
+=======
+    private static String readIntegerString() {  // read chars from input following syntax of integers
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
         skipWhitespace();
         if (lookChar() == EOF)
             return null;
@@ -1052,7 +1306,11 @@ public class TextIO {
             return null;
     }
 
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
     private static long readInteger(long min, long max) { // read long integer, limited to specified range
+=======
+    private static long readInteger(long min, long max) {  // read long integer, limited to specified range
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
         long x = 0;
         while (true) {
             String s = readIntegerString();
@@ -1080,7 +1338,12 @@ public class TextIO {
         return x;
     }
 
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
     private static void errorMessage(String message, String expecting) { // Report error on input.
+=======
+
+    private static void errorMessage(String message, String expecting) {  // Report error on input.
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
         if (readingStandardInput && writingStandardOutput) {
             // inform user of error and force user to re-enter.
             out.println();
@@ -1108,7 +1371,11 @@ public class TextIO {
                     + message + "\nExpecting " + expecting);
     }
 
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
     private static char lookChar() { // return next character from input
+=======
+    private static char lookChar() {  // return next character from input
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
         if (buffer == null || pos > buffer.length())
             fillBuffer();
         if (buffer == null)
@@ -1119,7 +1386,11 @@ public class TextIO {
             return buffer.charAt(pos);
     }
 
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
     private static char readChar() { // return and discard next character from input
+=======
+    private static char readChar() {  // return and discard next character from input
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
         char ch = lookChar();
         if (buffer == null) {
             if (readingStandardInput)
@@ -1132,7 +1403,11 @@ public class TextIO {
         return ch;
     }
 
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
     private static void fillBuffer() { // Wait for user to type a line and press return,
+=======
+    private static void fillBuffer() {    // Wait for user to type a line and press return,
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
         try {
             buffer = in.readLine();
         } catch (Exception e) {
@@ -1149,11 +1424,19 @@ public class TextIO {
         integerMatcher = null;
     }
 
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
     private static void emptyBuffer() { // discard the rest of the current line of input
         buffer = null;
     }
 
     private static void outputError(String message) { // Report an error on output.
+=======
+    private static void emptyBuffer() {   // discard the rest of the current line of input
+        buffer = null;
+    }
+
+    private static void outputError(String message) {  // Report an error on output.
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
         if (writingStandardOutput) {
             System.err.println("Error occurred in TextIO while writing to standard output!!");
             outputErrorCount++;
@@ -1169,4 +1452,8 @@ public class TextIO {
         }
     }
 
+<<<<<<< HEAD:Chapter5/src/main/java/com/nhnacademy/Jminsoo/textio/TextIO.java
 }
+=======
+} // end of class TextIO
+>>>>>>> main:Chapter3/src/main/java/com/nhnacademy/gaeun/textio/TextIO.java
