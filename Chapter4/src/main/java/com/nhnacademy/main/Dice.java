@@ -1,8 +1,10 @@
 package com.nhnacademy.main;
 
 class Dice {
+
     private static final int DICE_EYE = 6;
     private int diceNum;
+
     public Dice() {
         this.rollDice();
     }
@@ -19,4 +21,5 @@ class Dice {
     public int getDiceNum() {
         return diceNum;
     }
+
 }
