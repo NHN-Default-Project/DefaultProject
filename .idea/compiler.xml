@@ -16,6 +16,7 @@
         <module name="Chapter3" />
         <module name="Chapter10" />
         <module name="Chapter11" />
+        <module name="Homework" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
