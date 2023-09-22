@@ -2,7 +2,7 @@ package com.nhnacademy.jminsoo.excercise1;
 
 public class Excercise3_1 {
 
-    final static int DICE_COUNT = 2;
+    static final int DICE_COUNT = 2;
 
     public static void main(String[] args) {
         int count = 0;
