@@ -1,4 +1,4 @@
-package com.nhnacademy.gaeun.exercise02;
+package com.nhnacademy.main.exercise02;
 
 /**
  * An object of class StatCalc can be used to compute several simple statistics
@@ -12,6 +12,7 @@ public class StatCalc {
 
     private int count;   // Number of numbers that have been entered.
     private double sum;  // The sum of all the items that have been entered.
+
     private double squareSum;  // The sum of the squares of all the items.
     private double min;
     private double max;
@@ -77,15 +78,19 @@ public class StatCalc {
         return max;
     }
 
+    public double getSquareSum() {
+        return squareSum;
+    }
+
     @Override
     public String toString() {
         return "StatCalc{" +
-                "count=" + count +
-                ", sum=" + sum +
-                ", squareSum=" + squareSum +
-                ", min=" + min +
-                ", max=" + max +
-                ", StandardDeviation=" + getStandardDeviation() +
+                "count=" + getCount() +
+                ", sum=" + getSum() +
+                ", squareSum=" + String.format("%.4f", getSquareSum()) +
+                ", min=" + getMin() +
+                ", max=" + getMax() +
+                ", StandardDeviation=" + String.format("%.4f", getStandardDeviation()) +
                 '}';
     }
 }  // end class StatCalc
