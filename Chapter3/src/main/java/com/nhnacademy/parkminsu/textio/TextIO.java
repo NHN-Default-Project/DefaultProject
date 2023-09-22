@@ -1,10 +1,10 @@
 package com.nhnacademy.parkminsu.textio;
 
-import javax.swing.*;
 import java.io.*;
 import java.util.IllegalFormatException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.*;
 
 /**
  * TextIO provides a set of static methods for reading and writing text. By
@@ -74,13 +74,13 @@ public class TextIO {
      * The value returned by the peek() method when the input is at end-of-file.
      * (The value of this constant is (char)0xFFFF.)
      */
-    public static final char EOF = (char) 0xFFFF;
+    public final static char EOF = (char) 0xFFFF;
 
     /**
      * The value returned by the peek() method when the input is at end-of-line.
      * The value of this constant is the character '\n'.
      */
-    public static final char EOLN = '\n'; // The value returned by peek() when at end-of-line.
+    public final static char EOLN = '\n'; // The value returned by peek() when at end-of-line.
 
     /**
      * After this method is called, input will be read from standard input (as it
@@ -994,11 +994,11 @@ public class TextIO {
 
     private static JFileChooser fileDialog; // Dialog used by readUserSelectedFile() and writeUserSelectedFile()
 
-    private static final BufferedReader standardInput = new BufferedReader(new InputStreamReader(System.in)); // wraps
+    private final static BufferedReader standardInput = new BufferedReader(new InputStreamReader(System.in)); // wraps
     // standard
     // input
     // stream
-    private static final PrintWriter standardOutput = new PrintWriter(System.out); // wraps standard output stream
+    private final static PrintWriter standardOutput = new PrintWriter(System.out); // wraps standard output stream
 
     private static BufferedReader in = standardInput; // Stream that data is read from; the current input source.
     private static PrintWriter out = standardOutput; // Stream that data is written to; the current output destination.
@@ -1014,8 +1014,8 @@ public class TextIO {
     private static Matcher integerMatcher; // Used for reading integer numbers; created from the integer Regex Pattern.
     private static Matcher floatMatcher; // Used for reading floating point numbers; created from the floatRegex
     // Pattern.
-    private static final Pattern integerRegex = Pattern.compile("(\\+|-)?[0-9]+");
-    private static final Pattern floatRegex = Pattern
+    private final static Pattern integerRegex = Pattern.compile("(\\+|-)?[0-9]+");
+    private final static Pattern floatRegex = Pattern
             .compile("(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?");
 
     private static String buffer = null; // One line read from input.
