@@ -3,6 +3,10 @@ package org.example;
 import java.util.*;
 
 public class CsvDictionary implements Dictionary1 {
+    public HashMap<String, List<String>> getDictionary() {
+        return dictionary;
+    }
+
     private HashMap<String, List<String>> dictionary;
     CsvFile csvFile = new CsvFile();
 

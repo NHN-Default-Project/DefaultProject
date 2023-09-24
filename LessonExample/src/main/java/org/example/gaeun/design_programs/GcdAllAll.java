@@ -4,10 +4,9 @@ public class GcdAllAll implements All<Integer[]> {
     @Override
     public Integer[] all(Integer[][] array) {
         Integer[] gcdAll = new Integer[array.length];
+        System.out.println(array.length);
         for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array.length; j++) {
-                gcdAll[i] = getLCM(array[i]);
-            }
+            gcdAll[i] = getLCM(array[i]);
         }
 
         return gcdAll;

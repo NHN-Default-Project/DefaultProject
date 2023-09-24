@@ -5,6 +5,11 @@ import java.util.*;
 
 public class UpgradeDictionary implements Dictionary2 {
     File file;
+
+    public HashMap<String, List<String>> getDictionary() {
+        return dictionary;
+    }
+
     private HashMap<String, List<String>> dictionary;
     CsvFile csvFile = new CsvFile();
     JsonFile jsonFile = new JsonFile();
@@ -31,7 +36,7 @@ public class UpgradeDictionary implements Dictionary2 {
         if (dictionary.containsKey(kor)) {
             return dictionary.get(kor);
         } else {
-            System.out.printf("%s에 해당하는 값이 사전에 존재하지 않습니다. ");
+            System.out.printf("%s에 해당하는 값이 사전에 존재하지 않습니다. ",kor);
             System.out.println();
             return Collections.emptyList();
         }

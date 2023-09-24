@@ -9,7 +9,6 @@ public class Combination {
         return twoArray;
     }
 
-    int[] array = {2, 4, 6, 7};
 
     public static Integer[][] combination(Integer[] array, int r) {
         int z = 0;
@@ -25,7 +24,7 @@ public class Combination {
     }
 
     public static int combinationValue(int arrayLength, int r) {
-        return factorial(arrayLength) / factorial(arrayLength - r) * factorial(r);
+        return factorial(arrayLength) / (factorial(arrayLength - r) * factorial(r));
     }
 
     public static int factorial(int n) {
