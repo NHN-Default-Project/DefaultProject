@@ -4,7 +4,6 @@ public class GcdAllAll implements All<Integer[]> {
     @Override
     public Integer[] all(Integer[][] array) {
         Integer[] gcdAll = new Integer[array.length];
-        System.out.println(array.length);
         for (int i = 0; i < array.length; i++) {
             gcdAll[i] = getLCM(array[i]);
         }
@@ -25,7 +24,7 @@ public class GcdAllAll implements All<Integer[]> {
             lcm = (lcm * arr[i]) / gcd;
         }
 
-        System.out.println("the greatest common demoniator : " + gcd);
+//        System.out.println("the greatest common demoniator : " + gcd);
 
         return lcm;
     }

@@ -6,6 +6,11 @@ public class Main {
         GcdAllAll gcdAllAll = new GcdAllAll();
         MaxAll maxAll = new MaxAll();
 
-        System.out.println(maxAll.all(gcdAllAll.all(Combination.combination(array, 2))));
+        for(int i = 0; i < array.length; i++) {
+            System.out.printf(array[i] + " ");
+        }
+        System.out.println();
+        System.out.printf("다음 배열에서 나올 수 있는 최대공약수는 ");
+        System.out.println(maxAll.all(gcdAllAll.all(Combination.combination(array, 2))) + "입니다");
     }
 }
