@@ -1,16 +1,29 @@
 package org.example;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.*;
 
 public class UpgradeDictionary implements Dictionary2 {
     File file;
     private HashMap<String, List<String>> dictionary;
+    CsvFile csvFile = new CsvFile();
+    JsonFile jsonFile = new JsonFile();
+    String ext = "";
     @Override
     public void load(String path) {
-        FileLeadWithExtension fileLeadWithExtension = new FileLeadWithExtension(path);
-        dictionary = fileLeadWithExtension.loadFileToMap();
+        file = new File(path);
+        String name = file.getName();
+        ext = name.substring(name.indexOf(".") + 1); //확장자 저장
+        switch (ext) {
+            case "csv":
+                dictionary = csvFile.loadFile(path);
+                return;
+            case "json":
+                dictionary = jsonFile.loadFile(path);
+                return;
+            default:
+                System.out.println("해당되는 확장자 파일을 찾을 수 없습니다.");
+        }
     }
 
     @Override
@@ -32,23 +45,24 @@ public class UpgradeDictionary implements Dictionary2 {
     @Override
     public List<String> findAllEngByKorOrderByHomonymCountDescAndKorDesc() {
         List<String> keySet = new ArrayList<>(dictionary.keySet());
-        for(List<String> list : dictionary.values()) {
-            list.sort(new Comparator<String>() {
-                @Override
-                public int compare(String o1, String o2) {
-                    return o1.compareTo(o2);
-                }
-            });
-            Collections.reverse(list);
-        }
+        List<String> valueSet = new ArrayList<>();
         keySet.sort(new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
-                return dictionary.get(o1).get(0).compareTo(dictionary.get(o2).get(0));
+                int compareValue = Integer.compare(dictionary.get(o1).size(), dictionary.get(o2).size());
+                if(compareValue == 0) {
+                    compareValue = o1.compareTo(o2);
+                }
+                return compareValue;
             }
         });
-        System.out.println(dictionary);
-        return dictionary.get(0);
+        Collections.reverse(keySet); //동음이의어 순으로 내림차순
+        for(String key : keySet) {
+            for(int i = 0; i < dictionary.get(key).size(); i++) {
+                valueSet.add(dictionary.get(key).get(i));
+            }
+        }
+        return valueSet;
     }
 
 }
