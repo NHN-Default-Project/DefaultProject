@@ -6,8 +6,13 @@ import java.util.Comparator;
 public class MaxAll implements All<Integer> {
 
     @Override
-    public Integer all(Integer[] array) {
+    public Integer all(Integer[] array) {;
         int maxAnswer = array[0];
+        for(int val : array) {
+            if(maxAnswer < val) {
+                maxAnswer = val;
+            }
+        }
         return maxAnswer;
     }
 

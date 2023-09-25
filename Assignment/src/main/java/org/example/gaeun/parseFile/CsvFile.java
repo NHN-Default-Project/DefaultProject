@@ -1,4 +1,4 @@
-package org.example;
+package org.example.gaeun.parseFile;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,8 +18,7 @@ public class CsvFile implements FileObject {
     @Override
     public HashMap<String, List<String>> loadFile(String path) {
         file = new File(path);
-        try {
-            Scanner scanner = new Scanner(file);
+        try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
                 String loadOneLine = scanner.nextLine();
                 String kor = loadOneLine.substring(0, loadOneLine.indexOf(","));

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.gaeun.parseFile;
 
 import java.util.Collection;
 import java.util.List;

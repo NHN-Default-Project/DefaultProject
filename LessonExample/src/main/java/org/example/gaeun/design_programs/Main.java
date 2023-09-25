@@ -11,6 +11,8 @@ public class Main {
         }
         System.out.println();
         System.out.printf("다음 배열에서 나올 수 있는 최대공약수는 ");
-        System.out.println(maxAll.all(gcdAllAll.all(Combination.combination(array, 2))) + "입니다");
+        Combination combination = new Combination(array, 3);
+        combination.tmpListToArray();
+        System.out.println(maxAll.all(gcdAllAll.all(combination.getTwoArray())) + "입니다");
     }
 }

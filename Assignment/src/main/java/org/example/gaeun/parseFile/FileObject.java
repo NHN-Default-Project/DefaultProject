@@ -1,5 +1,6 @@
-package org.example;
+package org.example.gaeun.parseFile;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 
