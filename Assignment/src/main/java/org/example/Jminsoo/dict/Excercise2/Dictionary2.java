@@ -24,7 +24,7 @@ public interface Dictionary2 {
      * @param path 파일 경로
      * @author 김현준
      */
-    void load(/* TODO #1 ... */String path);
+    void load(Parser parser, String path);
 
     /**
      * 한글을 입력받아 영어단어들을 돌려준다.

@@ -5,18 +5,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class DictionaryApp1 implements Dictionary1 {
-
-
-//    private CSVFile csvFile;
-
-    Map<String, ArrayList<String>> data;
+    Map<String, List<String>> data;
 
     @Override
     public void load(String path) {
@@ -27,18 +19,13 @@ public class DictionaryApp1 implements Dictionary1 {
 
         this.data = new HashMap<>();
 
-
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
-            ArrayList<String> tempSet;
-
+            List<String> tempSet;
             while ((line = br.readLine()) != null) {
                 String[] str = line.split(",");
-                tempSet = data.get(str[0]);
+                tempSet = data.getOrDefault(str[0], new ArrayList<>());
 
-                if (tempSet == null) {
-                    tempSet = new ArrayList<>();
-                }
                 tempSet.add(str[1]);
 
                 data.put(str[0], tempSet);
