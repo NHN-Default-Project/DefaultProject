@@ -3,14 +3,18 @@ package org.example.gaeun.parseFile;
 import java.util.*;
 
 public class CsvDictionary implements Dictionary1 {
-    public HashMap<String, List<String>> getDictionary() {
-        return dictionary;
+
+
+    private Map<String, List<String>> dictionary;
+    private CsvFile csvFile;
+
+    public CsvDictionary() {
+        csvFile = new CsvFile();
     }
 
-    private HashMap<String, List<String>> dictionary;
-    CsvFile csvFile = new CsvFile();
-
-
+    public Map<String, List<String>> getDictionary() {
+        return dictionary;
+    }
     @Override
     public void load(String path) { //파일을 한 줄 씩 읽어와서 dictionary에 저장
         dictionary = csvFile.loadFile(path);
@@ -18,13 +22,8 @@ public class CsvDictionary implements Dictionary1 {
 
     @Override
     public List<String> findEngByKor(String kor) {
-        if (dictionary.containsKey(kor)) {
-            return dictionary.get(kor);
-        } else {
-            System.out.printf("%s에 해당하는 값이 사전에 존재하지 않습니다. ", kor);
-            System.out.println();
-            return Collections.emptyList();
-        }
+        //너무 좋음
+        return dictionary.getOrDefault(kor, Collections.emptyList());
     }
 
     @Override

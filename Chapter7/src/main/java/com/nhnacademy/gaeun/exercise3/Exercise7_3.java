@@ -5,8 +5,8 @@ import java.util.Arrays;
 public class Exercise7_3 {
 
     public static void main(String[] args) {
-        RandomArrayList random1 = new RandomArrayList(100);
-        RandomArrayList random2 = new RandomArrayList(100);
+        RandomArrayList random1 = new RandomArrayList(200);
+        RandomArrayList random2 = new RandomArrayList(200);
         RandomStringArray random3 = new RandomStringArray(100);
         RandomStringArray random4 = new RandomStringArray(100);
         long startTime;
@@ -18,16 +18,14 @@ public class Exercise7_3 {
         random1.selectionSort();
         endTime = System.nanoTime();
         compTime = endTime - startTime;
-        seconds = compTime / 1000000000.0;
         System.out.println();
-        System.out.println("SelectionSort Time is: " + seconds);
+        System.out.println("SelectionSort Time is: " + compTime);
 
         startTime = System.nanoTime();
         Arrays.sort(random2.getList());
         endTime = System.nanoTime();
         compTime = endTime - startTime;
-        seconds = compTime / 1000000000.0;
-        System.out.println("Arrays.sort Time is: " + seconds);
+        System.out.println("Arrays.sort Time is: " + compTime);
         System.out.println();
 
         System.out.println("=========== 무작위 String 배열 ===========");
@@ -35,16 +33,14 @@ public class Exercise7_3 {
         random3.selectionSort();
         endTime = System.nanoTime();
         compTime = endTime - startTime;
-        seconds = compTime / 1000000000.0;
         System.out.println();
-        System.out.println("SelectionSort Time is: " + seconds);
+        System.out.println("SelectionSort Time is: " + compTime);
 
         startTime = System.nanoTime();
         Arrays.sort(random4.list);
         endTime = System.nanoTime();
         compTime = endTime - startTime;
-        seconds = compTime / 1000000000.0;
-        System.out.println("Arrays.sort Time is: " + seconds);
+        System.out.println("Arrays.sort Time is: " + compTime);
         System.out.println();
     }
 }

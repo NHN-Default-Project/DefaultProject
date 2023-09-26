@@ -3,8 +3,9 @@ package org.example.gaeun.thread;
 import java.util.Queue;
 import java.util.Random;
 
-public class CustomerFactory extends Thread {
+public class CustomerFactory implements Runnable {
     Queue<Integer> queue;
+    Thread thread;
     Random random = new Random();
     final int addCustomerTime = 600;
 
@@ -35,4 +36,8 @@ public class CustomerFactory extends Thread {
         }
     }
 
+    public void start() {
+        thread = new Thread(this);
+        thread.start();
+    }
 }

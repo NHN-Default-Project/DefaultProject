@@ -5,13 +5,14 @@ import java.util.*;
 
 public class UpgradeDictionary implements Dictionary2 {
     File file;
+    private HashMap<String, List<String>> dictionary;
+    String ext = "";
 
-    public HashMap<String, List<String>> getDictionary() {
+    public Map<String, List<String>> getDictionary() {
         return dictionary;
     }
 
-    private HashMap<String, List<String>> dictionary;
-    String ext = "";
+
     @Override
     public void load(FileObject fileObject, String path) {
         file = new File(path);
@@ -26,8 +27,6 @@ public class UpgradeDictionary implements Dictionary2 {
         if (dictionary.containsKey(kor)) {
             return dictionary.get(kor);
         } else {
-            System.out.printf("%s에 해당하는 값이 사전에 존재하지 않습니다. ",kor);
-            System.out.println();
             return Collections.emptyList();
         }
     }
@@ -40,19 +39,21 @@ public class UpgradeDictionary implements Dictionary2 {
     @Override
     public List<String> findAllEngByKorOrderByHomonymCountDescAndKorDesc() {
         List<String> keySet = new ArrayList<>(dictionary.keySet());
+        List<String> valueSet = new ArrayList<>();
 
-        keySet.sort(new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                int compareValue = Integer.compare(dictionary.get(o1).size(), dictionary.get(o2).size());
-                if(compareValue == 0) {
-                    compareValue = o1.compareTo(o2);
-                }
-                return compareValue;
+        keySet.sort((o1, o2) -> {
+            int compareValue = Integer.compare(dictionary.get(o1).size(), dictionary.get(o2).size());
+            if(compareValue == 0) {
+                compareValue = o1.compareTo(o2);
             }
+            return compareValue;
         });
         Collections.reverse(keySet); //동음이의어 순으로 내림차순
-        return keySet;
+        for(String value : keySet) {
+            valueSet.add(dictionary.get(value).toString());
+        }
+
+        return valueSet;
     }
 
 }
