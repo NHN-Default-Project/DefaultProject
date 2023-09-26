@@ -44,19 +44,19 @@ public class JSONParser implements Parser {
 //            String line;
 //            while ((line = bufReader.readLine()) != null) {
 //                JSONParser parser = new JSONParser();
-//                JSONArray jsonArray = (JSONArray) parser.parse(line);
-//
-//                for (int i = 0; i < jsonArray.size(); i++) {
-//                    JSONArray jsonArrayArr = (JSONArray) jsonArray.get(i);
-//                    String key = (String) jsonArrayArr.get(0);
-//                    String value = (String) jsonArrayArr.get(1);
-//
-//                    if (parsedDatas.containsKey(key)) {
-//                        parsedDatas.get(key).add(value);
-//                    } else {
-//                        List<String> list = new ArrayList<>();
-//                        list.add(value);
-//                        parsedDatas.put(key, list);
+////                JSONArray jsonArray = (JSONArray) parser.parse(line);
+////
+////                for (int i = 0; i < jsonArray.size(); i++) {
+////                    JSONArray jsonArrayArr = (JSONArray) jsonArray.get(i);
+////                    String key = (String) jsonArrayArr.get(0);
+////                    String value = (String) jsonArrayArr.get(1);
+////
+////                    if (parsedDatas.containsKey(key)) {
+////                        parsedDatas.get(key).add(value);
+////                    } else {
+////                        List<String> list = new ArrayList<>();
+////                        list.add(value);
+////                        parsedDatas.put(key, list);
 //                    }
 //                }
 //            }

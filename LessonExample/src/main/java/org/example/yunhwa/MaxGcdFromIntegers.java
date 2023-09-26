@@ -61,9 +61,10 @@ public class MaxGcdFromIntegers {
 
 
     // gcd all : combiArr[i] 가 들어오면 gcd 계산 해서 int 리턴
-    public static int gcdAll(int[] array) {
-        
-    }
+//    public static int gcdAll(int[] array) {
+//
+//
+//    }
 
     // gcd all all : gcd all 호출해서 배열에 넣어서 gcd들이 담긴 int[] 리턴
 
