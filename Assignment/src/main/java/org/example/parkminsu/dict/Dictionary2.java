@@ -1,4 +1,4 @@
-package com.nhnacademy.dict;
+package org.example.parkminsu.dict;
 
 import java.util.List;
 
@@ -56,3 +56,4 @@ public interface Dictionary2 {
     List<String> findAllEngByKorOrderByHomonymCountDescAndKorDesc();
 
 }
+
