@@ -1,4 +1,4 @@
-package org.example.thread;
+package org.example.Jminsoo.thread;
 
 public class Desk implements Runnable {
     private int deskNumber;

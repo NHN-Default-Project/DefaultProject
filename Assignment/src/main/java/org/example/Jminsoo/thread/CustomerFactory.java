@@ -1,4 +1,4 @@
-package org.example.thread;
+package org.example.Jminsoo.thread;
 
 public class CustomerFactory implements Runnable {
     private int customerNumber;
