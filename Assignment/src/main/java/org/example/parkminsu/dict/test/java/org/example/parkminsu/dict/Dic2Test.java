@@ -11,7 +11,7 @@ class Dic2Test {
         // when
         // then
         Assertions.assertDoesNotThrow(() ->
-                dictionary.load(new CsvParser(), "/Users/minsu/Desktop/DefaultProject/Homework/src/test/resources/test2.csv")
+                dictionary.load(new CsvParser(), "/Users/minsu/Desktop/DefaultProject/Assignment/src/main/java/org/example/parkminsu/dict/test/resources/test2.csv")
         ); // given when then 형식 지키기
 
     }

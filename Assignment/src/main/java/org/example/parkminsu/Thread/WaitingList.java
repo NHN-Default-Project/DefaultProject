@@ -20,14 +20,13 @@ public class WaitingList {
         return waiting;
     }
 
-    public int getCustomerNum() {
-        return customerNum;
-    }
-
     public void add() {
         addCustomerNum();
         this.waiting.add(new Customer(this.customerNum));
     }
 
+    public Customer poll() {
+        return waiting.poll();
+    }
 }
 

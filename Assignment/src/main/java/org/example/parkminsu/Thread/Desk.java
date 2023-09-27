@@ -11,21 +11,20 @@ public class Desk implements Runnable {
         this.deskName = deskName;
         this.delay = delay;
         this.waitingList = waitingList;
-
     }
 
     @Override
     public void run() {
         while (true) {
             try {
-                if (!waitingList.getWaiting().isEmpty()) { /// 데이터가 없으면
+                Customer customer = waitingList.poll();
+                if (customer != null) {
                     System.out.printf("%d desk 운영중%n", this.deskName);
-                    System.out.printf("처리한 손님 번호 %d ", this.waitingList.getWaiting().poll().getCustomer());
+                    System.out.printf("처리한 손님 번호 %d ", customer.getCustomer());
                     System.out.println();
-
-                } else {
-                    System.out.println("현재 손님 x");
+                    System.out.println("대기 손님 " + waitingList.getWaiting().size()); // queue.size
                 }
+
                 Thread.sleep(this.delay);
             } catch (InterruptedException e) {
                 e.printStackTrace();
