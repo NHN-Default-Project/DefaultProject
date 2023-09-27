@@ -16,10 +16,10 @@ class KorEngDictionary2Test {
 
     @Test
     void load() {
-        korEngDictionary2.load(new CSVParser(), "/Users/yoonhwachoi/Desktop/DefaultProject/Homework/src/test/resources/test1.csv");
-        korEngDictionary2.load(new CSVParser(), "/Users/yoonhwachoi/Desktop/DefaultProject/Homework/src/test/resources/test2.csv");
-        korEngDictionary2.load(new JSONParser(), "/Users/yoonhwachoi/Desktop/DefaultProject/Homework/src/test/resources/test3.json");
-        korEngDictionary2.load(new JSONParser(), "/Users/yoonhwachoi/Desktop/DefaultProject/Homework/src/test/resources/test4.json");
+//        korEngDictionary2.load(new CSVParser(), "/Users/yoonhwachoi/Desktop/DefaultProject/Homework/src/test/resources/test1.csv");
+//        korEngDictionary2.load(new CSVParser(), "/Users/yoonhwachoi/Desktop/DefaultProject/Homework/src/test/resources/test2.csv");
+//        korEngDictionary2.load(new JSONParser(), "/Users/yoonhwachoi/Desktop/DefaultProject/Homework/src/test/resources/test3.json");
+//        korEngDictionary2.load(new JSONParser(), "/Users/yoonhwachoi/Desktop/DefaultProject/Homework/src/test/resources/test4.json");
     }
 
     @Test

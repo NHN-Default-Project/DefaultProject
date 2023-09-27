@@ -1,12 +1,10 @@
 package com.nhnacademy.yunhwa.Exercise7_1;
 
-import org.w3c.dom.ranges.Range;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class CreateArrayListOfRandomNumsOfSpecifiedRange { // 7_1 예제
+public class CreatingArrayListOfRandomNumsOfSpecifiedRange { // 7_1 예제
     // 1 부터 지정된 최댓값 까지의 범위의 각각 다른 랜덤 정수를 포함하는 ArrayList() 생성
     // 리스트의 길이(정수의 개수) 와 정수에 허용되는 최댓값은 파라미터로 받기
     // 해당 메서드를 테스트하는 건 main() 에서 하기
@@ -15,7 +13,7 @@ public class CreateArrayListOfRandomNumsOfSpecifiedRange { // 7_1 예제
     private int intCount;
     private int maxIntNum;
 
-    public CreateArrayListOfRandomNumsOfSpecifiedRange() {
+    public CreatingArrayListOfRandomNumsOfSpecifiedRange() {
         intList = new ArrayList<>();
     }
 
