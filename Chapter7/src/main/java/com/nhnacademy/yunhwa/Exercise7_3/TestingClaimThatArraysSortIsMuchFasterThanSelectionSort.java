@@ -9,7 +9,7 @@ public class TestingClaimThatArraysSortIsMuchFasterThanSelectionSort {
         this.testWithStringArray = new TestingWithStringArray();
     }
 
-    public void printReslut(boolean isCorrect) {
+    public void printResult(boolean isCorrect) {
         if (isCorrect) {
             System.out.println(" Arrays.sort() 가 선택 정렬 보다 훨씬 빠르고 효율적이라는 주장이 맞았습니다 !!!");
         } else {
