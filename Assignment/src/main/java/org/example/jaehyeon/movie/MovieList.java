@@ -1,7 +1,10 @@
 package org.example.jaehyeon.movie;
 
 import java.text.Collator;
-import java.util.*;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
 
 public class MovieList {
     private final List<Movie> movieList;

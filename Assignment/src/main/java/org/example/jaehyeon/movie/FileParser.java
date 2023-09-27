@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class FileParser {
     private File file;
 
@@ -37,7 +36,7 @@ public class FileParser {
     }
 
     private Movie makeMovie(String[] movie) {
-        return new Movie.Builder()
+        return new Movie.MovieBuilder()
                 .movieID(movie[0])
                 .title(movie[1])
                 .koreanTitle(movie[2])
