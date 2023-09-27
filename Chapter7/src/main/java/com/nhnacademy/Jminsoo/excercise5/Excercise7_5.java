@@ -1,12 +1,15 @@
 package com.nhnacademy.Jminsoo.excercise5;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Excercise7_5 {
     public static void main(String[] args) {
         double[] doubleArr = makeArray();
-
+        Arrays.stream(doubleArr)
+                .sorted()
+                .forEach(System.out::println);
     }
 
     private static double[] makeArray() {
@@ -32,12 +35,13 @@ public class Excercise7_5 {
                 }
 
             } catch (InputMismatchException e) {
-                System.out.println("실수형태만 입력해주세요!");
+                throw new IllegalArgumentException("실수 형태만 입력해주세요!");
+
             }
         }
 
         return doubleArray;
     }
 
-    
+
 }
