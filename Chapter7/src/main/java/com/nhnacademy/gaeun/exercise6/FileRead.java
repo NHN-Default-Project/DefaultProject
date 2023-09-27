@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class FileRead {
-    File readFile;
-    File writeFile;
-    List<String> wordList = new ArrayList<>();
-    StringBuilder oneLine = new StringBuilder();
+    private final File readFile;
+    private final File writeFile;
+    private List<String> wordList = new ArrayList<>();
+    private StringBuilder oneLine = new StringBuilder();
 
 
     FileRead(String readPath, String writePath) {
@@ -25,7 +25,7 @@ public class FileRead {
                 wordToList((char) content);
             }
             System.out.println(wordList);
-            while (wordList.size() > 0) {
+            while (!wordList.isEmpty()) {
                 bw.write(wordList.get(0));
                 bw.newLine();
                 wordList.remove(0);

@@ -6,15 +6,18 @@ import java.util.Comparator;
 import java.util.Random;
 
 public class RandomStringArray {
-    int start = 'a';
-    int end = 'z';
-    int totalLength = 10;
-    Random random = new Random();
+    private static final int START = 'a';
+    private static final int END = 'z';
+    private static final int TOTAL_LENGTH = 10;
+    private final Random random = new Random();
 
-    String newString;
-    String[] list;
+    private String[] list;
 
-    RandomStringArray(int inputNum) {
+    public String[] getList() {
+        return list;
+    }
+
+    public RandomStringArray(int inputNum) {
         randomInput(inputNum);
     }
 
@@ -26,11 +29,10 @@ public class RandomStringArray {
     }
 
     public String makeString() {
-        newString = random.ints(start, end + 1)
-                .limit(totalLength)
+        return random.ints(START, END + 1)
+                .limit(TOTAL_LENGTH)
                 .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
                 .toString();
-        return newString;
     }
 
     public void selectionSort() {

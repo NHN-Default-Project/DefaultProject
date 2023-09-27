@@ -6,8 +6,8 @@ public class RandomArrayList {
         return list;
     }
 
-    double[] list;
-    RandomArrayList(int inputNum) {
+    private double[] list;
+    public RandomArrayList(int inputNum) {
         randomInput(inputNum);
     }
     public void randomInput(int inputNum) {

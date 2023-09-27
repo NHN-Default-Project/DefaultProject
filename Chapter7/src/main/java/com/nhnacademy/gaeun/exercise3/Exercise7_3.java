@@ -12,13 +12,11 @@ public class Exercise7_3 {
         long startTime;
         long endTime;
         long compTime;
-        double seconds;
 
         startTime = System.nanoTime();
         random1.selectionSort();
         endTime = System.nanoTime();
         compTime = endTime - startTime;
-        System.out.println();
         System.out.println("SelectionSort Time is: " + compTime);
 
         startTime = System.nanoTime();
@@ -26,21 +24,18 @@ public class Exercise7_3 {
         endTime = System.nanoTime();
         compTime = endTime - startTime;
         System.out.println("Arrays.sort Time is: " + compTime);
-        System.out.println();
 
         System.out.println("=========== 무작위 String 배열 ===========");
         startTime = System.nanoTime();
         random3.selectionSort();
         endTime = System.nanoTime();
         compTime = endTime - startTime;
-        System.out.println();
         System.out.println("SelectionSort Time is: " + compTime);
 
         startTime = System.nanoTime();
-        Arrays.sort(random4.list);
+        Arrays.sort(random4.getList());
         endTime = System.nanoTime();
         compTime = endTime - startTime;
         System.out.println("Arrays.sort Time is: " + compTime);
-        System.out.println();
     }
 }
