@@ -9,6 +9,7 @@ public class Excercise7_5 {
         double[] doubleArr = makeArray();
         Arrays.stream(doubleArr)
                 .sorted()
+                .filter(x -> x > 0)
                 .forEach(System.out::println);
     }
 
@@ -36,7 +37,6 @@ public class Excercise7_5 {
 
             } catch (InputMismatchException e) {
                 throw new IllegalArgumentException("실수 형태만 입력해주세요!");
-
             }
         }
 
