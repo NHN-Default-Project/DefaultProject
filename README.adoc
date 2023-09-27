@@ -60,9 +60,9 @@
 * [x] Chapter 1: Overview: The Mental Landscape
 * [x] Chapter 2: Programming in the Small I: Names and Things
 * [x] Chapter 3: Programming in the Small II: Control
-* [ ] Chapter 4: Programming in the Large I: Subroutines
-* [ ] Chapter 5: Programming in the Large II: Objects and Class
-* [ ] Chapter 6: Introduction to GUI Programming
+* [x] Chapter 4: Programming in the Large I: Subroutines
+* [x] Chapter 5: Programming in the Large II: Objects and Class
+* [-] Chapter 6: Introduction to GUI Programming
 * [ ] Chapter 7: Arrays, ArrayLists, and Records
 * [ ] Chapter 8: Correctness, Robustness, Efficiency
 * [ ] Chapter 9: Linked Data Structures and Recursion
@@ -80,3 +80,26 @@
 * [ ] JSON (serialization, marshalling)
 * [ ] Event driven programming
 * [ ] SICP, MIT 6.001
+
+
+.Commit Message
+* FEAT : 새로운 기능의 추가
+* FIX: 버그 수정
+* DOCS: 문서 수정(readme 파일등등)
+* STYLE: 스타일 관련 기능(코드 포맷팅, 세미콜론 누락, 코드 자체의 변경이 없는 경우)
+* REFACTOR: 코드 리펙토링
+* FILE : 파일 이동
+* RENAME : 파일 이름 바꾸는거
+* TEST : 테스트 코드
+* REMOVE : 파일 삭제
+* CHORE : 빌드 업무수정, 패키지 매니저 수정 등등 (gitignore수정)
+
+
+
+.공동 목표
+* 1. 기술 스킬 향상 : 프로그래밍 언어, 프레임워크, 도구 등 전반적으로 프로그래밍 기반을 다짐.
+* 2. 프로젝트 완료 및 성공 : 자그만한 프로젝트라도 성공적으로 완료하고 프로젝트 관리 및 협업 능력을 개발.
+* 3. 코드 품질과 유지보수 : 코드 리뷰, 테스트 주도 개발, 문서화 능력 향상.
+* 4. 문제 해결 능력 강화 : 알고리즘과 데이터 구조를 이해하고 전반적인 CS 지식 강화.
+* 5. 커뮤니케이션 및 협업 능력 강화 : 다른 팀원들과 원활하게 협력하고 의사소통 및 커뮤니케이션 강화.
+* 6. 최종 목표 : 웹 사이트 제작 프로젝트.

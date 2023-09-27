@@ -1,4 +1,4 @@
-package org.example;
+package org.example.jaehyeon.dict;
 
 import java.util.List;
 
