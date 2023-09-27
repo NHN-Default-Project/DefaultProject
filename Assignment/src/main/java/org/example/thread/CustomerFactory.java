@@ -28,12 +28,12 @@ public class CustomerFactory implements Runnable {
 
     @Override
     public void run() {
-        while (true) {
+        while (!Thread.currentThread().isInterrupted()) {
             queue.add(makeCustomer());
             try {
                 Thread.sleep(delay);
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                Thread.currentThread().interrupt();
             }
         }
     }

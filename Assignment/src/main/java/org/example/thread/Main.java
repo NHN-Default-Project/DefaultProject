@@ -9,7 +9,7 @@ public class Main {
         CustomerQueue waitingLine = new CustomerQueue();
         Thread customerFactory = new Thread(new CustomerFactory(500, waitingLine));
         Thread desk1 = new Thread(new Desk(1500, waitingLine));
-        Thread desk2 = new Thread(new Desk(3000, waitingLine));
+        Thread desk2 = new Thread(new Desk(2000, waitingLine));
 
         Thread customer = new Thread(customerFactory);
 

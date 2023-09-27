@@ -21,23 +21,20 @@ public class Desk implements Runnable {
 
     @Override
     public void run() {
-        while (true) {
-            Customer customer = waitingLine.poll();
-            if (customer != null) {
+        while (!Thread.currentThread().isInterrupted()) {
+            try {
+                Customer customer = waitingLine.poll();
                 System.out.printf("%d번 창구에서 %d번 고객님이 처리되었습니다.%n", this.deskNumber, customer.getCustomerNumber());
-            }
 
+            } catch (NullPointerException e) {
+                System.out.printf("%d번 창구 대기중%n", this.deskNumber);
+            }
 
             try {
                 Thread.sleep(delay);
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                Thread.currentThread().interrupt();
             }
-
-
         }
-
     }
-
-
 }

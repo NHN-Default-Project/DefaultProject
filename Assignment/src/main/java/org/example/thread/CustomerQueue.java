@@ -10,12 +10,17 @@ public class CustomerQueue {
         this.waitingLine = new LinkedList<>();
     }
 
-    public void add(Customer customer) {
+    public synchronized void add(Customer customer) {
         System.out.printf("손님 입장. 현재 대기 줄 : %d %n", this.waitingLine.size());
         this.waitingLine.add(customer);
     }
 
-    public Customer poll() {
-        return this.waitingLine.poll();
+    public synchronized Customer poll() {
+        Customer customer = this.waitingLine.poll();
+        if (customer == null) {
+            throw new NullPointerException("null Check!");
+        }
+        return customer;
     }
+
 }
