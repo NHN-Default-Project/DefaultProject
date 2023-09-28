@@ -26,9 +26,8 @@ public class UpgradeDictionary implements Dictionary2 {
     public List<String> findEngByKor(String kor) {
         if (dictionary.containsKey(kor)) {
             return dictionary.get(kor);
-        } else {
-            return Collections.emptyList();
         }
+        return Collections.emptyList();
     }
 
     @Override
