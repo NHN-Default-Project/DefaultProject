@@ -17,7 +17,7 @@ public class Exercise7_2 {
             printMatrix(matrix);
             printMatrix(transposeMatrix);
         } catch (InputMismatchException e) {
-            throw new InputMismatchException("잘못 입력하셨습니다");
+            throw new InputMismatchException("잘못 입력하셨습니다.");
         }
     }
 
