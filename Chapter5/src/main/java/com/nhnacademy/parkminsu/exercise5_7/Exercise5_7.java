@@ -8,9 +8,9 @@ public class Exercise5_7 {
     private static final int RANGE = 10;
 
     public static void main(String[] args) {
-        IntQuestion[] substractOrAdditonQuestion = createArrayIntQuestion();
-        int[] answer = writeAnswer(substractOrAdditonQuestion);
-        checkAnswerList(substractOrAdditonQuestion, answer);
+        IntQuestion[] substrataAdditionQuestion = createArrayIntQuestion();
+        int[] answer = writeAnswer(substrataAdditionQuestion);
+        checkAnswerList(substrataAdditionQuestion, answer);
 
     }
 

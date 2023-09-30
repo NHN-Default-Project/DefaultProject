@@ -19,7 +19,6 @@ public class Game {
         BlackjackHand dealer = new BlackjackHand();
         Deck deck = new Deck(false);
         deck.shuffle();
-        String callSign = "";
         String answer = "";
         Scanner scanner = new Scanner(System.in);
         do {
@@ -92,7 +91,7 @@ public class Game {
             user.addCard(deck.dealCard());
             cardAction.showCard(user);
 
-            if (!blackjackCondition.notBustCondtion(user)) {
+            if (!blackjackCondition.notBustCondition(user)) {
                 cardAction.showCard(user);
                 System.out.println(user.getBlackjackValue());
                 System.out.println("사용자는 21을 초과했습니다.");
