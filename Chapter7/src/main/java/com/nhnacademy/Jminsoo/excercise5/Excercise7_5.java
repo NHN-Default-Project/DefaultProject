@@ -16,18 +16,18 @@ public class Excercise7_5 {
     private static double[] makeArray() {
         double inputNum = 0;
         double[] doubleArray = new double[100];
-        Scanner scanner = new Scanner(System.in);
+
         boolean isInputZero = false;
         int count = 0;
 
+        try (Scanner scanner = new Scanner(System.in)) {
 
-        while (count < 100 && !isInputZero) {
-            try {
+            while (count < 100 && !isInputZero) {
                 System.out.print("값을 입력해주세요 : ");
                 inputNum = scanner.nextDouble();
                 System.out.println();
-                if (inputNum == 0) {
-                    isInputZero = true;
+                if (isInputZero(inputNum)) {
+                    break;
                 } else if (inputNum < 0) {
                     System.out.println("양의 실수만 입력해주세요!");
                 } else {
@@ -35,12 +35,20 @@ public class Excercise7_5 {
                     count++;
                 }
 
-            } catch (InputMismatchException e) {
-                throw new IllegalArgumentException("실수 형태만 입력해주세요!");
             }
+        } catch (InputMismatchException e) {
+            throw new IllegalArgumentException("실수 형태만 입력해주세요!");
         }
 
         return doubleArray;
+    }
+
+    private static boolean isInputZero(double input) {
+        if (input == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 

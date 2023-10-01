@@ -7,16 +7,22 @@ public class TransposeArray {
     private int[][] transposeArray;
 
     public int[][] getOriginArray() {
-        return originArray;
+        return this.originArray;
     }
 
     public int[][] getTransposeArray() {
-        return transposeArray;
+        return this.transposeArray;
     }
 
     public TransposeArray(int col, int row, int range) {
         this.originArray = makeArray(col, row, range);
-        this.transposeArray = transposeArray(this.originArray);
+
+        try {
+            this.transposeArray = transposeArray(this.originArray);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException();
+        }
     }
 
     public void printTransposeArray() {

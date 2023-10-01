@@ -4,8 +4,8 @@ public class RandomArray {
 
     private int[] array;
 
-    public RandomArray(int number, int range) {
-        this.array = makeArray(number, range);
+    public RandomArray(int number, int max) {
+        this.array = makeArray(number, max);
     }
 
     public int[] makeArray(int number, int range) {
