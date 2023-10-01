@@ -1,8 +1,6 @@
 package org.example.jaehyeon.tribe;
 
-
 import org.example.jaehyeon.starcraft.Unit;
-
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Random;
@@ -16,7 +14,7 @@ public abstract class Tribe {
         try {
             String selectUnit = unit[random.nextInt(unit.length)];
 
-            return (Unit) this.getClass().getMethod(selectUnit).invoke(selectUnit);
+            return (Unit) this.getClass().getMethod(selectUnit).invoke(this);
 
         } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
             throw new RuntimeException(e);
@@ -24,4 +22,7 @@ public abstract class Tribe {
 
     }
 
+    public List<Unit> getUnitList() {
+        return unitList;
+    }
 }
