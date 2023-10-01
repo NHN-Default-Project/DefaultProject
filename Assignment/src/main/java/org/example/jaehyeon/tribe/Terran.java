@@ -1,6 +1,7 @@
 package org.example.jaehyeon.tribe;
 
 import org.example.jaehyeon.starcraft.terran.*;
+
 import java.util.ArrayList;
 
 public class Terran extends Tribe {
@@ -10,9 +11,7 @@ public class Terran extends Tribe {
 
     public Terran() {
         unitList = new ArrayList<>();
-        for (int i = 0; i < PRODUCTION_NUMBER; i++) {
-            unitList.add(randomProductionUnit(UNIT));
-        }
+        addUnit(PRODUCTION_NUMBER, UNIT);
     }
 
     public Marine marine() {
