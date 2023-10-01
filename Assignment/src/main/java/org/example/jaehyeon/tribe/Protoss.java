@@ -11,9 +11,7 @@ public class Protoss extends Tribe {
 
     public Protoss() {
         unitList = new ArrayList<>();
-        for (int i = 0; i < PRODUCTION_NUMBER; i++) {
-            unitList.add(randomProductionUnit(UNIT));
-        }
+        addUnit(PRODUCTION_NUMBER, UNIT);
     }
 
     public Zealot zealot() {
