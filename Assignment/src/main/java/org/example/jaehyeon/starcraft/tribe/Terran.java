@@ -1,4 +1,4 @@
-package org.example.jaehyeon.tribe;
+package org.example.jaehyeon.starcraft.tribe;
 
 import org.example.jaehyeon.starcraft.terran.*;
 
