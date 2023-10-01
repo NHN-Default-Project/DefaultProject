@@ -1,0 +1,4 @@
+package starcraft.terran;
+
+public class Tank {
+}
