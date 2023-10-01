@@ -1,7 +1,6 @@
-package starcraft.terran;
+package org.example.jaehyeon.starcraft.terran;
 
-import starcraft.ability.Flyable;
-import starcraft.Unit;
+import org.example.jaehyeon.starcraft.Unit;
 
 public class Goliath extends Unit {
     private static final int EXTRA_ATTACK_POWER = 5;
