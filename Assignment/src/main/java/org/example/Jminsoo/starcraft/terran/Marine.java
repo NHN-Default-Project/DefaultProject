@@ -1,9 +1,8 @@
 package org.example.Jminsoo.starcraft.terran;
 
-import org.example.Jminsoo.starcraft.raceType.Terran;
 import org.example.Jminsoo.starcraft.stateType.Walkable;
 
-public class Marine<S extends Walkable> implements Walkable<S>, Terran {
+public class Marine<S extends Walkable> implements Walkable<S> {
 
     private int defense;
     private final int attack;

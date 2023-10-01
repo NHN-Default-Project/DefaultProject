@@ -17,7 +17,7 @@ public class gameControl {
         Unit attackUnit = myUnits.get(attackUnitIndex);
         Unit hitUnit = enemyUnits.get(hitUnitIndex);
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("아군 유닛 %s가 적군 유닛 %s를 공격!%n", ))
+//        sb.append(String.format("아군 유닛 %s가 적군 유닛 %s를 공격!%n", attackUnit.get));
 
         hitUnit.hit(myUnits.get(attackUnitIndex).getAttack());
         dieFilter();
