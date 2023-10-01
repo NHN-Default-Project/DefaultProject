@@ -4,21 +4,22 @@ import com.nhnacademy.parkminsu.Exercise5_7.IntQuestion;
 
 public class AdditionQuestion implements IntQuestion {
 
-    private int a, b;  // The numbers in the problem.
+    private final int firstNum;
+    private final int secondNum;  // The numbers in the problem.
 
     public AdditionQuestion() { // constructor
-        a = (int) (Math.random() * 50 + 1);
-        b = (int) (Math.random() * 50);
+        firstNum = (int) (Math.random() * 50 + 1);
+        secondNum = (int) (Math.random() * 50);
     }
 
     @Override
     public String getQuestion() {
-        return "What is " + a + " + " + b + " ?";
+        return "What is " + firstNum + " + " + secondNum + " ?";
     }
 
     @Override
     public int getCorrectAnswer() {
-        return a + b;
+        return firstNum + secondNum;
     }
 
 }
