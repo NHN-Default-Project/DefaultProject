@@ -12,19 +12,18 @@ public class RandomStringArray {
     private final Random random = new Random();
 
     private String[] list;
+    public RandomStringArray(int inputNum) {
+        randomInput(inputNum);
+    }
 
     public String[] getList() {
         return list;
     }
 
-    public RandomStringArray(int inputNum) {
-        randomInput(inputNum);
-    }
-
     public void randomInput(int inputNum) {
-        list = new String[inputNum];
+        this.list = new String[inputNum];
         for(int i = 0; i < inputNum; i++) {
-            list[i] = makeString();
+            this.list[i] = makeString();
         }
     }
 
@@ -36,16 +35,16 @@ public class RandomStringArray {
     }
 
     public void selectionSort() {
-        for(int i = 0; i < list.length; i++) {
+        for(int i = 0; i < this.list.length; i++) {
             int min = i;
-            for(int j = i+1; j < list.length; j++) {
-                if(list[min].compareTo(list[j]) > 0) {
+            for(int j = i+1; j < this.list.length; j++) {
+                if(this.list[min].compareTo(this.list[j]) > 0) {
                     min = j;
                 }
             }
-            String tmp = list[i];
-            list[i] = list[min];
-            list[min] = tmp;
+            String tmp = this.list[i];
+            this.list[i] = this.list[min];
+            this.list[min] = tmp;
         }
     }
 }

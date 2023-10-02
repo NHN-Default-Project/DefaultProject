@@ -27,6 +27,7 @@ public class Main {
         }
         quickSort(inputArray);
         printArray(inputArray);
+        scanner.close();
     }
 
     public static void quickSort(int[] inputArray) {

@@ -12,7 +12,7 @@ public class FileRead {
     private StringBuilder oneLine = new StringBuilder();
 
 
-    FileRead(String readPath, String writePath) {
+    public FileRead(String readPath, String writePath) {
         this.readFile = new File(readPath);
         this.writeFile = new File(writePath);
     }

@@ -38,4 +38,5 @@ public class Exercise7_3 {
         compTime = endTime - startTime;
         System.out.println("Arrays.sort Time is: " + compTime);
     }
+
 }

@@ -14,7 +14,7 @@ public class Exercise7_1 {
         System.out.println("n의 최대값을 갖는 랜덤 ArrayList를 반환해드립니다.");
         System.out.println("원하시는 정수의 개수와 최대값을 입력해주세요. ex: 10 100");
         while(true) {
-            try{
+            try {
                 int intNum = scanner.nextInt();
                 int maxVal = scanner.nextInt();
 
@@ -23,8 +23,12 @@ public class Exercise7_1 {
             } catch(InputMismatchException ime) {
                 System.out.println("정수값을 입력해주세요!");
                 scanner.nextLine();
+            } catch (IllegalArgumentException e) {
+                System.out.println("정수값을 입력해주세요!");
+                scanner.nextLine();
             }
         }
+        scanner.close();
     }
 
     public static List makeArrayList(int intNum, int maxVal) {
