@@ -1,6 +1,6 @@
 package org.example.jaehyeon.starcraft.tribe;
 
-import org.example.jaehyeon.starcraft.zerg.*;
+import org.example.jaehyeon.starcraft.unit.zerg.*;
 
 import java.util.ArrayList;
 

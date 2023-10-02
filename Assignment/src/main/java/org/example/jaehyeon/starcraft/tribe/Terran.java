@@ -1,6 +1,6 @@
 package org.example.jaehyeon.starcraft.tribe;
 
-import org.example.jaehyeon.starcraft.terran.*;
+import org.example.jaehyeon.starcraft.unit.terran.*;
 
 import java.util.ArrayList;
 
