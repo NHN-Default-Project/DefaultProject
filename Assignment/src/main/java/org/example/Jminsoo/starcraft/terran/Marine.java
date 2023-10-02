@@ -1,8 +1,9 @@
 package org.example.Jminsoo.starcraft.terran;
 
+import org.example.Jminsoo.starcraft.stateType.Unit;
 import org.example.Jminsoo.starcraft.stateType.Walkable;
 
-public class Marine<S extends Walkable> implements Walkable<S> {
+public class Marine implements Walkable {
 
     private int defense;
     private final int attack;
@@ -16,7 +17,8 @@ public class Marine<S extends Walkable> implements Walkable<S> {
 
     @Override
     public boolean isDie() {
-        if (defense < 0) {
+        if (defense <= 0) {
+            System.out.printf("%s가 파괴되었습니다!%n", getName());
             return true;
         } else {
             return false;
@@ -46,7 +48,16 @@ public class Marine<S extends Walkable> implements Walkable<S> {
     }
 
     @Override
-    public void attack(S unit) {
-        unit.hit(this.getAttack());
+    public void attack(Unit unit) {
+        if (this.canAttackFlayble) {
+            unit.hit(this.getAttack());
+        } else {
+            System.out.println("공격이 빗나갔습니다!");
+        }
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
     }
 }

@@ -2,6 +2,10 @@ package com.nhnacademy.Jminsoo.excercise3;
 
 import java.util.Arrays;
 
+/*
+ *https://math.hws.edu/javanotes/c7/exercises.html
+ * Collection.Sort와 다른 sort의 시간 속도를 비교하는 문제
+ * */
 
 public class Excercise7_3 {
     static final int LENGTH = 10_000;

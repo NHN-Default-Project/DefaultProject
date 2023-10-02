@@ -6,6 +6,6 @@ import org.example.Jminsoo.starcraft.terran.Goliath;
 public class GoliathFactory extends UnitFactory {
     @Override
     protected Unit createUnit() {
-        return new Goliath<>();
+        return new Goliath();
     }
 }

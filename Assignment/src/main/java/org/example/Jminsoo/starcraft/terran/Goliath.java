@@ -4,7 +4,11 @@ import org.example.Jminsoo.starcraft.attackType.CanAttackFlyable;
 import org.example.Jminsoo.starcraft.stateType.Unit;
 import org.example.Jminsoo.starcraft.stateType.Walkable;
 
-public class Goliath<S extends Unit & Walkable<S>> implements CanAttackFlyable<S>, Walkable<S> {
+public class Goliath implements CanAttackFlyable, Walkable {
+
+    /*
+    TODO: 지상 유닛은 공중 유닛을 공격 못하게 변경하라!!!!
+    * */
     private int defense;
     private final int attack;
     private final String name;
@@ -16,7 +20,8 @@ public class Goliath<S extends Unit & Walkable<S>> implements CanAttackFlyable<S
     }
 
     public boolean isDie() {
-        if (defense < 0) {
+        if (defense <= 0) {
+            System.out.printf("%s가 파괴되었습니다!%n", getName());
             return true;
         } else {
             return false;
@@ -27,12 +32,18 @@ public class Goliath<S extends Unit & Walkable<S>> implements CanAttackFlyable<S
         this.defense = this.defense - attack;
     }
 
+
     public int getAttack() {
         return this.attack;
     }
 
     public int getDefense() {
         return this.defense;
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
     }
 
     @Override
@@ -43,8 +54,12 @@ public class Goliath<S extends Unit & Walkable<S>> implements CanAttackFlyable<S
     }
 
     @Override
-    public void attack(S unit) {
-        unit.hit(this.getAttack());
+    public void attack(Unit unit) {
+        if (this.canAttackFlayble) {
+            unit.hit(this.getAttack());
+        } else {
+            System.out.println("공격이 빗나갔습니다!");
+        }
     }
 
 }

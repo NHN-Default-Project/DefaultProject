@@ -1,6 +1,9 @@
 package org.example.Jminsoo.starcraft.stateType;
 
-public interface Walkable<S extends Walkable> extends Unit {
-    public void attack(S unit);
+public interface Walkable extends Unit {
+
+    boolean canAttackFlayble = false;
+//    public void attack(Walkable unit);
+
 
 }

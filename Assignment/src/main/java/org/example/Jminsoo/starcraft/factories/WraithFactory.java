@@ -6,6 +6,6 @@ import org.example.Jminsoo.starcraft.terran.Wraith;
 public class WraithFactory extends UnitFactory {
     @Override
     protected Unit createUnit() {
-        return new Wraith<>();
+        return new Wraith();
     }
 }

@@ -28,7 +28,7 @@ public class UnitCreator {
         return this.units;
     }
 
-    public void randomFactory() {
+    public UnitCreator randomFactory() {
 
         int randNum;
         UnitFactory factory;
@@ -54,6 +54,7 @@ public class UnitCreator {
         } else {
 
         }
+        return this;
 
     }
 
