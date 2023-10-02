@@ -2,21 +2,23 @@ package org.example.gaeun.starcraft.kinds;
 
 import org.example.gaeun.starcraft.Unit;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Kind {
     private String name;
     public Kind() {
     }
-    public Map<String, Unit> getUnits() {
-        return new HashMap<>();
+    public List<Unit> getUnits() {
+        return new ArrayList<>();
     }
     public boolean canFly() {return false;}
     public void printStatus(){
 
     }
-    public int getAttackPow(String ourForce) {
+    public int getAttackPow(int ourForce) {
         return 0;
     }
     public String getName() {
@@ -26,10 +28,10 @@ public class Kind {
     public void setName(String name) {
         this.name = name;
     }
-    public int setDefensivePow(String enemyForce, int attackPow) {
+    public int setDefensivePow(int enemyForce, int attackPow) {
         return 0;
     }
-    public void removeUnit(String unit){
+    public void removeUnit(int unit){
 
     }
 }

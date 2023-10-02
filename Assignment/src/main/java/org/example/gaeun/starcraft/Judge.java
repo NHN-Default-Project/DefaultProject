@@ -41,6 +41,7 @@ public class Judge implements Runnable {
                 }
             }
             if (judgeWinner(Starcraft.userKind, Starcraft.computerKind)) {
+                GameStart.setFinished();
                 System.out.println("=============================================");
                 System.out.println("게임이 종료되었습니다.");
                 printJudgement();

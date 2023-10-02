@@ -1,33 +1,59 @@
 package org.example.gaeun.starcraft.kinds;
 
 import org.example.gaeun.starcraft.Unit;
+import org.example.gaeun.starcraft.terranUnits.*;
 import org.example.gaeun.starcraft.zergUnits.*;
 
-import java.util.HashMap;
-import java.util.Map;
+
+import java.util.*;
 
 public class Zerg extends Kind {
     private String name;
-    private Map<String, Unit> units;
+    private List<Unit> units;
+    private int UNIT_NUM = 8;
+    private int TOTAL_UNIT_NUM = 6;
 
     public Zerg() {
-        units = new HashMap<>();
-        units.put("zergling", new Zergling());
-        units.put("hydralisk", new Hydralisk());
-        units.put("ultralisk", new Ultralisk());
-        units.put("mutalisk", new Mutalisk());
-        units.put("guardian", new Guardian());
-        units.put("queen", new Queen());
+        units = new ArrayList<>(UNIT_NUM);
+        putUnit(UNIT_NUM);
     }
+
+    public void putUnit(int num) {
+        Random random = new Random();
+        for(int i = 0; i < num; i++) {
+            int randNum = random.nextInt(TOTAL_UNIT_NUM) + 1;
+            units.add(randomUnit(randNum));
+        }
+    }
+
+    public Unit randomUnit(int num) {
+        switch (num) {
+            case 1:
+                return new Zergling();
+            case 2:
+                return new Hydralisk();
+            case 3:
+                return new Ultralisk();
+            case 4:
+                return new Mutalisk();
+            case 5:
+                return new Guardian();
+            case 6:
+                return new Queen();
+            default:
+                return new Zergling();
+        }
+    }
+
     @Override
-    public Map<String, Unit> getUnits() {
+    public List<Unit> getUnits() {
         return units;
     }
     @Override
     public void printStatus() {
         System.out.println(getName() + ": Zerg");
         int i = 0;
-        for (Unit unit : units.values()) {
+        for (Unit unit : units) {
             System.out.printf("%d. ", i++);
             unit.printStatus();
         }
@@ -35,7 +61,7 @@ public class Zerg extends Kind {
     }
 
     @Override
-    public int getAttackPow(String ourForce) {
+    public int getAttackPow(int ourForce) {
         return units.get(ourForce).getAttackPow();
     }
 
@@ -47,11 +73,11 @@ public class Zerg extends Kind {
         this.name = name;
     }
     @Override
-    public int setDefensivePow(String enemyForce, int attackPow) {
+    public int setDefensivePow(int enemyForce, int attackPow) {
         return units.get(enemyForce).setDefensivePow(attackPow);
     }
     @Override
-    public void removeUnit(String unit) {
+    public void removeUnit(int unit) {
         units.remove(unit);
     }
 

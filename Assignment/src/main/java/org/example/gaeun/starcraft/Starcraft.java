@@ -35,7 +35,7 @@ public class Starcraft {
         computerKind.printStatus();
     }
 
-    public void attack(Kind aggressor, Kind defender, String ourForce, String enemyForce) throws InterruptedException {
+    public void attack(Kind aggressor, Kind defender, int ourForce, int enemyForce) throws InterruptedException {
         int attackPow = aggressor.getAttackPow(ourForce);
         if(defender.setDefensivePow(enemyForce, attackPow) <= 0) {
             defender.removeUnit(enemyForce);
@@ -43,7 +43,10 @@ public class Starcraft {
         judge.startRunning();
     }
 
-    public boolean canAttack(Kind aggressor, Kind defender, String ourForce, String enemyForce) throws AttackCouldNotException {
+    public boolean canAttack(Kind aggressor, Kind defender, int ourForce, int enemyForce) throws AttackCouldNotException {
+        if(!canAttack(aggressor, defender)) {
+            return false;
+        }
         if(aggressor.getUnits().get(ourForce).canFly()
             || aggressor.getUnits().get(ourForce).hasItems()) {
             return true;
@@ -52,5 +55,18 @@ public class Starcraft {
             return true;
         }
         throw new AttackCouldNotException();
+    }
+    public boolean canAttack(Kind aggressor, Kind defender) {
+        for(Unit unit : aggressor.getUnits()) {
+            if(unit.hasItems() || unit.canFly()) {
+                return true;
+            }
+        }
+        for(Unit unit : defender.getUnits()) {
+            if(!unit.canFly()) {
+                return true;
+            }
+        }
+        return false;
     }
 }

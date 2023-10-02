@@ -18,19 +18,18 @@ public class Computer extends Starcraft{
         Random random = new Random();
         while(true) {
             try{
-                List<String> keyList = new ArrayList<>(computerKind.getUnits().keySet());
-                String ourForce = keyList.get(random.nextInt(keyList.size()));
-                keyList = new ArrayList<>(userKind.getUnits().keySet());
-                String enemyForce = keyList.get(random.nextInt(keyList.size()));
-                System.out.println(ourForce + " " + enemyForce);
+                int ourForce = random.nextInt(computerKind.getUnits().size());
+                int enemyForce = random.nextInt(userKind.getUnits().size());
 
-                if(canAttack(computerKind, userKind, ourForce.toLowerCase(), enemyForce.toLowerCase())) {
-                    attack(computerKind, userKind, ourForce.toLowerCase(), enemyForce.toLowerCase());
+                if(canAttack(computerKind, userKind, ourForce, enemyForce)) {
+                    attack(computerKind, userKind, ourForce, enemyForce);
                     break;
                 }
+                System.out.println(computerKind.getName() + "에서 공격할 수 있는 유닛이 없습니다!");
+                break;
             } catch (InputMismatchException | AttackCouldNotException | NullPointerException e){
 
-            } catch (InterruptedException e) {
+            } catch (InterruptedException | IllegalArgumentException e) {
             }
         }
     }

@@ -3,7 +3,6 @@ package org.example.gaeun.starcraft;
 import org.example.gaeun.starcraft.exception.AttackCouldNotException;
 
 import java.util.InputMismatchException;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class User extends Starcraft {
@@ -27,24 +26,29 @@ public class User extends Starcraft {
             }
         }
     }
+
     public void attackUser() {
         Scanner scanner = new Scanner(System.in);
-        while(true) {
+        while (true) {
             try {
                 System.out.printf("공격을 수행할 아군 유닛과 공격할 적군 유닛을 선택하세요: ");
-                String ourForce = scanner.next();
-                String enemyForce = scanner.next();
+                int ourForce = scanner.nextInt();
+                int enemyForce = scanner.nextInt();
 
-                if(canAttack(userKind, computerKind, ourForce.toLowerCase(), enemyForce.toLowerCase())) {
-                    attack(userKind, computerKind, ourForce.toLowerCase(), enemyForce.toLowerCase());
+                if (canAttack(userKind, computerKind, ourForce, enemyForce)) {
+                    attack(userKind, computerKind, ourForce, enemyForce);
                     break;
                 }
-            } catch(NullPointerException e) {
+                System.out.println(userKind.getName() + "에서 공격할 수 있는 유닛이 없습니다!");
+                break;
+            } catch (IndexOutOfBoundsException e) {
                 System.out.println("입력된 유닛을 찾을 수 없습니다. 다시 확인 후 입력해주세요!");
             } catch (AttackCouldNotException acne) {
                 System.out.println("날 수 없는 유닛은 날 수 있는 유닛을 공격할 수 없습니다. 다시 입력해주세요.");
+            } catch (InputMismatchException e) {
+                System.out.println("공격할 유닛과 대상을 인덱스 값으로 입력해주세요!");
             } catch (InterruptedException e) {
-
+                System.out.println("스레드가 인터럽트되었습니다.");
             }
         }
 //        scanner.close();

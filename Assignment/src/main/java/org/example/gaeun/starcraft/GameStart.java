@@ -20,8 +20,14 @@ public class GameStart {
 
         while(!isFinished) {
             user.attackUser();
+            if(isFinished) {
+                break;
+            }
             starcraft.printStatus();
             computer.attackComputer();
+            if(isFinished) {
+                break;
+            }
             starcraft.printStatus();
         }
 
