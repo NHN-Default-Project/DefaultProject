@@ -8,5 +8,7 @@ public class Zealot extends Unit {
 
     public Zealot() {
         setAbility(EXTRA_ATTACK_POWER, EXTRA_DEFENSE_POWER);
+        setItem();
+        setCanFly();
     }
 }

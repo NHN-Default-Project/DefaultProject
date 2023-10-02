@@ -8,5 +8,12 @@ public class Scout extends Unit {
 
     public Scout() {
         setAbility(EXTRA_ATTACK_POWER, EXTRA_DEFENSE_POWER);
+        setItem();
+        setCanFly();
+    }
+
+    @Override
+    public boolean canFly() {
+        return true;
     }
 }

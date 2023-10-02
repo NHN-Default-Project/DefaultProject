@@ -8,5 +8,12 @@ public class Hydralisk extends Unit {
 
     public Hydralisk() {
         setAbility(EXTRA_ATTACK_POWER, EXTRA_DEFENSE_POWER);
+        setItem();
+        setCanFly();
+    }
+
+    @Override
+    public boolean hasItem() {
+        return true;
     }
 }

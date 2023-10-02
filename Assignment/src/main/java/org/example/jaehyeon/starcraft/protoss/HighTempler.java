@@ -8,5 +8,7 @@ public class HighTempler extends Unit {
 
     public HighTempler() {
         setAbility(EXTRA_ATTACK_POWER, EXTRA_DEFENSE_POWER);
+        setItem();
+        setCanFly();
     }
 }

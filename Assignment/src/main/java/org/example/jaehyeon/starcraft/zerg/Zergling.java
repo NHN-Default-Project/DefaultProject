@@ -9,5 +9,7 @@ public class Zergling extends Unit {
 
     public Zergling() {
         setAbility(EXTRA_ATTACK_POWER, EXTRA_DEFENSE_POWER);
+        setItem();
+        setCanFly();
     }
 }

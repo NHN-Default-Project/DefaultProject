@@ -8,5 +8,12 @@ public class Corsair extends Unit {
 
     public Corsair() {
         setAbility(EXTRA_ATTACK_POWER, EXTRA_DEFENSE_POWER);
+        setItem();
+        setCanFly();
+    }
+
+    @Override
+    public boolean canFly() {
+        return true;
     }
 }

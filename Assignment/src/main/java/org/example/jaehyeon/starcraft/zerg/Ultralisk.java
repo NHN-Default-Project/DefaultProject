@@ -8,5 +8,7 @@ public class Ultralisk extends Unit {
 
     public Ultralisk() {
         setAbility(EXTRA_ATTACK_POWER, EXTRA_DEFENSE_POWER);
+        setItem();
+        setCanFly();
     }
 }

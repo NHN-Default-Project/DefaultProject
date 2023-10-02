@@ -8,5 +8,7 @@ public class Tank extends Unit {
 
     public Tank() {
         setAbility(EXTRA_ATTACK_POWER, EXTRA_DEFENSE_POWER);
+        setItem();
+        setCanFly();
     }
 }

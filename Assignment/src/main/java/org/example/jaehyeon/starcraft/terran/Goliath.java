@@ -8,6 +8,14 @@ public class Goliath extends Unit {
 
     public Goliath() {
         setAbility(EXTRA_ATTACK_POWER, EXTRA_DEFENSE_POWER);
+        setCanFly();
+        setItem();
     }
+
+    @Override
+    public boolean hasItem() {
+        return true;
+    }
+
 
 }
