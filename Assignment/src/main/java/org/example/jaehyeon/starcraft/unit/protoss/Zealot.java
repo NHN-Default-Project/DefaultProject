@@ -1,12 +1,12 @@
-package org.example.jaehyeon.starcraft.protoss;
+package org.example.jaehyeon.starcraft.unit.protoss;
 
-import org.example.jaehyeon.starcraft.Unit;
+import org.example.jaehyeon.starcraft.unit.Unit;
 
-public class HighTempler extends Unit {
+public class Zealot extends Unit {
     private static final int EXTRA_ATTACK_POWER = 5;
     private static final int EXTRA_DEFENSE_POWER = 20;
 
-    public HighTempler() {
+    public Zealot() {
         setAbility(EXTRA_ATTACK_POWER, EXTRA_DEFENSE_POWER);
         setItem();
         setCanFly();

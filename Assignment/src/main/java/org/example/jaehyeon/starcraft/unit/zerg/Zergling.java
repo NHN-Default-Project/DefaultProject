@@ -1,6 +1,6 @@
-package org.example.jaehyeon.starcraft.zerg;
+package org.example.jaehyeon.starcraft.unit.zerg;
 
-import org.example.jaehyeon.starcraft.Unit;
+import org.example.jaehyeon.starcraft.unit.Unit;
 
 public class Zergling extends Unit {
 

@@ -1,4 +1,4 @@
-package org.example.jaehyeon.starcraft;
+package org.example.jaehyeon.starcraft.unit;
 
 public abstract class Unit implements Item, Flyable {
 

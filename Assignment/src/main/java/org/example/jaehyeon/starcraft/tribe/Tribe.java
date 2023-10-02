@@ -1,6 +1,6 @@
 package org.example.jaehyeon.starcraft.tribe;
 
-import org.example.jaehyeon.starcraft.Unit;
+import org.example.jaehyeon.starcraft.unit.Unit;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;

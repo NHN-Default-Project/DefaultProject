@@ -1,6 +1,6 @@
-package org.example.jaehyeon.starcraft.protoss;
+package org.example.jaehyeon.starcraft.unit.protoss;
 
-import org.example.jaehyeon.starcraft.Unit;
+import org.example.jaehyeon.starcraft.unit.Unit;
 
 public class Scout extends Unit {
     private static final int EXTRA_ATTACK_POWER = 5;

@@ -1,6 +1,6 @@
-package org.example.jaehyeon.starcraft.terran;
+package org.example.jaehyeon.starcraft.unit.terran;
 
-import org.example.jaehyeon.starcraft.Unit;
+import org.example.jaehyeon.starcraft.unit.Unit;
 
 public class Tank extends Unit {
     private static final int EXTRA_ATTACK_POWER = 7;
