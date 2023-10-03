@@ -2,8 +2,8 @@ package org.example.Jminsoo.starcraft.terran;
 
 import org.example.Jminsoo.starcraft.stateType.Unit;
 
-public class Goliath extends Unit {
-    public Goliath() {
-        super(15, 5, "Goliath", true, false);
+public class Tank extends Unit {
+    public Tank() {
+        super(15, 7, "Tank", false, false);
     }
 }
