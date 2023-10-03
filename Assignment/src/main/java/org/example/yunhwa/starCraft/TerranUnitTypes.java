@@ -7,6 +7,7 @@ public class TerranUnitTypes implements RaceUnitType { // Marine Tank Goliath Wr
     Goliath goliath;
     Wraith wraith;
     Valkyrie valkyrie;
+    BattleCruzer battleCruzer;
 
     @Override
     public int getRaceUnitTypeCount() {

@@ -7,6 +7,7 @@ public class ZergUnitTypes implements RaceUnitType { // Zergling Hydralisk Ultra
     Ultralisk ultralisk;
     Mutalisk mutalisk;
     Guardian guardian;
+    Queen queen;
 
     @Override
     public int getRaceUnitTypeCount() {

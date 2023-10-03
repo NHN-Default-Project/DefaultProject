@@ -9,6 +9,7 @@ public class ProtosUnitTypes implements RaceUnitType { // Zealot Dragoon HighTem
     HighTempler highTempler;
     Scout scout;
     Corsair corsair;
+    Carrier carrier;
 
     @Override
     public int getRaceUnitTypeCount() {

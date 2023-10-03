@@ -1,15 +1,15 @@
 package org.example.yunhwa.starCraft;
 
-public interface Zerg extends Race { // Zergling Hydralisk Ultralisk Mutalisk Guardian
+public interface Zerg extends Race {
     Race Zerg = new Zerg() {
     };
 }
 
-//class Queen extends Zerg implements Flyable {
-//    public Queen() {
-//        super(15, 25);
-//    }
-//}
+class Queen extends Unit implements Zerg, Flyable {
+    public Queen() {
+        super(15, 25);
+    }
+}
 
 class Zergling extends Unit implements Zerg, NotFlyable {
     public Zergling() {

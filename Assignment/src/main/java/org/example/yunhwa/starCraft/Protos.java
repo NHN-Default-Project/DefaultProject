@@ -1,16 +1,16 @@
 package org.example.yunhwa.starCraft;
 
-public interface Protos extends Race { // Zealot Dragoon HighTempler Scout Corsair
+public interface Protos extends Race {
     Race Protos = new Protos() {
     };
 
 }
 
-//class Carrier extends Unit implements Protos, Flyable {
-//    public Carrier() {
-//        super(25, 40);
-//    }
-//}
+class Carrier extends Unit implements Protos, Flyable {
+    public Carrier() {
+        super(25, 40);
+    }
+}
 
 class Zealot extends Unit implements Protos, NotFlyable {
     public Zealot() {

@@ -1,15 +1,15 @@
 package org.example.yunhwa.starCraft;
 
-public interface Terran extends Race { // Marine Tank Goliath Wraith Valkyrie
+public interface Terran extends Race {
     Race Terran = new Terran() {
     };
 }
 
-//class BattleCruzer extends Unit implements Terran, Flyable {
-//    public BattleCruzer() {
-//        super(20, 30);
-//    }
-//}
+class BattleCruzer extends Unit implements Terran, Flyable {
+    public BattleCruzer() {
+        super(20, 30);
+    }
+}
 
 class Marine extends Unit implements Terran, NotFlyable {
     public Marine() {
