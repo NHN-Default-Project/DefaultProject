@@ -2,6 +2,13 @@ package com.nhnacademy.gaeun.exercise3;
 
 import java.util.Arrays;
 
+/*
+* https://math.hws.edu/javanotes/c7/exercises.html
+* should create a large array filled with random real numbers
+* It should use both Arrays.sort() and selectionSort() to sort the array
+* it should do the same thing for a large array of random Strings.
+ */
+
 public class Exercise7_3 {
     private static long startTime;
     private static long endTime;
