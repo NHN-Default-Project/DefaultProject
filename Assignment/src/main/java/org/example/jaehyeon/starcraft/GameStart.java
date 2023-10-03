@@ -18,11 +18,6 @@ public class GameStart {
     private Computer computer;
     private Judge judge;
 
-    public static void main(String[] args) {
-        GameStart gameStart = new GameStart();
-        gameStart.flowGame();
-    }
-
     public void flowGame() {
         Scanner scanner = new Scanner(System.in);
         this.judge = new Judge();
