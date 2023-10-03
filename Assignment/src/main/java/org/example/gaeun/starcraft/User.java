@@ -43,8 +43,8 @@ public class User extends Starcraft {
                 break;
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("입력된 유닛을 찾을 수 없습니다. 다시 확인 후 입력해주세요!");
-            } catch (AttackCouldNotException acne) {
-                System.out.println("날 수 없는 유닛은 날 수 있는 유닛을 공격할 수 없습니다. 다시 입력해주세요.");
+            } catch (AttackCouldNotException e) {
+                System.out.println(e.getMessage());
             } catch (InputMismatchException e) {
                 System.out.println("공격할 유닛과 대상을 인덱스 값으로 입력해주세요!");
             } catch (InterruptedException e) {

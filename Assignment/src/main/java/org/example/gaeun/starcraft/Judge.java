@@ -46,6 +46,7 @@ public class Judge implements Runnable {
                 System.out.println("게임이 종료되었습니다.");
                 printJudgement();
                 System.exit(0);
+                break;
             }
             stopRunning();
         }

@@ -54,7 +54,7 @@ public class Starcraft {
         if(!defender.getUnits().get(enemyForce).canFly()) {
             return true;
         }
-        throw new AttackCouldNotException();
+        throw new AttackCouldNotException("날 수 없는 유닛은 날 수 있는 유닛을 공격할 수 없습니다. 다시 입력해주세요.");
     }
     public boolean canAttack(Kind aggressor, Kind defender) {
         for(Unit unit : aggressor.getUnits()) {

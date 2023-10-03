@@ -1,7 +1,7 @@
 package org.example.gaeun.starcraft.exception;
 
 public class AttackCouldNotException extends Exception {
-    public AttackCouldNotException() {
-        super();
+    public AttackCouldNotException(String message) {
+        super(message);
     }
 }

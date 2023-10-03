@@ -1,14 +1,18 @@
 package org.example.gaeun.movies;
 
 import lombok.Builder;
+import lombok.Getter;
 
 import java.util.Comparator;
 
 @Builder
 public class Movie implements Comparable {
 
+    @Getter
     private String movieID;
+    @Getter
     private String title;
+    @Getter
     private String koreanTitle;
     private String plot;
     private String releaseYear;
@@ -38,17 +42,6 @@ public class Movie implements Comparable {
         this.boxOfficeWWGross = boxOfficeWWGross;
         this.boxOfficeUSGross = boxOfficeUSGross;
         this.budget = budget;
-    }
-
-    public String getMovieID() {
-        return movieID;
-    }
-    public String getTitle() {
-        return this.title;
-    }
-
-    public String getKoreanTitle() {
-        return this.koreanTitle;
     }
 
     @Override
