@@ -7,7 +7,7 @@ public class ProtosFactory extends UnitFactory {
     String[] units;
 
     public ProtosFactory() {
-        units = new String[]{"Corsair", "Dragoon", "HighTempler", "Scout", "Zealot"};
+        units = new String[]{"Corsair", "Dragoon", "HighTempler", "Scout", "Zealot", "Carrier"};
     }
 
     public String[] getUnitNames() {
@@ -32,6 +32,9 @@ public class ProtosFactory extends UnitFactory {
                 break;
             case "Zealot":
                 unit = new Zealot();
+                break;
+            case "Carrier":
+                unit = new Carrier();
                 break;
             default:
                 throw new IllegalArgumentException("그런 유닛은 없습니다!");

@@ -8,7 +8,7 @@ public class TerranFactory extends UnitFactory {
     String[] units;
 
     public TerranFactory() {
-        units = new String[]{"Marine", "Goliath", "Tank", "Valkyrie", "Wraith"};
+        units = new String[]{"Marine", "Goliath", "Tank", "Valkyrie", "Wraith", "BattleCruzer"};
     }
 
     public String[] getUnitNames() {
@@ -33,6 +33,9 @@ public class TerranFactory extends UnitFactory {
                 break;
             case "Wraith":
                 unit = new Wraith();
+                break;
+            case "BattleCruzer":
+                unit = new BattleCruzer();
                 break;
             default:
                 throw new IllegalArgumentException("그런 유닛은 없습니다!");

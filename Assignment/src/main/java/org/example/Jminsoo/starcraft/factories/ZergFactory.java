@@ -8,7 +8,7 @@ public class ZergFactory extends UnitFactory {
     String[] units;
 
     public ZergFactory() {
-        units = new String[]{"Gurdian", "Hydralisk", "Mutalisk", "Ultralisk", "Zergling"};
+        units = new String[]{"Gurdian", "Hydralisk", "Mutalisk", "Ultralisk", "Zergling", "Queen"};
     }
 
     public String[] getUnitNames() {
@@ -33,6 +33,9 @@ public class ZergFactory extends UnitFactory {
                 break;
             case "Zergling":
                 unit = new Zergling();
+                break;
+            case "Queen":
+                unit = new Queen();
                 break;
             default:
                 throw new IllegalArgumentException("그런 유닛은 없습니다!");
