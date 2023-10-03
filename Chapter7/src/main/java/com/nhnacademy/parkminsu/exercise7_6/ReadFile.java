@@ -25,12 +25,12 @@ public class ReadFile {
     }
 
     public List<String> getReadDataList() {
-        return readDataList;
+        return this.readDataList;
     }
 
     @Override
     public String toString() {
-        return "" + readDataList + " ";
+        return "" + this.readDataList + " ";
     }
 
     private String readNextWord() {

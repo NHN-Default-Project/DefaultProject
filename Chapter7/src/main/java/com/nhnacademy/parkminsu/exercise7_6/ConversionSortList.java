@@ -13,6 +13,7 @@ public class ConversionSortList {
 
     public List<String> sort(List<String> list) {
         return list.stream()
+                .distinct()
                 .sorted()
                 .collect(Collectors.toList());
     }
