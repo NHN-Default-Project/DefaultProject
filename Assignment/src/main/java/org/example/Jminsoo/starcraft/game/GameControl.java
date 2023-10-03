@@ -74,6 +74,7 @@ public class GameControl {
                 scanner = new Scanner(System.in);
             }
         }
+        scanner.close();
     }
 
     private boolean victoryCheck() {
