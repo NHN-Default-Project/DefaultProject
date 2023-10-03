@@ -7,16 +7,15 @@ import java.util.List;
 import java.util.Random;
 
 public abstract class Tribe {
+    protected List<Unit> unitList;
 
-    List<Unit> unitList;
-
-    public void addUnit(int unitNumber, String[] unit) {
+    protected void addUnit(int unitNumber, String[] unit) {
         for (int i = 0; i < unitNumber; i++) {
             unitList.add(randomProductionUnit(unit));
         }
     }
 
-    public Unit randomProductionUnit(String[] unit) {
+    private Unit randomProductionUnit(String[] unit) {
         Random random = new Random();
         try {
             String selectUnit = unit[random.nextInt(unit.length)];
@@ -26,9 +25,15 @@ public abstract class Tribe {
         } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
-
     }
 
+    public String getTribeName() {
+
+        String className = this.getClass().getName();
+        int lastIndex = className.lastIndexOf(".");
+
+        return className.substring(lastIndex + 1);
+    }
 
     public List<Unit> getUnitList() {
         return unitList;

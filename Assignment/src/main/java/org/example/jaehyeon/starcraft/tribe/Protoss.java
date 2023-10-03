@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Protoss extends Tribe {
 
-    private static final String[] UNIT = {"zealot", "dragoon", "highTempler", "scout", "corsair"};
+    private static final String[] UNIT = {"zealot", "dragoon", "highTempler", "scout", "corsair", "carrier"};
     private static final int PRODUCTION_NUMBER = 4;
 
     public Protoss() {
@@ -32,5 +32,9 @@ public class Protoss extends Tribe {
 
     public Corsair corsair() {
         return new Corsair();
+    }
+
+    public Carrier carrier() {
+        return new Carrier();
     }
 }

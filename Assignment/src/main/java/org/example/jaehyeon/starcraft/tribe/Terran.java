@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Terran extends Tribe {
 
-    private static final String[] UNIT = {"marine", "tank", "goliath", "wraith", "valkyrie"};
+    private static final String[] UNIT = {"marine", "tank", "goliath", "wraith", "valkyrie", "battleCruzer"};
     private static final int PRODUCTION_NUMBER = 5;
 
     public Terran() {
@@ -32,5 +32,9 @@ public class Terran extends Tribe {
 
     public Wraith wraith() {
         return new Wraith();
+    }
+
+    public BattleCruzer battleCruzer() {
+        return new BattleCruzer();
     }
 }

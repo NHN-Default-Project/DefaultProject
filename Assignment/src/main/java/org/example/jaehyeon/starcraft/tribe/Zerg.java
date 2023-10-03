@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Zerg extends Tribe {
 
-    private static final String[] UNIT = {"zergling", "hydralisk", "ultralisk", "mutalisk", "guardian"};
+    private static final String[] UNIT = {"zergling", "hydralisk", "ultralisk", "mutalisk", "guardian", "queen"};
     private static final int PRODUCTION_NUMBER = 8;
 
     public Zerg() {
@@ -32,5 +32,9 @@ public class Zerg extends Tribe {
 
     public Guardian guardian() {
         return new Guardian();
+    }
+
+    public Queen queen() {
+        return new Queen();
     }
 }
