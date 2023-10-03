@@ -1,11 +1,17 @@
 package org.example.jaehyeon.movie;
 
 import lombok.Builder;
+import lombok.Getter;
+
 
 @Builder
 public class Movie {
+
+    @Getter
     private String movieID;
+    @Getter
     private String title;
+    @Getter
     private String koreanTitle;
     private String plot;
     private String releaseYear;
@@ -21,56 +27,20 @@ public class Movie {
     public Movie() {
     }
 
-    public String getMovieID() {
-        return this.movieID;
-    }
-
-    public String getTitle() {
-        return this.title;
-    }
-
-    public String getKoreanTitle() {
-        return this.koreanTitle;
-    }
-
-    public String getPlot() {
-        return plot;
-    }
-
-    public String getReleaseYear() {
-        return releaseYear;
-    }
-
-    public String getRunningTime() {
-        return runningTime;
-    }
-
-    public String getGradeID() {
-        return gradeID;
-    }
-
-    public String getGradeInKoreaID() {
-        return gradeInKoreaID;
-    }
-
-    public String getPoster() {
-        return poster;
-    }
-
-    public String getReleaseDateInKorea() {
-        return releaseDateInKorea;
-    }
-
-    public String getBoxOfficeWWGross() {
-        return boxOfficeWWGross;
-    }
-
-    public String getBoxOfficeUSGross() {
-        return boxOfficeUSGross;
-    }
-
-    public String getBudget() {
-        return budget;
+    public Movie(String movieID, String title, String koreanTitle, String plot, String releaseYear, String runningTime, String grandID, String gradeInKoreaID, String poster, String releaseDateInKorea, String boxOfficeWWGross, String boxOfficeUSGross, String budget) {
+        this.movieID = movieID;
+        this.title = title;
+        this.koreanTitle = koreanTitle;
+        this.plot = plot;
+        this.releaseYear = releaseYear;
+        this.runningTime = runningTime;
+        this.gradeID = grandID;
+        this.gradeInKoreaID = gradeInKoreaID;
+        this.poster = poster;
+        this.releaseDateInKorea = releaseDateInKorea;
+        this.boxOfficeWWGross = boxOfficeWWGross;
+        this.boxOfficeUSGross = boxOfficeUSGross;
+        this.budget = budget;
     }
 
     @Override
