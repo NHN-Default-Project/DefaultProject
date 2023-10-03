@@ -38,10 +38,4 @@ public class RandomArray extends Array<Double> {
         }
         return newList;
     }
-
-    public void printArray() {
-        for (double val : list) {
-            System.out.printf("%.4f ", val);
-        }
-    }
 }

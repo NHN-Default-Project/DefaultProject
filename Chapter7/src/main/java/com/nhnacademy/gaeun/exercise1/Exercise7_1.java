@@ -21,10 +21,7 @@ public class Exercise7_1 {
 
                 System.out.println(makeArrayList(intNum, maxVal));
                 break;
-            } catch(InputMismatchException ime) {
-                System.out.println("정수값을 입력해주세요!");
-                scanner.nextLine();
-            } catch (IllegalArgumentException e) {
+            } catch (InputMismatchException | IllegalArgumentException e) {
                 System.out.println("정수값을 입력해주세요!");
                 scanner.nextLine();
             }

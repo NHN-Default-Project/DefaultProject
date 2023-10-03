@@ -37,7 +37,7 @@ public class Exercise7_2 {
     public static void printArray(int[][] newArray) {
         for(int[] row : newArray) {
             for(int col : row) {
-                System.out.printf(col + " ");
+                System.out.printf("%d ", col);
             }
             System.out.println();
         }

@@ -31,7 +31,7 @@ public class Main {
                 }
                 inputArray.add(inputVal);
             } catch (IllegalArgumentException e) {
-
+                System.out.println("Please enter a positive integer.");
             }
         }
         int[] list = new int[inputArray.size()];
