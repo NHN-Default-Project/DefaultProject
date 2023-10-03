@@ -18,7 +18,7 @@ public class Exercise7_5 {
                 }
                 list.add(inputDouble);
             } catch (InputMismatchException e) {
-                throw new InputMismatchException("데이터를 잘못 입력하셨습니다");
+                System.out.println("데이터를 잘못 입력하셨습니다.");
             }
         }
         System.out.println(selectionSort(list));
