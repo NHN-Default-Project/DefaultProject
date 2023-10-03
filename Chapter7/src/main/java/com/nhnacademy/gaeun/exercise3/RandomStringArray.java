@@ -1,28 +1,27 @@
 package com.nhnacademy.gaeun.exercise3;
 
-import java.io.PrintStream;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Random;
 
-public class RandomStringArray {
+public class RandomStringArray extends Array {
     private static final int START = 'a';
     private static final int END = 'z';
     private static final int TOTAL_LENGTH = 10;
     private final Random random = new Random();
 
     private String[] list;
+
     public RandomStringArray(int inputNum) {
         randomInput(inputNum);
     }
 
+    @Override
     public String[] getList() {
         return list;
     }
 
     public void randomInput(int inputNum) {
         this.list = new String[inputNum];
-        for(int i = 0; i < inputNum; i++) {
+        for (int i = 0; i < inputNum; i++) {
             this.list[i] = makeString();
         }
     }
@@ -34,17 +33,20 @@ public class RandomStringArray {
                 .toString();
     }
 
-    public void selectionSort() {
-        for(int i = 0; i < this.list.length; i++) {
+    @Override
+    public String[] selectionSort() {
+        String[] newString = list;
+        for (int i = 0; i < newString.length; i++) {
             int min = i;
-            for(int j = i+1; j < this.list.length; j++) {
-                if(this.list[min].compareTo(this.list[j]) > 0) {
+            for (int j = i + 1; j < newString.length; j++) {
+                if (newString[min].compareTo(newString[j]) > 0) {
                     min = j;
                 }
             }
-            String tmp = this.list[i];
-            this.list[i] = this.list[min];
-            this.list[min] = tmp;
+            String tmp = newString[i];
+            newString[i] = newString[min];
+            newString[min] = tmp;
         }
+        return newString;
     }
 }

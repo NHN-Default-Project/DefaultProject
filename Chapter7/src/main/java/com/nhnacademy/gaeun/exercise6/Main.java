@@ -12,8 +12,7 @@ public class Main {
     public static void main(String[] args) {
         String userFile = "/Users/kaeun/DefaultProject/Chapter7/src/main/java/com/nhnacademy/gaeun/exercise6/userFile.txt";
         String outputFile = "/Users/kaeun/DefaultProject/Chapter7/src/main/java/com/nhnacademy/gaeun/exercise6/outputFile.txt";
-        FileRead fileRead = new FileRead(userFile, outputFile);
-        fileRead.loadFile();
-
+        FileReadAndWrite fileRead = new FileReadAndWrite(userFile, outputFile);
+        fileRead.readAndWrite();
     }
 }

@@ -8,6 +8,7 @@ import java.util.*;
 * 서브루틴 작성: 1~지정된 최대값까지의 임의의 정수를 포함하는 ArrayList생성
 * 매개변수: 입력받을 정수의 수, 최댓값
 */
+
 public class Exercise7_1 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -31,12 +32,12 @@ public class Exercise7_1 {
         scanner.close();
     }
 
-    public static List makeArrayList(int intNum, int maxVal) {
+    public static List<Integer> makeArrayList(int intNum, int maxVal) {
         Random random = new Random();
-        List randomValues = new ArrayList(intNum);
+        List<Integer> randomIntList = new ArrayList<>();
         for(int i = 0; i < intNum; i++) {
-            randomValues.add(random.nextInt(maxVal) + 1);
+            randomIntList.add(random.nextInt(maxVal) + 1);
         }
-        return randomValues;
+        return randomIntList;
     }
 }

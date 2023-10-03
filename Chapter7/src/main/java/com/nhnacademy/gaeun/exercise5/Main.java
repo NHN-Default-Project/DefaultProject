@@ -1,5 +1,7 @@
 package com.nhnacademy.gaeun.exercise5;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /*
@@ -12,21 +14,32 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int[] inputArray = new int[100];
+        List<Integer> inputArray = new ArrayList<>();
         int inputVal;
         int index = 0;
         System.out.println("Write a sequence of positive real numbers");
         System.out.println("If you want to stop, press the key '0'");
+        while(true) {
+            try {
+                inputVal = scanner.nextInt();
+                if(inputVal == 0) {
+                    break;
+                }
+                if (index > 100) {
+                    System.out.println("Array is full");
+                    break;
+                }
+                inputArray.add(inputVal);
+            } catch (IllegalArgumentException e) {
 
-        while ((inputVal = scanner.nextInt()) != 0) {
-            if (index > 100) {
-                System.out.println("Array is full");
-                break;
             }
-            inputArray[index++] = inputVal;
         }
-        quickSort(inputArray);
-        printArray(inputArray);
+        int[] list = new int[inputArray.size()];
+        for(int i = 0; i < inputArray.size(); i++) {
+            list[i] = inputArray.get(i);
+        }
+        quickSort(list);
+        printArray(list);
         scanner.close();
     }
 
@@ -66,8 +79,8 @@ public class Main {
     }
 
     public static void printArray(int[] inputArray) {
-        for(int val : inputArray) {
-            System.out.printf(val + " ");
+        for (int val : inputArray) {
+            System.out.printf("%d ", val);
         }
     }
 }

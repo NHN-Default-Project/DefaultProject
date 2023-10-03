@@ -15,12 +15,14 @@ import java.util.Arrays;
  */
 public class Exercise7_2 {
     public static void main(String[] args) {
-        int[][] num = { { 10, 11, 12 },
-                        { 20, 21, 22 } };
-        printArray(num);
+        Matrix matrix = new Matrix(2, 3);
+        matrix.setElement(0, new int[]{ 10, 11, 12 });
+        matrix.setElement(0, new int[]{ 20, 21, 22 });
+
+        printArray(matrix.getData());
         System.out.println("의 전치행렬은 다음과 같습니다.");
         System.out.println();
-        printArray(transposeArray(num));
+        printArray(transposeArray(matrix.getData()));
     }
     public static int[][] transposeArray(int[][] array) {
         int[][] newArray = new int[array[0].length][array.length];
