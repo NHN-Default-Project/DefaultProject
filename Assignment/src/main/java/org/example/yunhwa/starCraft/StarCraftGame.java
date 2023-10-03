@@ -23,41 +23,51 @@ public class StarCraftGame {
     }
 
 
-
     public void runGame() {
-        setUserRace();
+        Scanner sc = new Scanner(System.in);
+        setUserRace(sc);
         makeUserUnits();
         setComputerRace();
         makeComputerUnits();
 
         // 게임 시작
-        chooseOnesArmyAndEnemyUntilEnd();
+        chooseOnesArmyAndEnemyUntilEnd(sc);
         printGameResult();
+
+        sc.close();
     }
 
 
-    public void setUserRace() {
-        try (Scanner sc = new Scanner(System.in);) {
-            System.out.print("User 님, Terran, Protos, Zerg 중 택 1 해주세요 :");
-            String userRace = sc.nextLine().trim();
+    @SuppressWarnings("checkstyle:Indentation")
+    public void setUserRace(Scanner sc) {
 
-            if (!(userRace.equals("Terran") || userRace.equals("Protos") || userRace.equals("Zerg"))) {
-                throw new IllegalArgumentException("잘못 입력하셨습니다. 입력 형식 보시고 대소문자 구분해서 다시 입력 부탁드립니다!");
-            }
+        System.out.println("User 님, 종족을 고를 차례입니다.");
+        System.out.print("-> Terran, Protos, Zerg 중 택 1 해주세요 : ");
+        String userRace = sc.nextLine().trim();
+        System.out.println();
 
-            if (userRace.equals("Terran")) {
-                this.userRace = Terran.Terran;
-                this.userRaceUnitTypes = new TerranUnitTypes();
-
-            } else if (userRace.equals("Protos")) {
-                this.userRace = Protos.Protos;
-                this.userRaceUnitTypes = new ProtosUnitTypes();
-
-            } else if (userRace.equals("Zerg")) {
-                this.userRace = Zerg.Zerg;
-                this.userRaceUnitTypes = new ZergUnitTypes();
-            }
+        if (!(userRace.equals("Terran") || userRace.equals("Protos") || userRace.equals("Zerg"))) {
+            throw new IllegalArgumentException("잘못 입력하셨습니다. 입력 형식 보시고 대소문자 구분해서 다시 입력 부탁드립니다!");
         }
+
+        if (userRace.equals("Terran")) {
+            this.userRace = Terran.Terran;
+            this.userRaceUnitTypes = new TerranUnitTypes();
+
+        } else if (userRace.equals("Protos")) {
+            this.userRace = Protos.Protos;
+            this.userRaceUnitTypes = new ProtosUnitTypes();
+
+        } else if (userRace.equals("Zerg")) {
+            this.userRace = Zerg.Zerg;
+            this.userRaceUnitTypes = new ZergUnitTypes();
+        }
+
+        String userRaceTypeName = this.userRaceUnitTypes.getClass().getSimpleName();
+        String userRaceName = userRaceTypeName.substring(0, userRaceTypeName.length() - 9);
+        System.out.println("=============================");
+        System.out.println("User 의 종족 : " + userRaceName);
+        System.out.println("-----------------------------");
     }
 
     public void setComputerRace() { // 2. Computer (적군) : race - Terran, Protos, Zerg 중 택 1은 랜덤으로 선택된다
@@ -83,6 +93,12 @@ public class StarCraftGame {
                     throw new IllegalStateException("Unexpected value: " + randomIndex);
             }
         } while (userRace == computerRace);
+
+        String computerRaceTypeName = this.computerRaceUnitTypes.getClass().getSimpleName();
+        String computerRaceName = computerRaceTypeName.substring(0, computerRaceTypeName.length() - 9);
+        System.out.println("=============================");
+        System.out.println("Computer 의 종족 : " + computerRaceName);
+        System.out.println("-----------------------------");
     }
 
 
@@ -97,7 +113,7 @@ public class StarCraftGame {
     // 내부 메서드
     private List<Unit> makeRandomUnits(List<Unit> thisUnitList, RaceUnitType thisRaceUnitTypes, int unitCount) {
         // 1. 모든 유닛들의 클래스를 리스트에 저장 : 인덱스로 각 유닛 클래스 접근 가능
-        List<Field> thisUnitTypes = new ArrayList<>(); /////////////////////////////////////
+        List<Field> thisUnitTypes = new ArrayList<>();
         for (Field field : thisRaceUnitTypes.getClass().getDeclaredFields()) {
             thisUnitTypes.add(field);
         }
@@ -108,13 +124,14 @@ public class StarCraftGame {
         for (int i = 0; i < unitCount; i++) {
             int randomIndex = random.nextInt(thisUnitTypeCount);
             try {
-                System.out.println(thisRaceUnitTypes.getClass().getSimpleName() + ".get(" + i + ") : " + thisUnitTypes.get(randomIndex).getType().getSimpleName()); //////////////////////////
-                Constructor[] ctors = thisUnitTypes.get(randomIndex).getType()
-                        .getClass()
-                        .getDeclaredConstructors();
+                String thisRaceUnitTypesName = thisRaceUnitTypes.getClass().getSimpleName();
+                String thisRaceName = thisRaceUnitTypesName.substring(0, thisRaceUnitTypesName.length() - 9);
+                System.out.println(thisRaceName + ".get(" + i + ") : " + thisUnitTypes.get(randomIndex).getType().getSimpleName());
 
-                thisUnitList.add((Unit) ctors[0]
-                        .newInstance());
+                Class<?> cls = thisUnitTypes.get(randomIndex).getType();
+                Constructor<?> constructor = cls.getDeclaredConstructor();
+                Unit unit = (Unit) constructor.newInstance();
+                thisUnitList.add(unit);
 
             } catch (InstantiationException e) {
                 throw new RuntimeException(e);
@@ -122,15 +139,14 @@ public class StarCraftGame {
                 throw new RuntimeException(e);
             } catch (InvocationTargetException e) {
                 throw new RuntimeException(e);
+            } catch (NoSuchMethodException e) {
+                throw new RuntimeException(e);
             }
-//            catch (NoSuchMethodException e) { // constructor -> constructors 로 변경해보면서 필요없어져 주석처리함
-//                throw new RuntimeException(e);
-//            }
         }
+        System.out.println();
 
         return thisUnitList;
     }
-
 
 
     // 적군 또는 아군 유닛들 전체 출력하는 메서드
@@ -141,9 +157,8 @@ public class StarCraftGame {
         } else if (whosRace == Zerg.Zerg) {
             raceNameLength = 4;
         }
-        System.out.println("적군: Zerg 가 나와야 하는데 아래 문장에 나오나?");//////////////////////////////////////
         System.out.printf("%s: %s%n", enemyOrFriendly, whosRace.getClass().getName().substring(29, 29 + raceNameLength));
-        System.out.println("0. Zergling (현재 방어력: 2) 이렇게 아래 문장에 나오나?");///////////////////////////////
+        System.out.println("-----------------------------");
         for (int i = 0; i < unitsList.size(); i++) {
             if (unitsList.get(i) != null) {
                 System.out.printf("%d. ", i);
@@ -151,79 +166,94 @@ public class StarCraftGame {
             }
         }
         System.out.println();
+        System.out.println("=============================");
+
     }
 
     // 공격을 수행할 아군 유닛과 공격할 적군 유닛을 선택하세요: 게임 끝까지
-    public void chooseOnesArmyAndEnemyUntilEnd() {
+    public void chooseOnesArmyAndEnemyUntilEnd(Scanner sc) {
         boolean isUserWin = false;
         boolean isUserEnd = false;
         boolean isComputerEnd = false;
 
-        try (Scanner sc = new Scanner(System.in);) {
+        while (true) {
+            // 한 번 돌기 전 적군 아군 출력해서 현황 확인
+            System.out.println("=============================");
+            printAllUnits("적군", this.computerRace, this.computerUnitList);
+            printAllUnits("아군", this.userRace, this.userUnitList);
 
-            while (true) {
-                // 한 번 돌기 전 적군 아군 출력해서 현황 확인
-                printAllUnits("적군", this.computerRace, this.computerUnitList);
-                printAllUnits("아군", this.userRace, this.userUnitList);
+            // 유저 Turn
+            System.out.printf("User 차례! 공격을 수행할 아군 유닛과 공격할 적군 유닛을 선택하세요: %n"); // 0 3
 
-                // 유저 Turn
-                System.out.print("User 차례! 공격을 수행할 아군 유닛과 공격할 적군 유닛을 선택하세요: "); // 0 3
-                int attackUnitIndex = sc.nextInt(); // 유저 입장에서는 유저 유닛
-                int attackedUnitIndex = sc.nextInt(); // 유저 입장에서는 컴퓨터 유닛
+            int attackUnitIndex = sc.nextInt(); // 유저 입장에서는 유저 유닛
+            int attackedUnitIndex = Integer.parseInt(sc.nextLine().trim()); // 유저 입장에서는 컴퓨터 유닛
 
-                int currentDefensePower = this.computerUnitList.get(attackedUnitIndex).getDefensePower();
-                this.computerUnitList.get(attackedUnitIndex).setDefensePower(currentDefensePower - this.userUnitList.get(attackUnitIndex).getAttackPower());
+            int currentDefensePower = this.computerUnitList.get(attackedUnitIndex).getDefensePower();
+            this.computerUnitList.get(attackedUnitIndex).setDefensePower(currentDefensePower - this.userUnitList.get(attackUnitIndex).getAttackPower());
+            String attackedUnitName = this.computerUnitList.get(attackedUnitIndex).getClass().getSimpleName();
+            System.out.println("User 의 공격으로 Computer 의 " + attackedUnitIndex + " 번 유닛 " + attackedUnitName + " 의 방어력이 " + currentDefensePower + " 에서 " + this.computerUnitList.get(attackedUnitIndex).getDefensePower() + " 로 줄었습니다.");
 
-                if (this.computerUnitList.get(attackedUnitIndex).getDefensePower() <= 0) {
-                    this.computerUnitList.set(attackedUnitIndex, null);
-                }
+            if (this.computerUnitList.get(attackedUnitIndex).getDefensePower() <= 0) {
+                this.computerUnitList.set(attackedUnitIndex, null);
+                System.out.println("Computer 의 " + attackedUnitIndex + " 번 유닛" + attackedUnitName + " 이 소멸되었습니다.");
+            }
 
-                // 적군의 모든 유닛이 파괴되었다면 유저 승리
-                if (Collections.frequency(this.computerUnitList, null) == this.computerUnitList.size()) {
-                    isComputerEnd = true;
-                    isUserWin = true;
-                    break;
-                }
+            // 적군의 모든 유닛이 파괴되었다면 유저 승리
+            if (Collections.frequency(this.computerUnitList, null) == this.computerUnitList.size()) {
+                isComputerEnd = true;
+                isUserWin = true;
+                break;
+            }
 
-                // 컴퓨터 Turn
-                Random random = new Random();
+            System.out.println();
+
+            // 컴퓨터 Turn
+            Random random = new Random();
+            do {
                 attackUnitIndex = random.nextInt(this.computerUnitList.size()); // 컴퓨터 입장에서는 컴퓨터 유닛
                 attackedUnitIndex = random.nextInt(this.userUnitList.size()); // 컴퓨터 입장에서는 유저 유닛
-                System.out.printf("컴퓨터 차례! 공격을 수행할 아군 유닛과 공격할 적군 유닛을 선택한 결과: %d %d", attackUnitIndex, attackedUnitIndex); // 0 3
-                currentDefensePower = this.userUnitList.get(attackedUnitIndex).getDefensePower();
-                this.userUnitList.get(attackedUnitIndex).setDefensePower(currentDefensePower - this.computerUnitList.get(attackUnitIndex).getAttackPower());
 
-                if (this.userUnitList.get(attackedUnitIndex).getDefensePower() <= 0) {
-                    this.userUnitList.set(attackedUnitIndex, null);
-                }
+            } while (this.computerUnitList.get(attackUnitIndex) == null || this.userUnitList.get(attackedUnitIndex) == null);
 
-                // 아군의 모든 유닛이 파괴되었다면 컴퓨터 승리
-                if (Collections.frequency(this.userUnitList, null) == this.userUnitList.size()) {
-                    isUserEnd = true;
-                    break;
-                }
+            System.out.printf("컴퓨터 차례! 공격을 수행할 아군 유닛과 공격할 적군 유닛을 선택한 결과: %d %d %n", attackUnitIndex, attackedUnitIndex); // 0 3
 
+            currentDefensePower = this.userUnitList.get(attackedUnitIndex).getDefensePower();
+            this.userUnitList.get(attackedUnitIndex).setDefensePower(currentDefensePower - this.computerUnitList.get(attackUnitIndex).getAttackPower());
+            attackedUnitName = this.userUnitList.get(attackedUnitIndex).getClass().getSimpleName();
+            System.out.println("Computer 의 공격으로 User 의 " + attackedUnitIndex + " 번 유닛 " + attackedUnitName + " 의 방어력이 " + currentDefensePower + " 에서 " + this.userUnitList.get(attackedUnitIndex).getDefensePower() + " 로 줄었습니다.");
+
+
+            if (this.userUnitList.get(attackedUnitIndex).getDefensePower() <= 0) {
+                this.userUnitList.set(attackedUnitIndex, null);
+                System.out.println("User 의 " + attackedUnitIndex + " 번 유닛 " + attackedUnitName + " 이 소멸되었습니다.");
             }
 
-            if (isComputerEnd && !isUserEnd && isUserWin) {
-                // 유저 승리
-                this.isUserWin = true;
+            // 아군의 모든 유닛이 파괴되었다면 컴퓨터 승리
+            if (Collections.frequency(this.userUnitList, null) == this.userUnitList.size()) {
+                isUserEnd = true;
+                break;
             }
-            if (isUserEnd && !isComputerEnd && !isUserWin) {
-                // 컴퓨터 승리
-                this.isUserWin = false;
-            }
+
+            System.out.println();
 
         }
 
+        if (isComputerEnd && !isUserEnd && isUserWin) {
+            // 유저 승리
+            this.isUserWin = true;
+        }
+        if (isUserEnd && !isComputerEnd && !isUserWin) {
+            // 컴퓨터 승리
+            this.isUserWin = false;
+        }
 
     }
 
     public void printGameResult() {
         if (this.isUserWin) {
-            System.out.println("승리했습니다!!");
+            System.out.println("\n====== 승리했습니다!! ======");
         } else {
-            System.out.println("패배했습니다... 다음 기회에...!");
+            System.out.println("\n====== 패배했습니다... 다음 기회에...! ======");
         }
     }
 

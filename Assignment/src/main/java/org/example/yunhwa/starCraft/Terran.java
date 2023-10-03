@@ -46,7 +46,7 @@ class Wraith extends Unit implements Terran, Flyable {
 }
 
 class Valkyrie extends Unit implements Terran, Flyable {
-    public Valkyrie(int attackPower, int defensePower) {
+    public Valkyrie() {
         super(4, 12);
     }
 }
