@@ -25,6 +25,9 @@ public class Main {
                 }
             } catch (NumberFormatException e) {
                 System.out.println(e.getMessage());
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                
             }
         }
         scanner.close();

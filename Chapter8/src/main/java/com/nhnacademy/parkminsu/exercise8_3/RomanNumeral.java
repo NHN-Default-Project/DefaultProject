@@ -15,8 +15,8 @@ public class RomanNumeral {
     }
 
     public RomanNumeral(String romanNumeral) {
-        preconditionRomanNumeral(romanNumeral.toUpperCase());
-        this.romanNumeral = romanNumeral.toUpperCase();
+        preconditionRomanNumeral(romanNumeral.toUpperCase().trim());
+        this.romanNumeral = romanNumeral.toUpperCase().trim();
     }
 
     public void preconditonArabicNumeral(int arabicNumeral) {
@@ -40,6 +40,20 @@ public class RomanNumeral {
             throw new NumberFormatException("잘못된 문자열을 입력하셨습니다.");
         }
     }
+
+    public void preconditionDuplicateCount(String romanNumeral) {
+        int sameNumberOfCharacters = 0;
+        int preIdx = 0;
+        for (char romanNumChar : romanNumeral.toCharArray()) {
+            for (int i = 0; i < this.romanNumeralNotation.length; i++) {
+                if (this.romanNumeralNotation[i].equals(String.valueOf(romanNumChar))) {
+                    sameNumberOfCharacters++;
+                    preIdx = i;
+                }
+            }
+        }
+    }
+
 
     public int finedSameRomanNumeralIdx(char romanNumeral) {
         int sameIdx = 0;
@@ -70,7 +84,6 @@ public class RomanNumeral {
         }
         // 로마 숫자에서 아라비아 숫자로 변환 할 때 3999값을 넘기면 안되므로
         // 아라비아 숫자의 precondition으로 사용했던 메소드를 로마 숫자 -> 아라비아 숫자 변환 했을 때의 postcondition으로 사용함
-        preconditonArabicNumeral(arabicNum);
 
         this.arabicNumeral = arabicNum;
     }
@@ -80,13 +93,17 @@ public class RomanNumeral {
         for (int i = 0; i < this.romanNumeralNotation.length; i++) {
             convertArabicNumToEquivalentRomanNum(stringBuilder, i);
         }
+        preconditionRomanNumeral(stringBuilder.toString());
         this.romanNumeral = stringBuilder.toString();
     }
 
     public void convertArabicNumToEquivalentRomanNum(StringBuilder stringBuilder, int romanValueIdx) {
-        while (this.arabicNumeral >= this.romanNumeralValue[romanValueIdx]) {
+        int cnt = 0;
+        while (this.arabicNumeral >= this.romanNumeralValue[romanValueIdx] && cnt < 2) {
+            System.out.println(cnt);
             stringBuilder.append(this.romanNumeralNotation[romanValueIdx]);
             this.arabicNumeral -= this.romanNumeralValue[romanValueIdx];
+            cnt++;
         }
     }
 
