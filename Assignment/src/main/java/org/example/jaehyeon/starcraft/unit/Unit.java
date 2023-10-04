@@ -9,7 +9,7 @@ public abstract class Unit implements Item, Flyable {
     private boolean canFly;
     private boolean hasItem;
 
-    public void attackUnit(Unit targetUnit) throws CanNotAttack {
+    public final void attackUnit(Unit targetUnit) throws CanNotAttack {
         if (!this.canFly) {
             if (targetUnit.canFly && !this.hasItem) {
                 throw new CanNotAttack("이 유닛은 대상 유닛을 공격 못합니다.");
@@ -63,7 +63,7 @@ public abstract class Unit implements Item, Flyable {
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
         return getUnitName() + "(현재 방어력: " + this.defensePower + ")";
     }
 }
