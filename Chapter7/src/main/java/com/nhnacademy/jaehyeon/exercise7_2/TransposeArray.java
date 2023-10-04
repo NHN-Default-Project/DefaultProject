@@ -2,10 +2,10 @@ package com.nhnacademy.jaehyeon.exercise7_2;
 
 public class TransposeArray {
 
-    private int[][] targetArray;
-    private int[][] resultArray;
-    private int row;
-    private int column;
+    private final int[][] targetArray;
+    private final int[][] resultArray;
+    private final int row;
+    private final int column;
 
     public TransposeArray(Array array) {
         this.row = array.getArray()[0].length;
