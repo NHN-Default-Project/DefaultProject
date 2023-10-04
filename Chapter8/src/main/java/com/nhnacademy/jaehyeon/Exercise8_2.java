@@ -49,5 +49,3 @@ public class Exercise8_2 {
         return count;
     }
 }
-
-

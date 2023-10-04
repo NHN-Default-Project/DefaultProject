@@ -12,13 +12,14 @@ public class Exercise8_4 {
                 String inputString = scanner.nextLine();
                 Expr expr = new Expr(inputString);
                 double inputNumber = Double.parseDouble(inputString);
+                break;
             } catch (NumberFormatException n) {
                 System.out.println("double Error");
             } catch (IllegalArgumentException e) {
                 System.out.println("Error");
             }
         }
-
+        scanner.close();
     }
 }
 
