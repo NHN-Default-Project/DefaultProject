@@ -1,8 +1,6 @@
 package com.nhnacademy.yunhwa.exercise8_4;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Exercise8_4 {
     public static void main(String[] args) {
@@ -29,8 +27,7 @@ public class Exercise8_4 {
                 System.out.printf("%s 에 %.3f 넣어 계산한 결과 : %.3f %n", def, x, func.value(x));
             }
 
-
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException | NoSuchElementException e) {
             System.out.println(e.getMessage());
         }
     }
