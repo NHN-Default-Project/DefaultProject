@@ -13,20 +13,23 @@ public class Excercise8_3 {
 
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
-                System.out.print("로마숫자 또는 아라비아 숫자를 입력하시오 : ");
-                input = scanner.nextLine();
 
-                if (input.isEmpty()) {
-                    break;
-                }
-                if (isArabic(input)) {
-                    romanNumeral = new RomanNumeral(Integer.parseInt(input));
-                    System.out.println(romanNumeral.toRomanString());
-                } else {
-                    romanNumeral = new RomanNumeral(input);
-                    System.out.println(romanNumeral.toArabicInt());
-                }
+                try {
+                    System.out.print("로마숫자 또는 아라비아 숫자를 입력하시오 : ");
+                    input = scanner.nextLine();
+                    if (input.isEmpty()) {
+                        break;
+                    }
+                    if (isArabic(input)) {
+                        romanNumeral = new RomanNumeral(Integer.parseInt(input));
+                        System.out.println(romanNumeral.toRomanString());
+                    } else {
+                        romanNumeral = new RomanNumeral(input);
+                        System.out.println(romanNumeral.toArabicInt());
+                    }
+                } catch (NumberFormatException e) {
 
+                }
             }
         }
     }

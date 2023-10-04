@@ -16,30 +16,33 @@ public class RomanNumeral {
             romanToArabic();
         } catch (NumberFormatException e) {
             System.out.println("입력값이 잘못되었습니다!");
+            throw new NumberFormatException();
+
         }
     }
 
     public RomanNumeral(int arabicNumeral) {
-        if (arabicNumeral > 3999 || 1 > arabicNumeral) {
+        try {
+            if (arabicNumeral > 3999 || 1 > arabicNumeral) {
+                throw new NumberFormatException();
+            }
+            this.arabicNumeral = arabicNumeral;
+            arabicToRoman();
+        } catch (NumberFormatException e) {
+            System.out.println("입력값이 잘못되었습니다!");
             throw new NumberFormatException();
         }
-        this.arabicNumeral = arabicNumeral;
-        arabicToRoman();
+
     }
 
     private boolean isRomanDuplicateThree(String roman) {
-        char[] ROMAN = {'M', 'D', 'C', 'L', 'X', 'V', 'I'};
-        long count;
-        for (char checkChar : ROMAN) {
-            count = roman.chars()
-                    .filter(x -> x == checkChar)
-                    .count();
 
-            if (count > 3) {
+        for (int i = 0; i < roman.length() - 3; i++) {
+            char currentChar = roman.charAt(i);
+            if (currentChar == roman.charAt(i + 1) && currentChar == roman.charAt(i + 2) && currentChar == roman.charAt(i + 3)) {
                 return true;
             }
         }
-
         return false;
     }
 
