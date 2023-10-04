@@ -3,6 +3,11 @@ package com.nhnacademy.jaehyeon.exercise7_2;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+
+/*
+ * https://math.hws.edu/javanotes/c7/exercises.html
+ */
+
 public class Exercise7_2 {
 
     public static void main(String[] args) {
