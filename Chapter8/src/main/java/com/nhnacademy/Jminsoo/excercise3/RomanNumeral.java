@@ -9,6 +9,9 @@ public class RomanNumeral {
 
     public RomanNumeral(String romanNumeral) {
         try {
+            if (isRomanDuplicateThree(romanNumeral)) {
+                throw new NumberFormatException();
+            }
             this.romanNumeral = romanNumeral;
             romanToArabic();
         } catch (NumberFormatException e) {
@@ -22,6 +25,22 @@ public class RomanNumeral {
         }
         this.arabicNumeral = arabicNumeral;
         arabicToRoman();
+    }
+
+    private boolean isRomanDuplicateThree(String roman) {
+        char[] ROMAN = {'M', 'D', 'C', 'L', 'X', 'V', 'I'};
+        long count;
+        for (char checkChar : ROMAN) {
+            count = roman.chars()
+                    .filter(x -> x == checkChar)
+                    .count();
+
+            if (count > 3) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void romanToArabic() {
