@@ -1,4 +1,4 @@
-package org.example.yunhwa.moviesCsv;
+package org.example.yunhwa.moviescsv;
 
 public class MovieIdComparator extends MovieComparator { // id 숫자 오름차순
     @Override
