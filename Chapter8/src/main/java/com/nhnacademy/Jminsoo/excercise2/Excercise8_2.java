@@ -7,7 +7,7 @@ public class Excercise8_2 {
      */
 
     public static void main(String[] args) {
-        BigIntegerApp app = new BigIntegerApp();
+        CollatzApp app = new CollatzApp();
         app.start();
     }
 
