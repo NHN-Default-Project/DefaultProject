@@ -17,12 +17,12 @@ public class Exercise7_6 {
             }
         }
 
-        List<String> a = stringList.stream()
+        List<String> stringLists = stringList.stream()
                 .map(String::toLowerCase)
                 .distinct()
                 .sorted().collect(Collectors.toList());
 
-        for (String str : a) {
+        for (String str : stringLists) {
             System.out.println(str);
         }
     }
