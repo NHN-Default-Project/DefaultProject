@@ -6,6 +6,7 @@ public class Exercise8_1 {
     public static void main(String[] args) {
         try (Scanner sc = new Scanner(System.in);) {
             boolean isContinued = true;
+
             while (isContinued) {
                 System.out.print(" (Ax^2 + Bx + C = 0) 이차 방정식의 계수인, 실수 A, B, C를 순차적으로 입력해주세요 : ");
                 double a = sc.nextDouble();
