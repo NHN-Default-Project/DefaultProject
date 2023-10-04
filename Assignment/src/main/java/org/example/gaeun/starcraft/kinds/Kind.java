@@ -14,7 +14,9 @@ public class Kind {
     public List<Unit> getUnits() {
         return new ArrayList<>();
     }
-    public boolean canFly() {return false;}
+    public boolean canFly() {
+        return false;
+    }
     public void printStatus(){
 
     }

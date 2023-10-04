@@ -9,8 +9,8 @@ import org.example.gaeun.starcraft.exception.AttackCouldNotException;
 import java.util.*;
 
 public class Starcraft {
-    protected static Kind userKind = new Kind();
-    protected static Kind computerKind = new Kind();
+    protected static Kind userKind;
+    protected static Kind computerKind;
     private Judge judge = new Judge();
     private Thread thread = new Thread(judge);
     public Starcraft() {

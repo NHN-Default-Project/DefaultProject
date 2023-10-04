@@ -27,9 +27,10 @@ public class Computer extends Starcraft{
                 }
                 System.out.println(computerKind.getName() + "에서 공격할 수 있는 유닛이 없습니다!");
                 break;
-            } catch (InputMismatchException | AttackCouldNotException | NullPointerException e){
-
-            } catch (InterruptedException | IllegalArgumentException e) {
+            } catch (InputMismatchException | AttackCouldNotException | NullPointerException
+                    | InterruptedException | IllegalArgumentException e){
+                System.out.println("공격할 수 없어서 다시 시도합니다.");
+                Thread.currentThread().interrupt();
             }
         }
     }

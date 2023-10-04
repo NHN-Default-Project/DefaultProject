@@ -30,13 +30,14 @@ public class Judge implements Runnable {
 
     @Override
     public void run() {
-        while(true){
+        while(!Thread.currentThread().isInterrupted()){
             synchronized (this) {
                 if (!shouldRun) {
                     try {
                         wait();
                     } catch (InterruptedException | IllegalArgumentException e) {
                         e.printStackTrace();
+                        Thread.currentThread().interrupt();
                     }
                 }
             }
