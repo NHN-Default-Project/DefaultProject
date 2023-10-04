@@ -1,5 +1,6 @@
 package com.nhnacademy.jaehyeon.exercise7_2;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Exercise7_2 {
@@ -7,19 +8,19 @@ public class Exercise7_2 {
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("행의 값을 입력 하세요");
-            int r = scanner.nextInt();
-            verifyInputNumber(r);
+            int row = scanner.nextInt();
+            verifyInputNumber(row);
             System.out.println("열의 값을 입력 하세요");
-            int c = scanner.nextInt();
-            verifyInputNumber(c);
+            int column = scanner.nextInt();
+            verifyInputNumber(column);
 
-            Array targetArray = new Array(r, c);
+            Array targetArray = new Array(row, column);
             TransposeArray transposeArray = new TransposeArray(targetArray);
 
             printArray(targetArray.getArray());
             System.out.println("============");
             printArray(transposeArray.getResultArray());
-        } catch (Exception e) {
+        } catch (IllegalArgumentException | InputMismatchException e) {
             System.out.println(e.getMessage());
         }
 
