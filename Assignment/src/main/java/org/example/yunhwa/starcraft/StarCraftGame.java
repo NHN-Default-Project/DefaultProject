@@ -15,7 +15,6 @@ public class StarCraftGame {
     List<Unit> computerUnitList;
     boolean isUserWin;
 
-
     public StarCraftGame() {
         this.userUnitList = new ArrayList<>();
         this.computerUnitList = new ArrayList<>();

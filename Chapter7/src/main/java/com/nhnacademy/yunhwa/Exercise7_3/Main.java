@@ -2,10 +2,11 @@ package com.nhnacademy.yunhwa.Exercise7_3;
 
 public class Main {
     public static void main(String[] args) {
-        TestingClaimThatArraysSortIsMuchFasterThanSelectionSort testClaim = new TestingClaimThatArraysSortIsMuchFasterThanSelectionSort();
+        TestingWithRealNumberArray testWithRealNumberArr = new TestingWithRealNumberArray();
+        TestingWithStringArray testWithStringArr = new TestingWithStringArray(20);
 
-        testClaim.printResult(testClaim.testWithRealNumberArray.isRealThisClaimWithRealNumbersArray());
-        testClaim.printResult(testClaim.testWithStringArray.isRealThisClaimWithStringsArray());
+        testWithRealNumberArr.printResult(testWithRealNumberArr.isRealThisClaimWithRealNumbersArray());
+        testWithStringArr.printResult(testWithStringArr.isRealThisClaimWithStringsArray());
 
     }
 }

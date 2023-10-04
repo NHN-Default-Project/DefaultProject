@@ -2,26 +2,34 @@ package com.nhnacademy.yunhwa.Exercise7_3;
 
 import java.util.Arrays;
 
-public class TestingWithRealNumberArray {
-    public double[] createArrayFilledWithElements(double[] doubleArr) { // 빈 double 배열 받아서 처리
+public class TestingWithRealNumberArray implements TestingClaimThatArraysSortIsMuchFasterThanSelectionSort {
+    double[] doubleArr;
+    final int ARR_SIZE = 100_000;
+
+    public TestingWithRealNumberArray() {
+        this.doubleArr = new double[ARR_SIZE];
 
         double randomDoubleNum;
         for (int i = 0; i < doubleArr.length; i++) {
             randomDoubleNum = Math.random() * 10000 + 1; // 1 부터 10001 전까지
-            doubleArr[i] = randomDoubleNum;
+            this.doubleArr[i] = randomDoubleNum;
         }
-
-        return doubleArr;
     }
 
 
-    public double getProcessingTimeSortingByArraysSort(double[] doubleArr) {
+    public double getProcessingTimeSortingByArraysSort() {
 
         long startTime = System.nanoTime();
-        Arrays.sort(doubleArr);
+
+        double[] arraysSortedArray = this.doubleArr; // 복제
+        Arrays.sort(arraysSortedArray);
+
         long endTime = System.nanoTime();
 
-        // printSortedArray(doubleArr);
+//        System.out.println("---------------------------");
+//        printSortedArray(arraysSortedArray);
+//        System.out.println("---------------------------");
+
 
         return (endTime - startTime) / 1000000000.0;
     }
@@ -43,26 +51,30 @@ public class TestingWithRealNumberArray {
             doubleArr[maxLocation] = doubleArr[lastPlace]; // 실제 최댓값 위치한 자리에 이전 최댓값을 넣어주고
             doubleArr[lastPlace] = temp; // 이전 최댓값 위치한 자리(마지막 위치)에 실제 최댓값 넣어주기
         }
+
         return doubleArr;
     }
 
 
-    public double getProcessingTimeSortingBySelectionSort(double[] doubleArr) {
+    public double getProcessingTimeSortingBySelectionSort() {
 
         long startTime = System.nanoTime();
-        doubleArr = selectionSort(doubleArr);
+        double[] selectionSortedArray = selectionSort(this.doubleArr);
         long endTime = System.nanoTime();
 
-        // printSortedArray(doubleArr);
+//        System.out.println("---------------------------");
+//        printSortedArray(selectionSortedArray);
+//        System.out.println("---------------------------");
+
 
         return (endTime - startTime) / 1000000000.0;
     }
 
 
     // 메서드 내부에서 정렬된 배열의 결과를 출력하는 메서드 (정렬 결과 확인용)
-    public void printSortedArray(double[] doubleArr) {
-        for (int i = 0; i < doubleArr.length; i++) {
-            System.out.printf(" %.3f", doubleArr[i]);
+    public void printSortedArray(double[] sortedArr) {
+        for (int i = 0; i < sortedArr.length; i++) {
+            System.out.printf(" %.3f", sortedArr[i]);
             if (i % 10 == 0) {
                 System.out.println();
             }
@@ -75,13 +87,8 @@ public class TestingWithRealNumberArray {
     public boolean isRealThisClaimWithRealNumbersArray() {
         System.out.println("이 주장을 실수 배열로 테스트 해보겠습니다.");
 
-        final int SIZE = 100_000;
-
-        double[] doubleArr = new double[SIZE];
-        doubleArr = createArrayFilledWithElements(doubleArr);
-
-        double arraysSortSeconds = getProcessingTimeSortingByArraysSort(doubleArr);
-        double selectionSortSeconds = getProcessingTimeSortingBySelectionSort(doubleArr);
+        double arraysSortSeconds = getProcessingTimeSortingByArraysSort();
+        double selectionSortSeconds = getProcessingTimeSortingBySelectionSort();
 
         return selectionSortSeconds > arraysSortSeconds;
         // 선택 정렬 시간이 더 크다는 건 선택 정렬이 더 오래 걸린다는 의미!

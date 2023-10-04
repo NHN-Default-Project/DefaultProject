@@ -2,11 +2,11 @@ package com.nhnacademy.yunhwa.Exercise7_6;
 
 import java.util.*;
 
-public class WritingToAnOutputFileSortedAlphabeticalListFromDiffrentWordsThatReadATextFile {
+public class ReadTxtToWriteSortedListByAsc {
 
     private ArrayList<String> wordsList;
 
-    public WritingToAnOutputFileSortedAlphabeticalListFromDiffrentWordsThatReadATextFile() {
+    public ReadTxtToWriteSortedListByAsc() {
         this.wordsList = new ArrayList<>();
     }
 
@@ -21,8 +21,19 @@ public class WritingToAnOutputFileSortedAlphabeticalListFromDiffrentWordsThatRea
         Collections.sort(wordsList);
     }
 
+
     public void readUserSelectedFile() {
         TextIO.readUserSelectedFile();
+        makeWordsList();
+    }
+
+    public void readTextFile(String path) {
+        TextIO.readFile(path);
+        makeWordsList();
+    }
+
+    // 위 2개에서 사용되는 내부 메서드
+    public void makeWordsList() {
         String word = "";
         while (! TextIO.eof()) {
             word = readNextWord();
@@ -33,6 +44,7 @@ public class WritingToAnOutputFileSortedAlphabeticalListFromDiffrentWordsThatRea
         Set<String> strSet = Set.copyOf(wordsList);
         this.wordsList = new ArrayList<>(strSet);
     }
+
 
     public void writeUserSelectedFile() {
         TextIO.writeUserSelectedFile();
@@ -41,18 +53,7 @@ public class WritingToAnOutputFileSortedAlphabeticalListFromDiffrentWordsThatRea
         }
     }
 
-    public void readTextFile(String path) {
-        TextIO.readFile(path);
-        String word = "";
-        while (! TextIO.eof()) {
-            word = readNextWord();
-            if (word != null) {
-                this.wordsList.add(word.toLowerCase());
-            }
-        }
-        Set<String> strSet = Set.copyOf(wordsList);
-        this.wordsList = new ArrayList<>(strSet);
-    }
+
 
     public void writeTextFile(String path) {
         TextIO.writeFile(path);

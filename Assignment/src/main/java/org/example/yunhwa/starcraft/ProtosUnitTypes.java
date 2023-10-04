@@ -1,5 +1,7 @@
 package org.example.yunhwa.starcraft;
 
+import org.example.yunhwa.starcraft.protos.*;
+
 public class ProtosUnitTypes implements RaceUnitType { // Zealot Dragoon HighTempler Scout Corsair
 
     Zealot zealot;

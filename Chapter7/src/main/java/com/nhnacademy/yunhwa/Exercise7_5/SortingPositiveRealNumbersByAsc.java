@@ -13,12 +13,16 @@ public class SortingPositiveRealNumbersByAsc {
             System.out.println("\n정렬을 해보기 위해 양의 실수 배열 하나를 만들어보려고 합니다.");
             while (true) {
                 if (doubleList.size() > 100) {
-                    System.out.println("너무 많은 수가 입력되었습니다. 주의해주세요!");
+                    System.out.println("너무 많은 수가 입력되었습니다. 입력을 종료합니다.");
+                    break;
                 }
                 System.out.print("정렬하려는 양의 실수 배열의 값을 추가해주세요 (0이 들어오면 입력 종료) : ");
                 double currentDouble = sc.nextDouble();
                 if (currentDouble == 0.0) {
                     break;
+                } else if (currentDouble < 0) {
+                    System.out.println("양의 실수가 아니라, 음수가 들어왔습니다!! 값을 다시 입력해주세요!");
+                    continue;
                 }
                 doubleList.add(currentDouble);
             }
