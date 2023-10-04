@@ -7,11 +7,11 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ReadFile {
+public class ReadAndWriteFile {
     private List<String> list;
 
 
-    public ReadFile(String path) {
+    public ReadAndWriteFile(String path) {
         this.list = new ArrayList<>();
         insertFileToList(path);
     }
@@ -20,6 +20,24 @@ public class ReadFile {
         this.list.forEach(System.out::println);
         System.out.println();
     }
+
+    public void removeDuplicates() {
+        this.list = list.stream()
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
+    public void write() {
+
+        TextIO.writeUserSelectedFile();
+        for (String str : this.list) {
+            TextIO.putln(str);
+        }
+        TextIO.writeStandardOutput();
+//
+//        TextIO.writeFile("convertFile.txt");
+    }
+
 
     public void toLowerCaseList() {
         this.list = list.stream()
@@ -52,7 +70,7 @@ public class ReadFile {
         TextIO.readFile(path);
 
         while (!TextIO.eof()) {
-            String temp = ReadFile.readNextWord();
+            String temp = ReadAndWriteFile.readNextWord();
             if (temp == null) {
                 break;
             }
@@ -98,4 +116,6 @@ public class ReadFile {
         }
         return word;  // Return the word that has been read.
     }
+
+
 }
