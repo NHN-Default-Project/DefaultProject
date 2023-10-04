@@ -43,8 +43,8 @@ public class Player {
     }
 
     public boolean allDeadPlayerUnit() {
-        for (int i = 0; i < this.playerUnitList.size(); i++) {
-            if (!this.playerUnitList.get(i).dieUnit()) {
+        for (Unit unit : this.playerUnitList) {
+            if (!unit.dieUnit()) {
                 return false;
             }
         }
@@ -54,7 +54,6 @@ public class Player {
     public void attackEnemyUnit(Player enemy, int attackExcutionUnit, int unitToAttack) {
         this.playerUnitList.get(attackExcutionUnit).attack(enemy.getPlayerUnitList().get(unitToAttack));
     }
-
 
     public String getName() {
         return name;

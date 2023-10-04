@@ -3,7 +3,7 @@ package org.example.parkminsu.starcraft;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Game extends Rule {
+public class Game {
     private Player user;
     private Player computer;
 
@@ -14,34 +14,36 @@ public class Game extends Rule {
         Scanner scanner = new Scanner(System.in);
         this.user = chooseSelectedTribe(scanner, "아군"); // 종족 선택
         this.computer = chooseRandomTribe("적군");// 컴퓨터 종족 선택
-
+        Rule rule = new Rule();
         printPlayersUnit();
         // 여기까지 종족 선택 및 종족 관련 유닛 생성
 
         while (true) {
             try {
-                if (canNotAttackUnit(this.user, this.computer)) {
+                if (rule.canNotAttackUnit(this.user, this.computer)) {
                     System.out.println("때릴 수 있는 유닛이 없음");
                     System.out.println("컴퓨터 승리");
                     break;
                 }
+
                 userTurn(this.user, this.computer);
-                if (endGameCondition(this.user, this.computer)) {
-                    if (victoryPlayer(this.user, this.computer)) {
+
+                if (rule.endGameCondition(this.user, this.computer)) {
+                    if (rule.victoryPlayer(this.user, this.computer)) {
                         System.out.println("유저 승");
                     }
                     break;
                 }
                 // computer turn
-                if (canNotAttackUnit(this.computer, this.user)) {
+                if (rule.canNotAttackUnit(this.computer, this.user)) {
                     System.out.println("때릴 수 있는 유닛이 없음");
                     System.out.println("유저 승");
                     break;
                 }
                 computerTurn(this.computer, this.user);
 
-                if (endGameCondition(this.user, this.computer)) {
-                    if (victoryPlayer(this.computer, this.user)) {
+                if (rule.endGameCondition(this.user, this.computer)) {
+                    if (rule.victoryPlayer(this.computer, this.user)) {
                         System.out.println("컴퓨터 승");
                     }
                     break;
@@ -86,7 +88,7 @@ public class Game extends Rule {
             try {
                 Scanner scanner = new Scanner(System.in);
                 System.out.println("공격을 수행할 아군 유닛과 공격할 적군 유닛 정하시오");
-                int num = scanner.nextInt();
+                int num = scanner.nextInt(); // 수정
                 int num1 = scanner.nextInt();
                 playerTurn(user, computer, num, num1);
                 break;
