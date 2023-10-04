@@ -1,6 +1,5 @@
 package com.nhnacademy.parkminsu.exercise8_3;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RomanNumeral {
@@ -14,7 +13,6 @@ public class RomanNumeral {
 
     public RomanNumeral(int arabicNumerals) {
         preconditonArabicNumeral(arabicNumerals);
-
         this.arabicNumeral = arabicNumerals;
     }
 
@@ -25,15 +23,15 @@ public class RomanNumeral {
 
     }
 
-    public void preconditonArabicNumeral(int arabicNumeral) {
-        int arabicNumeralStartNum = 1;
-        int arabicNumeralEndNum = 3999;
+    private void preconditonArabicNumeral(int arabicNumeral) {
+        final int arabicNumeralStartNum = 1;
+        final int arabicNumeralEndNum = 3999;
         if (arabicNumeral < arabicNumeralStartNum || arabicNumeral > arabicNumeralEndNum) {
             throw new NumberFormatException("범위 내의 숫자를 입력해주세요");
         }
     }
 
-    public void preconditionRomanNumeral(String romanNumeral) {
+    private void preconditionRomanNumeral(String romanNumeral) {
         int sameNumberOfCharacters = 0;
         for (char romanNumChar : romanNumeral.toCharArray()) {
             for (int i = 0; i < this.romanNumeralNotation.length; i++) {
@@ -47,18 +45,11 @@ public class RomanNumeral {
         }
     }
 
-    public void preconditionDuplicateCount(String romanNumeral) {
-        int sameNumberOfCharactersCount = 0;
-        char[] romanNumChar = romanNumeral.toCharArray();
-
+    private void preconditionDuplicateCount(String romanNumeral) {
         String regex = "(\\w)\\1\\1\\1";
-        Matcher m;
-        m = Pattern.compile(regex).matcher(romanNumeral);
-        if (m.find()) {
+        if (Pattern.compile(regex).matcher(romanNumeral).find()) {
             throw new IllegalArgumentException("중복된 문자가 4개이상 입력하셨습니다.");
         }
-
-
     }
 
 
