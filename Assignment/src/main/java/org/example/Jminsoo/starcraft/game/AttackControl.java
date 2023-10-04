@@ -5,9 +5,6 @@ import org.example.Jminsoo.starcraft.unit.Unit;
 import java.util.stream.Collectors;
 
 public class AttackControl {
-    Player player;
-    Player computer;
-
     public void attackOrder(Player player1, Player player2, int attackUnitIndex, int hitUnitIndex, boolean isComputer) {
 
         Unit attackUnit;
@@ -30,7 +27,7 @@ public class AttackControl {
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException();
         }
-        System.out.println(String.format("유닛 %s, 유닛 %s를 공격!%n", attackUnit.getName(), hitUnit.getName()));
+        System.out.printf("유닛 %s, 유닛 %s를 공격!%n%n", attackUnit.getName(), hitUnit.getName());
         this.dieFilter(player1, player2);
     }
 
