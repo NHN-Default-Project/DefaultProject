@@ -1,4 +1,4 @@
-package org.example.Jminsoo.starcraft.stateType;
+package org.example.Jminsoo.starcraft.unit;
 
 public abstract class Unit {
     protected int defense;

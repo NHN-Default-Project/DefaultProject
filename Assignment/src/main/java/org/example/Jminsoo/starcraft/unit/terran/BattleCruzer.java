@@ -1,6 +1,6 @@
-package org.example.Jminsoo.starcraft.terran;
+package org.example.Jminsoo.starcraft.unit.terran;
 
-import org.example.Jminsoo.starcraft.stateType.Unit;
+import org.example.Jminsoo.starcraft.unit.Unit;
 
 public class BattleCruzer extends Unit {
     public BattleCruzer() {

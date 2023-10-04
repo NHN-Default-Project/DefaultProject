@@ -2,20 +2,14 @@ package com.nhnacademy.Jminsoo.excercise1;
 
 public class Excercise8_1 {
     /**
-     * Returns the larger of the two roots of the quadratic equation
-     * A*x*x + B*x + C = 0, provided it has any roots.  If A == 0 or
-     * if the discriminant, B*B - 4*A*C, is negative, then an exception
-     * of type IllegalArgumentException is thrown.
+     * 링크 : https://math.hws.edu/javanotes/c8/exercises.html
+     * 이차방정식을 받아 근을 구하는 문제. exception처리가 주된 내용
      */
-    static public double root(double A, double B, double C)
-            throws IllegalArgumentException {
-        if (A == 0) {
-            throw new IllegalArgumentException("A can't be zero.");
-        } else {
-            double disc = B * B - 4 * A * C;
-            if (disc < 0)
-                throw new IllegalArgumentException("Discriminant < zero.");
-            return (-B + Math.sqrt(disc)) / (2 * A);
-        }
+    public static void main(String[] args) {
+        QuadraticEquationApp app = new QuadraticEquationApp();
+
+        app.start();
     }
+
+
 }

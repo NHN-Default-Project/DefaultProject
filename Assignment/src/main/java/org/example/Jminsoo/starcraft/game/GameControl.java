@@ -1,6 +1,6 @@
 package org.example.Jminsoo.starcraft.game;
 
-import org.example.Jminsoo.starcraft.stateType.Unit;
+import org.example.Jminsoo.starcraft.unit.Unit;
 
 import java.util.InputMismatchException;
 import java.util.Random;

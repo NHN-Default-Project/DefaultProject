@@ -1,7 +1,7 @@
 package org.example.Jminsoo.starcraft.factories;
 
-import org.example.Jminsoo.starcraft.stateType.Unit;
-import org.example.Jminsoo.starcraft.zerg.*;
+import org.example.Jminsoo.starcraft.unit.Unit;
+import org.example.Jminsoo.starcraft.unit.zerg.*;
 
 public class ZergFactory extends UnitFactory {
 

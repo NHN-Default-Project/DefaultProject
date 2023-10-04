@@ -1,6 +1,6 @@
-package org.example.Jminsoo.starcraft.zerg;
+package org.example.Jminsoo.starcraft.unit.zerg;
 
-import org.example.Jminsoo.starcraft.stateType.Unit;
+import org.example.Jminsoo.starcraft.unit.Unit;
 
 public class Ultralisk extends Unit {
     public Ultralisk() {

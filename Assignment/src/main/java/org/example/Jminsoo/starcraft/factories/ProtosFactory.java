@@ -1,7 +1,7 @@
 package org.example.Jminsoo.starcraft.factories;
 
-import org.example.Jminsoo.starcraft.protos.*;
-import org.example.Jminsoo.starcraft.stateType.Unit;
+import org.example.Jminsoo.starcraft.unit.Unit;
+import org.example.Jminsoo.starcraft.unit.protos.*;
 
 public class ProtosFactory extends UnitFactory {
     String[] units;

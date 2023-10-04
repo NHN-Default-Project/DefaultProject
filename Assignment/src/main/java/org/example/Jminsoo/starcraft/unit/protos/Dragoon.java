@@ -1,6 +1,6 @@
-package org.example.Jminsoo.starcraft.protos;
+package org.example.Jminsoo.starcraft.unit.protos;
 
-import org.example.Jminsoo.starcraft.stateType.Unit;
+import org.example.Jminsoo.starcraft.unit.Unit;
 
 public class Dragoon extends Unit {
     public Dragoon() {

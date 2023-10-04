@@ -4,7 +4,7 @@ import org.example.Jminsoo.starcraft.factories.ProtosFactory;
 import org.example.Jminsoo.starcraft.factories.TerranFactory;
 import org.example.Jminsoo.starcraft.factories.UnitFactory;
 import org.example.Jminsoo.starcraft.factories.ZergFactory;
-import org.example.Jminsoo.starcraft.stateType.Unit;
+import org.example.Jminsoo.starcraft.unit.Unit;
 
 import java.util.ArrayList;
 import java.util.List;
