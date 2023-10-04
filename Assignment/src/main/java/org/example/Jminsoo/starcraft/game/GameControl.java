@@ -21,7 +21,7 @@ public class GameControl {
     }
 
 
-    public void makeGame() {
+    public void playGame() {
         System.out.println("게임을 시작합니다.");
         System.out.print("종족을 선택해주세요\n(테란 : 0, 저그 : 1, 프로토스 : 2) : ");
 
@@ -38,12 +38,8 @@ public class GameControl {
         }
         System.out.printf("선택된 적군 종족 : %s%n", this.computer.getRace());
         createUnits();
-        AttackControl gameAttackController = AttackControl.AttackControlBuilder.agameControl()
-                .withPlayer(this.player)
-                .withComputer(this.computer)
-                .build();
+        AttackControl gameAttackController = new AttackControl();
 
-        System.out.println(gameAttackController);
 
         while (true) {
             try {
@@ -56,6 +52,7 @@ public class GameControl {
                 }
 
                 System.out.println("플레이어의 차례입니다!\n");
+                this.printUnits();
                 this.playerAttack(gameAttackController);
 
                 if (this.victoryCheck()) {
@@ -67,6 +64,7 @@ public class GameControl {
                 }
 
                 System.out.println("적군 차례입니다!\n");
+                this.printUnits();
                 this.enemyAttack(gameAttackController);
 
             } catch (IllegalArgumentException e) {
@@ -75,6 +73,14 @@ public class GameControl {
             }
         }
         scanner.close();
+    }
+
+    private void printUnits() {
+        System.out.printf("적군 : %s%n", this.computer.getRace());
+        System.out.println(this.computer);
+        System.out.printf("아군 : %s%n", this.player.getRace());
+        System.out.println(this.player);
+
     }
 
     private boolean victoryCheck() {
@@ -151,7 +157,7 @@ public class GameControl {
             playerUnitIndex = scanner.nextInt();
             enemyUnitIndex = scanner.nextInt();
 
-            gameAttackController.attackOrder(playerUnitIndex, enemyUnitIndex, false);
+            gameAttackController.attackOrder(this.player, this.computer, playerUnitIndex, enemyUnitIndex, false);
 
 
         } catch (InputMismatchException e) {
@@ -164,7 +170,6 @@ public class GameControl {
             throw new IllegalArgumentException("범위 내의 유닛만 지정해주세요!");
         }
 
-        System.out.println(gameAttackController);
     }
 
     private void enemyAttack(AttackControl gameAttackController) {
@@ -172,14 +177,12 @@ public class GameControl {
             try {
                 int playerUnitIndex = random.nextInt(this.player.getUnits().size());
                 int enemyUnitIndex = random.nextInt(this.computer.getUnits().size());
-                gameAttackController.attackOrder(playerUnitIndex, enemyUnitIndex, true);
+                gameAttackController.attackOrder(this.player, this.computer, playerUnitIndex, enemyUnitIndex, true);
             } catch (IllegalArgumentException | IndexOutOfBoundsException e) {
                 continue;
             }
             break;
         }
-
-        System.out.println(gameAttackController);
     }
 
     private void createUnits() {

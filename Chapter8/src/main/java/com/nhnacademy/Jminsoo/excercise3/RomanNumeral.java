@@ -61,6 +61,7 @@ public class RomanNumeral {
 
     private void arabicToRoman() {
         StringBuilder result = new StringBuilder();
+
         int N = this.arabicNumeral;
 
         while (N >= 1000) {

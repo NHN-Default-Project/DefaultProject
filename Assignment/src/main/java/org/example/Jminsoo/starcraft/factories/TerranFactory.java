@@ -11,7 +11,7 @@ public class TerranFactory extends UnitFactory {
         units = new String[]{"Marine", "Goliath", "Tank", "Valkyrie", "Wraith", "BattleCruzer"};
     }
 
-    public String[] getUnitNames() {
+    public String[] getUnitNameArray() {
         return units;
     }
 

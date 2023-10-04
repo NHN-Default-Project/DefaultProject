@@ -10,12 +10,12 @@ public class ProtosFactory extends UnitFactory {
         units = new String[]{"Corsair", "Dragoon", "HighTempler", "Scout", "Zealot", "Carrier"};
     }
 
-    public String[] getUnitNames() {
+    public String[] getUnitNameArray() {
         return units;
     }
 
     protected Unit createUnit(String name) {
-        Unit unit = null;
+        Unit unit;
 
         switch (name) {
             case "Corsair":

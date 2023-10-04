@@ -11,7 +11,7 @@ public abstract class UnitFactory {
 
     protected abstract Unit createUnit(String name);
 
-    public abstract String[] getUnitNames();
+    public abstract String[] getUnitNameArray();
 
 
 }

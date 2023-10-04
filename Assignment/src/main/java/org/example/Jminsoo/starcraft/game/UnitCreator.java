@@ -13,11 +13,9 @@ import java.util.Random;
 public class UnitCreator {
     private final static int TERRAN_UNIT_COUNT = 5;
     private final static int ZERG_UNIT_COUNT = 8;
-
     private final static int PROTOS_UNIT_COUNT = 4;
     private List<Unit> units;
     private String race;
-
     private Random random;
 
 
@@ -34,36 +32,36 @@ public class UnitCreator {
     public UnitCreator randomFactory() {
 
         int randNum;
-        int unitsLength;
+        int unitCount;
         UnitFactory factory;
 
         switch (this.race) {
             case "Terran":
                 factory = new TerranFactory();
-                unitsLength = factory.getUnitNames().length;
+                unitCount = factory.getUnitNameArray().length;
 
                 for (int i = 0; i < TERRAN_UNIT_COUNT; i++) {
-                    randNum = random.nextInt(unitsLength);
-                    addUnits(factory.newInstance(factory.getUnitNames()[randNum]));
+                    randNum = random.nextInt(unitCount);
+                    addUnits(factory.newInstance(factory.getUnitNameArray()[randNum]));
                 }
                 break;
             case "Zerg":
                 factory = new ZergFactory();
-                unitsLength = factory.getUnitNames().length;
+                unitCount = factory.getUnitNameArray().length;
 
                 for (int i = 0; i < ZERG_UNIT_COUNT; i++) {
-                    randNum = random.nextInt(unitsLength);
-                    addUnits(factory.newInstance(factory.getUnitNames()[randNum]));
+                    randNum = random.nextInt(unitCount);
+                    addUnits(factory.newInstance(factory.getUnitNameArray()[randNum]));
                 }
                 break;
 
             case "Protos":
                 factory = new ProtosFactory();
-                unitsLength = factory.getUnitNames().length;
+                unitCount = factory.getUnitNameArray().length;
 
                 for (int i = 0; i < PROTOS_UNIT_COUNT; i++) {
-                    randNum = random.nextInt(unitsLength);
-                    addUnits(factory.newInstance(factory.getUnitNames()[randNum]));
+                    randNum = random.nextInt(unitCount);
+                    addUnits(factory.newInstance(factory.getUnitNameArray()[randNum]));
                 }
                 break;
             default:

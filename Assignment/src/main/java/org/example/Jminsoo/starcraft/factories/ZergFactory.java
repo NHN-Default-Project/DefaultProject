@@ -11,7 +11,7 @@ public class ZergFactory extends UnitFactory {
         units = new String[]{"Gurdian", "Hydralisk", "Mutalisk", "Ultralisk", "Zergling", "Queen"};
     }
 
-    public String[] getUnitNames() {
+    public String[] getUnitNameArray() {
         return units;
     }
 

@@ -31,5 +31,15 @@ public class Player {
         return race;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < this.getUnits().size(); i++) {
+            sb.append(String.format("%d. %s%n", i, this.getUnits().get(i)));
+        }
+        return sb.toString();
+    }
+
 
 }
