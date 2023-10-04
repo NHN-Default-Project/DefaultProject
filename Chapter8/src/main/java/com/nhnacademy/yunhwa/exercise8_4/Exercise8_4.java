@@ -29,6 +29,6 @@ public class Exercise8_4 {
 
         } catch (IllegalArgumentException | NoSuchElementException e) {
             System.out.println(e.getMessage());
-        }
+        }// InputMismatchException 은 NoSuchElementException 의 하위 타입 이라 위에서 잡혀서 처리 안해도 됨.
     }
 }

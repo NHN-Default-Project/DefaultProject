@@ -38,7 +38,7 @@ public class Exercise8_2 {
             System.out.println("총 항의 개수 : " + termCount + " 개");
 
 
-        } catch (NumberFormatException e) {
+        } catch (IllegalArgumentException e) { // NumberFormatException 이 하위 타입 이기에 여기서 잡힘
             System.out.println(e.getMessage());
         }
     }

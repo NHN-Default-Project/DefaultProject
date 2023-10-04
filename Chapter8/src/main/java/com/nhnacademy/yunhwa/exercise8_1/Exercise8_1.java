@@ -13,10 +13,17 @@ public class Exercise8_1 {
                 double c = sc.nextDouble();
                 System.out.printf("%.2f%n", root(a, b, c));
 
-                System.out.print("다른 방정식을 추가로 입력하시겠습니까? (Yes/No) : ");
-                String userAnswer = sc.next().toLowerCase();
-                if (userAnswer.equals("no")) {
-                    break;
+                while (true) { // no  아니면 yes 입력받을 때까지 돌기
+                    System.out.print("다른 방정식을 추가로 입력하시겠습니까? (Yes/No) : ");
+                    String userAnswer = sc.next().toLowerCase();
+                    if (userAnswer.equals("no")) {
+                        isContinued = false;
+                        break;
+                    } else if (userAnswer.equals("yes")) {
+                        break;
+                    } else {
+                        System.out.println("다시 정확하게 Yes or No 중 1개로 입력 시도해주세요");
+                    }
                 }
             }
 

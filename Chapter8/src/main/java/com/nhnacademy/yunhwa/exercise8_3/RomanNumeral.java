@@ -8,6 +8,15 @@ public class RomanNumeral {
 
     // 생성자 1 : String 파라미터
     public RomanNumeral(String romanNumStr) {
+        checkValidRoman(romanNumStr);
+
+        this.romanNumeral = romanNumStr;
+        this.arabicNumeral = 0;
+        standard = new StandardRomanNumerals();
+    }
+
+    // 위의 생성자 1 에서 사용되는 로마 문자 체크 메서드
+    public void checkValidRoman(String romanNumStr) {
         char[] romanChars = romanNumStr.toCharArray();
         for (char romanChar : romanChars) {
             if (!(romanChar == 'M' || romanChar == 'D' || romanChar == 'C' || romanChar == 'L' ||
@@ -15,33 +24,28 @@ public class RomanNumeral {
                 throw new NumberFormatException("합법적인 로마 숫자가 아닙니다. M, D, C, L, X, V, I 로 구성된 문자열을 입력해주세요");
             }
         }
-
-        this.romanNumeral = romanNumStr;
-        this.arabicNumeral = 0;
-        standard = new StandardRomanNumerals();
     }
+
 
 
     // 생성자 2 : int 파라미터
     public RomanNumeral(int romanNumInt) {
-        if (romanNumInt < 1 || romanNumInt > 3999) {
-            throw new NumberFormatException("1 ~ 3999 범위 내에서만 로마 숫자를 생성할 수 있습니다. 범위에 맞게 값을 다시 넣어주세요");
-        }
+        checkValidRomanInt(romanNumInt);
 
         this.romanNumeral = "";
         this.arabicNumeral = romanNumInt;
         standard = new StandardRomanNumerals();
     }
 
-
-    // toString() 메서드 내에서 활용하는 메서드
-    public StringBuilder subtractAmount(int idx, StringBuilder roman) {
-        while (this.arabicNumeral >= standard.arabicNumList.get(idx)) {
-            roman.append(standard.romanNumList.get(idx));
-            this.arabicNumeral -= standard.arabicNumList.get(idx);
+    // 위의 생성자 2 에서 사용되는 로마 숫자 체크 메서드
+    public void checkValidRomanInt(int romanNumInt) {
+        if (romanNumInt < 1 || romanNumInt > 3999) {
+            throw new NumberFormatException("1 ~ 3999 범위 내에서만 로마 숫자를 생성할 수 있습니다. 범위에 맞게 값을 다시 넣어주세요");
         }
-        return roman;
     }
+
+
+
 
 
     // int 를 String 으로 변환
@@ -55,6 +59,17 @@ public class RomanNumeral {
         this.romanNumeral = roman.toString();
         return this.romanNumeral;
     }
+
+    // 위의 toString() 메서드 내에서 활용하는 메서드
+    public StringBuilder subtractAmount(int idx, StringBuilder roman) {
+        while (this.arabicNumeral >= standard.arabicNumList.get(idx)) {
+            roman.append(standard.romanNumList.get(idx));
+            this.arabicNumeral -= standard.arabicNumList.get(idx);
+        }
+        return roman;
+    }
+
+
 
 
     // String 을 int 로 변환
@@ -83,6 +98,7 @@ public class RomanNumeral {
             }
         }
 
+        // 맨 마지막 값이 처리가 안된 경우 처리 해주기
         if (!isbeforeCombi) {
             this.arabicNumeral += standard.ROMAN_NUMERALS.get(String.valueOf(romanChars[romanChars.length - 1]));
         }
