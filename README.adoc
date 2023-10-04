@@ -94,8 +94,6 @@
 * REMOVE : 파일 삭제
 * CHORE : 빌드 업무수정, 패키지 매니저 수정 등등 (gitignore수정)
 
-
-
 .공동 목표
 * 1. 기술 스킬 향상 : 프로그래밍 언어, 프레임워크, 도구 등 전반적으로 프로그래밍 기반을 다짐.
 * 2. 프로젝트 완료 및 성공 : 자그만한 프로젝트라도 성공적으로 완료하고 프로젝트 관리 및 협업 능력을 개발.
@@ -103,3 +101,10 @@
 * 4. 문제 해결 능력 강화 : 알고리즘과 데이터 구조를 이해하고 전반적인 CS 지식 강화.
 * 5. 커뮤니케이션 및 협업 능력 강화 : 다른 팀원들과 원활하게 협력하고 의사소통 및 커뮤니케이션 강화.
 * 6. 최종 목표 : 웹 사이트 제작 프로젝트.
+
+.스타크래프트 과제
+* 박민수 : https://github.com/NHN-Default-Project/DefaultProject/tree/parkminsu/Assignment/src/main/java/org/example/parkminsu/starcraft
+* 이가은 : https://github.com/NHN-Default-Project/DefaultProject/tree/gaeun/Assignment/src/main/java/org/example/gaeun/starcraft
+* 정민수 : https://github.com/NHN-Default-Project/DefaultProject/tree/Jminsoo/Assignment/src/main/java/org/example/Jminsoo/starcraft
+* 정재현 : https://github.com/NHN-Default-Project/DefaultProject/tree/jaehyeon/Assignment/src/main/java/org/example/jaehyeon/starcraft
+* 최윤화 : https://github.com/NHN-Default-Project/DefaultProject/tree/yunhwa/Assignment/src/main/java/org/example/yunhwa/starcraft
