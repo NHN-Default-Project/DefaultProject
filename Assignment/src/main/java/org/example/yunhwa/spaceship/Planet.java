@@ -1,4 +1,4 @@
-package org.example.yunhwa.spaceShip;
+package org.example.yunhwa.spaceship;
 
 interface Planet { // 행성 : 수성, 금성, 화성, 목성, 토성, 천왕성, 해왕성
 

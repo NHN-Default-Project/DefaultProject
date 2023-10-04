@@ -1,4 +1,4 @@
-package org.example.yunhwa.spaceShip;
+package org.example.yunhwa.spaceship;
 
 public class SpaceShip implements Explorer {
 

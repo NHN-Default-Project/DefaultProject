@@ -1,4 +1,4 @@
-package org.example.yunhwa.spaceShip;
+package org.example.yunhwa.spaceship;
 
 public interface Explorer { // 우주선 한 대 : 각 행성을 탐험하러 다니는 타입
     
