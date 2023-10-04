@@ -2,6 +2,12 @@ package com.nhnacademy.gaeun.exercise4;
 
 import java.util.Scanner;
 
+/*
+* https://math.hws.edu/javanotes/c8/exercises.html
+* you should write a program that lets the user enter an expression.
+* If the expression contains an error, print an error message.
+ */
+
 public class Exercise8_4 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

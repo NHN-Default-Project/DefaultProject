@@ -13,12 +13,12 @@ public class GameStart {
         User user = new User();
         Computer computer = new Computer();
 
-        User.userChoiceUnit();
-        Computer.comChoiceUnit();
+        User.userChoiceUnit(); //사용자 유닛 선택
+        Computer.comChoiceUnit(); //컴퓨터 유닛 선택
 
-        starcraft.printStatus();
+        starcraft.printStatus(); //선택된 유닛 출력
 
-        while(!isFinished) {
+        while(!isFinished) { //게임시작
             user.attackUser();
             if(isFinished) {
                 break;
