@@ -1,11 +1,5 @@
-package org.example.yunhwa.starCraft;
+package org.example.yunhwa.starcraft;
 
 public interface Flyable {
-    default boolean canAttackFlyable() {
-        return true;
-    }
 
-    default boolean canAttackNotFlyable() {
-        return true;
-    }
 }

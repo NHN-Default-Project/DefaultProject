@@ -1,6 +1,4 @@
-package org.example.yunhwa.starCraft;
-
-import java.lang.reflect.Field;
+package org.example.yunhwa.starcraft;
 
 public abstract class Unit {
     private int attackPower;

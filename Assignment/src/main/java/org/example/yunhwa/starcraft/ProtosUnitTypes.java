@@ -1,6 +1,4 @@
-package org.example.yunhwa.starCraft;
-
-import java.util.Arrays;
+package org.example.yunhwa.starcraft;
 
 public class ProtosUnitTypes implements RaceUnitType { // Zealot Dragoon HighTempler Scout Corsair
 

@@ -1,4 +1,4 @@
-package org.example.yunhwa.starCraft;
+package org.example.yunhwa.starcraft;
 
 public class ZergUnitTypes implements RaceUnitType { // Zergling Hydralisk Ultralisk Mutalisk Guardian
 

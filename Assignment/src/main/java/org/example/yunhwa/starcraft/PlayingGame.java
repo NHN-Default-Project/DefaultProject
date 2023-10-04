@@ -1,4 +1,4 @@
-package org.example.yunhwa.starCraft;
+package org.example.yunhwa.starcraft;
 
 public class PlayingGame {
     public static void main(String[] args) {
