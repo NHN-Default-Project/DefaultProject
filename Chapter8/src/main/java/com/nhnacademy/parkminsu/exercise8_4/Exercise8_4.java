@@ -10,7 +10,7 @@ public class Exercise8_4 {
         String userInputNum;
         while (true) {
             try {
-                System.out.println("표현식 입력(빈 칸 입력시 종료");
+                System.out.println("표현식 입력(빈 칸 입력시 종료)");
                 String inputExpr = scanner.nextLine().trim();
                 if (inputExpr.isEmpty()) {
                     System.out.println("프로그램 종료");
