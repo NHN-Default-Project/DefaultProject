@@ -1,4 +1,4 @@
-package org.example.yunhwa.bankWindow;
+package org.example.yunhwa.bankwindow;
 
 public class Customer {
     private int customerNumber;

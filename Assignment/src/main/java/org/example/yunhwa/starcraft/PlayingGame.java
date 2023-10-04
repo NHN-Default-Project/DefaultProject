@@ -1,8 +1,6 @@
 package org.example.yunhwa.starCraft;
 
-import java.sql.SQLOutput;
-
-public class MainTest {
+public class PlayingGame {
     public static void main(String[] args) {
 
         StarCraftGame starCraftGame = new StarCraftGame();

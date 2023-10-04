@@ -1,9 +1,4 @@
-package org.example.yunhwa.bankWindow;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+package org.example.yunhwa.bankwindow;
 
 public class BankWindow extends Thread {
 //    List<Desk> desks;

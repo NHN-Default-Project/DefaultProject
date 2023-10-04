@@ -1,6 +1,4 @@
-package org.example.yunhwa.bankWindow;
-
-import java.util.Queue;
+package org.example.yunhwa.bankwindow;
 
 public class Desk extends Thread {
     private int deskNumber;

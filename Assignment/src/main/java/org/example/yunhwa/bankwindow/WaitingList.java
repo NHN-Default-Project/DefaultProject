@@ -1,4 +1,4 @@
-package org.example.yunhwa.bankWindow;
+package org.example.yunhwa.bankwindow;
 
 import java.util.LinkedList;
 import java.util.Queue;
