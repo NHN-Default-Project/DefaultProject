@@ -21,10 +21,6 @@ public abstract class Unit {
         return this.defensePower;
     }
 
-    public void setAttackPower(int attackPower) {
-        this.attackPower = attackPower;
-    }
-
     public void setDefensePower(int defensePower) {
         this.defensePower = defensePower;
     }
