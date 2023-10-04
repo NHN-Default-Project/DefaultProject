@@ -1,5 +1,10 @@
+<<<<<<<< HEAD:Assignment/src/main/java/org/example/gaeun/parseFile/Dictionary1.java
 package org.example.gaeun.parseFile;
+========
+package org.example.jaehyeon.dict;
+>>>>>>>> main:Assignment/src/main/java/org/example/jaehyeon/dict/Dictionary1.java
 
+import java.io.File;
 import java.util.Collection;
 import java.util.List;
 
@@ -23,7 +28,8 @@ public interface Dictionary1 {
      * @param path 파일 경로
      * @author 김현준
      */
-    void load(String path);
+
+    void load(File file);
 
     /**
      * 한글을 입력받아 영어단어 리스트를 돌려준다.
@@ -52,4 +58,5 @@ public interface Dictionary1 {
      */
     Collection<String> findAllListKor();
 
+    List<String> findAllEngByKorOrderByHomonymCountDescAndKorDesc();
 }

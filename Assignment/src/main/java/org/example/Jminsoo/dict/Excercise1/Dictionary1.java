@@ -1,9 +1,11 @@
-package com.nhnacademy.dict;
+package org.example.Jminsoo.dict.Excercise1;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 /**
- * 사전.
+ * CSV 사전.
  * <pre>
  * ===========================================================
  * DATE             AUTHOR               NOTE
@@ -14,21 +16,20 @@ import java.util.List;
  * @author 김현준
  * @since 2023/09/21
  */
-public interface Dictionary2 {
+public interface Dictionary1 {
 
-    // TODO #1 알맞게 변경 필요
     /**
      * 파일을 읽어 메모리에 적재한다.
      *
      * @param path 파일 경로
      * @author 김현준
      */
-    void load(/* TODO #1 ... */String path);
+    void load(String path) throws IOException;
 
     /**
-     * 한글을 입력받아 영어단어들을 돌려준다.
+     * 한글을 입력받아 영어단어 리스트를 돌려준다.
      *
-     * @param kor 한글 단어
+     * @param kor 한글.
      * @return 영단어 리스트
      * @author 김현준
      */
@@ -39,19 +40,17 @@ public interface Dictionary2 {
      * <br>
      * 동음이의어, 동의어는 1개로 간주한다. (중복 X)
      *
-     * @return 한글 단어 수
+     * @return int
      * @author 김현준
      */
     int count();
 
     /**
-     * 영단어 리스트를 정렬해서 가져온다.
-     * <br>
-     * 동음이의어 DESC, Kor DESC
+     * 모든 한글 단어 목록을 가져온다.
      *
-     * @return 정렬된 영단어 리스트
+     * @return 한글 단어 콜렉션 // TODO 적절한 자료구조로 리턴 타입 변경
      * @author 김현준
      */
-    List<String> findAllEngByKorOrderByHomonymCountDescAndKorDesc();
+    Set<String> findAllListKor();
 
 }
