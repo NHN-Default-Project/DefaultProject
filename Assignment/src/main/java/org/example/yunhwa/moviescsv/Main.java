@@ -1,4 +1,4 @@
-package org.example.yunhwa.moviesCsv;
+package org.example.yunhwa.moviescsv;
 
 import java.lang.reflect.Field;
 import java.util.Collections;

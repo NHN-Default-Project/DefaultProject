@@ -1,4 +1,4 @@
-package org.example.yunhwa.moviesCsv;
+package org.example.yunhwa.moviescsv;
 
 import java.io.BufferedReader;
 import java.io.IOException;

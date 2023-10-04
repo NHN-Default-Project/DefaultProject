@@ -1,7 +1,6 @@
-package org.example.yunhwa.moviesCsv;
+package org.example.yunhwa.moviescsv;
 
 import java.util.List;
-import java.util.Map;
 
 public interface Parser {
     public List<Movie> parse(String path);
