@@ -2,12 +2,11 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Homework (1) (com.nhnacademy)" />
-        <module name="HomeWork (2) (org.example)" />
         <module name="Assignment" />
         <module name="Chapter9" />
         <module name="LessonExample" />
@@ -27,6 +26,8 @@
     <bytecodeTargetLevel>
       <module name="Chapter010" target="11" />
       <module name="Chapter011" target="11" />
+      <module name="Homework (1) (com.nhnacademy)" target="11" />
+      <module name="HomeWork (2) (org.example)" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
