@@ -17,9 +17,13 @@ public class Exercise8_4 {
                     break;
                 }
                 expration = new Expr(inputExpr);
-                System.out.println("숫자를 입력하시오(빈 칸 입력 시 종료)");
-                while (!(userInputNum = scanner.nextLine()).isEmpty()) {
+                while (true) {
                     try {
+                        System.out.println("숫자를 입력하시오(빈 칸 입력 시 종료)");
+                        userInputNum = scanner.nextLine();
+                        if (userInputNum.isEmpty()) {
+                            break;
+                        }
                         val = expration.value(Double.parseDouble(userInputNum));
                         if (Double.isNaN(val)) {
                             System.out.println("val은 Nan");
