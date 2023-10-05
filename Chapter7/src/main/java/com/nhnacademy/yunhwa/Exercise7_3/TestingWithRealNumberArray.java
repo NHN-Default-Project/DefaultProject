@@ -19,12 +19,12 @@ public class TestingWithRealNumberArray implements TestingClaimThatArraysSortIsM
 
     public double getProcessingTimeSortingByArraysSort() {
 
-        long startTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();
 
         double[] arraysSortedArray = this.doubleArr; // 복제
         Arrays.sort(arraysSortedArray);
 
-        long endTime = System.currentTimeMillis();
+        long endTime = System.nanoTime();
 
 //        System.out.println("---------------------------");
 //        printSortedArray(arraysSortedArray);
@@ -58,9 +58,9 @@ public class TestingWithRealNumberArray implements TestingClaimThatArraysSortIsM
 
     public double getProcessingTimeSortingBySelectionSort() {
 
-        long startTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();
         double[] selectionSortedArray = selectionSort(this.doubleArr);
-        long endTime = System.currentTimeMillis();
+        long endTime = System.nanoTime();
 
 //        System.out.println("---------------------------");
 //        printSortedArray(selectionSortedArray);
