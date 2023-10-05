@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class RomanNumeral {
     private String romanNumeral;
     private int arabicNumeral;
-    final private StandardRomanNumerals standard;
+    private final StandardRomanNumerals standard;
 
 
     // 생성자 1 : String 파라미터
