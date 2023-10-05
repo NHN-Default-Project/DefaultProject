@@ -1,5 +1,7 @@
 package com.nhnacademy.parkminsu.exercise8_1;
 
+import java.util.InputMismatchException;
+
 public class QuadraticEquation { // 2차 방정식 클래스
     private double quadraticCoefficient;
     private double linearTermCoefficient;
@@ -12,9 +14,13 @@ public class QuadraticEquation { // 2차 방정식 클래스
     }
 
     public void enterCoefficient(double quadraticCoefficient, double linearTermCoefficient, double constant) {
-        this.quadraticCoefficient = quadraticCoefficient;
-        this.linearTermCoefficient = linearTermCoefficient;
-        this.constant = constant;
+        try {
+            this.quadraticCoefficient = quadraticCoefficient;
+            this.linearTermCoefficient = linearTermCoefficient;
+            this.constant = constant;
+        } catch (InputMismatchException e) {
+            throw new InputMismatchException();
+        }
     }
 
 
