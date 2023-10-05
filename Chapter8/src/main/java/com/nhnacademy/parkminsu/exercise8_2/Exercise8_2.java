@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Exercise8_2 {
     // 3.2.2 문제 확장판
+    // BigInterger를
     // 홀수 일 경우 3n+1, 짝수 일 경우 n/2
     public static final BigInteger THREE = BigInteger.valueOf(3L);
 
@@ -18,16 +19,16 @@ public class Exercise8_2 {
                     System.out.println("프로그램을 종료합니다");
                     break;
                 }
-                process(str);
+                measureTheNumOfSequenceOperations(str);
             }
         }
     }
 
-    public static void process(String str) {
+    public static void measureTheNumOfSequenceOperations(String str) {
         try {
             BigInteger bigInteger = new BigInteger(str);
             precondition(bigInteger);
-            System.out.println("연산 횟수: " + sequence(bigInteger));
+            System.out.println("연산 횟수: " + operationSequence(bigInteger));
         } catch (NumberFormatException e) {
             System.out.println("type이 맞지 않습니다. 다시 입력 해주세요");
         } catch (IllegalArgumentException e) {
@@ -35,7 +36,7 @@ public class Exercise8_2 {
         }
     }
 
-    public static int sequence(BigInteger bigInteger) {
+    public static int operationSequence(BigInteger bigInteger) {
         int numCalculation = 0;
         while (!bigInteger.equals(BigInteger.ONE)) {
             if (bigInteger.testBit(0)) {
