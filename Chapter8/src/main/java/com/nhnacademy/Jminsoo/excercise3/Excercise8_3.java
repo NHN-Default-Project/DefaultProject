@@ -13,7 +13,6 @@ public class Excercise8_3 {
 
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
-
                 try {
                     System.out.print("로마숫자 또는 아라비아 숫자를 입력하시오 : ");
                     input = scanner.nextLine();
@@ -27,7 +26,8 @@ public class Excercise8_3 {
                         romanNumeral = new RomanNumeral(input);
                         System.out.println(romanNumeral.toArabicInt());
                     }
-                } catch (NumberFormatException ignored) {
+                } catch (NumberFormatException e) {
+                    System.out.println(e.getMessage());
                 }
             }
         }

@@ -8,43 +8,45 @@ public class RomanNumeral {
     private String romanNumeral;
     private int arabicNumeral;
 
-    private final String[] ROMAN_NUMERAL = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
-    private final int[] ROMAN_NUMERAL_VALUE = {};
+    //출력 검증을 위한 변수
+    private boolean isArabic;
 
     public RomanNumeral(String romanNumeral) {
         try {
-            if (isRomanDuplicateFour(romanNumeral)) {
-                throw new NumberFormatException();
-            }
+            preconditionOfRoman(romanNumeral);
+            this.isArabic = false;
+
             this.romanNumeral = romanNumeral;
             romanToArabic();
         } catch (NumberFormatException e) {
-            System.out.println("입력값이 잘못되었습니다!");
-            throw new NumberFormatException();
+            throw new NumberFormatException("입력값이 잘못되었습니다!");
         }
     }
 
     public RomanNumeral(int arabicNumeral) {
         try {
-            if (arabicNumeral > 3999 || 1 > arabicNumeral) {
-                throw new NumberFormatException();
-            }
+            preconditionOfArabic(arabicNumeral);
+            this.isArabic = true;
+
             this.arabicNumeral = arabicNumeral;
             arabicToRoman();
         } catch (NumberFormatException e) {
-            System.out.println("입력값이 잘못되었습니다!");
-            throw new NumberFormatException();
+            throw new NumberFormatException("입력값이 잘못되었습니다!");
         }
 
     }
 
-    private boolean isRomanDuplicateFour(String roman) {
+    private void preconditionOfArabic(int number) {
+        if (number > 3999 || 1 > number) {
+            throw new NumberFormatException();
+        }
+    }
+
+    private void preconditionOfRoman(String roman) {
         String regex = "(\\w)\\1\\1\\1";
 
         if (Pattern.compile(regex).matcher(roman).find()) {
-            return true;
-        } else {
-            return false;
+            throw new NumberFormatException();
         }
     }
 
@@ -77,7 +79,7 @@ public class RomanNumeral {
 
             this.arabicNumeral = result;
 
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException | NullPointerException e) {
             throw new NumberFormatException(e.getMessage());
         }
 
@@ -103,6 +105,15 @@ public class RomanNumeral {
 
     public int toArabicInt() {
         return this.arabicNumeral;
+    }
+
+    @Override
+    public String toString() {
+        if (isArabic) {
+            return String.valueOf(this.arabicNumeral);
+        } else {
+            return this.romanNumeral;
+        }
     }
 
     public int getValue(char roman) {
