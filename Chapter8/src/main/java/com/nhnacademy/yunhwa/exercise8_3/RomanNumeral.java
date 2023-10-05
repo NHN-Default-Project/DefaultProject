@@ -31,7 +31,7 @@ public class RomanNumeral {
     }
 
     // 위의 생성자 1 에서 사용되는
-    // 동일한 문자의 반복이 4번 이상인지 체크하고 bool 값 리턴하는 메서드
+    // 동일한 문자의 반복이 4번 이상인지 체크하는 메서드
     public void checkExcessiveRepeatingChar(String romanStr) {
         // 방법 1. 정규표현식 활용해 find 로 한 번에 찾는 방법
         String regex = "(M{4,}|D{4,}|C{4,}|L{4,}|X{4,}|V{4,}|I{4,})";
@@ -47,7 +47,7 @@ public class RomanNumeral {
 //            }
 //        }
 
-//        // 방법 3. 범용 정규표현식 활용해 find 로 한 번에 찾는 방법
+        // 방법 3. 범용 정규표현식 활용해 find 로 한 번에 찾는 방법
 //        String regex2 = "(\\w)\\1\\1\\1";
 //        if (Pattern.compile(regex2).matcher(romanStr).find()) {
 //            throw new NumberFormatException("동일한 문자의 반복이 4번 이상인 것은 표준 로마 숫자에서 허용되지 않습니다. 다시 입력해주세요.");
