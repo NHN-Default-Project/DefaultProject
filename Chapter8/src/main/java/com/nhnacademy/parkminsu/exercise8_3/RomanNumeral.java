@@ -6,8 +6,7 @@ public class RomanNumeral {
     // 문자열에서 로마 숫자를 생성, 법적인 로마 숫자가 아닌 경우 Exception 던져야함
     // 다른 생성자는 1 ~ 3999인 로마 숫자 생성
     //
-    private final String[] romanNumeralNotation = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
-    private final int[] romanNumeralValue = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+    private RomanNumeralNotion romanNumeralNotation;
     private int arabicNumeral;
     private String romanNumeral;
 
@@ -34,8 +33,9 @@ public class RomanNumeral {
     private void preconditionRomanNumeral(String romanNumeral) {
         int sameNumberOfCharacters = 0;
         for (char romanNumChar : romanNumeral.toCharArray()) {
-            for (int i = 0; i < this.romanNumeralNotation.length; i++) {
-                if (this.romanNumeralNotation[i].equals(String.valueOf(romanNumChar))) {
+            for (RomanNumeralNotion ro : RomanNumeralNotion.values()) {
+                if (ro.name().equals(String.valueOf(romanNumChar))) {
+                    System.out.println(ro.name());
                     sameNumberOfCharacters++;
                 }
             }
@@ -46,64 +46,60 @@ public class RomanNumeral {
     }
 
     private void preconditionDuplicateCount(String romanNumeral) {
-        String regex = "(\\w)\\1\\1\\1";
+        String regex = "(\\w)\\1\\1\\1"; // 중복 문자 확인
         if (Pattern.compile(regex).matcher(romanNumeral).find()) {
             throw new IllegalArgumentException("중복된 문자가 4개이상 입력하셨습니다.");
         }
     }
 
-
-    public int findSameRomanNumeralIdx(char romanNumeral) {
-        int sameIdx = 0;
-        for (int j = 0; j < this.romanNumeralNotation.length; j++) {
-            if (this.romanNumeralNotation[j].equals(String.valueOf(romanNumeral))) {
-                sameIdx = j;
-            }
+    public boolean isCheckLastIndexOfCharacter(int currentIndex, char[] arrayChar) {
+        if (currentIndex < arrayChar.length - 1) {
+            return true;
+        } else {
+            return false;
         }
-        return sameIdx;
     }
 
-    public void convertRomanToArabic() { // 로마 숫자 -> 아라비아 숫자
+    public int calculateArabicNum(int currentArabicNum, char currentChar, char nextChar) {
+        if (RomanNumeralNotion.valueOf(String.valueOf(currentChar)).compareTo(RomanNumeralNotion.valueOf(String.valueOf(nextChar))) > 0) {
+            currentArabicNum -= RomanNumeralNotion.valueOf(String.valueOf(currentChar)).getRomanNum();
+        } else {
+            currentArabicNum += RomanNumeralNotion.valueOf(String.valueOf(currentChar)).getRomanNum();
+        }
+        return currentArabicNum;
+    }
+
+    public void convertRomanToArabic() { // 로마 숫자 -> 아라비아 숫자 3999
         char[] romanNumChar = this.romanNumeral.toCharArray();
         int arabicNum = 0;
         for (int i = 0; i < romanNumChar.length; i++) {
-            int idx = findSameRomanNumeralIdx(romanNumChar[i]);
-            int nextCharIdx = idx;
-            if (i < romanNumChar.length - 1) {
-                nextCharIdx = findSameRomanNumeralIdx(romanNumChar[i + 1]);
-                // 다음 문자가 클경우 빼는 경우
-                // ==========
-            }
-            if (this.romanNumeralValue[idx] < romanNumeralValue[nextCharIdx]) {
-                arabicNum -= this.romanNumeralValue[idx];
+            if (isCheckLastIndexOfCharacter(i, romanNumChar)) {
+                arabicNum = calculateArabicNum(arabicNum, romanNumChar[i], romanNumChar[i + 1]);
             } else {
-                arabicNum += this.romanNumeralValue[idx];
+                arabicNum = calculateArabicNum(arabicNum, romanNumChar[i], romanNumChar[i]);
             }
         }
-        // 로마 숫자에서 아라비아 숫자로 변환 할 때 3999값을 넘기면 안되므로
-        // 아라비아 숫자의 precondition으로 사용했던 메소드를 로마 숫자 -> 아라비아 숫자 변환 했을 때의 postcondition으로 사용함
-
         this.arabicNumeral = arabicNum;
     }
 
     public void convertArabicToRoman() { // 아라비아 숫자 -> 로마 숫자
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < this.romanNumeralNotation.length; i++) {
-            convertArabicNumToEquivalentRomanNum(stringBuilder, i);
+        for (RomanNumeralNotion ro : RomanNumeralNotion.values()) {
+            convertArabicNumToEquivalentRomanNum(stringBuilder, ro, ro.getRomanNum());
         }
+
         // 로마 숫자를 변환하기 전 조건에 충족이 되는지 precondition으로 한번 확인
         preconditionRomanNumeral(stringBuilder.toString());
         preconditionDuplicateCount(stringBuilder.toString());
         this.romanNumeral = stringBuilder.toString();
     }
 
-    public void convertArabicNumToEquivalentRomanNum(StringBuilder stringBuilder, int romanValueIdx) {
-        int cnt = 0;
-        while (this.arabicNumeral >= this.romanNumeralValue[romanValueIdx] && cnt < 3) {
-            System.out.println(cnt);
-            stringBuilder.append(this.romanNumeralNotation[romanValueIdx]);
-            this.arabicNumeral -= this.romanNumeralValue[romanValueIdx];
-            cnt++;
+    public void convertArabicNumToEquivalentRomanNum(StringBuilder stringBuilder, RomanNumeralNotion romanNumeralNotion, int romanValueIdx) {
+        int loppCnt = 0;
+        while (this.arabicNumeral >= romanValueIdx && loppCnt < 3) {
+            stringBuilder.append(romanNumeralNotion.name());
+            this.arabicNumeral -= romanValueIdx;
+            loppCnt++;
         }
     }
 
