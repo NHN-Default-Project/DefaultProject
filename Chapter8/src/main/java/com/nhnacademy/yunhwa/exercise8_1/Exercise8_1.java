@@ -1,17 +1,26 @@
 package com.nhnacademy.yunhwa.exercise8_1;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Exercise8_1 {
     public static void main(String[] args) {
-        try (Scanner sc = new Scanner(System.in);) {
-            boolean isContinued = true;
 
-            while (isContinued) {
-                System.out.print(" (Ax^2 + Bx + C = 0) 이차 방정식의 계수인, 실수 A, B, C를 순차적으로 입력해주세요 : ");
-                double a = sc.nextDouble();
-                double b = sc.nextDouble();
-                double c = sc.nextDouble();
+        boolean isContinued = true;
+
+        while (isContinued) {
+            System.out.print(" (Ax^2 + Bx + C = 0) 이차 방정식의 계수인, 실수 A, B, C를 순차적으로 입력해주세요 : ");
+            double a;
+            double b;
+            double c;
+
+            Scanner sc = new Scanner(System.in);
+            // (참고) BufferedReader .flush()로도 처리 가능
+
+            try {
+                a = sc.nextDouble();
+                b = sc.nextDouble();
+                c = sc.nextDouble();
                 System.out.printf("%.2f%n", root(a, b, c));
 
                 while (true) { // no  아니면 yes 입력받을 때까지 돌기
@@ -26,13 +35,16 @@ public class Exercise8_1 {
                         System.out.println("다시 정확하게 Yes or No 중 1개로 입력 시도해주세요");
                     }
                 }
-            }
 
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            } catch (InputMismatchException e) {
+                System.out.println("double 이 될 수 없는 값이 입력되었습니다. 다시 입력해주세요");
+            }
         }
 
     }
+
 
     /**
      * Returns the larger of the two roots of the quadratic equation
