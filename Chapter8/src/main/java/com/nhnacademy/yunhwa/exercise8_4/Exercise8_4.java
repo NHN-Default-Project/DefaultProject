@@ -29,8 +29,6 @@ public class Exercise8_4 {
             } // InputMismatchException 은 NoSuchElementException 의 하위 타입 이라 위에서 잡혀서 처리 안해도 됨.
         }
 
-        sc = new Scanner(System.in);
-
         try {
             System.out.println("값이 다 입력이 완료되었습니다.");
             System.out.print("이제 표현식을 입력해주세요 : ");
