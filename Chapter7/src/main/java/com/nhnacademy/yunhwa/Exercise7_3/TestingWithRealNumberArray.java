@@ -19,12 +19,12 @@ public class TestingWithRealNumberArray implements TestingClaimThatArraysSortIsM
 
     public double getProcessingTimeSortingByArraysSort() {
 
-        long startTime = System.nanoTime();
+        long startTime = System.currentTimeMillis();
 
         double[] arraysSortedArray = this.doubleArr; // 복제
         Arrays.sort(arraysSortedArray);
 
-        long endTime = System.nanoTime();
+        long endTime = System.currentTimeMillis();
 
 //        System.out.println("---------------------------");
 //        printSortedArray(arraysSortedArray);
@@ -58,9 +58,9 @@ public class TestingWithRealNumberArray implements TestingClaimThatArraysSortIsM
 
     public double getProcessingTimeSortingBySelectionSort() {
 
-        long startTime = System.nanoTime();
+        long startTime = System.currentTimeMillis();
         double[] selectionSortedArray = selectionSort(this.doubleArr);
-        long endTime = System.nanoTime();
+        long endTime = System.currentTimeMillis();
 
 //        System.out.println("---------------------------");
 //        printSortedArray(selectionSortedArray);
@@ -75,7 +75,7 @@ public class TestingWithRealNumberArray implements TestingClaimThatArraysSortIsM
     public void printSortedArray(double[] sortedArr) {
         for (int i = 0; i < sortedArr.length; i++) {
             System.out.printf(" %.3f", sortedArr[i]);
-            if (i % 10 == 0) {
+            if (i % 10 == 0) { // 깔끔한 출력을 위한 조건문
                 System.out.println();
             }
         }
@@ -89,6 +89,11 @@ public class TestingWithRealNumberArray implements TestingClaimThatArraysSortIsM
 
         double arraysSortSeconds = getProcessingTimeSortingByArraysSort();
         double selectionSortSeconds = getProcessingTimeSortingBySelectionSort();
+
+        System.out.println("--------------------------------\n");
+        System.out.printf("Arrays.sort() 소요 시간 : %.3f%n", arraysSortSeconds);
+        System.out.printf("Selection Sort 소요 시간 : %.3f%n%n", selectionSortSeconds);
+        System.out.println("--------------------------------");
 
         return selectionSortSeconds > arraysSortSeconds;
         // 선택 정렬 시간이 더 크다는 건 선택 정렬이 더 오래 걸린다는 의미!

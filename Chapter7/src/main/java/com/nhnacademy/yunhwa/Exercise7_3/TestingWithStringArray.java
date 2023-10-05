@@ -116,6 +116,11 @@ public class TestingWithStringArray implements TestingClaimThatArraysSortIsMuchF
         double arraysSortSeconds = getProcessingTimeSortingByArraysSort();
         double selectionSortSeconds = getProcessingTimeSortingBySelectionSort();
 
+        System.out.println("--------------------------------\n");
+        System.out.printf("Arrays.sort() 소요 시간 : %.3f%n", arraysSortSeconds);
+        System.out.printf("Selection Sort 소요 시간 : %.3f%n%n", selectionSortSeconds);
+        System.out.println("--------------------------------");
+
         return selectionSortSeconds > arraysSortSeconds;
         // 선택 정렬 시간이 더 크다는 건 선택 정렬이 더 오래 걸린다는 의미!
         // 주장이 참 이라면 선택 정렬에 걸린 시간이 더 클 것!
