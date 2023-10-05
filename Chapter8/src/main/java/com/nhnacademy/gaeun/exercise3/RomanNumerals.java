@@ -1,8 +1,8 @@
 package com.nhnacademy.gaeun.exercise3;
 
 public class RomanNumerals {
-    private int[] critical = {1000, 900, 500, 400, 100, 90, 50, 40, 10 , 9, 5, 4, 1};
-    private String[] critiNumeral = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+    private int[] criteria = {1000, 900, 500, 400, 100, 90, 50, 40, 10 , 9, 5, 4, 1};
+    private String[] criteriaNumeral = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
     private String romanNumeral;
     private int arabicNumeral;
 
@@ -27,10 +27,10 @@ public class RomanNumerals {
 
     public void arabicToRoman(int intArabic) {
         StringBuilder sb = new StringBuilder("");
-        for(int i = 0; i < critical.length; i++) {
-            if(critical[i] <= intArabic) {
-                sb.append(critiNumeral[i].repeat(intArabic / critical[i]));
-                intArabic = intArabic % critical[i];
+        for(int i = 0; i < criteria.length; i++) {
+            if(criteria[i] <= intArabic) {
+                sb.append(criteriaNumeral[i].repeat(intArabic / criteria[i]));
+                intArabic = intArabic % criteria[i];
             }
         }
         this.romanNumeral = sb.toString();
@@ -40,13 +40,13 @@ public class RomanNumerals {
         int result = 0;
         int i = 0;
         while(roman.length() != 0) {
-            if(roman.contains(critiNumeral[i])) {
-                roman = roman.substring(critiNumeral[i].length());
-                result += critical[i];
+            if(roman.contains(criteriaNumeral[i])) {
+                roman = roman.substring(criteriaNumeral[i].length());
+                result += criteria[i];
             } else {
                 i++;
             }
-            if(i >= critiNumeral.length) {
+            if(i >= criteriaNumeral.length) {
                 throw new NumberFormatException("로마 숫자로 입력해주세요.");
             }
         }
