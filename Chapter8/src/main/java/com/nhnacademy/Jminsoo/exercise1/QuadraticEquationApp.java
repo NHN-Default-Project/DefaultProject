@@ -16,13 +16,9 @@ public class QuadraticEquationApp {
         double result = 0;
         do {
             try {
-                try {
-                    System.out.print("2차 방정식의 수식을 적으시오 (Ax^2 + Bx + C) 중 A, B, C  : ");
-                    result = this.quadraticEquation.root();
-                    System.out.printf("%s의 값 : %.2f%n", this.quadraticEquation.getFormula(), result);
-                } catch (IllegalArgumentException e) {
-                    System.out.println(e.getMessage());
-                }
+                System.out.print("2차 방정식의 수식을 적으시오 (Ax^2 + Bx + C) 중 A, B, C  : ");
+                result = this.quadraticEquation.root();
+                System.out.printf("%s의 값 : %.2f%n", this.quadraticEquation.getFormula(), result);
             } catch (IllegalStateException | NoSuchElementException e) {
                 System.out.println(e.getMessage());
             }
