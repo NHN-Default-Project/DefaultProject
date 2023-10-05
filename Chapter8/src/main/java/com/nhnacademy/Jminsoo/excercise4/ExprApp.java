@@ -14,27 +14,36 @@ public class ExprApp {
 
 
     public void start() {
-        double varX = 0.0;
         double result;
+        double varX;
         String expression;
+        String answer;
         do {
             try {
                 System.out.print("수식을 입력하시오 : ");
                 expression = scanner.nextLine();
                 this.func = new Expr(expression);
-                System.out.print("수식의 값을 입력하시오 : ");
-                result = this.func.value(varX);
-                varX = Double.parseDouble(scanner.nextLine());
-                System.out.printf("수식의 값 : %.3f %n", result);
-            } catch (NumberFormatException e) {
-                System.out.println("올바른 숫자를 입력해주세요!");
-                System.out.println(e.getMessage());
+                System.out.println("수식의 값을 입력하시오(공백일시 종료)");
+                while (!(answer = this.scanner.nextLine()).isEmpty()) {
+
+                    try {
+                        varX = Double.parseDouble(answer);
+                        result = this.func.value(varX);
+                        System.out.printf("수식의 값 : %.3f %n", result);
+
+                    } catch (NumberFormatException e) {
+                        System.out.println("올바른 숫자를 입력해주세요!");
+                        System.out.println(e.getMessage());
+                    }
+
+                }
             } catch (IllegalArgumentException e) {
                 System.out.println("올바른 수식을 입력해주세요!");
                 System.out.println(e.getMessage());
             }
         } while (isContinue());
     }
+
 
     private boolean isContinue() {
         System.out.printf("계속 하시겠습니까? (y/n) : ");
