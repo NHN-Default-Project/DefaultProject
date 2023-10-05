@@ -24,10 +24,10 @@ public class Exercise8_2 {
                     break;
                 }
                 BigInteger bigInteger = new BigInteger(str);
-                precondition(bigInteger);
-                bigIntegersList = operationSequence(bigInteger);
-                printCalculatedSequence(bigIntegersList);
-                printNumberOfMeasurementsPerformed(bigIntegersList);
+                precondition(bigInteger); // 조건문
+                bigIntegersList = operationSequence(bigInteger); // 연산된 수열을 리스트 담기
+                printCalculatedSequence(bigIntegersList); // 리스트에 저장된 수열 프린트
+                printNumberOfMeasurementsPerformed(bigIntegersList); // 연산 횟수 측정 프린트
             } catch (NumberFormatException e) {
                 System.out.println("type이 맞지 않습니다. 다시 입력 해주세요");
             } catch (IllegalArgumentException e) {
@@ -49,7 +49,7 @@ public class Exercise8_2 {
 
     public static List<BigInteger> operationSequence(BigInteger bigInteger) {
         List<BigInteger> bigIntegerList = new ArrayList<>();
-        bigIntegerList.add(bigInteger);
+        bigIntegerList.add(bigInteger); // 입력받은 처음 값을 add
         while (!bigInteger.equals(BigInteger.ONE)) {
             bigInteger = calculationSequence(bigInteger);
             bigIntegerList.add(bigInteger);
@@ -64,7 +64,7 @@ public class Exercise8_2 {
             throw new IllegalArgumentException("음수를 입력했습니다. 다시 입력해주세");
         }
     }
-    
+
     public static void printNumberOfMeasurementsPerformed(List<BigInteger> bigIntegerList) { // 출력 메소드는 삭제 해도 됩니다!
         System.out.println("연산 횟수: " + bigIntegerList.size());
     }
