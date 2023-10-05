@@ -4,17 +4,17 @@ import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Exercise8_2 {
+    static final BigInteger THREE = new BigInteger("3");
 
     public static void main(String[] args) {
-        final BigInteger THREE = new BigInteger("3");
-        final BigInteger TWO = new BigInteger("2");
-        final BigInteger ONE = new BigInteger("1");
-        final BigInteger ZERO = new BigInteger("0");
-
-        int termCount = 1;
 
         Scanner sc = new Scanner(System.in);
-        BigInteger n = BigInteger.ZERO; // 초기화
+        BigInteger n = makeBigInteger(sc);
+        printSequence(n);
+    }
+
+    public static BigInteger makeBigInteger(Scanner sc) {
+        BigInteger n;
 
         while (true) {
             try {
@@ -32,15 +32,20 @@ public class Exercise8_2 {
                 System.out.println("정수로 변환할 수 없는 값이 입력되었습니다. 다시 입력해주세요");
             }
         }
+        return n;
+    }
+
+    public static void printSequence(BigInteger n) {
+        int termCount = 1;
 
         // 양의 정수가 맞다면
-        while (!n.equals(ONE)) {
+        while (!n.equals(BigInteger.ONE)) {
             System.out.println(termCount + " 번째 항의 값 : " + n);
 
-            if (n.remainder(TWO).equals(ZERO)) { // n 이 짝수 (n.testBit(0) == false)
-                n = n.divide(TWO);
-            } else { // n 이 홀수 (n.testBit(0) == true)
-                n = n.multiply(THREE).add(ONE);
+            if (! n.testBit(0)) { // n 이 짝수
+                n = n.divide(BigInteger.TWO);
+            } else { // n 이 홀수
+                n = n.multiply(THREE).add(BigInteger.ONE);
             }
             termCount++;
         }
