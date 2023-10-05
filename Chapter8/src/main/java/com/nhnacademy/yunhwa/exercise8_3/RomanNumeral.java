@@ -105,4 +105,6 @@ public class RomanNumeral {
 
         return this.arabicNumeral;
     }
+
+    public void check
 }
