@@ -1,5 +1,7 @@
 package com.nhnacademy.yunhwa.exercise8_3;
 
+import java.util.regex.Pattern;
+
 public class RomanNumeral {
     private String romanNumeral;
     private int arabicNumeral;
@@ -8,15 +10,17 @@ public class RomanNumeral {
 
     // 생성자 1 : String 파라미터
     public RomanNumeral(String romanNumStr) {
-        checkValidRoman(romanNumStr);
+        checkLegalRoman(romanNumStr);
+        checkExcessiveRepeatingChar(romanNumStr);
 
         this.romanNumeral = romanNumStr;
         this.arabicNumeral = 0;
         standard = new StandardRomanNumerals();
     }
 
-    // 위의 생성자 1 에서 사용되는 로마 문자 체크 메서드
-    public void checkValidRoman(String romanNumStr) {
+    // 위의 생성자 1 에서 사용되는
+    // 합법적인 로마 문자 체크 메서드
+    public void checkLegalRoman(String romanNumStr) {
         char[] romanChars = romanNumStr.toCharArray();
         for (char romanChar : romanChars) {
             if (!(romanChar == 'M' || romanChar == 'D' || romanChar == 'C' || romanChar == 'L' ||
@@ -25,6 +29,37 @@ public class RomanNumeral {
             }
         }
     }
+
+    // 위의 생성자 1 에서 사용되는
+    // 동일한 문자의 반복이 4번 이상인지 체크하고 bool 값 리턴하는 메서드
+    public void checkExcessiveRepeatingChar(String romanStr) {
+        // 방법 1. 정규표현식 활용해 find 로 한 번에 찾는 방법
+        String regex = "(M{4,}|D{4,}|C{4,}|L{4,}|X{4,}|V{4,}|I{4,})";
+        if (Pattern.compile(regex).matcher(romanStr).find()) {
+            throw new NumberFormatException("동일한 문자의 반복이 4번 이상인 것은 표준 로마 숫자에서 허용되지 않습니다. 다시 입력해주세요.");
+        }
+
+        // 방법 2. 방법 1과 같은 정규표현식 활용해, for 문으로 matches() 로 하나하나 비교하는 방법
+//        char[] romanChars = romanStr.toCharArray();
+//        for (int i = 0; i < romanChars.length - 3; i++) {
+//            if (Pattern.compile(regex).matcher(romanStr.substring(i, i+4)).matches()) {
+//                throw new NumberFormatException("동일한 문자의 반복이 4번 이상인 것은 표준 로마 숫자에서 허용되지 않습니다. 다시 입력해주세요.");
+//            }
+//        }
+
+//        // 방법 3. 범용 정규표현식 활용해 find 로 한 번에 찾는 방법
+//        String regex2 = "(\\w)\\1\\1\\1";
+//        if (Pattern.compile(regex2).matcher(romanStr).find()) {
+//            throw new NumberFormatException("동일한 문자의 반복이 4번 이상인 것은 표준 로마 숫자에서 허용되지 않습니다. 다시 입력해주세요.");
+//        }
+
+        // ============== 참고 ===================
+        // 동일한 문자의 반복은 최대 3번까지만 사용할 수 있고,
+        // 4번 이상의  반복된 문자를 나타내기 위해서는 작은 값을 큰 값 앞에 놓고 그 차이만큼 큰 값을 더해야 한다.
+        // 예를 들어, "IV"는 4를 나타내며, "IX"는 9를 나타낸다.
+        // ======================================
+    }
+
 
 
 
@@ -47,7 +82,6 @@ public class RomanNumeral {
 
 
 
-
     // int 를 String 으로 변환
     public String toString() {
         StringBuilder roman = new StringBuilder();
@@ -60,6 +94,7 @@ public class RomanNumeral {
         return this.romanNumeral;
     }
 
+
     // 위의 toString() 메서드 내에서 활용하는 메서드
     public StringBuilder subtractAmount(int idx, StringBuilder roman) {
         while (this.arabicNumeral >= standard.arabicNumList.get(idx)) {
@@ -68,6 +103,7 @@ public class RomanNumeral {
         }
         return roman;
     }
+
 
 
 
@@ -106,5 +142,5 @@ public class RomanNumeral {
         return this.arabicNumeral;
     }
 
-    public void check
+
 }
