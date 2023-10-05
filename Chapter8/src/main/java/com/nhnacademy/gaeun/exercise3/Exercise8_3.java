@@ -16,7 +16,7 @@ public class Exercise8_3 {
                 System.out.println("Please enter Roman numerals or Arabic numerals");
                 System.out.println("If you wish to exit, please press enter");
                 String inputValue = scanner.nextLine();
-                if(inputValue.equals("")) {
+                if(inputValue.isEmpty()) {
                     break;
                 }
                 if(isRoman(inputValue)) {
@@ -27,9 +27,10 @@ public class Exercise8_3 {
                     System.out.println(romanNumerals1.getRomanNumeral());
                 }
             } catch (NumberFormatException e) {
-                e.printStackTrace();
+                System.out.println(e.getMessage());
             }
         }
+        scanner.close();
     }
 
     public static boolean isRoman(String inputValue) {

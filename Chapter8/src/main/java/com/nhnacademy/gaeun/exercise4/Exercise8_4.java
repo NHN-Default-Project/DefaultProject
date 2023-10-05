@@ -1,5 +1,6 @@
 package com.nhnacademy.gaeun.exercise4;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /*
@@ -20,10 +21,31 @@ public class Exercise8_4 {
                 System.out.println("Please enter the value for x.");
                 double value = scanner.nextDouble();
                 System.out.println(expr.value(value));
+
                 scanner.nextLine();
+                if(!isFinish(scanner)) {
+                    break;
+                }
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();
+            } catch (InputMismatchException e) {
+                System.out.println("Please enter a real number");
             }
         }
+    }
+    public static boolean isFinish(Scanner scanner) {
+        while(true) {
+            System.out.println("Do you want to enter another equation? (yes or no)");
+            String yesOrNo = scanner.nextLine();
+            if(yesOrNo.equals("no")) {
+                System.out.println("exit.");
+                return false;
+            } else if(!yesOrNo.equals("yes")){
+                System.out.println("Please enter a valid value");
+            } else {
+                break;
+            }
+        }
+        return true;
     }
 }

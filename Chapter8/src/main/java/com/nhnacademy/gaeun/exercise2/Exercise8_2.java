@@ -15,17 +15,17 @@ import java.util.Scanner;
 public class Exercise8_2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int count = 0;
         while(true) {
+            int count = 1;
             try {
                 System.out.println("Input BigInteger");
                 System.out.println("If you wish to exit, please press enter");
                 String inputNum = scanner.nextLine();
-                if(inputNum.equals("")) {
+                if(inputNum.isEmpty()) {
                     break;
                 }
                 BigInteger bigInteger = new BigInteger(inputNum);
-                if(bigInteger.compareTo(new BigInteger("0"))==-1 || bigInteger.compareTo(new BigInteger("0"))==-0) {
+                if(bigInteger.compareTo(new BigInteger("0")) ==-1 || bigInteger.compareTo(new BigInteger("0")) == 0) {
                     throw new IllegalArgumentException();
                 }
                 while(!bigInteger.equals(new BigInteger("1"))) {
