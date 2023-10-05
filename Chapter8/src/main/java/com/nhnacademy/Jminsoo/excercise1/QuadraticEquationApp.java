@@ -5,37 +5,35 @@ import java.util.Scanner;
 
 public class QuadraticEquationApp {
     QuadraticEquation quadraticEquation;
+    Scanner scanner;
+
+    public QuadraticEquationApp() {
+        this.scanner = new Scanner(System.in);
+        this.quadraticEquation = new QuadraticEquation(scanner);
+    }
 
     public void start() {
-        boolean isContinue = true;
         double result = 0;
-        String answer;
-        Scanner scanner;
-        while (isContinue) {
+        do {
             try {
-
-                scanner = new Scanner(System.in);
-                this.quadraticEquation = new QuadraticEquation();
-
-                this.quadraticEquation.quadraticEquation();
                 try {
+                    System.out.print("2차 방정식의 수식을 적으시오 (Ax^2 + Bx + C) 중 A, B, C  : ");
                     result = this.quadraticEquation.root();
-                    System.out.printf("%s의 값 : %f%n", this.quadraticEquation.getFormula(), result);
+                    System.out.printf("%s의 값 : %.2f%n", this.quadraticEquation.getFormula(), result);
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
                 }
-
-                System.out.print("계속 하시겠습니까? (y/n) : ");
-                answer = scanner.nextLine();
-
-                if (answer.equals("n")) {
-                    break;
-                }
             } catch (IllegalStateException | NoSuchElementException e) {
-                scanner = new Scanner(System.in);
-                continue;
+                System.out.println(e.getMessage());
             }
-        }
-
+        } while (isRepeat());
+        this.scanner.close();
     }
+
+    private boolean isRepeat() {
+        System.out.print("계속 하시겠습니까? (y/n) : ");
+        String answer = this.scanner.nextLine();
+        return !answer.equals("n");
+    }
+
 }

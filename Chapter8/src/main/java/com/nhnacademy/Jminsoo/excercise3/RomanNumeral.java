@@ -2,14 +2,18 @@ package com.nhnacademy.Jminsoo.excercise3;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.regex.Pattern;
 
 public class RomanNumeral {
     private String romanNumeral;
     private int arabicNumeral;
 
+    private final String[] ROMAN_NUMERAL = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+    private final int[] ROMAN_NUMERAL_VALUE = {};
+
     public RomanNumeral(String romanNumeral) {
         try {
-            if (isRomanDuplicateThree(romanNumeral)) {
+            if (isRomanDuplicateFour(romanNumeral)) {
                 throw new NumberFormatException();
             }
             this.romanNumeral = romanNumeral;
@@ -17,7 +21,6 @@ public class RomanNumeral {
         } catch (NumberFormatException e) {
             System.out.println("입력값이 잘못되었습니다!");
             throw new NumberFormatException();
-
         }
     }
 
@@ -35,15 +38,14 @@ public class RomanNumeral {
 
     }
 
-    private boolean isRomanDuplicateThree(String roman) {
+    private boolean isRomanDuplicateFour(String roman) {
+        String regex = "(\\w)\\1\\1\\1";
 
-        for (int i = 0; i < roman.length() - 3; i++) {
-            char currentChar = roman.charAt(i);
-            if (currentChar == roman.charAt(i + 1) && currentChar == roman.charAt(i + 2) && currentChar == roman.charAt(i + 3)) {
-                return true;
-            }
+        if (Pattern.compile(regex).matcher(roman).find()) {
+            return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     private void romanToArabic() {
@@ -84,65 +86,13 @@ public class RomanNumeral {
     private void arabicToRoman() {
         StringBuilder result = new StringBuilder();
 
-        int N = this.arabicNumeral;
+        int arabicNum = this.arabicNumeral;
 
-        while (N >= 1000) {
-            result.append("M");
-            N -= 1000;
-        }
-        while (N >= 900) {
-            result.append("CM");
-            N -= 900;
-        }
-        while (N >= 500) {
-            result.append("D");
-            N -= 500;
-        }
-        while (N >= 400) {
-            result.append("CD");
-            N -= 400;
-        }
-        while (N >= 100) {
-            result.append("C");
-            N -= 100;
-        }
-        while (N >= 90) {
-            result.append("XC");
-            N -= 90;
-        }
-        while (N >= 50) {
-            result.append("L");
-            N -= 50;
-
-        }
-        while (N >= 40) {
-            result.append("XL");
-            N -= 40;
-
-        }
-        while (N >= 10) {
-            result.append("X");
-            N -= 10;
-
-        }
-        while (N >= 9) {
-            result.append("IX");
-            N -= 9;
-
-        }
-        while (N >= 5) {
-            result.append("V");
-            N -= 5;
-
-        }
-        while (N >= 4) {
-            result.append("IV");
-            N -= 4;
-
-        }
-        while (N >= 1) {
-            result.append("I");
-            N -= 1;
+        for (ERomanNumeral eRomanNumeral : ERomanNumeral.values()) {
+            while (arabicNum >= eRomanNumeral.getValue()) {
+                result.append(eRomanNumeral.name());
+                arabicNum -= eRomanNumeral.getValue();
+            }
         }
         this.romanNumeral = result.toString();
     }

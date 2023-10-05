@@ -27,8 +27,7 @@ public class Excercise8_3 {
                         romanNumeral = new RomanNumeral(input);
                         System.out.println(romanNumeral.toArabicInt());
                     }
-                } catch (NumberFormatException e) {
-
+                } catch (NumberFormatException ignored) {
                 }
             }
         }

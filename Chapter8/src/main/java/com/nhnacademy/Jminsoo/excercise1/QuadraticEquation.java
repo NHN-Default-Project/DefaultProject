@@ -4,40 +4,46 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class QuadraticEquation {
-    private int A;
-    private int B;
-    private int C;
+    private int inputNumA;
+    private int inputNumB;
+    private int inputNumC;
 
-    public String getFormula() {
-        return String.format("%dx^2 +%dx + %d = ", this.A, this.B, this.C);
+    Scanner scanner;
+
+    public QuadraticEquation(Scanner scanner) {
+        this.scanner = scanner;
     }
 
-    public void quadraticEquation() {
-        System.out.print("2차 방정식의 수식을 적으시오 (Ax^2 + Bx + C) 중 A, B, C  : ");
+    public String getFormula() {
+        return String.format("%dx^2 +%dx + %d = ", this.inputNumA, this.inputNumB, this.inputNumC);
+    }
 
+    public void calculate() {
         try {
-            Scanner scanner = new Scanner(System.in);
-            String[] str = scanner.nextLine().split(" ");
-            this.A = Integer.parseInt(str[0]);
-            this.B = Integer.parseInt(str[1]);
-            this.C = Integer.parseInt(str[2]);
-        } catch (NumberFormatException | NoSuchElementException | IllegalStateException e) {
-            System.out.println(e.getMessage());
+            String[] str = this.scanner.nextLine().split(" ");
+            this.inputNumA = Integer.parseInt(str[0]);
+            this.inputNumB = Integer.parseInt(str[1]);
+            this.inputNumC = Integer.parseInt(str[2]);
+        } catch (IllegalArgumentException | NoSuchElementException | IllegalStateException |
+                 ArrayIndexOutOfBoundsException e) {
+
             System.out.println("올바른 값을 입력해주세요!");
         }
-
 
     }
 
     public double root()
             throws IllegalArgumentException {
-        if (this.A == 0) {
+
+        this.calculate();
+
+        if (this.inputNumA == 0) {
             throw new IllegalArgumentException("A can't be zero.");
         } else {
-            double disc = this.B * this.B - 4 * this.A * this.C;
+            double disc = this.inputNumB * this.inputNumB - 4 * this.inputNumA * this.inputNumC;
             if (disc < 0)
                 throw new IllegalArgumentException("Discriminant < zero.");
-            return (-this.B + Math.sqrt(disc)) / (2 * this.A);
+            return (-this.inputNumB + Math.sqrt(disc)) / (2 * this.inputNumA);
         }
     }
 }

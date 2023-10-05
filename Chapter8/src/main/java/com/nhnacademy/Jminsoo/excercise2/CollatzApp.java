@@ -1,7 +1,6 @@
 package com.nhnacademy.Jminsoo.excercise2;
 
 import java.math.BigInteger;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class CollatzApp {
@@ -10,8 +9,8 @@ public class CollatzApp {
     private BigInteger result;
 
     public CollatzApp() {
-        scanner = new Scanner(System.in);
-        result = new BigInteger("0");
+        this.scanner = new Scanner(System.in);
+        this.result = new BigInteger("0");
     }
 
     public void start() {
@@ -28,20 +27,16 @@ public class CollatzApp {
 
             } catch (NumberFormatException e) {
                 System.out.println("유효한 입력값이 아닙니다!");
-            } catch (NoSuchElementException | IllegalStateException e) {
-                scanner = new Scanner(System.in);
             }
         }
-        scanner.close();
+        this.scanner.close();
     }
 
     public BigInteger collatzCalculate(BigInteger bi, int count) {
         if (bi.signum() < 1) {
             throw new NumberFormatException();
         }
-
         System.out.println(bi);
-
 
         if (bi.equals(new BigInteger("1"))) {
             return new BigInteger(String.valueOf(count));
