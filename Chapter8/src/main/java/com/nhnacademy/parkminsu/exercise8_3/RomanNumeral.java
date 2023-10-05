@@ -6,7 +6,7 @@ public class RomanNumeral {
     // 문자열에서 로마 숫자를 생성, 법적인 로마 숫자가 아닌 경우 Exception 던져야함
     // 다른 생성자는 1 ~ 3999인 로마 숫자 생성
     //
-    private RomanNumeralNotion romanNumeralNotation;
+    private RomanNumeralNotation romanNumeralNotation;
     private int arabicNumeral;
     private String romanNumeral;
 
@@ -33,7 +33,7 @@ public class RomanNumeral {
     private void preconditionRomanNumeral(String romanNumeral) {
         int sameNumberOfCharacters = 0;
         for (char romanNumChar : romanNumeral.toCharArray()) {
-            for (RomanNumeralNotion ro : RomanNumeralNotion.values()) {
+            for (RomanNumeralNotation ro : RomanNumeralNotation.values()) {
                 if (ro.name().equals(String.valueOf(romanNumChar))) {
                     System.out.println(ro.name());
                     sameNumberOfCharacters++;
@@ -61,10 +61,10 @@ public class RomanNumeral {
     }
 
     public int calculateArabicNum(int currentArabicNum, char currentChar, char nextChar) {
-        if (RomanNumeralNotion.valueOf(String.valueOf(currentChar)).compareTo(RomanNumeralNotion.valueOf(String.valueOf(nextChar))) > 0) {
-            currentArabicNum -= RomanNumeralNotion.valueOf(String.valueOf(currentChar)).getRomanNum();
+        if (RomanNumeralNotation.valueOf(String.valueOf(currentChar)).compareTo(RomanNumeralNotation.valueOf(String.valueOf(nextChar))) > 0) {
+            currentArabicNum -= RomanNumeralNotation.valueOf(String.valueOf(currentChar)).getRomanNum();
         } else {
-            currentArabicNum += RomanNumeralNotion.valueOf(String.valueOf(currentChar)).getRomanNum();
+            currentArabicNum += RomanNumeralNotation.valueOf(String.valueOf(currentChar)).getRomanNum();
         }
         return currentArabicNum;
     }
@@ -84,7 +84,7 @@ public class RomanNumeral {
 
     public void convertArabicToRoman() { // 아라비아 숫자 -> 로마 숫자
         StringBuilder stringBuilder = new StringBuilder();
-        for (RomanNumeralNotion ro : RomanNumeralNotion.values()) {
+        for (RomanNumeralNotation ro : RomanNumeralNotation.values()) {
             convertArabicNumToEquivalentRomanNum(stringBuilder, ro, ro.getRomanNum());
         }
 
@@ -94,7 +94,7 @@ public class RomanNumeral {
         this.romanNumeral = stringBuilder.toString();
     }
 
-    public void convertArabicNumToEquivalentRomanNum(StringBuilder stringBuilder, RomanNumeralNotion romanNumeralNotion, int romanValueIdx) {
+    public void convertArabicNumToEquivalentRomanNum(StringBuilder stringBuilder, RomanNumeralNotation romanNumeralNotion, int romanValueIdx) {
         int loppCnt = 0;
         while (this.arabicNumeral >= romanValueIdx && loppCnt < 3) {
             stringBuilder.append(romanNumeralNotion.name());
