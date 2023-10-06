@@ -9,16 +9,21 @@ import java.util.*;
  */
 public class Exercise7_1 {
     private static final int INT_NUM = 30;
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        while(true) {
+        while (true) {
             try {
                 System.out.println("n을 최댓값으로 하는 30개 원소를 가진 random 배열을 생성합니다.");
                 System.out.println("n값을 입력해주세요.");
                 int max = scanner.nextInt();
-                for (int element : list(INT_NUM, max)) {
-                    System.out.println(element);
+                if (max <= 0) {
+                    System.out.println("음수값이 입력되었습니다. 다시 입력해주세요!");
+                    continue;
                 }
+                    for (int element : list(INT_NUM, max)) {
+                        System.out.println(element);
+                    }
                 break;
             } catch (InputMismatchException e) {
                 System.out.println("정수값을 입력해주세요!");
