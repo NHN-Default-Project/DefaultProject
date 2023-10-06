@@ -7,8 +7,6 @@ import java.util.Scanner;
 
 public class Exercise8_2 {
     /**
-     * https://math.hws.edu/javanotes/c8/exercises.html
-     *
      * 3.2.2 문제 확장판
      * 사용자로부터 양의 정수를 입력받아 BigInteger n으로 만들어주고
      * n을 수열의 첫 항으로 하고
@@ -18,7 +16,6 @@ public class Exercise8_2 {
      * */
 
     public static final BigInteger THREE = BigInteger.valueOf(3L);
-
 
     // 예제 수행 프로그램 main 메서드
     public static void main(String[] args) {
@@ -34,6 +31,8 @@ public class Exercise8_2 {
     }
 
 
+
+
     // 사용자로부터 양의 정수를 입력받는 메서드
     public static BigInteger makeBigInteger(Scanner sc) {
         BigInteger n;
@@ -44,7 +43,7 @@ public class Exercise8_2 {
                 String numStr = sc.nextLine().trim();
                 n = new BigInteger(numStr); // 할당
 
-                precondition(n);
+                checkValidPositiveInteger(n);
                 // 위에서 Exception 이 발생 안했다면
                 break; // 탈출
             } catch (NumberFormatException e) {
@@ -59,8 +58,8 @@ public class Exercise8_2 {
 
 
 
-    // 사전조건 체크하는 내부 메서드
-    private static void precondition(BigInteger bigInteger) throws IllegalArgumentException {
+    // 양의 정수가 맞는지 체크하는 내부 메서드 (아닐 때만 예외 던져짐)
+    private static void checkValidPositiveInteger(BigInteger bigInteger) throws IllegalArgumentException {
         if (bigInteger.signum() == 0) {
             throw new IllegalArgumentException("0 이 입력되었습니다. 양의 정수로 입력을 다시 입력해주세요");
         } else if (bigInteger.signum() < 0) {
