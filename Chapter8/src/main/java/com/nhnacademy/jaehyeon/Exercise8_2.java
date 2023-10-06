@@ -1,26 +1,45 @@
 package com.nhnacademy.jaehyeon;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.math.BigInteger;
-import java.util.Scanner;
 
 public class Exercise8_2 {
+    private static final String YES = "yes";
 
     public static void main(String[] args) {
+        boolean quitGame = true;
         Exercise8_2 exercise8_2 = new Exercise8_2();
-        String inputNumberN = exercise8_2.inputNumber();
 
-        BigInteger N = new BigInteger(inputNumberN);
-        System.out.println(exercise8_2.countSequenceCalculate(N));
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
+            while (quitGame) {
+                System.out.println("게임 진행을 더 하시길 원하신다면 'yes'라고 말해 주세요.");
+                System.out.println("끝내실려면 아무거나 눌러주세요.");
+                String input = br.readLine().toLowerCase().trim();
+                if (!input.equals(YES)) {
+                    System.out.println("끝");
+                    quitGame = false;
+                }
+
+                String inputNumber = exercise8_2.inputNumber(br);
+                BigInteger N = new BigInteger(inputNumber);
+                System.out.println(exercise8_2.countSequenceCalculate(N));
+            }
+        } catch (IOException e) {
+            System.out.println("입력 오류: " + e.getMessage());
+        }
     }
 
-    private String inputNumber() {
-        System.out.println("숫자 입력하세요");
-        String inputNumber = "";
-        try (Scanner scanner = new Scanner(System.in)) {
-            inputNumber = scanner.nextLine();
-            if (!isNumber(inputNumber)) {
-                System.out.println("숫자만 입력하세요");
-                inputNumber();
+    private String inputNumber(BufferedReader br) throws IOException {
+        String inputNumber;
+        System.out.println("숫자 입력하세요.");
+        while (true) {
+            inputNumber = br.readLine();
+            if (isNumber(inputNumber)) {
+                break;
+            } else {
+                System.out.println("유효한 숫자가 아님. 다시 입력하세요.");
             }
         }
         return inputNumber;
@@ -31,6 +50,7 @@ public class Exercise8_2 {
             Integer.parseInt(inputNumber);
             return true;
         } catch (NumberFormatException e) {
+            System.out.println("숫자로 입력해주세요.");
             return false;
         }
     }
