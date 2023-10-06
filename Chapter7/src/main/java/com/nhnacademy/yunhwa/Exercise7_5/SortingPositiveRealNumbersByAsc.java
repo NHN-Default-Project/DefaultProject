@@ -35,12 +35,7 @@ public class SortingPositiveRealNumbersByAsc {
         }
         System.out.println();
 
-        double[] doubleArr = new double[doubleList.size()];
-        for (int i = 0; i < doubleArr.length; i++) {
-            doubleArr[i] = doubleList.get(i);
-        }
-
-        return doubleArr;
+        return doubleList.stream().mapToDouble(Double::doubleValue).toArray();
     }
 
 
