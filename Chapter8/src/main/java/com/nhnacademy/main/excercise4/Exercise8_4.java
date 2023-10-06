@@ -8,8 +8,42 @@ import java.util.Scanner;
 public class Exercise8_4 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        List<Double> inputXList = new ArrayList<>();
+        List<Double> inputXList;
         boolean isContinue = true;
+        String answer = "";
+
+
+        while (isContinue) {
+            //x값 입력
+            inputXList = inputxlist(sc);
+            //expression 입력 및 출력
+            inputExpression(sc, inputXList);
+
+            //반복여부
+            while (isContinue) {
+                try {
+                    System.out.print("계속 하시겠습니까? (y/n) : ");
+                    answer = sc.nextLine().trim().toLowerCase();
+                    if (answer.equals("n") || answer.equals("y")) {
+                        break;
+                    }
+
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+
+            if (answer.equals("n")) {
+                isContinue = false;
+            }
+        }
+
+        sc.close();
+    }
+
+    public static List<Double> inputxlist(Scanner sc) {
+        boolean isContinue = true;
+        List<Double> result = new ArrayList<>();
 
         while (isContinue) {
             try {
@@ -17,16 +51,20 @@ public class Exercise8_4 {
                 double x = sc.nextDouble();
                 if (x == 0.0) {
                     isContinue = false;
+                } else {
+                    result.add(x);
                 }
-                inputXList.add(x);
             } catch (NoSuchElementException | IllegalArgumentException e) {
                 System.out.println("double 값으로 변환할 수 없는 값이 입력되었습니다. 다시 입력해주세요!");
+                sc.nextLine();
             }
         }
-
-        isContinue = true;
-        System.out.println("값이 다 입력이 완료되었습니다.");
         sc.nextLine();
+        return result;
+    }
+
+    public static void inputExpression(Scanner sc, List<Double> inputXList) {
+        boolean isContinue = true;
 
         while (isContinue) {
             try {
@@ -44,8 +82,6 @@ public class Exercise8_4 {
                 System.out.println(e.getMessage());
             }
         }
-
-        sc.close();
     }
 }
 
