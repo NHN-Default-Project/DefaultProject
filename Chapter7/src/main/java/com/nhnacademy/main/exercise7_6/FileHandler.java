@@ -19,6 +19,7 @@ public class FileHandler {
 
     public void readUserSelectedFile() {
         TextIO.readUserSelectedFile();
+        
     }
 
 
