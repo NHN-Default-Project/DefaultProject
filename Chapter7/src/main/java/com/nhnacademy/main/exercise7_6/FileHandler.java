@@ -14,7 +14,7 @@ public class FileHandler {
 
     public void loadReadFile() {
         readUserSelectedFile();
-        this.wordsList = makeWordsList(this.wordsList);
+        makeWordsList(this.wordsList);
     }
 
     public void readUserSelectedFile() {
@@ -23,7 +23,7 @@ public class FileHandler {
 
 
     // 위 2개에서 사용되는 내부 메서드
-    public List<String> makeWordsList(List<String> wordsList) {
+    private void makeWordsList(List<String> wordsList) {
         String word = "";
         while (!TextIO.eof()) {
             word = readNextWord();
@@ -31,7 +31,6 @@ public class FileHandler {
                 wordsList.add(word.toLowerCase());
             }
         }
-        return wordsList;
     }
 
     public void loadWriteFile() {
