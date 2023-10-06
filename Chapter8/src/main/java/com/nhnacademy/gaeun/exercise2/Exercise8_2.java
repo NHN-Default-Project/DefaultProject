@@ -25,7 +25,7 @@ public class Exercise8_2 {
                     break;
                 }
                 BigInteger bigInteger = new BigInteger(inputNum);
-                if(bigInteger.compareTo(new BigInteger("0")) ==-1 || bigInteger.compareTo(new BigInteger("0")) == 0) {
+                if(bigInteger.compareTo(BigInteger.ZERO) <= 0) {
                     throw new IllegalArgumentException();
                 }
                 while(!bigInteger.equals(new BigInteger("1"))) {

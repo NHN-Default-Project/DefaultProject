@@ -2,6 +2,7 @@ package com.nhnacademy.main.exercise1;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 /**
  * https://math.hws.edu/javanotes/c8/exercises.html
  * Returns the larger of the two roots of the quadratic equation
@@ -25,6 +26,8 @@ public class Exercise8_1 {
             } catch (InputMismatchException e) {
                 System.out.println("정수 또는 실수 아닌 값을 입력했습니다. 다시 입력해주세요");
                 scanner.nextLine();
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
             }
         }
         System.out.println("프로그램 종료");

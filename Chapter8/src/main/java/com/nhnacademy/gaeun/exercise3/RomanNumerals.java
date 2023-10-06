@@ -32,7 +32,7 @@ public class RomanNumerals {
 
     private void checkRoman(String romanNumeral) {
         String regex = "(M{3,}|D{3,}|C{3,}|L{3,}|X{3,}|V{3,}|I{3,})";
-        if (Pattern.compile(regex).matcher(romanNumeral).find()) {
+        if (romanNumeral.matches(regex)) {
             throw new NumberFormatException("동일한 문자가 3번 이상 들어오고 있습니다. ");
         }
     }
