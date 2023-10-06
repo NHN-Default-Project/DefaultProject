@@ -70,13 +70,16 @@ public class Matrix {
         int maxRangeDigit = (int) (Math.log10(maxRange) + 1);
 
         int maxDigit = Math.max(minRangeDigit, maxRangeDigit);
+        String format = "%" + maxDigit + "s";
 
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < this.rows; i++) {
             sb.append("{");
             for (int j = 0; j < this.columns; j++) {
-                String format = "%" + maxDigit + "s";
+                if (this.data[i][j] >= 0) { // 음수 부호로 생긴 한 칸 맞춰주기
+                    format = "%" + (maxDigit + 1) + "s";
+                }
                 sb.append(String.format(format, String.valueOf(this.data[i][j])));
                 if (j < this.columns - 1) {
                     sb.append(", ");
