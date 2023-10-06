@@ -1,33 +1,27 @@
 package com.nhnacademy.yunhwa.exercise8_3;
 
 import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.BitSet;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class StandardRomanNumerals {
-    final List<String> romanNumList;
-    final List<Integer> arabicNumList;
-    final HashMap<String, Integer> ROMAN_NUMERALS;
+    static final List<String> BASIC_ROMAN = List.of("M", "D", "C", "L", "X", "V", "I");
+    static final Map<String, Integer> ROMAN_NUMERALS = Map.ofEntries(
+            Map.entry("M", 1000),
+            Map.entry("CM", 900),
+            Map.entry("D", 500),
+            Map.entry("CD", 400),
+            Map.entry("C", 100),
+            Map.entry("XC", 90),
+            Map.entry("L", 50),
+            Map.entry("XL", 40),
+            Map.entry("X", 10),
+            Map.entry("IX", 9),
+            Map.entry("V", 5),
+            Map.entry("IV", 4),
+            Map.entry("I", 1)
+            );
 
-    public StandardRomanNumerals() {
-
-        // 배열로 만들고
-        final String[] romanNumerals = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
-        final Integer[] arabicNumerals = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
-
-        // 접근 용이하게 리스트로 변환
-        this.romanNumList = Arrays.asList(romanNumerals);
-        this.arabicNumList = Arrays.asList(arabicNumerals);
-
-
-        // 위의 배열 활용해서 로마 숫자와 아라비아 숫자 대응 맵 만들기
-        this.ROMAN_NUMERALS = new HashMap<>();
-
-        for (int i = 0; i < romanNumerals.length; i++) {
-            this.ROMAN_NUMERALS.put(romanNumerals[i], arabicNumerals[i]);
-        }
+    private StandardRomanNumerals() {
     }
 
 }
