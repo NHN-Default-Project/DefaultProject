@@ -67,8 +67,7 @@ public class SimpleParser3 {
 
         @Override
         double value(double xValue) {
-
-            return variableX;
+            return this.variableX;
         }
 
         @Override
@@ -77,14 +76,16 @@ public class SimpleParser3 {
         }
 
         @Override
-        ExpNode derivative() {
-            return new ConstNode(1);
+        void printInfix() {
+            System.out.print("x");
         }
 
         @Override
-        void printInfix() {
-            System.out.printf("%.1f + x", this.derivative().value(variableX));
+        ExpNode derivative() {
+            return new ConstNode(1.0);
         }
+
+
     }
 
     /**
@@ -101,19 +102,19 @@ public class SimpleParser3 {
         @Override
         double value(double xValue) {
             // 노드의 값은 그 안에 포함된 숫자입니다.
-            return number;
+            return this.number;
         }
 
 
         @Override
         void printStackCommands() {
             // 스택 머신에서는 숫자를 스택에 넣습니다.
-            System.out.println("  Push " + number);
+            System.out.println("  Push " + this.number);
         }
 
         @Override
         void printInfix() {
-            System.out.printf("%.1f", this.number);
+            System.out.print(this.number);
         }
 
         @Override
@@ -142,17 +143,18 @@ public class SimpleParser3 {
         @Override
         double value(double xValue) {
             // 값은 왼쪽 및 오른쪽 피연산자를 평가하고 연산자를 사용하여 값들을 결합하여 얻습니다.
-            ExpNode A = left;
-            ExpNode B = right;
+            double leftValue = this.left.value(xValue);
+            double rightValue = this.right.value(xValue);
+
             switch (op) {
                 case '+':
-                    return A.derivative().value(xValue) + B.derivative().value(xValue);
+                    return leftValue + rightValue;
                 case '-':
-                    return A.derivative().value(xValue) - B.derivative().value(xValue);
+                    return leftValue - rightValue;
                 case '*':
-                    return (A.value(xValue) * B.derivative().value(xValue)) + (B.value(xValue) * A.derivative().value(xValue));
+                    return leftValue * rightValue;
                 case '/':
-                    return (B.value(xValue) * A.derivative().value(xValue) - A.value(xValue) * B.derivative().value(xValue)) / B.value(xValue) * B.value(xValue);
+                    return leftValue / rightValue;
                 default:
                     return Double.NaN;  // 잘못된 연산자!
             }
@@ -162,23 +164,43 @@ public class SimpleParser3 {
             // 스택 머신에서 표현식을 평가하려면 먼저 왼쪽 피연산자를 평가하고 답을 스택에 남겨야 합니다.
             // 그런 다음 동일한 작업을 두 번째 피연산자에 대해 수행합니다.
             // 그런 다음 연산자를 적용합니다 (즉, 피연산자를 팝하고 연산자를 적용한 다음 결과를 푸시합니다).
-            left.printStackCommands();
-            right.printStackCommands();
+            this.left.printStackCommands();
+            this.right.printStackCommands();
             System.out.println("  Operator " + op);
         }
 
         @Override
         void printInfix() {
             System.out.print("(");
-            left.printInfix();
+            this.left.printInfix();
             System.out.printf(" %c ", op);
-            right.printInfix();
+            this.right.printInfix();
             System.out.print(")");
         }
 
         @Override
         ExpNode derivative() {
-            return this;
+            ExpNode leftNode = this.left;
+            ExpNode rightNode = this.right;
+            switch (op) {
+                case '+':
+                    return new BinOpNode('+', leftNode.derivative(), rightNode.derivative());
+                case '-':
+                    return new BinOpNode('-', leftNode.derivative(), rightNode.derivative());
+                case '*':
+                    return new BinOpNode('+'
+                            , new BinOpNode('*', leftNode, rightNode.derivative())
+                            , new BinOpNode('*', rightNode, leftNode.derivative()));
+                case '/':
+                    return new BinOpNode('/'
+                            , new BinOpNode('-'
+                            , new BinOpNode('*', rightNode, leftNode.derivative())
+                            , new BinOpNode('*', leftNode, rightNode.derivative()))
+                            , new BinOpNode('*', rightNode, rightNode));
+                default:
+                    return null;
+            }
+
         }
     }
 
@@ -197,8 +219,7 @@ public class SimpleParser3 {
         @Override
         double value(double xValue) {
             // 값은 피연산자의 값의 부정입니다.
-            double neg = operand.derivative().value(xValue);
-            return -neg;
+            return -xValue;
         }
 
         @Override
@@ -211,13 +232,15 @@ public class SimpleParser3 {
 
         @Override
         ExpNode derivative() {
-            return null;
+            return new BinOpNode('*', new ConstNode(-1), operand);
         }
 
         @Override
         void printInfix() {
             System.out.print("-");
+            System.out.print("(");
             operand.printInfix();
+            System.out.print(")");
         }
     }
 
@@ -249,9 +272,10 @@ public class SimpleParser3 {
                 if (TextIO.peek() != '\n')
                     throw new ParseError("표현식 종료 후 추가 데이터가 있습니다.");
                 TextIO.getln();
-                System.out.println("\n값: " + exp.value(0));
+                ExpNode derivExp = exp.derivative();
+                System.out.println("\n값: " + derivExp.value(variableX));
                 System.out.println("\n후위 평가 순서:\n");
-                exp.printInfix();
+                derivExp.printInfix();
             } catch (ParseError e) {
                 System.out.println("\n*** 입력 오류: " + e.getMessage());
                 System.out.println("*** 입력을 삭제합니다: " + TextIO.getln());
