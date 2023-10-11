@@ -1,4 +1,4 @@
-package com.nhnacademy.Jminsoo.exercise1;
+package com.nhnacademy.Jminsoo.exercise1.internalFI;
 
 import java.io.BufferedReader;
 import java.io.IOException;
