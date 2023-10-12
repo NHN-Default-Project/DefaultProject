@@ -1,9 +1,6 @@
 package com.nhnacademy.parkminsu.exercise7_5;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Exercise7_5 {
     public static void main(String[] args) {
@@ -28,6 +25,16 @@ public class Exercise7_5 {
     public static List<Double> selectionSort(List<Double> list) {
 
         int minIndex = 0;
+        Iterator<Double> iterator = list.stream().iterator();
+        Iterator<Double> iterator1 = list.stream().iterator();
+        while (iterator.hasNext()) {
+            while (iterator1.hasNext()) {
+                if (iterator.next() > iterator1.next()) {
+                    int index = list.indexOf(iterator);
+                }
+            }
+        }
+
 
         for (int i = 0; i < list.size(); i++) {
             double min = Double.MAX_VALUE;
