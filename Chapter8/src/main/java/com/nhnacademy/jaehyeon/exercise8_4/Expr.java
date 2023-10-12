@@ -1,10 +1,6 @@
 package com.nhnacademy.jaehyeon.exercise8_4;
 
 public class Expr {
-
-
-
-
 /*
     An object belonging to the class Expr is a mathematical expression that
     can involve:
