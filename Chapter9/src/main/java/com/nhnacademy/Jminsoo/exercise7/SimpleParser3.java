@@ -255,11 +255,31 @@ public class SimpleParser3 {
         }
     } // 중첩 클래스 ParseError의 끝
 
-    public static void main(String[] args) {
+    private static boolean isDigit(String str) {
+        if (str.isEmpty()) {
+            return false;
+        }
 
+        for (char chr : str.toCharArray()) {
+            if (!Character.isDigit(chr)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        double variableX;
         while (true) {
             System.out.print("\n\nx의 값을 입력하시오 : ");
-            double variableX = TextIO.getlnDouble();
+            String inputStr = TextIO.getln();
+
+            if (!isDigit(inputStr)) {
+                System.out.println("실수형태로만 입력해주세요!");
+                continue;
+            } else {
+                variableX = Double.parseDouble(inputStr);
+            }
 
             System.out.println("\n\n표현식을 입력하거나 반환 키를 눌러 종료합니다.");
             System.out.print("\n?  ");
@@ -274,8 +294,10 @@ public class SimpleParser3 {
                 TextIO.getln();
                 ExpNode derivExp = exp.derivative();
                 System.out.println("\n값: " + derivExp.value(variableX));
-                System.out.println("\n후위 평가 순서:\n");
+                System.out.println("\n괄호 표현식:\n");
                 derivExp.printInfix();
+                System.out.println("\n후위 표현식:\n");
+                derivExp.printStackCommands();
             } catch (ParseError e) {
                 System.out.println("\n*** 입력 오류: " + e.getMessage());
                 System.out.println("*** 입력을 삭제합니다: " + TextIO.getln());
