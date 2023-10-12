@@ -1,3 +1,4 @@
+
 package org.example.jaehyeon.dict;
 
 import java.util.List;
@@ -17,13 +18,17 @@ import java.util.List;
 public interface Dictionary2 {
 
     // TODO #1 알맞게 변경 필요
+
     /**
      * 파일을 읽어 메모리에 적재한다.
      *
      * @param path 파일 경로
      * @author 김현준
      */
-    void load(/* TODO #1 ... */String path);
+
+
+    void load(Parser parser, String path);
+
 
     /**
      * 한글을 입력받아 영어단어들을 돌려준다.
