@@ -13,11 +13,11 @@ public class Exercise9_1 {
         BigInteger fibonacciResult;
 
         try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
-//            System.out.print("0 이상의 값을 입력해주세요 : ");
-//            inputStr = br.readLine();
+            System.out.print("0 이상의 값을 입력해주세요 : ");
+            inputStr = br.readLine();
 
-            factorialResult = calc.factorial("5");
-            fibonacciResult = calc.fibonacci("5");
+            factorialResult = calc.factorial(inputStr);
+            fibonacciResult = calc.fibonacci(inputStr);
 
             System.out.printf("팩토리얼 계산 값 : %s%n", factorialResult);
             System.out.printf("피보나치 계산 값 : %s%n", fibonacciResult);

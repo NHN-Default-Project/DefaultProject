@@ -20,7 +20,13 @@ public class Calculator {
 
     public BigInteger fibonacci(String inputStr) {
         /** 람다표현식으로 구현*/
-
+        try {
+            if (Integer.parseInt(inputStr) < 0) {
+                throw new IllegalArgumentException("0 미만의 값이 들어오면 안됩니다!");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("정수가 아닌 값이 들어오면 안됩니다!");
+        }
 
         Formula fibonacci = Formula::fibonacci;
 
@@ -31,6 +37,14 @@ public class Calculator {
     }
 
     public BigInteger fibonacci2(String inputStr) {
+        try {
+            if (Integer.parseInt(inputStr) < 0) {
+                throw new IllegalArgumentException("0 미만의 값이 들어오면 안됩니다!");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("정수가 아닌 값이 들어오면 안됩니다!");
+        }
+
         Formula2 fibonacci = Formula2::fibonacci;
         BigInteger value = new BigInteger(inputStr);
         return fibonacci.apply(value);

@@ -19,10 +19,10 @@ public class Calculator {
     public BigInteger factorial(String inputStr) {
         try {
             if (Integer.parseInt(inputStr) < 0) {
-                throw new NumberFormatException("0 미만의 값이 들어오면 안됩니다!");
+                throw new IllegalArgumentException("0 미만의 값이 들어오면 안됩니다!");
             }
         } catch (NumberFormatException e) {
-            throw new NumberFormatException("정수가 아닌 값이 들어오면 안됩니다!");
+            throw new IllegalArgumentException("정수가 아닌 값이 들어오면 안됩니다!");
         }
 
         Function<BigInteger, BigInteger> factorial = bigInteger -> {
@@ -40,10 +40,10 @@ public class Calculator {
     public BigInteger fibonacci(String inputStr) {
         try {
             if (Integer.parseInt(inputStr) < 0) {
-                throw new NumberFormatException("0 미만의 값이 들어오면 안됩니다!");
+                throw new IllegalArgumentException("0 미만의 값이 들어오면 안됩니다!");
             }
         } catch (NumberFormatException e) {
-            throw new NumberFormatException("정수가 아닌 값이 들어오면 안됩니다!");
+            throw new IllegalArgumentException("정수가 아닌 값이 들어오면 안됩니다!");
         }
 
 

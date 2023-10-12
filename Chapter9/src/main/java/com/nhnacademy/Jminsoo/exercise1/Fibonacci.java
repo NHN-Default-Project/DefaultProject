@@ -19,10 +19,10 @@ public class Fibonacci implements Formula {
     public void precondition(String input) {
         try {
             if (Integer.parseInt(input) < 0) {
-                throw new NumberFormatException("0 미만의 값이 들어오면 안됩니다!");
+                throw new IllegalArgumentException("0 미만의 값이 들어오면 안됩니다!");
             }
         } catch (NumberFormatException e) {
-            throw new NumberFormatException("정수가 아닌 값이 들어오면 안됩니다!");
+            throw new IllegalArgumentException("정수가 아닌 값이 들어오면 안됩니다!");
         }
     }
 
