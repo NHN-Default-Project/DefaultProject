@@ -6,9 +6,7 @@ import java.util.Scanner;
 public class Exercise8_3 {
 
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
-
         while (true) {
             try {
                 System.out.println("로마 문자 입력하세요");
