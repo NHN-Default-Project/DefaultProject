@@ -1,6 +1,6 @@
-package com.nhnacademy.parkminsu.exercise9_3;
+package com.nhnacademy.parkminsu.exercise9_3.solution;
 
-import com.nhnacademy.parkminsu.exercise9_3.factorial.FactorialLinkedList;
+import com.nhnacademy.parkminsu.exercise9_3.solution.factorial.FactorialLinkedList;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,6 +16,9 @@ public class Main {
             System.out.println("만들고 싶은 LinkedList의 size를 입력하세요");
             inputData = inputData(bufferedReader);
 
+            isCheckNegativeNum(inputData);
+            isCheckZero(inputData);
+
             List<Integer> list = factorialLinkedList.createLinkedList(inputData);
             System.out.println(list.toString());
 
@@ -25,13 +28,26 @@ public class Main {
             System.out.println(e.getMessage());
         } catch (NumberFormatException e) {
             System.out.println(e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         }
-
 
     }
 
     public static int inputData(BufferedReader br) throws IOException {
         return Integer.parseInt(br.readLine());
+    }
+
+    public static void isCheckNegativeNum(int num) {
+        if (num < 0) {
+            throw new IllegalArgumentException("음수를 입력하셨습니다");
+        }
+    }
+
+    public static void isCheckZero(int num) {
+        if (num == 0) {
+            throw new NullPointerException("0을 입력해서 null값이 나옵니다.");
+        }
     }
 
 

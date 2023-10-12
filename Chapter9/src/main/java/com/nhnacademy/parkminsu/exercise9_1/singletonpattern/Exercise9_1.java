@@ -6,18 +6,16 @@ import java.io.InputStreamReader;
 
 public class Exercise9_1 {
     public static void main(String[] args) {
-        try {
-            String str = "10";
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
+            String str = inputData(bufferedReader);
             Factorial factorial = Factorial.getInstance(str);
             Fibonacci fibonacci = Fibonacci.getInstance(str);
             System.out.println(factorial.apply(factorial.getNum()));
             System.out.println(fibonacci.apply(factorial.getNum()));
 
-            str = "20";
 
-
-//        } catch (IOException e) {
-//            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         } catch (NumberFormatException e) {
             System.out.println(e.getMessage());
         } catch (IllegalArgumentException e) {
@@ -27,8 +25,7 @@ public class Exercise9_1 {
     }
 
 
-    public static String inputData() throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+    public static String inputData(BufferedReader bufferedReader) throws IOException {
         return bufferedReader.readLine();
     }
 

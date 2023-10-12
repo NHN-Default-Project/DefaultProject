@@ -1,4 +1,4 @@
-package com.nhnacademy.parkminsu.exercise9_3.factorial;
+package com.nhnacademy.parkminsu.exercise9_3.solution.factorial;
 
 import java.util.LinkedList;
 import java.util.List;

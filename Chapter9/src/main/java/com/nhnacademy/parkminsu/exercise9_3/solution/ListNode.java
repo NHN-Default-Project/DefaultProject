@@ -1,4 +1,4 @@
-package com.nhnacademy.parkminsu.exercise9_3;
+package com.nhnacademy.parkminsu.exercise9_3.solution;
 
 public class ListNode {
     int item;
