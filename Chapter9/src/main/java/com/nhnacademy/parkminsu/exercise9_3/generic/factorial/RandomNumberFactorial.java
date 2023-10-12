@@ -1,25 +1,44 @@
 package com.nhnacademy.parkminsu.exercise9_3.generic.factorial;
 
+import com.nhnacademy.parkminsu.exercise9_3.generic.funcinterface.RandomNum;
+
 import java.util.Random;
 import java.util.function.Function;
 
 public class RandomNumberFactorial {
+    // 해당 구문 고치기
+    //
     private RandomNumberFactorial() {
 
     }
 
-    //    public static <T> T createRandomNumber(int minRange, int maxRange) {
+//    public static <T> T createRandomNumber(Class<T> type) {
 //        var random = new Random();
-//        int bound = 0; //
-//        try {
-//            bound = maxRange - minRange + 1;
-//        } catch (IllegalArgumentException e) {
-//            System.out.println(e.getMessage());
+//        if (type.equals(Integer.class)) {
+//            return (T) Integer.valueOf(random.nextInt());
+//        } else if (type.equals(Double.class)) {
+//            return (T) Double.valueOf(random.nextDouble());
+//        } else if (type.equals(String.class)) {
+//            int leftLimit = 97; // letter 'a'
+//            int rightLimit = 122; // letter 'z'
+//            int targetStringLength = 10;
+//            String generatedString = random.ints(leftLimit, rightLimit + 1)
+//                    .limit(targetStringLength)
+//                    .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+//                    .toString();
+//            return (T) generatedString.toString();
+//        } else {
+//            throw new IllegalArgumentException("Unsupported data type");
 //        }
-//        return random.nextInt(bound) + minRange;
 //    }
-    public static <T> T createRandomData(Function<Random, T> randomTFunction) {
+
+    public static <T> T createRandomData(Function<Random, T> randomFunction) {
         Random rand = new Random();
-        return randomTFunction.apply(rand);
+        return randomFunction.apply(rand);
+    }
+
+    public static <T> T createRandomDataInCustomFuncInterface(RandomNum<Random, T> randomFunction) {
+        Random rand = new Random();
+        return randomFunction.apply(rand);
     }
 }

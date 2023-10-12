@@ -1,5 +1,7 @@
 package com.nhnacademy.parkminsu.exercise9_3.generic.factorial;
 
+import com.nhnacademy.parkminsu.exercise9_3.generic.funcinterface.RandomNum;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -10,20 +12,35 @@ public class FactorialLinkedList<T> {
     public FactorialLinkedList() {
     }
 
-    public List<T> createLinkedList(Function<Random, T> creator, int listSize) {
+    public List<T> createLinkedListCustomFuncInterface(Function<Random, T> creator, int listSize) {
         List<T> list = new LinkedList<>();
-        addDataToList(creator, list, listSize);
+        addDataToListCustomFuncInterface(creator, list, listSize);
         return list;
     }
 
-    private void addDataToList(Function<Random, T> creator, List<T> list, int listSize) {
+    private void addDataToListCustomFuncInterface(Function<Random, T> creator, List<T> list, int listSize) {
         if (listSize == 0) {
             return;
         }
         listSize--;
-        addDataToList(creator, list, listSize);
+        addDataToListCustomFuncInterface(creator, list, listSize);
         list.add(RandomNumberFactorial.createRandomData(creator));
     }
 
+
+    public List<T> createLinkedListCustomFuncInterface(RandomNum<Random, T> creator, int listSize) {
+        List<T> list = new LinkedList<>();
+        addDataToListCustomFuncInterface(creator, list, listSize);
+        return list;
+    }
+
+    private void addDataToListCustomFuncInterface(RandomNum<Random, T> creator, List<T> list, int listSize) {
+        if (listSize == 0) {
+            return;
+        }
+        listSize--;
+        addDataToListCustomFuncInterface(creator, list, listSize);
+        list.add(RandomNumberFactorial.createRandomDataInCustomFuncInterface(creator));
+    }
 
 }
