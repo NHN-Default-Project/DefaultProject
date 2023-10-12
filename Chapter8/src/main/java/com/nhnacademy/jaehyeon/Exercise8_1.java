@@ -14,7 +14,6 @@ public class Exercise8_1 {
     }
 
     public void calculateEquation(Scanner scanner) {
-
         while (true) {
             try {
                 System.out.println("no라고 입력하시면 프로그램은 끝납니다.");

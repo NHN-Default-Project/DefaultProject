@@ -22,4 +22,6 @@ class Dice {
         return diceNum;
     }
 
+    public void diceRoll() {
+    }
 }

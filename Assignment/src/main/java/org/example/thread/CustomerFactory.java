@@ -1,20 +1,23 @@
 package org.example.thread;
 
-import java.util.Queue;
-
-public class CustomerFactory extends Thread {
+public class CustomerFactory implements Runnable {
     private int customerNumber;
     private final int delay;
-    private final Queue<Customer> queue;
+    private final CustomerQueue queue;
 
-    public CustomerFactory(int delay, Queue<Customer> queue) {
+    public CustomerFactory(int delay, CustomerQueue queue) {
         this.queue = queue;
         this.customerNumber = 0;
         this.delay = delay;
     }
 
     public void addCustomerNumber() {
-        this.customerNumber++;
+        if (this.customerNumber >= 1000) {
+            System.out.println("1000명이 넘어 번호를 0으로 초기화합니다.");
+            this.customerNumber = 0;
+        } else {
+            this.customerNumber++;
+        }
     }
 
 
@@ -25,17 +28,15 @@ public class CustomerFactory extends Thread {
 
     @Override
     public void run() {
-        while (true) {
+        while (!Thread.currentThread().isInterrupted()) {
+            queue.add(makeCustomer());
             try {
-                synchronized (this.queue) {
-                    queue.add(makeCustomer());
-                    System.out.printf("현재 대기 줄 : %d, %n", this.queue.size());
-                }
-                Thread.sleep(delay + (int) (Math.random() * 100));
-
+                Thread.sleep(delay);
             } catch (InterruptedException e) {
-                System.out.println(e.getMessage());
+                Thread.currentThread().interrupt();
             }
         }
     }
+
+
 }

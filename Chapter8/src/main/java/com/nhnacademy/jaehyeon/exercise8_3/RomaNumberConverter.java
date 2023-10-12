@@ -13,7 +13,6 @@ public class RomaNumberConverter {
     public RomaNumberConverter(int targetNumber) {
         verifyTargetNumber(targetNumber);
         this.targetNumber = targetNumber;
-
     }
 
     public void verifyTargetNumber(int number) {
