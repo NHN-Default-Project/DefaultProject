@@ -1,4 +1,5 @@
-package com.nhnacademy.main;
+package com.nhnacademy.main.exercise4_4;
+
 
 public class DiceApp {
     private final int diceCount;
@@ -27,7 +28,7 @@ public class DiceApp {
         while (eyesSum == number) {
             count++;
             for (Dice dice : dices) {
-                dice.diceRoll();
+                dice.rollDice();
                 eyesSum += dice.getDiceNum();
             }
         }

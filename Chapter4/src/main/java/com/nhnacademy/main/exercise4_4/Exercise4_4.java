@@ -1,4 +1,6 @@
-package com.nhnacademy.main;
+package com.nhnacademy.main.exercise4_4;
+
+import com.nhnacademy.main.exercise4_4.DiceApp;
 
 public class Exercise4_4 {
 
