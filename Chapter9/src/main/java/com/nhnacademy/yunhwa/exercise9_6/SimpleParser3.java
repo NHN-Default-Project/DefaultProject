@@ -417,14 +417,11 @@ public class SimpleParser3 {
     public static void main(String[] args) {
 
         while (true) {
-            System.out.println("\n\nEnter an expression, or press 0 to end.");
+            System.out.println("\n\nEnter an expression, or press return to end.");
             System.out.print("\n?  ");
             TextIO.skipBlanks();
-            if ( TextIO.peek() == '0') {
+            if ( TextIO.peek() == '\n') {
                 break;
-            } else if ( TextIO.peek() == '\n' ) {
-                TextIO.skipBlanks();
-                TextIO.getAnyChar();
             }
             try {
                 ExpNode exp = expressionTree();
