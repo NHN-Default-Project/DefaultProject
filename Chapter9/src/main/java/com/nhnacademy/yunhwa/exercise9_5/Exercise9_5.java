@@ -32,6 +32,4 @@ public class Exercise9_5 {
 
         return treeNodes;
     }
-
-
 }

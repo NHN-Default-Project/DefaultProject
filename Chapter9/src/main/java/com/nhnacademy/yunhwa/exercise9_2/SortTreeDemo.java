@@ -33,8 +33,6 @@ public class SortTreeDemo {
     // binary sort tree.  When the tree is empty,
     // root is null (as it is initially).
 
-
-
     private static void readUserSelectedFile() {
         TextIO.readUserSelectedFile();
     }
