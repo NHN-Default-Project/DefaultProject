@@ -30,20 +30,6 @@ public class BinaryTree<T extends Comparable<T>> {
     }
 
 
-    private boolean isDuplication(BinaryTreeNode<T> node, T value) {
-
-        if (node == null) {
-            return false;
-        } else {
-            if (node.value.equals(value)) {
-                return true;
-            }
-            isDuplication(node.left, value);
-            isDuplication(node.right, value);
-        }
-        return false;
-    }
-
     private BinaryTreeNode<T> root;  // 이진 트리의 루트 노드
 
     /**
@@ -93,15 +79,18 @@ public class BinaryTree<T extends Comparable<T>> {
      * @param nodeQueue 큐에 노드 값을 추가하기 위한 큐
      * @return 현재 노드의 값
      */
-    private T inOrder(BinaryTreeNode<T> node, Queue<T> nodeQueue) {
+    private T appendQueue(BinaryTreeNode<T> node, Queue<T> nodeQueue) {
+        if (node.value.equals(this.root.value)) {
+            nodeQueue.add(node.value);
+        }
         if (this.root == null) {
             throw new IllegalArgumentException("트리가 비어있습니다!");
         }
         if (node.left != null) {
-            nodeQueue.add(inOrder(node.left, nodeQueue)); // 왼쪽 자식 노드 순회
+            nodeQueue.add(appendQueue(node.left, nodeQueue)); // 왼쪽 자식 노드 순회
         }
         if (node.right != null) {
-            nodeQueue.add(inOrder(node.right, nodeQueue)); // 오른쪽 자식 노드 순회
+            nodeQueue.add(appendQueue(node.right, nodeQueue)); // 오른쪽 자식 노드 순회
         }
         return node.value;
     }
@@ -111,9 +100,8 @@ public class BinaryTree<T extends Comparable<T>> {
      */
     public void printTree() {
         Queue<T> nodeQueue = new LinkedList<>();
-
-        inOrder(this.root, nodeQueue); // 중위 순회 시작
+        nodeQueue.add(this.root.value);
+        appendQueue(this.root, nodeQueue); // 중위 순회 시작
         nodeQueue.forEach(System.out::println); // 결과 출력
-        System.out.println(root.value);
     }
 }

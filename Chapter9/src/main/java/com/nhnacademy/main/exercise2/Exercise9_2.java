@@ -1,4 +1,4 @@
-package com.nhnacademy.Jminsoo.exercise2;
+package com.nhnacademy.main.exercise2;
 
 public class Exercise9_2 {
     public static void main(String[] args) {

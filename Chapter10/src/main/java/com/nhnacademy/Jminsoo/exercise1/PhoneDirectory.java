@@ -1,7 +1,7 @@
 package com.nhnacademy.Jminsoo.exercise1;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 
 public class PhoneDirectory {
@@ -14,7 +14,7 @@ public class PhoneDirectory {
     private Map<String, PhoneEntry> dataMap;
 
     public PhoneDirectory() {
-        this.dataMap = new HashMap<>();
+        this.dataMap = new TreeMap<>();
     }
 
     public String getNumber(String name) {

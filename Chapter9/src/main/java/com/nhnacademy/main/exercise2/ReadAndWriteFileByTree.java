@@ -1,6 +1,6 @@
-package com.nhnacademy.Jminsoo.exercise2;
+package com.nhnacademy.main.exercise2;
 
-import com.nhnacademy.Jminsoo.exercise2.textio.TextIO;
+import com.nhnacademy.main.exercise2.textio.TextIO;
 
 import java.util.ArrayList;
 import java.util.List;
