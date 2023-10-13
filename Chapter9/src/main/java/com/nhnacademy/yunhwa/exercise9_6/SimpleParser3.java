@@ -421,6 +421,8 @@ public class SimpleParser3 {
             System.out.print("\n?  ");
             TextIO.skipBlanks();
             if ( TextIO.peek() == '\n') {
+                TextIO.getAnyChar();
+                TextIO.getAnyChar();
                 break;
             }
             try {
@@ -429,6 +431,7 @@ public class SimpleParser3 {
                 if ( TextIO.peek() != '\n' )
                     throw new ParseError("Extra data after end of expression.");
                 TextIO.getln();
+
                 System.out.println("Enter an x-value to insert the value into variable \"x\" (double) ");
                 System.out.print("\n?  ");
                 double xValue = TextIO.getDouble();
