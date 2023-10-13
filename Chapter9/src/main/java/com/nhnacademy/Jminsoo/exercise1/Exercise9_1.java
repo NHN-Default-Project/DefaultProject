@@ -28,7 +28,7 @@ public class Exercise9_1 {
             System.out.printf("팩토리얼 계산 값 : %s%n", factorialResult);
             System.out.printf("피보나치 계산 값 : %s%n", fibonacciResult);
 
-        } catch (IOException | NumberFormatException e) {
+        } catch (IOException | IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }

@@ -14,9 +14,6 @@ public class BinaryTree<T extends Comparable<T>> {
             this.value = value;
         }
 
-        private BinaryTreeNode() {
-        }
-
     }
 
     private BinaryTreeNode<T> root;
@@ -28,6 +25,11 @@ public class BinaryTree<T extends Comparable<T>> {
         }
         BinaryTreeNode<T> runner = root;
         while (true) {
+            if (runner.value.equals(inputValue)) {
+                System.out.print(inputValue + " ");
+                System.out.println("동일한 값이 있습니다! 이를 제외합니다.");
+                return;
+            }
             if (runner.value.compareTo(inputValue) < 0) {
                 if (runner.left == null) {
                     runner.left = new BinaryTreeNode<>(inputValue);

@@ -6,12 +6,13 @@ public class Exercise9_4 {
 
         tree.treeInsert("abc");
         tree.treeInsert("aabc");
-        tree.treeInsert("abbc");
-        tree.treeInsert("abcc");
-        tree.treeInsert("dabcc");
-        tree.treeInsert("aaaaa");
+        tree.treeInsert("aabc");
+        tree.treeInsert("a");
+        tree.treeInsert("b");
+        tree.treeInsert("c");
 
 
+        System.out.println();
         tree.printTree();
     }
 }

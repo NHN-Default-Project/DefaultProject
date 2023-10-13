@@ -9,6 +9,16 @@ public class Calculator {
     private Calculator() {
     }
 
+    private void precondition(String inputStr) {
+        try {
+            if (Integer.parseInt(inputStr) < 0) {
+                throw new IllegalArgumentException("0 미만의 값이 들어오면 안됩니다!");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("정수가 아닌 값이 들어오면 안됩니다!");
+        }
+    }
+
     public static Calculator getInstance() {
         if (instance == null) {
             instance = new Calculator();
@@ -17,13 +27,7 @@ public class Calculator {
     }
 
     public BigInteger factorial(String inputStr) {
-        try {
-            if (Integer.parseInt(inputStr) < 0) {
-                throw new IllegalArgumentException("0 미만의 값이 들어오면 안됩니다!");
-            }
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("정수가 아닌 값이 들어오면 안됩니다!");
-        }
+        precondition(inputStr);
 
         Function<BigInteger, BigInteger> factorial = bigInteger -> {
             BigInteger result = BigInteger.ONE;
@@ -38,13 +42,7 @@ public class Calculator {
     }
 
     public BigInteger fibonacci(String inputStr) {
-        try {
-            if (Integer.parseInt(inputStr) < 0) {
-                throw new IllegalArgumentException("0 미만의 값이 들어오면 안됩니다!");
-            }
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("정수가 아닌 값이 들어오면 안됩니다!");
-        }
+        precondition(inputStr);
 
 
         Function<BigInteger, BigInteger> fibonacciFomula = bigInteger -> {

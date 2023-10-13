@@ -10,20 +10,7 @@ import java.util.NoSuchElementException;
  * @param <T> 리스트 요소의 형식을 나타내는 제네릭 타입입니다.
  */
 public class CustomLinkedList<T> {
-    private static class ListNode<T> {
-        T item;
-        ListNode<T> next;
 
-        /**
-         * 리스트 노드를 생성합니다.
-         *
-         * @param item 노드에 저장할 요소
-         */
-        public ListNode(T item) {
-            this.item = item;
-            this.next = null;
-        }
-    }
 
     ListNode<T> head;
 
@@ -46,9 +33,9 @@ public class CustomLinkedList<T> {
             return 0;
         } else {
             length = 1;
-            ListNode<T> tempNode = head;
-            while (tempNode.next != null) {
-                tempNode = tempNode.next;
+            Iterator<T> iter = this.iterator();
+            while (iter.hasNext()) {
+                iter.next();
                 length++;
             }
         }
@@ -129,5 +116,20 @@ public class CustomLinkedList<T> {
                 return get(nextIndex++);
             }
         };
+    }
+
+    private static class ListNode<T> {
+        T item;
+        ListNode<T> next;
+
+        /**
+         * 리스트 노드를 생성합니다.
+         *
+         * @param item 노드에 저장할 요소
+         */
+        public ListNode(T item) {
+            this.item = item;
+            this.next = null;
+        }
     }
 }

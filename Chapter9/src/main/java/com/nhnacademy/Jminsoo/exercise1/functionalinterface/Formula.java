@@ -10,27 +10,26 @@ public interface Formula {
     /**
      * 연습용 활용 메서드
      */
-    static BigInteger fibonacci(BigInteger n, Map<BigInteger, BigInteger> memory) {
+    static BigInteger fibonacci(BigInteger number, Map<BigInteger, BigInteger> memoryMap) {
 
-        if (n.equals(BigInteger.ZERO)) {
-            memory.put(n, BigInteger.ZERO);
+        if (number.equals(BigInteger.ZERO)) {
+            memoryMap.put(number, BigInteger.ZERO);
             return BigInteger.ZERO;
-        } else if (n.equals(BigInteger.ONE)) {
-            memory.put(n, BigInteger.ONE);
+        } else if (number.equals(BigInteger.ONE)) {
+            memoryMap.put(number, BigInteger.ONE);
 
             return BigInteger.ONE;
         }
 
         BigInteger result;
-        if (memory.get(n) == null) {
-            result = fibonacci(n.subtract(BigInteger.ONE), memory).add(fibonacci(n.subtract(BigInteger.TWO), memory));
-            memory.put(n, result);
+        if (memoryMap.get(number) == null) {
+            result = fibonacci(number.subtract(BigInteger.ONE), memoryMap).add(fibonacci(number.subtract(BigInteger.TWO), memoryMap));
+            memoryMap.put(number, result);
         } else {
-            return memory.get(n);
+            return memoryMap.get(number);
         }
 
-        return fibonacci(n.subtract(BigInteger.ONE), memory)
-                .add(fibonacci(n.subtract(BigInteger.TWO), memory));
+        return fibonacci(number.subtract(BigInteger.ONE), memoryMap)
+                .add(fibonacci(number.subtract(BigInteger.TWO), memoryMap));
     }
-
 }

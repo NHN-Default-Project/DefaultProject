@@ -29,6 +29,21 @@ public class BinaryTree<T extends Comparable<T>> {
         }
     }
 
+
+    private boolean isDuplication(BinaryTreeNode<T> node, T value) {
+
+        if (node == null) {
+            return false;
+        } else {
+            if (node.value.equals(value)) {
+                return true;
+            }
+            isDuplication(node.left, value);
+            isDuplication(node.right, value);
+        }
+        return false;
+    }
+
     private BinaryTreeNode<T> root;  // 이진 트리의 루트 노드
 
     /**
@@ -37,13 +52,22 @@ public class BinaryTree<T extends Comparable<T>> {
      * @param newItem 삽입할 값
      */
     public void treeInsert(T newItem) {
+
+
         if (this.root == null) {
             this.root = new BinaryTreeNode<>(newItem); // 루트 노드를 새로 생성하고 값을 저장
             return;
         }
+
+
         BinaryTreeNode<T> runner;
         runner = this.root;
         while (true) {
+            if (runner.value.equals(newItem)) {
+                System.out.print(newItem + " ");
+                System.out.println("동일한 값이 있습니다! 이를 제외합니다.");
+                return;
+            }
             if (newItem.compareTo(runner.value) < 0) {
                 if (runner.left == null) {
                     runner.left = new BinaryTreeNode<>(newItem); // 왼쪽 자식 노드를 새로 생성하고 값을 저장
@@ -87,7 +111,9 @@ public class BinaryTree<T extends Comparable<T>> {
      */
     public void printTree() {
         Queue<T> nodeQueue = new LinkedList<>();
+
         inOrder(this.root, nodeQueue); // 중위 순회 시작
         nodeQueue.forEach(System.out::println); // 결과 출력
+        System.out.println(root.value);
     }
 }

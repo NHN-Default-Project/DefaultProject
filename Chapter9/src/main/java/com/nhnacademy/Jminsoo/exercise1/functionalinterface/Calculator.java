@@ -28,7 +28,13 @@ public class Calculator {
             throw new IllegalArgumentException("정수가 아닌 값이 들어오면 안됩니다!");
         }
 
-        Formula fibonacci = Formula::fibonacci;
+        Formula fibonacci = (n, memory1) -> Formula.fibonacci(n, memory1);
+        Formula fibonacci2 = new Formula() {
+            @Override
+            public BigInteger apply(BigInteger bi, Map<BigInteger, BigInteger> memory) {
+                return null;
+            }
+        };
 
         BigInteger value = new BigInteger(inputStr);
         Map<BigInteger, BigInteger> memory = new HashMap<>();

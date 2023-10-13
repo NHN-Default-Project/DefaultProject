@@ -18,4 +18,15 @@ public interface Formula2 {
 
         return fibonacci(n.subtract(BigInteger.ONE)).add(fibonacci(n.subtract(BigInteger.TWO)));
     }
+
+    static BigInteger fibonacci2(BigInteger n, BigInteger A) {
+        if (n.equals(BigInteger.ZERO)) {
+            return BigInteger.ZERO;
+        } else if (n.equals(BigInteger.ONE)) {
+            return BigInteger.ONE;
+        }
+
+        return fibonacci(n.subtract(BigInteger.ONE)).add(fibonacci(n.subtract(BigInteger.TWO)));
+    }
+
 }

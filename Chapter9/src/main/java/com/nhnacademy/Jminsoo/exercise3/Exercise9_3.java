@@ -28,7 +28,7 @@ public class Exercise9_3 {
             while (reverseIter.hasNext()) {
                 System.out.println(reverseIter.next());
             }
-        } catch (NoSuchElementException e) {
+        } catch (NoSuchElementException | IndexOutOfBoundsException e) {
             System.out.println("(그럴 리는 없겠지만) next로 값을 가져올 수 없습니다!");
         }
     }
