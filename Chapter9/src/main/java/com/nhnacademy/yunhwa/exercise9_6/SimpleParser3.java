@@ -355,7 +355,7 @@ public class SimpleParser3 {
 
         @Override
         ExpNode derivative() { // - 연산을 미분하면 -는 그대로 남으니까 괜찮지 않을까?
-            return new UnaryMinusNode(this.operand.derivative());
+            return new BinOpNode('*', new ConstNode(-1), this.operand);
         }
 
         @Override
@@ -457,9 +457,9 @@ public class SimpleParser3 {
                 System.out.println("\n");
 
 
-//                System.out.println(" Derivate is ");
-//                System.out.println(exp.derivative().toString());
-//                System.out.println("\n");
+                System.out.println(" Derivate is ");
+                System.out.println(exp.derivative().toString());
+                System.out.println("\n");
 
                 double derivativeResult = exp.derivativeValue(xValue);
                 System.out.println("----------------------------------");
