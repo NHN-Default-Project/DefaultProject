@@ -66,16 +66,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
                 .mapToInt(Integer::intValue).max().orElse(0);
     }
 
-    public double averageDepthOfLeafNodes() { // 평균 depth
-        return findLeafNodeDepths().stream()
-                .mapToInt(Integer::intValue)
-                .average().orElse(0);
-    }
-
-    public int sumDepthOfLeafNodes() { // leaf node의 depth 총합
-        return findLeafNodeDepths().stream()
-                .mapToInt(Integer::intValue).sum();
-    }
 
     public int countDepthOfLeafNodes() {
         return findLeafNodeDepths().size();

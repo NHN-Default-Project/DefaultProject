@@ -23,8 +23,6 @@ public class Main {
         System.out.println("\n내림 차순");
         binarySearchTree.printDescendingOrder();
         System.out.println("Leaf Node: " + binarySearchTree.findLeafNodeDepths());
-        System.out.println("Leaf Node의 평균 depth값: " + binarySearchTree.averageDepthOfLeafNodes());
-        System.out.println("Leaf Node의 depth 총합: " + binarySearchTree.sumDepthOfLeafNodes());
         System.out.println("Leaf Node중 가장 깊은 depth: " + binarySearchTree.maxDepthOfLeafNodes());
         System.out.println("Leaf Node의 갯수: " + binarySearchTree.countDepthOfLeafNodes());
         System.out.println(binarySearchTree.size());
