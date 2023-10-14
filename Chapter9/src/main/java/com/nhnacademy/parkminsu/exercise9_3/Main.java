@@ -25,9 +25,11 @@ public class Main {
 
 //            List<Integer> list = factorialLinkedList.createLinkedList(creator1, inputData); // java에서 제공한 함수형 인터페이스를 매개변수로 받은 메소드
             customLinkedList = factorialLinkedList.createLinkedList(creator1, inputData); // 만든 함수형 인터페이스를 매개변수로 받은 메소드
+            System.out.println("기존 리스트");
             System.out.println(customLinkedList.toString());
 
             CustomLinkedList<Integer> reversedList = customLinkedList.reverse();
+            System.out.println("역순 리스트");
             System.out.println(reversedList.toString());
         } catch (IOException | NullDataException | IndexOutOfBoundsException e) {
             System.out.println(e.getMessage());
