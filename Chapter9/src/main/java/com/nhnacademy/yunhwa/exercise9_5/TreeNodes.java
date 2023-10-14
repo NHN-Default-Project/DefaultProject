@@ -1,29 +1,28 @@
 package com.nhnacademy.yunhwa.exercise9_5;
 
-import com.nhnacademy.yunhwa.exercise9_2.SortTreeDemo;
 
 import java.util.*;
 
-public class TreeNodes {
+public class TreeNodes<T> {
     List<Integer> depthList;
 
     public TreeNodes() {
         this.depthList = new ArrayList<>();
     }
 
-    private static class TreeNode {
-        double item;      // The data in this node.
+    private static class TreeNode<T> {
+        T item;      // The data in this node.
         TreeNode left;    // Pointer to left subtree.
         TreeNode right;   // Pointer to right subtree.
 
-        TreeNode(double realNum) {
+        TreeNode(T realNum) {
             // Constructor.  Make a node containing the specified string.
             // Note that left and right pointers are initially null.
             item = realNum;
         }
     }  // end nested class TreeNode
 
-    private static TreeNode root;  // Pointer to the root node in a binary tree.
+    private TreeNode root;  // Pointer to the root node in a binary tree.
     // This tree is used in this program as a
     // binary sort tree.  When the tree is empty,
     // root is null (as it is initially).
@@ -39,7 +38,7 @@ public class TreeNodes {
      * this routine because the value of root might change, and a change
      * in the value of a formal parameter does not change the actual parameter.)
      */
-    public void treeInsert(double newItem) {
+    public void treeInsert(T newItem) {
         if (root == null) {
             // The tree is empty.  Set root to point to a new node containing
             // the new item.  This becomes the only node in the tree.
@@ -49,7 +48,7 @@ public class TreeNodes {
         TreeNode runner;  // Runs down the tree to find a place for newItem.
         runner = root;   // Start at the root.
         while (true) {
-            if (newItem < runner.item) {
+            if (((Comparable<T>) newItem).compareTo((T) runner.item) < 0) {
                 // Since the new item is less than the item in runner,
                 // it belongs in the left subtree of runner.  If there
                 // is an open space at runner.left, add a new node there.
@@ -77,14 +76,14 @@ public class TreeNodes {
      * Return true if item is one of the items in the binary
      * sort tree to which root points.  Return false if not.
      */
-    boolean treeContains(TreeNode root, double item) {
+    boolean treeContains(TreeNode root, T item) {
         if (root == null) {
             // Tree is empty, so it certainly doesn't contain item.
             return false;
-        } else if (item == root.item) {
+        } else if (item.equals(root.item)) {
             // Yes, the item has been found in the root node.
             return true;
-        } else if (item < root.item) {
+        } else if (((Comparable<T>) item).compareTo((T) root.item) < 0) {
             // If the item occurs, it must be in the left subtree.
             return treeContains(root.left, item);
         } else {

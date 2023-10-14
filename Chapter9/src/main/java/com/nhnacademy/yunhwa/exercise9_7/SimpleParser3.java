@@ -1,4 +1,4 @@
-package com.nhnacademy.yunhwa.exercise9_6;
+package com.nhnacademy.yunhwa.exercise9_7;
 
 import com.nhnacademy.yunhwa.exercise9_2.TextIO;
 
@@ -47,9 +47,14 @@ public class SimpleParser3 {
 
         abstract void printStackCommands();
 
-        abstract void printInfix(); // x
+        abstract ExpNode derivative();
+
+        abstract void printInfix();
 
         abstract void printInfixSubstituted(double xValue);
+
+        abstract void printDerivativeStackCommands(double xValue);
+
     }
 
     /**
@@ -69,6 +74,10 @@ public class SimpleParser3 {
             return this.number;
         }
 
+        @Override
+        ExpNode derivative() {
+            return new ConstNode(0);
+        }
 
         void printStackCommands() {
             // On a stack machine, just push the number onto the stack.
@@ -76,9 +85,14 @@ public class SimpleParser3 {
         }
 
         @Override
+        void printDerivativeStackCommands(double xValue) { // 도함수에 대입한 결과 출력
+            System.out.println("  Push " + derivative().value(xValue));
+        }
+
+        @Override
         void printInfix() {
             // 완전히 괄호로 묶은 표현식으로 인쇄
-            System.out.print(" " + this.number + " ");
+            System.out.print(" " + this.number);
         }
 
         @Override
@@ -91,7 +105,6 @@ public class SimpleParser3 {
             return String.valueOf(this.number);
         }
     }
-
 
     private static class VariableNode extends ExpNode { // x
         double xValue; // 나중에 대입될 값
@@ -114,7 +127,7 @@ public class SimpleParser3 {
 
         @Override
         void printInfix() {
-            System.out.print(" x ");
+            System.out.print(" x");
         }
 
         @Override
@@ -123,10 +136,22 @@ public class SimpleParser3 {
         }
 
         @Override
+        ExpNode derivative() {
+            return new ConstNode(1);
+        }
+
+        @Override
+        void printDerivativeStackCommands(double xValue) {
+            System.out.println("  Push x " + derivative().value(xValue));
+        }
+
+
+        @Override
         public String toString() {
             return "x";
         }
     }
+
 
     /**
      * An expression node representing a binary operator.
@@ -180,14 +205,14 @@ public class SimpleParser3 {
         void printInfix() {
             if (this.op == '*' || this.op == '/') {
                 this.left.printInfix();
-                System.out.print(" " + this.op + " ");
+                System.out.print(" " + this.op);
                 this.right.printInfix();
             } else {
-                System.out.print("( ");
+                System.out.print(" ( ");
                 this.left.printInfix();
-                System.out.print(" " + this.op + " ");
+                System.out.print(" " + this.op);
                 this.right.printInfix();
-                System.out.print(" )");
+                System.out.print(" ) ");
             }
         }
 
@@ -205,6 +230,37 @@ public class SimpleParser3 {
                 System.out.print(" )");
             }
         }
+
+        @Override
+        ExpNode derivative() {
+            BinOpNode BdA;
+            BinOpNode AdB;
+            switch (this.op) {
+                case '+':
+                    return new BinOpNode('+', this.left.derivative(), this.right.derivative());
+                case '-':
+                    return new BinOpNode('-', this.left.derivative(), this.right.derivative());
+                case '*':
+                    BdA = new BinOpNode('*', this.right, this.left.derivative());
+                    AdB = new BinOpNode('*', this.left, this.right.derivative());
+                    return new BinOpNode('+', BdA, AdB);
+                case '/':
+                    BdA = new BinOpNode('*', this.right, this.left.derivative());
+                    AdB = new BinOpNode('*', this.left, this.right.derivative());
+                    BinOpNode BB = new BinOpNode('*', this.right, this.right);
+                    return new BinOpNode('/', new BinOpNode('-', BdA, AdB), BB);
+                default:
+                    return null;
+            }
+        }
+
+        @Override
+        void printDerivativeStackCommands(double xValue) {
+            this.left.printDerivativeStackCommands(xValue);
+            this.right.printDerivativeStackCommands(xValue);
+            System.out.println("  Operator " + this.op);
+        }
+
 
         @Override
         public String toString() {
@@ -237,15 +293,17 @@ public class SimpleParser3 {
             // whatever is necessary to evaluate the operand, leaving the
             // operand on the stack.  Then apply the unary minus (which means
             // popping the operand, negating it, and pushing the result).
-            System.out.print(" - ");
+            System.out.print("-");
             operand.printStackCommands();
             System.out.println("  Unary minus");
         }
 
-
         @Override
         void printInfix() {
-            System.out.print(" - " + this.operand);
+            System.out.print(" - ");
+            System.out.print(" ( ");
+            operand.printInfix();
+            System.out.print(" ) ");
         }
 
         @Override
@@ -253,10 +311,21 @@ public class SimpleParser3 {
             System.out.print(" " + value(xValue) + " ");
         }
 
+        @Override
+        ExpNode derivative() {
+            return new BinOpNode('*', new ConstNode(-1), this.operand);
+        }
+
+        @Override
+        void printDerivativeStackCommands(double xValue) {
+            operand.printDerivativeStackCommands(xValue);
+            System.out.println("  Unary minus");
+        }
+
 
         @Override
         public String toString() {
-            return " - " + this.operand.toString();
+            return "-" + this.operand.toString();
         }
 
     }
@@ -274,7 +343,6 @@ public class SimpleParser3 {
             super(message);
         }
     } // end nested class ParseError
-
 
     private static boolean isDigit(String str) {
         if (str.isEmpty()) {
@@ -314,30 +382,36 @@ public class SimpleParser3 {
             try {
                 ExpNode exp = expressionTree();
                 TextIO.skipBlanks();
-                if (TextIO.peek() != '\n') {
+                if (TextIO.peek() != '\n')
                     throw new ParseError("Extra data after end of expression.");
-                }
                 TextIO.getln();
 
                 System.out.println("-------printInfix Expression---------\n  ");
                 exp.printInfix();
                 System.out.println("\n");
 
-                double result = exp.value(xValue);
+                System.out.println("----------------------------------");
+                System.out.println(" Derivate is ");
+                exp.derivative().printInfix();
+                System.out.println("\n");
+
+                double derivativeResult = exp.derivative().value(xValue);
                 System.out.println("----------------------------------");
                 System.out.println("When x = " + xValue + ",");
-                System.out.println("Value is " + result);
+                System.out.println("Derivative Value is " + derivativeResult);
                 System.out.println("----------------------------------");
+
                 System.out.println("\nOrder of postfix evaluation is:\n");
                 System.out.println("-------printStackCommands---------\n");
-                exp.printStackCommands();
+                exp.derivative().printStackCommands();
                 System.out.println("\n");
 
                 System.out.println("-------printInfixSubstituted---------\n  ");
-                exp.printInfixSubstituted(xValue);
-                System.out.println(" = " + result);
+                exp.derivative().printInfixSubstituted(xValue);
+                System.out.println(" = " + derivativeResult);
                 System.out.println("\n");
-                System.out.println("-------------------------------------------------");
+                System.out.println("-----------------------------------------------");
+
 
             } catch (ParseError e) {
                 System.out.println("\n*** Error in input:    " + e.getMessage());

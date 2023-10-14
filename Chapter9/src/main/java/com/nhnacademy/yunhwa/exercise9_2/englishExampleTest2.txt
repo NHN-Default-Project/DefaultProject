@@ -1,7 +1,4 @@
 a
-a
-a
-a
 academy
 act
 additional
@@ -13,9 +10,6 @@ all
 already
 also
 an
-an
-an
-an
 and
 another
 any
@@ -23,7 +17,6 @@ application
 apply
 are
 array
-arraylist
 arraylist
 arrays
 as
@@ -37,7 +30,6 @@ beginning
 binary
 build
 built
-but
 but
 by
 campus
@@ -95,7 +87,6 @@ for
 form
 from
 get
-get
 giving
 grade
 grades
@@ -109,9 +100,6 @@ hourly
 if
 important
 in
-in
-in
-in
 include
 includes
 including
@@ -123,7 +111,6 @@ introduced
 is
 it
 items
-java
 java
 just
 kind
@@ -168,7 +155,6 @@ numbered
 object
 objects
 of
-of
 on
 one
 or
@@ -179,7 +165,6 @@ outstanding
 over
 parameterized
 particular
-point
 point
 power
 president
@@ -209,9 +194,6 @@ scores
 search
 searching
 section
-section
-section
-section
 secure
 segment
 selective
@@ -230,7 +212,6 @@ special
 standard
 start
 states
-states
 string
 structure
 structures
@@ -241,12 +222,9 @@ superlative
 techniques
 that
 the
-the
-the
 their
 there
 these
-this
 this
 thought
 three
@@ -261,7 +239,6 @@ two
 type
 types
 united
-united
 universities
 ups
 use
@@ -274,14 +251,8 @@ versions
 vice
 wage
 we
-we
 we'll
 west
-west
-what
-what
-what
-what
 what
 when
 where
@@ -290,13 +261,8 @@ will
 with
 working
 write
-write
-write
-write
 year
 years
-you
-you
 you
 you've
 your

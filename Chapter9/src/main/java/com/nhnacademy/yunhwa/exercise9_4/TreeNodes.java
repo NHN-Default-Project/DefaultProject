@@ -13,7 +13,7 @@ public class TreeNodes { // 만들다가 말고 안사용함. 추후 수정 예�
         }
     }  // end nested class TreeNode
 
-    private static TreeNode root;  // Pointer to the root node in a binary tree.
+    private TreeNode root;  // Pointer to the root node in a binary tree.
     // This tree is used in this program as a
     // binary sort tree.  When the tree is empty,
     // root is null (as it is initially).
@@ -27,7 +27,7 @@ public class TreeNodes { // 만들다가 말고 안사용함. 추후 수정 예�
      * this routine because the value of root might change, and a change
      * in the value of a formal parameter does not change the actual parameter.)
      */
-    public static void treeInsert(String newItem) {
+    public void treeInsert(String newItem) {
         if (root == null) {
             // The tree is empty.  Set root to point to a new node containing
             // the new item.  This becomes the only node in the tree.
@@ -65,7 +65,7 @@ public class TreeNodes { // 만들다가 말고 안사용함. 추후 수정 예�
      * Return true if item is one of the items in the binary
      * sort tree to which root points.  Return false if not.
      */
-    static boolean treeContains(TreeNode root, String item) {
+    boolean treeContains(TreeNode root, String item) {
         if (root == null) {
             // Tree is empty, so it certainly doesn't contain item.
             return false;
@@ -86,7 +86,7 @@ public class TreeNodes { // 만들다가 말고 안사용함. 추후 수정 예�
      * Print the items in the tree in inorder, one item to a line.
      * Since the tree is a sort tree, the output will be in increasing order.
      */
-    private static void treeList(TreeNode node) {
+    private void treeList(TreeNode node) {
         if (node != null) {
             treeList(node.left);             // Print items in left subtree.
             System.out.println("  " + node.item);  // Print item in the node.
