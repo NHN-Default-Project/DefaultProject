@@ -47,7 +47,6 @@ public class SimpleParser3 {
 
         double value(double value) { // double value(double value)
             // 노드의 값은 그 안에 포함된 숫자입니다.
-            number = value;
             return number;
         }
 
@@ -140,7 +139,7 @@ public class SimpleParser3 {
         @Override
         double value(double value) {
             this.value = value;
-            return value;
+            return this.value;
         }
 
         @Override
