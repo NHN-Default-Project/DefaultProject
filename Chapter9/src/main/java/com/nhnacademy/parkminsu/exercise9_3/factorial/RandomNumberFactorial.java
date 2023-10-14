@@ -1,6 +1,6 @@
-package com.nhnacademy.parkminsu.exercise9_3.generic.factorial;
+package com.nhnacademy.parkminsu.exercise9_3.factorial;
 
-import com.nhnacademy.parkminsu.exercise9_3.generic.funcinterface.RandomNum;
+import com.nhnacademy.parkminsu.exercise9_3.funcinterface.RandomNum;
 
 import java.util.Random;
 import java.util.function.Function;
@@ -37,7 +37,7 @@ public class RandomNumberFactorial {
         return randomFunction.apply(rand);
     }
 
-    public static <T> T createRandomDataInCustomFuncInterface(RandomNum<Random, T> randomFunction) {
+    public static <T> T createRandomData(RandomNum<Random, T> randomFunction) {
         Random rand = new Random();
         return randomFunction.apply(rand);
     }

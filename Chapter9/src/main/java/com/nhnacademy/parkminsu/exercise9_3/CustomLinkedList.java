@@ -1,40 +1,40 @@
-package com.nhnacademy.parkminsu.exercise9_3.generic;
+package com.nhnacademy.parkminsu.exercise9_3;
 
 public class CustomLinkedList<T> {
     ListNode<T> listNode;
     private int size = 0;
 
     public void add(T item) {
-        ListNode<T> newListNode = new ListNode();
+        ListNode<T> newListNode = new ListNode<>();
         newListNode.item = item;
-        if (this.listNode == null) {
-            this.listNode = newListNode;
-        } else {
-            this.listNode = addListNode(this.listNode, newListNode);
-        }
+        this.listNode = addListNode(this.listNode, newListNode);
+
     }
 
     private ListNode<T> addListNode(ListNode<T> listNode, ListNode<T> newListNode) {
         if (listNode == null) {
+            this.size++;
             return newListNode;
         }
-        this.size++;
         listNode.next = addListNode(listNode.next, newListNode);
         return listNode;
     }
 
-    public CustomLinkedList<T> make() {
+    public CustomLinkedList<T> reverse() {
         CustomLinkedList<T> customLinkedList = new CustomLinkedList<>();
-        makeReverseLinkedList(customLinkedList, this.size);
+        customLinkedList = makeReverseLinkedList(customLinkedList, this.listNode, 0);
         return customLinkedList;
     }
 
-    public void makeReverseLinkedList(CustomLinkedList<T> customReversLinkedList, int listSize) {
-        if (listSize == 0) {
-            return;
+    public CustomLinkedList<T> makeReverseLinkedList(CustomLinkedList<T> customLinkedList, ListNode<T> listNode, int size) {
+        int sizeNum = size;
+        if (sizeNum == this.size) {
+            return customLinkedList;
         }
-        makeReverseLinkedList(customReversLinkedList, listSize--);
-        customReversLinkedList.add(customReversLinkedList.get(this.size - listSize));
+        sizeNum = sizeNum + 1;
+        makeReverseLinkedList(customLinkedList, listNode.next, sizeNum);
+        customLinkedList.add(listNode.item);
+        return customLinkedList;
     }
 
     public T get(int index) {
@@ -58,7 +58,7 @@ public class CustomLinkedList<T> {
     }
 
     private boolean isElementIndex(int index) {
-        return index <= this.size && index >= 0;
+        return index < this.size && index >= 0;
     }
 
     public int size() {
