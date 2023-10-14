@@ -1,8 +1,8 @@
 package com.nhnacademy.parkminsu.exercise9_1.functional;
 
 @FunctionalInterface
-public interface Precondition {
+public interface Precondition<T extends Comparable> {
 
 
-    void precondition(String str);
+    void precondition(T data);
 }

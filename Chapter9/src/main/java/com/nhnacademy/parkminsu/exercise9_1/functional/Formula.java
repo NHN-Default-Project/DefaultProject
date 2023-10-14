@@ -16,8 +16,9 @@ public interface Formula {
             fibonacciValueMap.put(bigInteger, BigInteger.ONE);
             return BigInteger.ONE;
         }
-        fibonacciValueMap.computeIfAbsent(bigInteger, i -> fibonacci(i.subtract(BigInteger.ONE), fibonacciValueMap).add(fibonacci(i.subtract(BigInteger.TWO), fibonacciValueMap)));
-
+        if (fibonacciValueMap.get(bigInteger) == null) {
+            fibonacciValueMap.put(bigInteger, fibonacci(bigInteger.subtract(BigInteger.ONE), fibonacciValueMap).add(fibonacci(bigInteger.subtract(BigInteger.TWO), fibonacciValueMap)));
+        }
         return fibonacciValueMap.get(bigInteger);
     } // 피보나치 forans
 
