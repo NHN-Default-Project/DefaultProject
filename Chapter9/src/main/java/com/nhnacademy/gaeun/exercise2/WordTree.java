@@ -9,38 +9,16 @@ package com.nhnacademy.gaeun.exercise2;
  *  are output.  The program ends when the user enters an empty string.
  */
 public class WordTree {
-    private static TreeNode root;
-    public static TreeNode getRoot() {
-        return root;
+    protected static class TreeNode {
+        protected String item;
+        protected TreeNode left;
+        protected TreeNode right;
+        protected TreeNode(String str) {
+            item = str;
+        }
     }
-
-    public static void treeInsert(String newItem) {
-        if ( root == null ) {
-            root = new TreeNode( newItem );
-            return;
-        }
-        TreeNode runner;
-        runner = root;
-        while (true) {
-            if(newItem.compareTo(runner.item) == 0) {
-                return;
-            }
-            if ( newItem.compareTo(runner.item) < 0 ) {
-                if ( runner.left == null ) {
-                    runner.left = new TreeNode( newItem );
-                    return;
-                }
-                else
-                    runner = runner.left;
-            }
-            else {
-                if ( runner.right == null ) {
-                    runner.right = new TreeNode( newItem );
-                    return;
-                }
-                else
-                    runner = runner.right;
-            }
-        }
+    private TreeNode root;
+    public TreeNode getRoot() {
+        return root;
     }
 }

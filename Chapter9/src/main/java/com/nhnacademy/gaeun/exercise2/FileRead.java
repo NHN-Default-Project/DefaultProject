@@ -18,7 +18,7 @@ public class FileRead {
 
     public FileRead(String path) {
         this.path = path;
-        wordTree = new WordTree();
+        this.wordTree = new WordTree();
     }
 
     public WordTree load() {
@@ -28,9 +28,8 @@ public class FileRead {
                 List<String> wordOneLine = Arrays.stream(line.split(" "))
                         .map(x -> x.replaceAll("[^a-zA-Z0-9]", ""))
                         .collect(Collectors.toList());
-                for(String newItem : wordOneLine) {
-                    wordTree.treeInsert(newItem);
-                }
+                wordOneLine.stream()
+                        .forEach(System.out::println);
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());

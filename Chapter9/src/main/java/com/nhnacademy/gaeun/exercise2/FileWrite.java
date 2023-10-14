@@ -23,7 +23,7 @@ public class FileWrite {
         }
     }
 
-    public static void treeList(TreeNode node, FileWriter fileWriter) throws IOException {
+    public static void treeList(WordTree.TreeNode node, FileWriter fileWriter) throws IOException {
         if (node != null) {
             treeList(node.left, fileWriter);
             fileWriter.write(node.item);

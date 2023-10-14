@@ -78,7 +78,6 @@ public class SimpleParser3 {
         @Override
         ExpNode derivative() {
             derivative = new ConstNode(0);
-            printInfix();
             return derivative;
         }
     }
@@ -108,7 +107,6 @@ public class SimpleParser3 {
         @Override
         ExpNode derivative() {
             derivative = new ConstNode(1);
-            printInfix();
             return derivative;
         }
     }
@@ -184,46 +182,19 @@ public class SimpleParser3 {
 
         @Override
         void printInfix() {
-            switch (op) {
-                case '+':
-                    left.printInfix();
-                    System.out.printf(" + ");
-                    right.printInfix();
-                    return;
-                case '-':
-                    left.printInfix();
-                    System.out.printf(" - ");
-                    right.printInfix();
-                    return;
-                case '*':
-                    System.out.printf("%.2f",left.value(value));
-                    System.out.printf(" * ");
-                    right.printInfix();
-                    System.out.printf(" + ");
-                    System.out.printf("%.2f",right.value(value));
-                    System.out.printf(" * ");
-                    left.printInfix();
-                    return;
-                case '/':
-                    right.printInfix();
-                    System.out.printf(" - ");
-                    System.out.printf("%.2f", left.value(value));
-                    right.printInfix();
-                    System.out.printf(" / ");
-                    System.out.printf("%.2f * %.2f", right.value(value), right.value(value));
-                    return;
-                default:
+            System.out.printf("(");
+            left.printInfix();
+            System.out.printf(" %s ", op);
+            right.printInfix();
+            System.out.printf(")");
             }
-        }
-
-    }
-
-
-    /**
+    }/**
      * An expression node to represent a unary minus operator.
      */
     private static class UnaryMinusNode extends ExpNode {
         ExpNode operand;  // The operand to which the unary minus applies.
+        double neg;
+        ExpNode derivative;
 
         UnaryMinusNode(ExpNode operand) { //단항 마이너스
             // Construct a UnaryMinusNode with the specified operand.
@@ -233,8 +204,8 @@ public class SimpleParser3 {
 
         double value(double value) {
             // The value is the negative of the value of the operand.
-            double neg = operand.value(value);
-            return -neg;
+            this.neg = -operand.value(value);
+            return neg;
         }
 
         void printStackCommands() {
@@ -248,12 +219,13 @@ public class SimpleParser3 {
 
         @Override
         ExpNode derivative() {
-            return new ConstNode(-operand.value(0));
+            derivative = new ConstNode(0);
+            return derivative;
         }
 
         @Override
         void printInfix() {
-
+            derivative = new ConstNode(value(0));
         }
     }
 
@@ -277,6 +249,7 @@ public class SimpleParser3 {
 
         while (true) {
             System.out.println("\n\nEnter an expression, or press return to end.");
+            System.out.println("Please input the value of x before entering the expression with variables.");
             System.out.print("\n?  ");
             TextIO.skipBlanks();
             if (TextIO.peek() == '\n')

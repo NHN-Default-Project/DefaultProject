@@ -4,5 +4,6 @@ public class Exercise9_5 {
     public static void main(String[] args) {
         BinaryTree binaryTree = new BinaryTree();
         binaryTree.treeInsert();
+        binaryTree.printStatus();
     }
 }
