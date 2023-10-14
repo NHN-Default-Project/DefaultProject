@@ -12,8 +12,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     public void insert(T data) {
-        Node<T> newNode = new Node<>();
-        newNode.setData(data);
+        Node<T> newNode = new Node<>(data);
         if (this.root == null) {
             this.root = newNode;
         } else {
@@ -36,28 +35,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return node;
     }
 
-    public T search(T value) {
-        if (this.root == null) {
-            throw new IllegalArgumentException("해당 노드를 찾을 수 없습니다.");
-        }
-        T searchValue = null;
-        if (searchValue.equals(null)) {
-
-        }
-        return searchValue;
-    }
-
-    private T searchData(Node<T> node, T value) {
-        if (node.data.equals(value)) {
-            return node.data;
-        }
-        if (node.data.compareTo(value) > 0) {
-            searchData(node.left, value);
-        } else if (node.data.compareTo(value) < 0) {
-            searchData(node.right, value);
-        }
-        return null;
-    }
 
     public List<Integer> findLeafNodeDepths() { // 이진트리 높이를
         List<Integer> depthList = new ArrayList<>();
@@ -85,8 +62,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     public int maxDepthOfLeafNodes() { // 가장 깊은 depth 값
-        List<Integer> leafList = findLeafNodeDepths();
-        return leafList.stream()
+        return findLeafNodeDepths().stream()
                 .mapToInt(Integer::intValue).max().orElse(0);
     }
 
@@ -155,20 +131,15 @@ public class BinarySearchTree<T extends Comparable<T>> {
         T data;
 
 
-        public Node() {
+        public Node(T data) {
             this.left = null;
             this.right = null;
-        }
-
-        public void setData(T data) {
             this.data = data;
         }
 
+
         @Override
         public String toString() {
-            StringBuilder sb = new StringBuilder();
-
-
             return "Node{" +
                     "left=" + left +
                     ", right=" + right +
