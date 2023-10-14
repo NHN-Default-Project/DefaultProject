@@ -13,7 +13,9 @@ public class Main {
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
             System.out.println("생성할 노드의 갯수를 입력해주세요");
             listSize = Integer.parseInt(inputData(bufferedReader));
+            System.out.println("노드에 들어갈 데이터를 입력해주세요");
             inputDataToList(bufferedReader, binarySortTree, listSize);
+            System.out.println("Queue로 출력한 결과: ");
             inputDataToQueue(binarySortTree);
 
         } catch (IOException e) {
@@ -27,18 +29,18 @@ public class Main {
         return bufferedReader.readLine();
     }
 
-    public static void inputDataToList(BufferedReader br, BinarySortTree list, int size) throws IOException {
-        if (list.size() == size) {
+    public static void inputDataToList(BufferedReader br, BinarySortTree binarySortTree, int size) throws IOException {
+        if (binarySortTree.size() == size) {
             return;
         }
-        list.add(inputData(br));
-        inputDataToList(br, list, size);
+        binarySortTree.add(inputData(br));
+        inputDataToList(br, binarySortTree, size);
     }
 
     public static void inputDataToQueue(BinarySortTree binarySortTree) {
         Queue<Node> queue = new LinkedList<>();
         queue.add(binarySortTree.getRoot());
-        for (int i = 0; i < binarySortTree.size(); i++) {
+        while (!queue.isEmpty()) {
             Node node = queue.poll();
             if (node != null) {
                 System.out.println(node.getData());
@@ -54,6 +56,6 @@ public class Main {
     }
 
     public static void recursionInputDataToQueue(BinarySortTree binarySortTree) {
-        
+
     }
 }

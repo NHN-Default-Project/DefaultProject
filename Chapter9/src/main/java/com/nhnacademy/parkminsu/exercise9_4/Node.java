@@ -17,9 +17,6 @@ public class Node {
         return data;
     }
 
-    public void setData(String data) {
-        this.data = data;
-    }
 
     @Override
     public String toString() {
@@ -36,3 +33,4 @@ public class Node {
     }
 
 }
+

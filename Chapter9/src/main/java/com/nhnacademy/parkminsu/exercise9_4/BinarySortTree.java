@@ -8,11 +8,9 @@ public class BinarySortTree {
 
     public void add(String data) {
         Node newNode = new Node(data);
-        if (this.root == null) {
-            this.root = newNode;
-        } else {
-            this.root = addNode(this.root, newNode);
-        }
+
+        this.root = addNode(this.root, newNode);
+
         size++;
 
     }
