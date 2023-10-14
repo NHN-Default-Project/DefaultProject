@@ -1,8 +1,8 @@
 package com.nhnacademy.gaeun.exercise6;
 
 import com.nhnacademy.gaeun.exercise6.textio.TextIO;
-
 /**
+ * https://math.hws.edu/javanotes/c9/exercises.html
  * This program reads standard expressions typed in by the user.
  * The program constructs an expression tree to represent the
  * expression.  It then prints the value of the tree.  It also uses
@@ -27,7 +27,7 @@ import com.nhnacademy.gaeun.exercise6.textio.TextIO;
  * defines a set of four nested classes for implementing expression trees.
  */
 
-public class SimpleParser3 {
+public class Exercise9_6_7 {
 
     //    -------------------- Nested classes for Expression Trees ------------------------------
 

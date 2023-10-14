@@ -1,6 +1,10 @@
 package com.nhnacademy.gaeun.exercise3;
-//JBGW04-031
-public class Main {
+/*
+ * https://math.hws.edu/javanotes/c9/exercises.html
+ * Write a subroutine that will make a copy of a list,
+ * with the order of the items of the list reversed.
+ */
+public class Exercise9_3 {
 
     public static void main(String[] args) {
 
