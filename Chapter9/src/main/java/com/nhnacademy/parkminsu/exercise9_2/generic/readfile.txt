@@ -4,7 +4,7 @@ But when you apply to Harvard, you don't need to start your application in the e
 You don't, for that matter, have to get superlative marks in a fitness assessment that includes running, push-ups, and pull-ups.
 What is the main advantage of binary search over linear search? What is the main disadvantage?
 What is meant by a dynamic array? What is the advantage of a dynamic array over a regular array?
-What does it mean to say that ArrayList is a parameterized type?
+What does it mean to say that ArrayList is a parameterized type?asdasd
 Assume that the list is not empty and that all the items in the list are non-null. Write a code segment that will find and print the string in the list that comes first in lexicographic order.
 Write a code segment that will output the first name, last name, and hourly wage of each employee who has been with the company for 20 years or more. Write two versions of the code segment, one that uses a regular for loop, and one that uses a for-each loop.
 Write a record class to represent dates, where a Date object contains three integer fields giving the month, day, and year of the date. The canonical constructor should throw an exception if the values for the month and day are not legal. Also include a toString() method that prints a date in a form such as "5/27/2022".

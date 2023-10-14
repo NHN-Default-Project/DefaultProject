@@ -5,11 +5,7 @@ public class BinarySortTree {
 
     public void add(String data) {
         Node newNode = new Node(data);
-        if (this.root == null) {
-            this.root = newNode;
-        } else {
-            this.root = addNode(this.root, newNode);
-        }
+        this.root = addNode(this.root, newNode);
     }
 
     private Node addNode(Node node, Node newNode) {
@@ -42,6 +38,7 @@ public class BinarySortTree {
     }
 
     public void ascendingTraversal() {
+        System.out.println("오름 차순 순회");
         leftInorderTraversal(this.root);
     }
 
