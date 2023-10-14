@@ -20,6 +20,7 @@ public class Factorial extends Num {
         if (bigInteger.compareTo(BigInteger.ONE) == 0) {
             return BigInteger.ONE;
         }
+
         return bigInteger.multiply(factorial(bigInteger.subtract(BigInteger.ONE)));
     }
 

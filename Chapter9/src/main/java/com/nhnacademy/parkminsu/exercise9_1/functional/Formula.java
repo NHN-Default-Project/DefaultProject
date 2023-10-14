@@ -8,26 +8,23 @@ public interface Formula {
     BigInteger apply(BigInteger bigInteger);
 
 
-    static BigInteger fibonacci(BigInteger bigInteger, Map<BigInteger, BigInteger> bigIntegerBigIntegerMap) {
-        if (bigInteger.compareTo(BigInteger.ZERO) == 0) {
-            bigIntegerBigIntegerMap.put(bigInteger, BigInteger.ZERO);
+    static BigInteger fibonacci(BigInteger bigInteger, Map<BigInteger, BigInteger> fibonacciValueMap) {
+        if (bigInteger.equals(BigInteger.ZERO)) {
+            fibonacciValueMap.put(bigInteger, BigInteger.ZERO);
             return BigInteger.ZERO;
-        } else if (bigInteger.compareTo(BigInteger.ONE) == 0) {
-            bigIntegerBigIntegerMap.put(bigInteger, BigInteger.ONE);
+        } else if (bigInteger.equals(BigInteger.ONE)) {
+            fibonacciValueMap.put(bigInteger, BigInteger.ONE);
             return BigInteger.ONE;
         }
-        if (bigIntegerBigIntegerMap.get(bigInteger) == null) {
-            bigIntegerBigIntegerMap.put(bigInteger, fibonacci(bigInteger.subtract(BigInteger.ONE), bigIntegerBigIntegerMap).add(fibonacci(bigInteger.subtract(BigInteger.TWO), bigIntegerBigIntegerMap)));
-        }
-        return bigIntegerBigIntegerMap.get(bigInteger);
+        fibonacciValueMap.computeIfAbsent(bigInteger, i -> fibonacci(i.subtract(BigInteger.ONE), fibonacciValueMap).add(fibonacci(i.subtract(BigInteger.TWO), fibonacciValueMap)));
+
+        return fibonacciValueMap.get(bigInteger);
     } // 피보나치 forans
 
-    static BigInteger fibonacci2(BigInteger bigInteger) {
-        if (bigInteger.compareTo(BigInteger.ZERO) == 0) {
-            return BigInteger.ZERO;
-        } else if (bigInteger.compareTo(BigInteger.ONE) == 0) {
+    static BigInteger factorial(BigInteger bigInteger) {
+        if (bigInteger.equals(BigInteger.ZERO)) {
             return BigInteger.ONE;
         }
-        return fibonacci2(bigInteger.subtract(BigInteger.ONE)).add(fibonacci2(bigInteger.subtract(BigInteger.TWO)));
-    } // 피보나치 재귀
+        return bigInteger.multiply(factorial(bigInteger.subtract(BigInteger.ONE)));
+    }
 }
