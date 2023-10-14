@@ -35,6 +35,8 @@ public class SimpleParser3 {
 
         abstract ExpNode derivative();
 
+        abstract void printInFix();
+
     }
 
     /**
@@ -62,6 +64,11 @@ public class SimpleParser3 {
         @Override
         ExpNode derivative() {
             return new ConstNode(0);
+        }
+
+        @Override
+        void printInFix() {
+            System.out.print(this.number);
         }
     }
 
@@ -134,10 +141,27 @@ public class SimpleParser3 {
                             new BinOpNode('*', leftNode, rightNode.derivative()),
                             new BinOpNode('*', leftNode.derivative(), rightNode)
                     );
+                case '/':
+                    return new BinOpNode('/',
+                            new BinOpNode('-',
+                                    new BinOpNode('*', leftNode.derivative(), rightNode),
+                                    new BinOpNode('*', leftNode.derivative(), rightNode)
+                            ),
+                            new BinOpNode('*', rightNode, rightNode)
+                    );
                 default:
                     throw new IllegalArgumentException("안됩니다!");
             }
 
+        }
+
+        @Override
+        void printInFix() {
+            System.out.print("(");
+            left.printInFix();
+            System.out.print(op);
+            right.printInFix();
+            System.out.print(")");
         }
     }
 
@@ -168,7 +192,12 @@ public class SimpleParser3 {
 
         @Override
         ExpNode derivative() {
-            return null;
+            return new BinOpNode('-', new ConstNode(0), operand);
+        }
+
+        @Override
+        void printInFix() {
+            operand.printInFix();
         }
     }
 
@@ -189,12 +218,18 @@ public class SimpleParser3 {
 
         @Override
         void printStackCommands() {
-            System.out.println("  variable");
+            System.out.println(value);
         }
 
         @Override
         ExpNode derivative() {
-            return new VariableNode(1);
+            return new ConstNode(1);
+        }
+
+        @Override
+        void printInFix() {
+            System.out.print(value);
+
         }
     }
 
@@ -212,7 +247,7 @@ public class SimpleParser3 {
     public static void main(String[] args) {
         double doubleNum;
         while (true) {
-            System.out.println("숫자를 입력학세요");
+            System.out.println("숫자를 입력하세요");
             doubleNum = TextIO.getlnDouble();
             System.out.println("\n\n표현식을 입력하거나 반환 키를 눌러 종료합니다.");
             System.out.print("\n?  ");
@@ -230,6 +265,9 @@ public class SimpleParser3 {
                 System.out.println(derivative.value(doubleNum));
                 System.out.println("\n후위 평가 순서:\n");
                 exp.printStackCommands();
+                System.out.println("==============");
+                derivative.printInFix();
+                System.out.println();
             } catch (ParseError e) {
                 System.out.println("\n*** 입력 오류: " + e.getMessage());
                 System.out.println("*** 입력을 삭제합니다: " + TextIO.getln());
