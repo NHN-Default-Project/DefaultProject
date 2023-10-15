@@ -1,10 +1,17 @@
 package com.nhnacademy.jaehyeon.exercise9_1;
 
 import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MathFormula implements Formula {
-    BigInteger number;
 
+    private final Map<BigInteger, BigInteger> fibonacciResult;
+
+    public MathFormula() {
+        this.fibonacciResult = new HashMap<>();
+        settingFibonacciInitial();
+    }
 
     @Override
     public BigInteger factorial(BigInteger number) {
@@ -16,15 +23,20 @@ public class MathFormula implements Formula {
 
     @Override
     public BigInteger fibonacci(BigInteger number) {
-        BigInteger result = BigInteger.ZERO;
-        if (number.equals(BigInteger.ONE)) {
-            result = BigInteger.ONE;
-        } else if (number.equals(BigInteger.TWO)) {
-            result = BigInteger.TWO;
-        } else if (number.compareTo(BigInteger.valueOf(3)) == 1 || number.compareTo(BigInteger.valueOf(3)) == 0) {
-            result = fibonacci(number.subtract(BigInteger.TWO))
-                    .add(fibonacci(number.subtract(BigInteger.ONE)));
+        if (this.fibonacciResult.containsKey(number)) {
+            return this.fibonacciResult.get(number);
         }
-        return result;
+
+        BigInteger result = fibonacci(number.subtract(BigInteger.TWO))
+                .add(fibonacci(number.subtract(BigInteger.ONE)));
+        this.fibonacciResult.put(number, result);
+
+        return this.fibonacciResult.get(number);
+    }
+
+
+    private void settingFibonacciInitial() {
+        this.fibonacciResult.put(BigInteger.ZERO, BigInteger.ZERO);
+        this.fibonacciResult.put(BigInteger.ONE, BigInteger.ONE);
     }
 }

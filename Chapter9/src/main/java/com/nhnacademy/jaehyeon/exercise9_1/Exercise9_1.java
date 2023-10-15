@@ -22,12 +22,12 @@ public class Exercise9_1 {
             MathCalculator factorialCalculate = formula::factorial;
             MathCalculator fibonacciCalculate = formula::fibonacci;
 
-            System.out.println(Calculator.calculate(factorialCalculate, bigInteger));
-            System.out.println(Calculator.calculate(fibonacciCalculate, bigInteger));
+            System.out.println("팩토리얼 : " + factorialCalculate.calculate(bigInteger));
+            System.out.println("피보나치 : " + fibonacciCalculate.calculate(bigInteger));
 
 
         } catch (IOException e) {
-            //TODO
+            System.out.println(e.getMessage());
         }
     }
 
