@@ -3,15 +3,6 @@ package com.nhnacademy.jaehyeon.exercise9_2;
 import java.io.PrintWriter;
 
 public class SortTree {
-    private class Node {
-        String value;
-        Node left;
-        Node right;
-
-        public Node(String value) {
-            this.value = value;
-        }
-    }
 
     private Node root;
 
@@ -43,6 +34,16 @@ public class SortTree {
             writeTreeNode(root.left, writer);
             writer.println(root.value);
             writeTreeNode(root.right, writer);
+        }
+    }
+
+    private static class Node {
+        String value;
+        Node left;
+        Node right;
+
+        public Node(String value) {
+            this.value = value;
         }
     }
 
