@@ -8,13 +8,14 @@ public class Exercise9_5 {
         TreeNode treeNode = new TreeNode();
         Random random = new Random();
 
-        for (int i = 0; i < 1023; i++) {
-            treeNode.insert(random.nextDouble() * 1023);
+        for (int i = 0; i < 10; i++) {
+            treeNode.insert(random.nextInt() * 20);
         }
 
-
-        System.out.println("평균은 : " + treeNode.averageDepth());
-        System.out.println("최대 깊이는 : " + treeNode.getMaxDepth());
+        System.out.println("총 노드의 갯수 : " + treeNode.getTotalNode());
+        System.out.println("총 노드의 깊이 : " + treeNode.calculateTotalNodeDepth());
+        System.out.println("트리의 총 깊이 : " + treeNode.getMaxDepth());
+        System.out.println("노드의 평균 깊이 : " + treeNode.calculateAverageDepth());
 
     }
 }
