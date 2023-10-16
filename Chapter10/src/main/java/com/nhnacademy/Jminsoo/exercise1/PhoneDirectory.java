@@ -2,7 +2,7 @@ package com.nhnacademy.Jminsoo.exercise1;
 
 import java.util.Map;
 import java.util.TreeMap;
-
+//TODO : 테스트 코드 쓰기
 
 public class PhoneDirectory {
 
@@ -18,7 +18,7 @@ public class PhoneDirectory {
     }
 
     public String getNumber(String name) {
-        return dataMap.getOrDefault(name, null).number;
+        return dataMap.getOrDefault(name, new PhoneEntry()).number;
     }
 
     public void putNumber(String name, String number) {
