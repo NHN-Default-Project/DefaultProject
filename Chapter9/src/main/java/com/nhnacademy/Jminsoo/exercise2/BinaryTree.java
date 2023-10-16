@@ -8,12 +8,18 @@ public class BinaryTree<T extends Comparable<T>> {
 
     public void insert(T newItem) {
         if (this.root == null) {
-            this.root = new BinaryTreeNode<T>(newItem);
+            this.root = new BinaryTreeNode<>(newItem);
             return;
         }
         BinaryTreeNode<T> runner;
         runner = root;
         while (true) {
+            if (runner.value.equals(newItem)) {
+                System.out.print(newItem + " ");
+                System.out.println("동일한 값이 있습니다! 이를 제외합니다.");
+                return;
+            }
+
             if (newItem.compareTo(runner.value) < 0) {
                 if (runner.left == null) {
                     runner.left = new BinaryTreeNode<>(newItem);
