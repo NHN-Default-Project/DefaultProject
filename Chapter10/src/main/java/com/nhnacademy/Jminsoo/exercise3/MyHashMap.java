@@ -1,7 +1,7 @@
 package com.nhnacademy.Jminsoo.exercise3;
 
 /**
- * TODO : void get(key), void put(key,valye), void remove(key), boolean containKey(key), int size() 만들기
+ * void get(key), void put(key,valye), void remove(key), boolean containKey(key), int size() 만들기
  */
 
 import java.util.*;

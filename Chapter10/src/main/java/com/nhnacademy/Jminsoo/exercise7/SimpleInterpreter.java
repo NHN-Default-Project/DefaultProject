@@ -29,7 +29,7 @@ package com.nhnacademy.Jminsoo.exercise7;
  * 이 프로그램은 비표준 클래스 TextIO를 사용합니다.
  * <p>
  * 프로그램은 변수, 숫자, 연산자 및 괄호를 포함하는 표현식을 처리 할 수 있다.
- * TODO 1 : sin, cos, tan, abs, sqrt, log를 처리
+ * 1 : sin, cos, tan, abs, sqrt, log를 처리
  * ex) x, y에 값이 할당된 경우 sin(3*x+7) + log(sqrt(y))같은 표현식을 풀이할 수 있어야 함.
  * 함수의 이름 뒤에는 괄호로 둘러싸인 식이 따라와야 한다.
  */
