@@ -49,21 +49,21 @@ public class BinaryTree<T extends Comparable<T>> {
     }
 
 
-    private Map<BinaryTreeNode<T>, Long> getMapOfLeafNode(BinaryTreeNode<T> node, Map<BinaryTreeNode<T>, Long> leafNodeQueue, long depth) {
+    private Map<BinaryTreeNode<T>, Long> getMapOfLeafNode(BinaryTreeNode<T> node, Map<BinaryTreeNode<T>, Long> leafNodeMap, long depth) {
 
         if (this.root == null) {
             throw new IllegalArgumentException("트리가 비어있습니다.");
         }
         if (node.left != null) {
-            getMapOfLeafNode(node.left, leafNodeQueue, depth++);
+            getMapOfLeafNode(node.left, leafNodeMap, depth++);
         }
         if (node.right != null) {
-            getMapOfLeafNode(node.right, leafNodeQueue, depth++);
+            getMapOfLeafNode(node.right, leafNodeMap, depth++);
         }
         if (node.left == null && node.right == null) {
-            leafNodeQueue.put(node, depth);
+            leafNodeMap.put(node, depth);
         }
-        return leafNodeQueue;
+        return leafNodeMap;
     }
 
     public long getMaxDepth() {
