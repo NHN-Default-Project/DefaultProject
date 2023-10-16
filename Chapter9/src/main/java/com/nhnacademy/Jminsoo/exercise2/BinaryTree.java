@@ -45,9 +45,8 @@ public class BinaryTree<T extends Comparable<T>> {
             return true;
         } else if (item.compareTo(root.getValue()) < 0) {
             return treeContains(root.left, item);
-        } else {
-            return treeContains(root.right, item);
         }
+        return treeContains(root.right, item);
     }
 
     public boolean treeContains(T item) {
