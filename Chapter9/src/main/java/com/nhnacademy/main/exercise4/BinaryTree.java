@@ -1,4 +1,4 @@
-package com.nhnacademy.main;
+package com.nhnacademy.main.exercise4;
 
 import java.util.LinkedList;
 import java.util.Queue;

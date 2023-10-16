@@ -1,4 +1,6 @@
-package com.nhnacademy.main;
+package com.nhnacademy.main.exercise4;
+
+import com.nhnacademy.main.exercise4.BinaryTree;
 
 /*
  * https://math.hws.edu/javanotes/c9/exercises.html
