@@ -10,7 +10,7 @@ package com.nhnacademy.parkminsu.exercise9_6;
  *
  * <term>  ::=  <factor> [ [ "*" | "/" ] <factor> ]...
  *
- * <factor>  ::=  <number>  |  "(" <expression> ")"
+ * <factor>  ::=  <number>  | <x-Variable> "(" <expression> ")"
  * <p>
  * 숫자는 숫자로 시작해야 합니다 (소수점 아님).
  * 입력 라인은 정확히 이러한 표현식 하나를 포함해야 합니다. 표현식을 읽은 후에 라인에 추가 데이터가 있는 경우 오류로 처리됩니다.

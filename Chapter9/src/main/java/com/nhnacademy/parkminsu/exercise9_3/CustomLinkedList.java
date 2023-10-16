@@ -1,7 +1,7 @@
 package com.nhnacademy.parkminsu.exercise9_3;
 
 public class CustomLinkedList<T> {
-    ListNode<T> listNode;
+    private ListNode<T> listNode;
     private int size = 0;
 
     public void add(T item) {

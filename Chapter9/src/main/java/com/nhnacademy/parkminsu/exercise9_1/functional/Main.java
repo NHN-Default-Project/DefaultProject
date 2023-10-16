@@ -28,9 +28,7 @@ public class Main {
 
             System.out.println("Fibonacci: " + fibonacci.apply(bigInteger));
 
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        } catch (IllegalArgumentException e) {
+        } catch (IOException | IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }

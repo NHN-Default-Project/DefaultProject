@@ -1,5 +1,8 @@
 package com.nhnacademy.parkminsu.exercise9_4;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BinarySortTree {
     private Node root;
 
@@ -76,6 +79,22 @@ public class BinarySortTree {
 
     }
 
+    public void print() {
+        inputDataToQueue(this.root);
+    }
+
+    private void inputDataToQueue(Node nodes) {
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(nodes); // Node의 toString에서 조건문으로 처리함
+        if (queue.isEmpty()) {
+            throw new NullPointerException("노드에 값이 없습니다");
+        }
+        System.out.println(queue.poll());
+    }
+
+    public Node getRoot() {
+        return root;
+    }
 
     public int size() {
         return this.size;
@@ -86,8 +105,36 @@ public class BinarySortTree {
         return "" + root + "\n";
     }
 
-    public Node getRoot() {
-        return root;
+    static class Node {
+
+        Node left;
+        Node right;
+        private String data;
+
+        public Node(String data) {
+            this.data = data;
+        }
+
+
+        public String getData() {
+            return data;
+        }
+
+
+        @Override
+        public String toString() {
+            StringBuilder stringBuilder = new StringBuilder();
+            if (this.left != null) {
+                stringBuilder.append(this.left);
+            }
+            stringBuilder.append(getData() + " ");
+            if (this.right != null) {
+                stringBuilder.append(this.right);
+            }
+            return stringBuilder.toString();
+
+        }
+
     }
 
 

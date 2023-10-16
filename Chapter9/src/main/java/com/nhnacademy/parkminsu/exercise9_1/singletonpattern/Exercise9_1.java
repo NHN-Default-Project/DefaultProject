@@ -10,14 +10,9 @@ public class Exercise9_1 {
             String str = inputData(bufferedReader);
             Factorial factorial = Factorial.getInstance(str);
             Fibonacci fibonacci = Fibonacci.getInstance(str);
-            // System.out.println(factorial.apply(factorial.getNum()));
             System.out.println(fibonacci.apply(factorial.getNum()));
 
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        } catch (NumberFormatException e) {
-            System.out.println(e.getMessage());
-        } catch (IllegalArgumentException e) {
+        } catch (IOException | IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }

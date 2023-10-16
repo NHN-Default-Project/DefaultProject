@@ -3,10 +3,12 @@ package com.nhnacademy.parkminsu.exercise9_4;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
 
-public class Main {
+public class Exercise9_4 {
+    /**
+     * List를 만들고 Queue 자료구조를 이용하여 print하는 문제
+     * https://math.hws.edu/javanotes/c9/ex4-ans.html
+     */
     public static void main(String[] args) {
         BinarySortTree binarySortTree = new BinarySortTree();
         int listSize = 0;
@@ -16,11 +18,9 @@ public class Main {
             System.out.println("노드에 들어갈 데이터를 입력해주세요");
             inputDataToList(bufferedReader, binarySortTree, listSize);
             System.out.println("Queue로 출력한 결과: ");
-            inputDataToQueue(binarySortTree);
+            binarySortTree.print();
 
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        } catch (NumberFormatException e) {
+        } catch (IOException | NumberFormatException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -37,25 +37,4 @@ public class Main {
         inputDataToList(br, binarySortTree, size);
     }
 
-    public static void inputDataToQueue(BinarySortTree binarySortTree) {
-        Queue<Node> queue = new LinkedList<>();
-        queue.add(binarySortTree.getRoot());
-        while (!queue.isEmpty()) {
-            Node node = queue.poll();
-            if (node != null) {
-                System.out.println(node.getData());
-            }
-            assert node != null;
-            if (node.left != null) {
-                queue.add(node.left);
-            }
-            if (node.right != null) {
-                queue.add(node.right);
-            }
-        }
-    }
-
-    public static void recursionInputDataToQueue(BinarySortTree binarySortTree) {
-
-    }
 }

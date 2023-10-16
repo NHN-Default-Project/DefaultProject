@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 import java.util.Random;
 
 
-public class Main {
+public class Exercise9_3 {
     // TODO 내일 와서 Reverse 부분 고치기
     public static void main(String[] args) {
         CustomLinkedList<Integer> customLinkedList = new CustomLinkedList();
