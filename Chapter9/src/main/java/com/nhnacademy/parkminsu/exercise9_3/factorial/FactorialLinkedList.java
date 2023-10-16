@@ -7,7 +7,10 @@ import java.util.Random;
 import java.util.function.Function;
 
 public class FactorialLinkedList<T> {
-    // 자바에서 제공하는 Functional Interface를 사용한 메소드
+    /**
+     * 자바에서 제공하는 Functional Interface를 사용한 메소드
+     * 랜덤 데이터가 들어간 List 생성
+     */
     public CustomLinkedList<T> createLinkedList(Function<Random, T> creator, int listSize) {
         CustomLinkedList<T> list = new CustomLinkedList<>();
         addDataToList(creator, list, listSize);
@@ -23,7 +26,10 @@ public class FactorialLinkedList<T> {
         list.add(RandomNumberFactorial.createRandomData(creator));
     }
 
-    // 직접 만든 Functional Interface를 사용한 메소드
+    /**
+     * 직접 만든 Functional Interface를 사용한 메소드
+     * 랜덤 데이터가 들어간 List 생성
+     */
     public CustomLinkedList<T> createLinkedList(RandomNum<Random, T> creator, int listSize) {
         CustomLinkedList<T> list = new CustomLinkedList<>();
         addDataToList(creator, list, listSize);

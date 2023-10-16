@@ -16,14 +16,12 @@ public class Main {
         FactorialLinkedList<Integer> factorialLinkedList = new FactorialLinkedList();
         int inputData = 0;
         RandomNum<Random, Integer> creator1 = random -> random.nextInt(100); // 만든 함수형 인터페이스
-//        Function<Random, Integer> creator = random -> random.nextInt(100); // java에서 제공하는 함수형 인터페이스
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
             System.out.println("만들고 싶은 LinkedList의 size를 입력하세요(1개 이상)");
             inputData = inputData(bufferedReader);// 데이터 입력
             checkNegativeNum(inputData);
             checkListNull(inputData);
 
-//            List<Integer> list = factorialLinkedList.createLinkedList(creator1, inputData); // java에서 제공한 함수형 인터페이스를 매개변수로 받은 메소드
             customLinkedList = factorialLinkedList.createLinkedList(creator1, inputData); // 만든 함수형 인터페이스를 매개변수로 받은 메소드
             System.out.println("기존 리스트");
             System.out.println(customLinkedList.toString());
@@ -31,6 +29,7 @@ public class Main {
             CustomLinkedList<Integer> reversedList = customLinkedList.reverse();
             System.out.println("역순 리스트");
             System.out.println(reversedList.toString());
+
         } catch (IOException | NullDataException | IndexOutOfBoundsException e) {
             System.out.println(e.getMessage());
         }

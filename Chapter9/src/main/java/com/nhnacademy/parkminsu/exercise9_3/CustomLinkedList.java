@@ -22,17 +22,17 @@ public class CustomLinkedList<T> {
 
     public CustomLinkedList<T> reverse() {
         CustomLinkedList<T> customLinkedList = new CustomLinkedList<>();
-        customLinkedList = makeReverseLinkedList(customLinkedList, this.listNode, 0);
+        customLinkedList = reverse(customLinkedList, this.listNode, 0);
         return customLinkedList;
     }
 
-    public CustomLinkedList<T> makeReverseLinkedList(CustomLinkedList<T> customLinkedList, ListNode<T> listNode, int size) {
+    private CustomLinkedList<T> reverse(CustomLinkedList<T> customLinkedList, ListNode<T> listNode, int size) {
         int sizeNum = size;
         if (sizeNum == this.size) {
             return customLinkedList;
         }
         sizeNum = sizeNum + 1;
-        makeReverseLinkedList(customLinkedList, listNode.next, sizeNum);
+        reverse(customLinkedList, listNode.next, sizeNum);
         customLinkedList.add(listNode.item);
         return customLinkedList;
     }
