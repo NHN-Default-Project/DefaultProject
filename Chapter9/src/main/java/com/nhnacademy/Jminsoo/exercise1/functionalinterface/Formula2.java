@@ -9,24 +9,14 @@ public interface Formula2 {
     /**
      * 연습용 활용 메서드
      */
-    static BigInteger fibonacci(BigInteger n) {
-        if (n.equals(BigInteger.ZERO)) {
+    static BigInteger fibonacci(BigInteger number) {
+        if (number.equals(BigInteger.ZERO)) {
             return BigInteger.ZERO;
-        } else if (n.equals(BigInteger.ONE)) {
+        } else if (number.equals(BigInteger.ONE)) {
             return BigInteger.ONE;
         }
 
-        return fibonacci(n.subtract(BigInteger.ONE)).add(fibonacci(n.subtract(BigInteger.TWO)));
-    }
-
-    static BigInteger fibonacci2(BigInteger n, BigInteger A) {
-        if (n.equals(BigInteger.ZERO)) {
-            return BigInteger.ZERO;
-        } else if (n.equals(BigInteger.ONE)) {
-            return BigInteger.ONE;
-        }
-
-        return fibonacci(n.subtract(BigInteger.ONE)).add(fibonacci(n.subtract(BigInteger.TWO)));
+        return fibonacci(number.subtract(BigInteger.ONE)).add(fibonacci(number.subtract(BigInteger.TWO)));
     }
 
 }
