@@ -1,6 +1,6 @@
 package com.nhnacademy.parkminsu.exercise9_5;
 
-public class Main {
+public class Exercise9_5 {
     /**
      * 1023개의 노드를 가진 무작위 이진 정렬트리 만들기
      * 타입은 실수

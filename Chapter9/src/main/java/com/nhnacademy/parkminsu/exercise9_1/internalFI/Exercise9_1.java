@@ -7,7 +7,7 @@ import java.math.BigInteger;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-public class Main {
+public class Exercise9_1 {
     // 자바에서 제공하는 Functional Interface를 사용하여 피보나치 수열 및 팩토리얼 구현
     public static void main(String[] args) {
         Function<BigInteger, BigInteger> factorial = bigInteger -> {

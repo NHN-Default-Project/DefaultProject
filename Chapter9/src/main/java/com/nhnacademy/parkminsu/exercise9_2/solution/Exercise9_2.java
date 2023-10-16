@@ -1,6 +1,6 @@
 package com.nhnacademy.parkminsu.exercise9_2.solution;
 
-public class Main {
+public class Exercise9_2 {
     //
     public static void main(String[] args) {
         FileHandler fileHandler = new FileHandler();

@@ -7,7 +7,7 @@ import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Main {
+public class Exercise9_1 {
     public static void main(String[] args) {
         // 효율적인 재귀(memorization)
         Map<BigInteger, BigInteger> memorizationMap = new HashMap<>();
