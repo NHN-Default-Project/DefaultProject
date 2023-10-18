@@ -33,6 +33,7 @@ public class MyInterpreter {
                 }
                 this.dataQueue = readLine(inputStr);
                 this.cmd = getCommand(dataQueue.poll());
+                checkDataQueue();
                 execute();
 
             } catch (NullPointerException e) {
@@ -58,48 +59,83 @@ public class MyInterpreter {
     }
 
     private void execute() {
+
         switch (this.cmd) {
             case PUT:
-                calculate(queue -> this.myHashTable.put(queue.poll(), queue.poll()), dataQueue);
+                calculate(queue -> this.myHashTable.put(queue.poll(), queue.poll()), this.dataQueue);
                 break;
 
             case GET:
-                calculate(queue -> this.myHashTable.get(queue.poll()), dataQueue);
+                calculate(queue -> this.myHashTable.get(queue.poll()), this.dataQueue);
                 break;
 
             case REMOVE:
-                calculate(queue -> this.myHashTable.remove(queue.poll()), dataQueue);
+                calculate(queue -> this.myHashTable.remove(queue.poll()), this.dataQueue);
                 break;
 
             case SIZE:
-                calculate(queue -> String.valueOf(this.myHashTable.size()), dataQueue);
+                calculate(queue -> String.valueOf(this.myHashTable.size()), this.dataQueue);
                 break;
 
-            case IsEMPTY:
-                calculate(queue -> String.valueOf(this.myHashTable.isEmpty()), dataQueue);
+            case IS_EMPTY:
+                calculate(queue -> String.valueOf(this.myHashTable.isEmpty()), this.dataQueue);
                 break;
 
-            case ContainsKEY:
-                calculate(queue -> String.valueOf(this.myHashTable.containsKey(queue.poll())), dataQueue);
+            case CONTAINS_KEY:
+                calculate(queue -> String.valueOf(this.myHashTable.containsKey(queue.poll())), this.dataQueue);
                 break;
 
-            case ContainsValue:
-                calculate(queue -> String.valueOf(this.myHashTable.containsValue(queue.poll())), dataQueue);
+            case CONTAINS_VALUE:
+                calculate(queue -> String.valueOf(this.myHashTable.containsValue(queue.poll())), this.dataQueue);
                 break;
 
-            case KeySET:
-                calculate(queue -> String.valueOf(this.myHashTable.keySet()), dataQueue);
+            case KEY_SET:
+                calculate(queue -> String.valueOf(this.myHashTable.keySet()), this.dataQueue);
                 break;
 
             case VALUES:
-                calculate(queue -> String.valueOf(this.myHashTable.values()), dataQueue);
+                calculate(queue -> String.valueOf(this.myHashTable.values()), this.dataQueue);
                 break;
 
-            case EntrySET:
-                calculate(queue -> String.valueOf(this.myHashTable.entrySet()), dataQueue);
+            case ENTRY_SET:
+                calculate(queue -> String.valueOf(this.myHashTable.entrySet()), this.dataQueue);
                 break;
             default:
-                throw new IllegalArgumentException("입력 값에 이상이 있습니다!");
+                throw new IllegalStateException("Unexpected value: " + this.cmd);
+        }
+    }
+
+
+    //계산할 데이터가 올바른지 점검
+    private void checkDataQueue() {
+        switch (this.cmd) {
+            case PUT:
+                if (dataQueue.size() != 2) {
+                    throw new IllegalArgumentException("입력 값에 이상이 있습니다!");
+                }
+                break;
+                
+            case GET:
+            case REMOVE:
+            case CONTAINS_KEY:
+            case CONTAINS_VALUE:
+                if (dataQueue.size() != 1) {
+                    throw new IllegalArgumentException("입력 값에 이상이 있습니다!");
+                }
+                break;
+
+            case SIZE:
+            case IS_EMPTY:
+            case KEY_SET:
+            case VALUES:
+            case ENTRY_SET:
+                if (!dataQueue.isEmpty()) {
+                    throw new IllegalArgumentException("입력 값에 이상이 있습니다!");
+                }
+                break;
+
+            default:
+                dataQueue = new LinkedList<>();
         }
     }
 
@@ -126,13 +162,13 @@ public class MyInterpreter {
         REMOVE("remove"),
         COLLECT("collect"),
         SIZE("size"),
-        IsEMPTY("isempty"),
-        ContainsKEY("containskey"),
-        ContainsValue("containsvalue"),
+        IS_EMPTY("isempty"),
+        CONTAINS_KEY("containskey"),
+        CONTAINS_VALUE("containsvalue"),
         //        PutALL("putall"),
-        KeySET("keyset"),
+        KEY_SET("keyset"),
         VALUES("values"),
-        EntrySET("entryset");
+        ENTRY_SET("entryset");
 
         private final String value;
 
