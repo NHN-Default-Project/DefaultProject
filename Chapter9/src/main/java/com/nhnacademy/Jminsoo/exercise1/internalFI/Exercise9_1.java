@@ -1,4 +1,4 @@
-package com.nhnacademy.Jminsoo.exercise1;
+package com.nhnacademy.Jminsoo.exercise1.internalFI;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,7 +28,7 @@ public class Exercise9_1 {
             System.out.printf("팩토리얼 계산 값 : %s%n", factorialResult);
             System.out.printf("피보나치 계산 값 : %s%n", fibonacciResult);
 
-        } catch (IOException | IllegalArgumentException e) {
+        } catch (IOException | NumberFormatException e) {
             System.out.println(e.getMessage());
         }
     }
