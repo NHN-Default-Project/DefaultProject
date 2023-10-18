@@ -26,7 +26,7 @@ public class Exercise8_2 {
                 BigInteger bigInteger = new BigInteger(str);
                 precondition(bigInteger); // 조건문
                 bigIntegersList = operationSequence(bigInteger); // 연산된 수열을 리스트 담기
-                System.out.println(bigIntegersList.toString());
+                bigIntegersList.stream().forEach(System.out::println);
                 System.out.println("연산 횟수: " + bigIntegersList.size());
             } catch (NumberFormatException e) {
                 System.out.println("type이 맞지 않습니다. 다시 입력 해주세요");

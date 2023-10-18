@@ -116,7 +116,7 @@ public class RomanNumeral {
         }
     }
 
-    public int getValue(char roman) {
+    public int getValue(Character roman) {
         switch (roman) {
             case 'I':
                 return 1;

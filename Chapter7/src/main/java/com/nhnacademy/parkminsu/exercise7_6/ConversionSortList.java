@@ -19,6 +19,6 @@ public class ConversionSortList {
     }
 
     public List<String> conversion(List<String> list) {
-        return list.stream().map(x -> x.toLowerCase()).collect(Collectors.toList());
+        return list.stream().map(String::toLowerCase).collect(Collectors.toList());
     }
 }
