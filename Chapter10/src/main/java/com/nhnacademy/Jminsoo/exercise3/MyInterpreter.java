@@ -3,32 +3,38 @@ package com.nhnacademy.Jminsoo.exercise3;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 import java.util.function.Function;
 
 public class MyInterpreter {
-    private final MyHashTable<String, String> myHashTable;
+    private final MyHashTable myHashTable;
     private Commands cmd;
     private Queue<String> dataQueue;
 
     public MyInterpreter() {
-        this.myHashTable = new MyHashTable<>();
+        this.myHashTable = new MyHashTable();
     }
 
-    public void run() {
+    public void run() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
             try {
                 this.dataQueue = new LinkedList<>();
+
                 System.out.println("명령어를 입력해주세요(공백 입력 시 종료)");
                 System.out.println("목록 : put, get, size, remove, isEmpty, containsKey, containsValue, keySet, Values, EntrySet");
                 System.out.print(": ");
-                this.dataQueue = readLine(br);
+                String inputStr = br.readLine();
+                if (inputStr.isEmpty()) {
+                    break;
+                }
+                this.dataQueue = readLine(inputStr);
                 this.cmd = getCommand(dataQueue.poll());
                 execute();
 
-            } catch (InputMismatchException e) {
-                break;
             } catch (NullPointerException e) {
                 System.out.println("찾는 Key에 해당하는 값이 없습니다!");
             } catch (IOException e) {
@@ -38,16 +44,13 @@ public class MyInterpreter {
                 System.out.println("입력값에 문제가 있습니다!");
             }
         }
-
+        br.close();
     }
 
-    public Queue<String> readLine(BufferedReader br) throws IOException {
+    public Queue<String> readLine(String inputStr) throws IOException {
         //입력 받기
-        String inputStr = br.readLine();
 
-        if (inputStr.isEmpty()) {
-            throw new InputMismatchException();
-        }
+
         List<String> inputStringList = Arrays.asList(inputStr.split(" "));
         //첫 명령어 소문자로 변경(대/소문자 구분안하기 위함)
         inputStringList.set(0, inputStringList.get(0).toLowerCase());
@@ -96,7 +99,7 @@ public class MyInterpreter {
                 calculate(queue -> String.valueOf(this.myHashTable.entrySet()), dataQueue);
                 break;
             default:
-                throw new IllegalArgumentException("입력값에 이상이 있습니다!");
+                throw new IllegalArgumentException("입력 값에 이상이 있습니다!");
         }
     }
 
