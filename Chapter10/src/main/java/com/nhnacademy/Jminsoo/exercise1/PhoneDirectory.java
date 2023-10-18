@@ -3,22 +3,21 @@ package com.nhnacademy.Jminsoo.exercise1;
 import java.util.Map;
 import java.util.TreeMap;
 
-
 public class PhoneDirectory {
 
     private static class PhoneEntry {
         String name;     // 이름.
-        String number;   // 연관된 전화번호.
+        String number;   // 전화번호.
     }
 
-    private Map<String, PhoneEntry> dataMap;
+    private final Map<String, PhoneEntry> dataMap;
 
     public PhoneDirectory() {
         this.dataMap = new TreeMap<>();
     }
 
     public String getNumber(String name) {
-        return dataMap.getOrDefault(name, null).number;
+        return dataMap.getOrDefault(name, new PhoneEntry()).number;
     }
 
     public void putNumber(String name, String number) {

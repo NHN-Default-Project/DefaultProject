@@ -1,25 +1,39 @@
 package com.nhnacademy.Jminsoo.exercise2;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Set;
+import java.util.regex.PatternSyntaxException;
 
 public class TreeSetApp {
 
-    public void readUserInput() {
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
-            String inputStr = br.readLine();
+    SetFormula setFormula; //Set형이 담기는 클래스
 
-            String firstSetStr = inputStr.substring(inputStr.indexOf("[") + 1, inputStr.indexOf("]"));
-            String[] firstSetStrArray = firstSetStr.split(",");
+//    StringToSets stringToSets;
 
-            for (String str : firstSetStrArray)
 
-        } catch (IOException e) {
+    public TreeSetApp() {
+        this.setFormula = new SetFormula();
+    }
 
+    //입력 받고 수식을 만들어주는 메서드
+    public void readUserInputForMakeSet(String input) {
+        this.setFormula = new SetFormula();
+
+        //공백 제거 (\t, \n 포함)
+        String inputStr = input.replaceAll("\\s", "");
+        try {
+            this.setFormula = StringToSets.stringToSetFormulaApply(inputStr);
+        } catch (StringIndexOutOfBoundsException | PatternSyntaxException | NumberFormatException
+                 | ArithmeticException e) {
+            throw new IllegalArgumentException(e.getMessage());
         }
     }
 
-    private String[]
+    public void calculate() {
+        if (this.setFormula == null) {
+            throw new ArithmeticException("수식이 비어있습니다! 위치 : calculate");
+        }
 
+        Set<Integer> result = setFormula.calculate();
+        System.out.printf("결과 값 : %s%n", result);
+    }
 }

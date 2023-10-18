@@ -1,4 +1,4 @@
-package com.nhnacademy.Jminsoo.exercise2;
+package com.nhnacademy.Jminsoo.exercise2.backup;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,7 +18,7 @@ public class Exercise10_2 {
                 if (input.isEmpty()) {
                     break;
                 } else {
-                    treeSetApp.readUserInputForMakeSet(input);
+                    treeSetApp.readUserInputForSet(input);
                     treeSetApp.calculate();
                 }
             } catch (IOException | IllegalArgumentException e) {
