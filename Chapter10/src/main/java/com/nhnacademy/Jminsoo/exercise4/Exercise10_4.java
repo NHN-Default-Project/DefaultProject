@@ -1,22 +1,14 @@
 package com.nhnacademy.Jminsoo.exercise4;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
 public class Exercise10_4 {
-    public static void main(String[] args) {
-        removeTest();
-        System.out.println();
-        retainTest();
-        System.out.println();
-        collectTest();
-        System.out.println();
-        findTest();
-
-    }
-
-    public static void removeTest() {
+    @Test
+    void removeTest() {
         List<String> testList = new ArrayList<>();
         testList.add("가");
         testList.add("가");
@@ -34,7 +26,8 @@ public class Exercise10_4 {
                 .forEach(System.out::println);
     }
 
-    public static void retainTest() {
+    @Test
+    void retainTest() {
         List<String> testList = new ArrayList<>();
         testList.add("가");
         testList.add("가");
@@ -52,7 +45,8 @@ public class Exercise10_4 {
                 .forEach(System.out::println);
     }
 
-    public static void collectTest() {
+    @Test
+    void collectTest() {
         List<String> testList = new ArrayList<>();
         testList.add("가");
         testList.add("가");
@@ -70,7 +64,8 @@ public class Exercise10_4 {
                 .forEach(System.out::println);
     }
 
-    public static void findTest() {
+    @Test
+    void findTest() {
         List<String> testList = new ArrayList<>();
         testList.add("가");
         testList.add("가");

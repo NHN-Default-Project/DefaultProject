@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 public class Exercise10_2 {
     public static void main(String[] args) {
-        TreeSetApp treeSetApp = new TreeSetApp();
+        TreeSets treeSets = new TreeSets();
 
         System.out.println("입출력 공백 입력 시 종료");
         System.out.println("-------------------");
@@ -18,8 +18,8 @@ public class Exercise10_2 {
                 if (input.isEmpty()) {
                     break;
                 } else {
-                    treeSetApp.readUserInputForMakeSet(input);
-                    treeSetApp.calculate();
+                    treeSets.readUserInputForMakeSet(input);
+                    treeSets.calculate();
                 }
             } catch (IOException | IllegalArgumentException e) {
                 System.out.println(e.getMessage());

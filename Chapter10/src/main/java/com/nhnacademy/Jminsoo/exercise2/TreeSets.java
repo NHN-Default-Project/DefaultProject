@@ -3,14 +3,14 @@ package com.nhnacademy.Jminsoo.exercise2;
 import java.util.Set;
 import java.util.regex.PatternSyntaxException;
 
-public class TreeSetApp {
+public class TreeSets {
 
     SetFormula setFormula; //Set형이 담기는 클래스
 
 //    StringToSets stringToSets;
 
 
-    public TreeSetApp() {
+    public TreeSets() {
         this.setFormula = new SetFormula();
     }
 

@@ -2,7 +2,10 @@ package com.nhnacademy.Jminsoo.exercise6;
 
 import com.nhnacademy.Jminsoo.exercise6.textio.TextIO;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeMap;
 
 /**
  * 이 프로그램은 입력 파일에서 단어를 읽고 각 단어의 발생 횟수를 세는 프로그램입니다.
@@ -37,7 +40,7 @@ public class WordIndex {
         }
     } // end class WordData
 
-    public void test() {
+    public void run() {
         System.out.println("\n\n   이 프로그램은 입력 파일을 선택하도록 요청합니다.");
         System.out.println("파일에 나타나는 모든 단어 목록과 각 단어의 발생 횟수를 생성합니다.");
         System.out.println("이 목록은 먼저 알파벳 순으로, 그 다음에는 발생 빈도 순으로 출력됩니다.");
@@ -55,22 +58,7 @@ public class WordIndex {
             }
 
             // 데이터를 보관하기 위한 TreeMap을 생성하고 파일을 읽어 단어에 관한 데이터를 기록합니다.
-            TreeMap<String, WordData> words = new TreeMap<>();
-            String word = readNextWord();
-
-            while (word != null) {
-                word = word.toLowerCase();  // 단어를 소문자로 변환합니다.
-                WordData data = words.get(word);
-                if (data == null) {
-                    words.put(word, new WordData(word, this.wordLine));
-                } else {
-                    data.count++;
-                    data.lineSet.add(this.wordLine);
-                }
-                word = readNextWord();
-            }
-
-            words.remove("");
+            TreeMap<String, WordData> words = this.readTextFile();
 
             System.out.println("파일에서 찾은 다른 단어 수:  " + words.size());
             System.out.println();
@@ -82,23 +70,10 @@ public class WordIndex {
 
             // 단어 데이터를 ArrayList에 복사하고 빈도 순서대로 정렬합니다. 정렬에 사용될 Comparator를 사용하기 위해 람다 표현식을 사용합니다.
             ArrayList<WordData> wordsByFrequency = new ArrayList<>(words.values());
-            Collections.sort(wordsByFrequency, (a, b) -> b.count - a.count);
+            wordsByFrequency.sort((a, b) -> b.count - a.count);
 
             // Map과 List에서 데이터를 출력합니다.
-            TextIO.writeUserSelectedFile(); // 사용자가 취소할 경우 출력은 자동으로 표준 출력으로 이동합니다.
-            TextIO.putln(words.size() + " 파일에서 찾은 단어:\n");
-            TextIO.putln("알파벳 순서로 정렬된 단어 목록"
-                    + " (괄호 안에 발생 횟수가 있음):\n");
-            for (WordData data : words.values()) {
-                TextIO.put("   " + data.word + " (" + data.count + ")");
-                TextIO.putln("  줄번호 : " + data.lineSet);
-            }
-            TextIO.putln("\n\n발생 빈도순으로 정렬된 단어 목록:\n");
-            for (WordData data : wordsByFrequency) {
-                TextIO.put("   " + data.word + " (" + data.count + ")");
-                TextIO.putln("  줄번호 : " + data.lineSet);
-            }
-            System.out.println("\n\n완료되었습니다.\n\n");
+            this.printTextFile(wordsByFrequency, words);
 
         } catch (Exception e) {
             System.out.println("죄송합니다, 오류가 발생했습니다.");
@@ -106,6 +81,42 @@ public class WordIndex {
             e.printStackTrace();
         }
         System.exit(0);  // 파일 대화 상자 사용으로 인해 필요할 수 있습니다.
+    }
+
+    private TreeMap<String, WordData> readTextFile() {
+        TreeMap<String, WordData> resultWords = new TreeMap<>();
+        String word = readNextWord();
+
+        while (word != null) {
+            word = word.toLowerCase();  // 단어를 소문자로 변환합니다.
+            WordData data = resultWords.get(word);
+            if (data == null) {
+                resultWords.put(word, new WordData(word, this.wordLine));
+            } else {
+                data.count++;
+                data.lineSet.add(this.wordLine);
+            }
+            word = readNextWord();
+        }
+        resultWords.remove("");
+        return resultWords;
+    }
+
+    private void printTextFile(ArrayList<WordData> wordsByFrequency, TreeMap<String, WordData> words) {
+        TextIO.writeUserSelectedFile(); // 사용자가 취소할 경우 출력은 자동으로 표준 출력으로 이동합니다.
+        TextIO.putln(words.size() + " 파일에서 찾은 단어:\n");
+        TextIO.putln("알파벳 순서로 정렬된 단어 목록"
+                + " (괄호 안에 발생 횟수가 있음):\n");
+        for (WordData data : words.values()) {
+            TextIO.put("   " + data.word + " (" + data.count + ")");
+            TextIO.putln("  줄번호 : " + data.lineSet);
+        }
+        TextIO.putln("\n\n발생 빈도순으로 정렬된 단어 목록:\n");
+        for (WordData data : wordsByFrequency) {
+            TextIO.put("   " + data.word + " (" + data.count + ")");
+            TextIO.putln("  줄번호 : " + data.lineSet);
+        }
+        System.out.println("\n\n완료되었습니다.\n\n");
     }
 
     /**
