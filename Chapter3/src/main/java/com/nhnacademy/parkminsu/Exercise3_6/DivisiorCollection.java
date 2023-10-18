@@ -48,6 +48,7 @@ public class DivisiorCollection {
 
             }
         }
+
         return divisorList;
     }
 
