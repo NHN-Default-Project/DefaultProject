@@ -1,6 +1,7 @@
 package com.nhnacademy.Jminsoo.exercise2;
 
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Queue;
 import java.util.Set;
 
@@ -27,14 +28,14 @@ public class SetFormula {
         while (!this.setQueue.isEmpty()) {
             switch (this.expressionQueue.poll()) {
                 case "+":
-                    result.addAll(this.setQueue.poll());
+                    result.addAll(Objects.requireNonNull(this.setQueue.poll()));
                     break;
                 case "-":
-                    result.removeAll(this.setQueue.poll());
+                    result.removeAll(Objects.requireNonNull(this.setQueue.poll()));
                     break;
 
                 case "*":
-                    result.retainAll(this.setQueue.poll());
+                    result.retainAll(Objects.requireNonNull(this.setQueue.poll()));
                     break;
 
                 default:

@@ -7,10 +7,10 @@ public class PhoneDirectory {
 
     private static class PhoneEntry {
         String name;     // 이름.
-        String number;   // 연관된 전화번호.
+        String number;   // 전화번호.
     }
 
-    private Map<String, PhoneEntry> dataMap;
+    private final Map<String, PhoneEntry> dataMap;
 
     public PhoneDirectory() {
         this.dataMap = new TreeMap<>();
