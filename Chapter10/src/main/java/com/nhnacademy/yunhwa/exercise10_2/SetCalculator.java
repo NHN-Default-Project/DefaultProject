@@ -70,8 +70,8 @@ public class SetCalculator {
 
     public static void beforeInputPrintInformation() {
         System.out.println();
-        System.out.println("양의 정수 집합 2개를 만들고 두 개의 합집합, 교집합, 차집합을 구하려고 합니다.");
-        System.out.println("양의 정수 집합 2개와 연산자를 아래의 형식에 맞게 입력해주세요 \n");
+        System.out.println("0 이상의 정수 집합 2개를 만들고 두 개의 합집합, 교집합, 차집합을 구하려고 합니다.");
+        System.out.println("0 이상의 정수 집합 2개와 연산자를 아래의 형식에 맞게 입력해주세요 \n");
         System.out.println("------------------------------------------------------------");
         System.out.println("      [입 력 형 식 : 쉼표는 필수, 공백은 선택적]                  \n");
         System.out.println(" 집합 입력 형식 :  [1,2,3]   or   [17, 42, 9, 53, 108]        \n");
