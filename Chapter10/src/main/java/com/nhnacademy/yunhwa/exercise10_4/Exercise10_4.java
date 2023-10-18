@@ -14,6 +14,10 @@ import java.util.stream.IntStream;
 * */
 public class Exercise10_4 {
     public static void main(String[] args) {
+        predicatesTest();
+    }
+
+    public static void predicatesTest() {
         System.out.println("\n1 부터 100 까지의 숫자가 담긴 리스트로 간단하게 테스트 해보겠습니다.\n");
 
         List<Integer> integerList1 = IntStream.range(1, 101).boxed().collect(Collectors.toList());
