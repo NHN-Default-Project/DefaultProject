@@ -17,13 +17,12 @@ public class ListRandomOfValue<T> {
         this.listOfRandomValues = new ArrayList<>();
     }
 
-    public List<T> generateListOfRandomValues(Function<Random, T> randomTFunction, int size) {
-        List<T> listOfRandomValues = new ArrayList<>();
+    public void generateListOfRandomValues(Function<Random, T> randomTFunction, int size) {
+
         Random random = new Random();
         for (int i = 0; i < size; i++) {
             listOfRandomValues.add(randomTFunction.apply(random));
         }
-        return listOfRandomValues;
     }
 
     private void isCheckIfSizeIsNegativeNum(int size) throws NegativeNumException {

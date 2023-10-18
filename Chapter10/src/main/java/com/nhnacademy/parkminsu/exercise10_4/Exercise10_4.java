@@ -16,8 +16,10 @@ public class Exercise10_4 {
             System.out.println("List의 size 값을 입력하세요.");
             int listSize = Integer.parseInt(br.readLine());
 
-            System.out.println("생성할 정수의 범위를 입력하세요");
+            System.out.println("생성할 정수의 범위");
+            System.out.println("최솟값 입력하세요");
             int min = Integer.parseInt(br.readLine());
+            System.out.println("최댓값 입력하세요");
             int max = Integer.parseInt(br.readLine());
             RandomIntegerValueFactorial randomIntegerValueFactorial = new RandomIntegerValueFactorial(min, max);
 
@@ -32,6 +34,8 @@ public class Exercise10_4 {
         }
     }
 
+
+    //테스트 코드
     public static ListRandomOfValue<Integer> createListRandomOfValue(Function<Random, Integer> randomInt, int listSize) throws NegativeNumException {
         ListRandomOfValue<Integer> listRandomOfValue = new ListRandomOfValue(listSize);
         listRandomOfValue.generateListOfRandomValues(randomInt, listSize);
@@ -42,8 +46,8 @@ public class Exercise10_4 {
         return num -> num == predicateInputNum;
     }
 
-    public static void predicateRemoveMethodTest(BufferedReader br, Function<Random, Integer> radomInt, int listSize) throws IOException, NegativeNumException {
-        ListRandomOfValue<Integer> randomValueList = createListRandomOfValue(radomInt, listSize);
+    public static void predicateRemoveMethodTest(BufferedReader br, Function<Random, Integer> randomInt, int listSize) throws IOException, NegativeNumException {
+        ListRandomOfValue<Integer> randomValueList = createListRandomOfValue(randomInt, listSize);
         System.out.println("랜덤으로 생성된 리스트의 값: " + randomValueList.getListOfRandomValues());
         System.out.println("삭제할 값을 입력하시오");
         Predicate<Integer> pred = declarationPredicate(Integer.parseInt(br.readLine()));
