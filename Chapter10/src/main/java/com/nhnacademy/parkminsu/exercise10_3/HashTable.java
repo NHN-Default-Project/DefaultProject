@@ -77,7 +77,7 @@ public class HashTable {
             return null;
         }
         for (Node node : list) {
-            if (key.equals(node.key)) {
+            if ((key.hashCode() == node.key.hashCode()) && key.equals(node.key)) {
                 return node;
             }
         }
