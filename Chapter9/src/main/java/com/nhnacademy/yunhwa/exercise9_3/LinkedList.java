@@ -1,10 +1,10 @@
 package com.nhnacademy.yunhwa.exercise9_3;
 
 public class LinkedList {
-    class ListNode {
+    private static class ListNode {
 
-        int item;   // An item int the list.
-        ListNode next;   // Pointer to the next node in the list.
+        int item;
+        ListNode next;
 
         ListNode(int value) {
             item = value;
