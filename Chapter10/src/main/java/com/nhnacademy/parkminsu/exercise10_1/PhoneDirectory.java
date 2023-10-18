@@ -2,6 +2,8 @@ package com.nhnacademy.parkminsu.exercise10_1;
 
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * PhoneDirectory는 각 이름에 대한 전화번호 목록을 관리하는 클래스입니다.
@@ -35,12 +37,39 @@ public class PhoneDirectory {
      * 그렇지 않은 경우 새로운 이름/전화번호 쌍이 추가됩니다. 이름과 번호는 모두 null이 아니어야 합니다.
      * 이러한 경우가 아닌 경우 IllegalArgumentException이 throw됩니다.
      */
-    public void putNumber(String name, String number) {
+    public void putNumber(String name, String number) throws DataEntryFormatException {
+        isCheckNameData(name);
+        isCheckNumberData(number);
         if (name == null && number == null) {
             throw new IllegalArgumentException("이름 또는 번호의 값이 null입니다");
         }
         this.nameAndNumberDataMap.put(name, number);
 
+    }
+
+    /**
+     * 사용자가 형식에 맞춰서 입력했는지 확인
+     */
+    public void isCheckNameData(String inputData) throws DataEntryFormatException {
+        Pattern pattern = Pattern.compile("^[a-zA-Z가-힣]*$");
+        Matcher matcher = pattern.matcher(inputData);
+
+        if (!isDataEntryFormat(matcher)) {
+            throw new DataEntryFormatException("이름을 잘못 입력하셨습니다.");
+        }
+    }
+
+    public void isCheckNumberData(String inputData) throws DataEntryFormatException {
+        Pattern pattern = Pattern.compile("(01[01678]\\-\\d{3,4}\\-\\d{4})*$");
+        Matcher matcher = pattern.matcher(inputData);
+
+        if (!isDataEntryFormat(matcher)) {
+            throw new DataEntryFormatException("전화번호를 잘못 입력하셨습니다.");
+        }
+    }
+
+    public boolean isDataEntryFormat(Matcher matcher) {
+        return matcher.find();
     }
 
 } // PhoneDirectory 클래스 마침

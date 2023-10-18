@@ -18,12 +18,14 @@ public class Exercise10_1 {
 
             String[] nameAndNumberData = inputData.split(" ");
 
-            phoneDirectory.putNumber("parkminsu", "25");
+
             phoneDirectory.putNumber(nameAndNumberData[0], nameAndNumberData[1]);
 
             System.out.println("번호를 찾을 사람을 입력하세요");
             String name = br.readLine();
             System.out.println("검색 결과: " + phoneDirectory.getNumber(name));
+            System.out.println("잘못된 값입력");
+            phoneDirectory.putNumber("asd", "25");
         } catch (IOException | DataEntryFormatException e) {
             System.out.println(e.getMessage());
         }
@@ -33,7 +35,7 @@ public class Exercise10_1 {
      * 사용자가 형식에 맞춰서 입력했는지 확인
      */
     public static void isCheckDataEntryFormat(String inputData) throws DataEntryFormatException {
-        Pattern pattern = Pattern.compile("^[a-zA-Z]* (\\d{3}\\-\\d{3,4}\\-\\d{4})*$");
+        Pattern pattern = Pattern.compile("^[a-zA-Z가-힣]* (01[016789]\\-\\d{3,4}\\-\\d{4})*$");
         Matcher matcher = pattern.matcher(inputData);
         if (!isDataEntryFormat(matcher)) {
             throw new DataEntryFormatException("데이터 형식을 맞추지 않았습니다.");
