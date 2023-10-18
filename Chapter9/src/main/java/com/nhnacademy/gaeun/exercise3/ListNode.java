@@ -1,31 +1,36 @@
 package com.nhnacademy.gaeun.exercise3;
 
 public class ListNode<T> {
-    protected static class Node<T> {
-        protected T item;
-        protected Node next = null;
-        protected Node(T item) {
+    private static class Node<T> {
+        T item;
+        Node next = null;
+
+        Node(T item) {
             this.item = item;
         }
     }
-    private Node root;
 
-    public ListNode() { this.root = null; }
+    private Node<T> head;
+
+    public ListNode() {
+        this.head = null;
+    }
 
     public void insertNode(T item) {
-        if(this.root == null) {
-            this.root = new Node(item);
+        if (this.head == null) {
+            this.head = new Node(item);
             return;
         }
-        Node runner = this.root;
-        while(runner.next != null) {
+        Node runner = this.head;
+        while (runner.next != null) {
             runner = runner.next;
         }
         runner.next = new Node(item);
     }
+
     public void reverse() {
-        Node prev = null;
-        Node current = this.root;
+        Node<T> prev = null;
+        Node<T> current = this.head;
         Node next;
 
         while (current != null) {
@@ -34,14 +39,15 @@ public class ListNode<T> {
             prev = current;       // 이전 노드를 현재 노드로 업데이트
             current = next;       // 현재 노드를 다음 노드로 업데이트
         }
-        this.root = prev;
+        this.head = prev;
     }
+
     public void printList() {
-        Node runner = this.root;
-        if(runner == null) {
+        Node<T> runner = this.head;
+        if (runner == null) {
             System.out.println("ListNode가 비어있습니다.");
         }
-        while(runner.next != null) {
+        while (runner.next != null) {
             System.out.println(runner.item);
             runner = runner.next;
         }

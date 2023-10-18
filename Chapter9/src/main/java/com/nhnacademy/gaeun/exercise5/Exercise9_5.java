@@ -1,4 +1,7 @@
 package com.nhnacademy.gaeun.exercise5;
+
+import java.util.Random;
+
 /*
  * https://math.hws.edu/javanotes/c9/exercises.html
  * you can create the tree by generating 1023 random real numbers and inserting them into the tree,
@@ -12,9 +15,17 @@ package com.nhnacademy.gaeun.exercise5;
  * and one to find the maximum depth.
  */
 public class Exercise9_5 {
+    static final int SIZE = 1023;
     public static void main(String[] args) {
         BinaryTree binaryTree = new BinaryTree();
-        binaryTree.treeInsert();
+        treeInsert(binaryTree);
         binaryTree.printStatus();
+    }
+
+    public static void treeInsert(BinaryTree binaryTree) {
+        Random random = new Random();
+        for (int i = 0; i < SIZE; i++) {
+            binaryTree.add(random.nextDouble() * 1024);
+        }
     }
 }
