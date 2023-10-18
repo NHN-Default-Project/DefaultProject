@@ -6,8 +6,8 @@ import java.util.Queue;
 import java.util.Set;
 
 public class SetFormula {
-    private Queue<Set<Integer>> setQueue;
-    private Queue<String> expressionQueue;
+    private final Queue<Set<Integer>> setQueue;
+    private final Queue<String> expressionQueue;
 
     public SetFormula() {
         this.setQueue = new LinkedList<>();
@@ -26,16 +26,16 @@ public class SetFormula {
         Set<Integer> result;
         result = this.setQueue.poll();
         while (!this.setQueue.isEmpty()) {
-            switch (this.expressionQueue.poll()) {
+            switch (Objects.requireNonNull(this.expressionQueue.poll())) {
                 case "+":
-                    result.addAll(Objects.requireNonNull(this.setQueue.poll()));
+                    Objects.requireNonNull(result).addAll(Objects.requireNonNull(this.setQueue.poll()));
                     break;
                 case "-":
-                    result.removeAll(Objects.requireNonNull(this.setQueue.poll()));
+                    Objects.requireNonNull(result).removeAll(Objects.requireNonNull(this.setQueue.poll()));
                     break;
 
                 case "*":
-                    result.retainAll(Objects.requireNonNull(this.setQueue.poll()));
+                    Objects.requireNonNull(result).retainAll(Objects.requireNonNull(this.setQueue.poll()));
                     break;
 
                 default:

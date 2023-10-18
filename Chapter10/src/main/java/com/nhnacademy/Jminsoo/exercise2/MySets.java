@@ -3,7 +3,7 @@ package com.nhnacademy.Jminsoo.exercise2;
 import java.util.HashSet;
 import java.util.Set;
 
-public class StringToSets {
+public class MySets {
     public static Set<Integer> stringToSetApply(String inputStr) {
 
         Set<Integer> result = new HashSet<>();

@@ -21,7 +21,7 @@ public class TreeSetApp {
         //공백 제거 (\t, \n 포함)
         String inputStr = input.replaceAll("\\s", "");
         try {
-            this.setFormula = StringToSets.stringToSetFormulaApply(inputStr);
+            this.setFormula = MySets.stringToSetFormulaApply(inputStr);
         } catch (StringIndexOutOfBoundsException | PatternSyntaxException | NumberFormatException
                  | ArithmeticException e) {
             throw new IllegalArgumentException(e.getMessage());
