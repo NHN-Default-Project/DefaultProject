@@ -1,28 +1,29 @@
 package com.nhnacademy.yunhwa.exercise10_2;
 
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.TreeSet;
 
 public class SetCalculator {
-    static TreeSet<Integer> setA;
-    static TreeSet<Integer> setB;
-    static char operator;
+    private TreeSet<Integer> setA;
+    private TreeSet<Integer> setB;
+    private char operator;
 
     public SetCalculator() {
-        setA = new TreeSet<>();
-        setB = new TreeSet<>();
+        this.setA = new TreeSet<>();
+        this.setB = new TreeSet<>();
     }
 
-    public static void run() {
+    public void run() {
         while (true) {
             Scanner sc = new Scanner(System.in);
             try {
-                setA = new TreeSet<>();
-                setB = new TreeSet<>();
+                this.setA = new TreeSet<>();
+                this.setB = new TreeSet<>();
 
                 beforeInputPrintInformation();
                 makeTwoSetAndOperator(sc.nextLine());
-                printCaculationResult();
+                printCalculationResult(calculateResult());
 
                 if (! isUserWantToBeContinued(sc)) {
                     sc.close();
@@ -34,7 +35,7 @@ public class SetCalculator {
         }
     }
 
-    public static boolean isUserWantToBeContinued(Scanner sc) {
+    public boolean isUserWantToBeContinued(Scanner sc) {
         System.out.println("계속 입력하시겠습니까? NO 입력하시면 종료 아니면 TO BE CONTINUED ");
         String continueFlag = sc.nextLine().trim().toLowerCase();
         if (continueFlag.equals("no")) {
@@ -43,25 +44,38 @@ public class SetCalculator {
         return true;
     }
 
-    public static void printCaculationResult() {
-
-        System.out.println("-------------------------------");
-        System.out.println("집합 A : " + setA);
-        System.out.println("집합 B : " + setB);
-        System.out.println("-------------------------------");
-
-        switch (operator) {
+    public TreeSet<Integer> calculateResult() {
+        switch (this.operator) {
             case '+':
-                setA.addAll(setB);
-                System.out.println("합집합 : " + setA);
+                this.setA.addAll(this.setB);
+                return this.setA;
+            case '*':
+                this.setA.retainAll(this.setB);
+                return this.setA;
+            case '-':
+                this.setA.removeAll(this.setB);
+                return this.setA;
+            default:
+                throw new NoSuchElementException("(여기 들어오지 않게 미리 처리했지만 혹시 모르니) 계산하는 중 존재해서는 안되는 연산자가 들어왔습니다.");
+        }
+    }
+
+    public void printCalculationResult(TreeSet<Integer> resultSet) {
+
+        System.out.println("-------------------------------");
+        System.out.println("집합 A : " + this.setA);
+        System.out.println("집합 B : " + this.setB);
+        System.out.println("-------------------------------");
+
+        switch (this.operator) {
+            case '+':
+                System.out.println("합집합 : " + resultSet);
                 break;
             case '*':
-                setA.retainAll(setB);
-                System.out.println("교집합 : " + setA);
+                System.out.println("교집합 : " + resultSet);
                 break;
             case '-':
-                setA.removeAll(setB);
-                System.out.println("차집합 : " + setA);
+                System.out.println("차집합 : " + resultSet);
                 break;
         }
 
@@ -80,7 +94,7 @@ public class SetCalculator {
         System.out.println("위의 전체 입력 형식에 맞게 입력해주세요 [ 연산자 : + - * ]");
     }
 
-    public static void makeTwoSetAndOperator(String line) throws NegativeIntegerException, IllegalArgumentException {
+    public void makeTwoSetAndOperator(String line) throws NegativeIntegerException, IllegalArgumentException {
         char[] lineChr = line.toCharArray();
 
         boolean openBracket = false;
@@ -98,8 +112,12 @@ public class SetCalculator {
                 openBracket = false;
 
             } else if (c == '+' || c == '*' || c == '-') {
-                operator = c;
-                isSetBStart = true;
+                if (openBracket) { // 집합 안의 값이 음수인 경우 -> 존재하면 안되는 경우
+                    sb.append(c); // 일단 부호 넣어주고 num 만들어지는 부분에서 처리
+                } else {
+                    this.operator = c;
+                    isSetBStart = true;
+                }
 
             } else if (Character.isDigit(c)) {
                 if (openBracket) {
@@ -118,7 +136,7 @@ public class SetCalculator {
         }
     }
 
-    public static void makeOneNumAndAddToSet(StringBuilder sb, boolean isSetBStart) throws NegativeIntegerException {
+    public void makeOneNumAndAddToSet(StringBuilder sb, boolean isSetBStart) throws NegativeIntegerException {
         int num = Integer.parseInt(sb.toString());
 
         if (num < 0) {
@@ -126,9 +144,9 @@ public class SetCalculator {
         }
 
         if (isSetBStart) {
-            setB.add(num);
+            this.setB.add(num);
         } else {
-            setA.add(num);
+            this.setA.add(num);
         }
     }
 

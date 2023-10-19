@@ -2,35 +2,38 @@ package com.nhnacademy.yunhwa.exercise10_1;
 
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 public class PhoneDirectory {
     private Map<String, String> data; // phone entries
 
     public PhoneDirectory() {
-        data = new TreeMap<>();
+        this.data = new TreeMap<>();
     }
 
     public Map<String, String> getData() {
         return this.data;
     }
 
-    public String get(String name) {
+    public String getPhoneNumber(String name) {
         return this.data.get(name);
     }
 
-    public void put(String name, String number) {
+    public void putNameAndPhoneNumber(String name, String number) {
         if (name == null || number == null) {
             throw new IllegalArgumentException("name and number cannot be null");
         }
         this.data.put(name, number);
     }
 
-    public void printPhoneDirectory() {
-        System.out.println(" ------------- Phone Directory -------------- ");
-        System.out.println("        Name         |      Phone Number      ");
-        System.out.println(" -------------------------------------------- ");
-        for (Map.Entry<String, String> entry : this.data.entrySet()) {
-            System.out.printf("   %-17s |      %-20s%n", entry.getKey(), entry.getValue());
-        }
+    @Override
+    public String toString() {
+        return " ------------- Phone Directory -------------- \n"
+                + "        Name         |      Phone Number      \n"
+                + " -------------------------------------------- \n"
+                + this.data.entrySet()
+                .stream()
+                .map(entry -> String.format("   %-17s |      %-20s%n", entry.getKey(), entry.getValue()))
+                .collect(Collectors.joining(""));
     }
 }
