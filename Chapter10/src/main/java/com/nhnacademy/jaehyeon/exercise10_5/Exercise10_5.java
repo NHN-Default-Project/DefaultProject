@@ -5,6 +5,16 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/*
+ * https://math.hws.edu/javanotes/c10/exercises.html
+ * 학생 수를 스트림 API를 사용하여 출력.
+ * 모든 학생의 평균 점수를 스트림 API를 사용하여 출력.
+ * 90점 이상을 받은 학생의 수를 스트림 API를 사용하여 출력.
+ * Collect() 스트림 작업을 사용하여 70점 미만인 학생의 이름이 포함된 List<String>을 생성하고, 이름은 이름 뒤에 성의 형식이어야 함.
+ * 이전 작업에서 생성된 목록의 이름을 출력.
+ * 성순으로 정렬하여 학생의 이름과 점수를 스트림 API를 사용하여 출력.
+ * 점수순으로 정렬하여 학생의 이름과 점수를 스트림 API를 사용하여 출력.
+ */
 public class Exercise10_5 {
 
     public static void main(String[] args) {

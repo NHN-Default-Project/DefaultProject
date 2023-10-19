@@ -2,6 +2,9 @@ package com.nhnacademy.jaehyeon.exercise10_7;
 
 import java.util.HashMap;
 
+/*
+ * https://math.hws.edu/javanotes/c10/exercises.html
+ */
 public class SimpleInterpreter {
     private enum Functions {SIN, COS, TAN, ABS, SQRT, LOG}
 
