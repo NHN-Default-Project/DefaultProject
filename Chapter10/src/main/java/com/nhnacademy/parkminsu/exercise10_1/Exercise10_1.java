@@ -15,18 +15,15 @@ public class Exercise10_1 {
             System.out.println("예시: parkminsu 010-1234-1234");
             inputData = br.readLine().trim();
             isCheckDataEntryFormat(inputData); // 입력한 형식에 어긋나면 예외처리
-
             String[] nameAndNumberData = inputData.split(" ");
-
-
             phoneDirectory.putNumber(nameAndNumberData[0], nameAndNumberData[1]);
-
             System.out.println("번호를 찾을 사람을 입력하세요");
             String name = br.readLine();
             System.out.println("검색 결과: " + phoneDirectory.getNumber(name));
-            System.out.println("잘못된 값입력");
+
+            System.out.println("잘못된 값입력 테스트");
             phoneDirectory.putNumber("asd", "25");
-        } catch (IOException | DataEntryFormatException e) {
+        } catch (IOException | DataEntryFormatException | EmptyDataException e) {
             System.out.println(e.getMessage());
         }
     }

@@ -1,6 +1,7 @@
 package com.nhnacademy.parkminsu.exercise10_1;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,13 +24,20 @@ public class PhoneDirectory {
 
 
     /**
+     * 입력 값이 빈 값이면 Exception을 던집니다.
      * 주어진 이름에 대한 전화번호를 찾습니다. 이름이 전화번호 목록에 존재하지 않으면 반환 값은 null입니다.
      *
-     * @return 이름과 연결된 전화번호; 이름이 전화번호 목록에 존재하지 않는 경우 반환 값은 null입니다.
+     * @return 이름과 연결된 전화번호; 이름이 전화번호 목록에 존재하지 않는 경우 Exception을 던집니다.
      */
-    public String getNumber(String name) {
+    public String getNumber(String name) throws EmptyDataException {
+
         // 주어진 이름에 대한 전화번호 항목이 없습니다.
-        return this.nameAndNumberDataMap.getOrDefault(name, null);
+        isCheckEmpty(name);
+        String number = this.nameAndNumberDataMap.getOrDefault(name, null);
+        if (Objects.isNull(number)) {
+            throw new NullPointerException("해당 값의 데이터가 없습니다");
+        }
+        return number;
     }
 
     /**
@@ -71,5 +79,16 @@ public class PhoneDirectory {
     public boolean isDataEntryFormat(Matcher matcher) {
         return matcher.find();
     }
+
+    public void isCheckEmpty(String data) throws EmptyDataException {
+        if (isEmpty(data)) {
+            throw new EmptyDataException("빈 값을 입력하셨습니다");
+        }
+    }
+
+    public boolean isEmpty(String data) {
+        return data.isEmpty();
+    }
+
 
 } // PhoneDirectory 클래스 마침
