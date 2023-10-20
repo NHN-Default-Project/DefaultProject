@@ -13,7 +13,7 @@ public class CalculatorSetExpressions {
     public Set<String> calculate(Expression expression) { // 계산하는 메소드
         SetOfFormula set = new SetOfFormula();
         set.divideSetOfFormula(expression); // Queue 형태 수식
-        Queue<Set> queue = set.getSetOfFormulaElement();
+        Queue<Set<String>> queue = set.getSetOfFormulaElementQueue();
         Queue<String> operation = set.getOperationElementQueue();
 
         Set<String> resultSet = queue.poll();
@@ -26,7 +26,7 @@ public class CalculatorSetExpressions {
         return resultSet; // return type set
     }
 
-    public Set calculatorSet(Set resultSet, Set calculateSet, String op) {
+    public Set<String> calculatorSet(Set<String> resultSet, Set<String> calculateSet, String op) {
         switch (op) {
             case "+":
                 resultSet.addAll(calculateSet);

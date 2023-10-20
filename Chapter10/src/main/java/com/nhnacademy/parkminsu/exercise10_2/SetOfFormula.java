@@ -8,11 +8,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SetOfFormula {
-    private Queue<Set> setOfFormulaElement;
-    private Queue<String> operationElementQueue;
+    private final Queue<Set<String>> setOfFormulaElementQueue;
+    private final Queue<String> operationElementQueue;
 
     public SetOfFormula() {
-        this.setOfFormulaElement = new LinkedList<>();
+        this.setOfFormulaElementQueue = new LinkedList<>();
         this.operationElementQueue = new LinkedList<>();
     }
 
@@ -23,17 +23,15 @@ public class SetOfFormula {
         Matcher matcher = findDataMatchingRegex(expression.getExpression()); // strig.split("[|]
         while (matcher.find()) { // 수식
             if (isOperation(matcher.group())) {
-                this.setOfFormulaElement.add(resultSet);
+                this.setOfFormulaElementQueue.add(resultSet);
                 op = matcher.group(); // +, - *, String 형태로 나옴
                 this.operationElementQueue.add(op);
                 resultSet = new TreeSet<>(); // 기존 값 초기화
-                continue;
-            }
-            if (!isOperation(matcher.group())) {
+            } else {
                 resultSet.add(matcher.group());
             }
         }
-        this.setOfFormulaElement.add(resultSet);
+        this.setOfFormulaElementQueue.add(resultSet);
     }
 
     public boolean isOperation(String op) {
@@ -45,11 +43,11 @@ public class SetOfFormula {
         return pattern.matcher(str);
     }
 
-    public Queue<Set> getSetOfFormulaElement() {
-        return setOfFormulaElement;
+    public Queue<Set<String>> getSetOfFormulaElementQueue() {
+        return this.setOfFormulaElementQueue;
     }
 
     public Queue<String> getOperationElementQueue() {
-        return operationElementQueue;
+        return this.operationElementQueue;
     }
 }
