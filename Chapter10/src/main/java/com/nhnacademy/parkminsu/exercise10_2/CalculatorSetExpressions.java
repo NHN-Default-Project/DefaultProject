@@ -26,7 +26,14 @@ public class CalculatorSetExpressions {
         return resultSet; // return type set
     }
 
-    public Set<String> calculatorSet(Set<String> resultSet, Set<String> calculateSet, String op) {
+    /**
+     * 해당 Operator에 따른 집합의 계산 구현
+     * + * - 제외한 연산자가 들어오면 연산이 되지 않는다는 Throw를 던져줌
+     * <p>
+     * return : 계산이 끝난 집합을 반환, 만약 해당 연산자가 없어 연산을 못했다면 Throw를 던짐
+     */
+
+    private Set<String> calculatorSet(Set<String> resultSet, Set<String> calculateSet, String op) {
         switch (op) {
             case "+":
                 resultSet.addAll(calculateSet);
