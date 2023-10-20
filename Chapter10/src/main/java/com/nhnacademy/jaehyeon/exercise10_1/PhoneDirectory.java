@@ -9,19 +9,19 @@ import java.util.regex.Pattern;
 
 public class PhoneDirectory {
 
-    private TreeMap<String, String> phoneList;
+    private final TreeMap<String, String> phoneMap;
 
     public PhoneDirectory() {
-        phoneList = new TreeMap<>();
+        phoneMap = new TreeMap<>();
     }
 
     public void addNumber(String number, String name) {
-        if (name == null || number == null) {
+        if (name.isEmpty() || number.isEmpty()) {
             throw new IllegalArgumentException("name and number cannot be null");
         }
 
-        if (verifyPhoneNumber(number)) {
-            this.phoneList.put(number, name);
+        if (verifyPhoneNumber(number) && verifyName(name)) {
+            this.phoneMap.put(number, name);
         }
 
     }
@@ -43,17 +43,24 @@ public class PhoneDirectory {
         }
     }
 
+    public boolean verifyName(String name) {
+        String namePattern = "^[a-zA-Z가-힣]+$";
+        Pattern pattern = Pattern.compile(namePattern);
+        Matcher matcher = pattern.matcher(name);
+        return matcher.matches();
+    }
+
     public String lookUpName(String number) {
         verifyPhoneNumber(number);
         String findName;
-        findName = this.phoneList.get(number);
+        findName = this.phoneMap.get(number);
         isExist(findName);
         return findName;
     }
 
     public String lookUpNumber(String name) {
         String findNumber = null;
-        for (Map.Entry<String, String> entry : this.phoneList.entrySet()) {
+        for (Map.Entry<String, String> entry : this.phoneMap.entrySet()) {
             if (Objects.equals(entry.getValue(), name)) {
                 findNumber = entry.getKey();
                 break;
