@@ -20,7 +20,7 @@ public class Exercise10_5 {
     public static void main(String[] args) {
         System.out.println("학생 수: " + studentNumber());
         System.out.println("학생들의 평균 점수: " + calculateStudentAverageScore());
-        System.out.println("A학점을 받은 학생 수: " + scoreLessThan70());
+        System.out.println("A학점을 받은 학생 수: " + receivedAGradeCount());
         System.out.println("score가 70미만인 학생들 리스트 생성: ");
         printScoreLessThan70Student();
         System.out.println("lastName을 기준으로 정렬");
@@ -29,7 +29,7 @@ public class Exercise10_5 {
         printSortScore();
     }
 
-    private static ScoreInfo[] scoreData = new ScoreInfo[] {
+    private static final ScoreInfo[] scoreData = new ScoreInfo[]{
             new ScoreInfo("Smith", "John", 70),
             new ScoreInfo("Doe", "Mary", 85),
             new ScoreInfo("Page", "Alice", 82),
@@ -58,9 +58,15 @@ public class Exercise10_5 {
                 .orElse(0.0);
     }
 
+    public static long receivedAGradeCount() {
+        return Arrays.stream(scoreData)
+                .filter(scoreInfo -> scoreInfo.getScore() >= 90)
+                .count();
+    }
+
     public static List<String> scoreLessThan70() {
         return Arrays.stream(scoreData)
-                .filter(scoreInfo -> scoreInfo.getScore() >= 70)
+                .filter(scoreInfo -> scoreInfo.getScore() < 70)
                 .map(scoreInfo -> scoreInfo.getFirstName() + scoreInfo.getLastName())
                 .collect(Collectors.toList());
     }
@@ -72,13 +78,14 @@ public class Exercise10_5 {
 
     public static void printSortFirstName() {
         Arrays.stream(scoreData)
-                .sorted(Comparator.comparingInt(o -> o.getFirstName().charAt(0)))
+                .sorted(Comparator.comparing(ScoreInfo::getLastName))
                 .forEach(System.out::println);
     }
 
     public static void printSortScore() {
         Arrays.stream(scoreData)
-                .sorted(Comparator.comparingInt(value -> value.getScore()))
+                .sorted(Comparator.comparingInt(ScoreInfo::getScore))
+                .map(ScoreInfo::toString)
                 .forEach(System.out::println);
     }
 

@@ -3,6 +3,7 @@ package com.nhnacademy.jaehyeon.exercise10_2;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,11 +24,12 @@ public class Exercise10_2 {
 
             ExpressionProcessing expressionProcessing = new ExpressionProcessing(expression);
             SetCalculate setCalculate = new SetCalculate(expressionProcessing);
-            System.out.println(setCalculate);
+            Set<Integer> result = setCalculate.operationSet();
+            System.out.println(toStringResult(result, expressionProcessing));
 
 
         } catch (IOException e) {
-
+            System.out.println(e.getMessage());
         }
     }
 
@@ -54,5 +56,29 @@ public class Exercise10_2 {
         if (!matcher.matches()) {
             throw new NotMatchExpression("올바른 표현식을 입력하세요 ");
         }
+    }
+
+
+    public static String toStringResult(Set<Integer> result, ExpressionProcessing expressionProcessing) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(operationName(expressionProcessing)).append(" 계산결과 : ").append(result.toString());
+        return sb.toString();
+    }
+
+    public static String operationName(ExpressionProcessing expressionProcessing) {
+        String result = "";
+        switch (expressionProcessing.getOperator()) {
+            case "*":
+                result = "교집합";
+                break;
+            case "+":
+                result = "합집합";
+                break;
+            case "-":
+                result = "차집합";
+                break;
+        }
+
+        return result;
     }
 }

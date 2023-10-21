@@ -4,74 +4,43 @@ import java.util.Set;
 
 public class SetCalculate {
     private final ExpressionProcessing expressionProcessing;
-    private Set<Integer> result;
 
     public SetCalculate(ExpressionProcessing expressionProcessing) {
         this.expressionProcessing = expressionProcessing;
-        operationSet(this.expressionProcessing);
     }
 
-    public void operationSet(ExpressionProcessing expressionProcessing) {
+    public Set<Integer> operationSet() {
 
-        switch (expressionProcessing.getOperator()) {
-            case "+":
-                calculateUnion(expressionProcessing.getFirstNumberSet(),
-                        expressionProcessing.getSecondNumberSet());
-                break;
-            case "*":
-                calculateIntersection(expressionProcessing.getFirstNumberSet(),
-                        expressionProcessing.getSecondNumberSet());
-                break;
-            case "-":
-                calculateDifference(expressionProcessing.getFirstNumberSet(),
-                        expressionProcessing.getSecondNumberSet());
-                break;
-        }
-
-    }
-
-    private void calculateUnion(Set<Integer> first, Set<Integer> second) {
-        Set<Integer> result;
-        result = first;
-        result.addAll(second);
-        this.result = result;
-    }
-
-    private void calculateIntersection(Set<Integer> first, Set<Integer> second) {
-        Set<Integer> result;
-        result = first;
-        result.retainAll(second);
-        this.result = result;
-    }
-
-    private void calculateDifference(Set<Integer> first, Set<Integer> second) {
-        Set<Integer> result;
-        result = first;
-        result.removeAll(second);
-        this.result = result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(operationName()).append(" 계산결과 : ").append(result.toString());
-        return sb.toString();
-    }
-
-    public String operationName() {
-        String result = "";
         switch (this.expressionProcessing.getOperator()) {
-            case "*":
-                result = "교집합";
-                break;
             case "+":
-                result = "합집합";
-                break;
+                return calculateUnion(expressionProcessing.getFirstNumberSet(),
+                        expressionProcessing.getSecondNumberSet());
+
+            case "*":
+                return calculateIntersection(expressionProcessing.getFirstNumberSet(),
+                        expressionProcessing.getSecondNumberSet());
+
             case "-":
-                result = "차집합";
-                break;
+                return calculateDifference(expressionProcessing.getFirstNumberSet(),
+                        expressionProcessing.getSecondNumberSet());
+
         }
 
-        return result;
+        return null;
+    }
+
+    private Set<Integer> calculateUnion(Set<Integer> first, Set<Integer> second) {
+        first.addAll(second);
+        return first;
+    }
+
+    private Set<Integer> calculateIntersection(Set<Integer> first, Set<Integer> second) {
+        first.retainAll(second);
+        return first;
+    }
+
+    private Set<Integer> calculateDifference(Set<Integer> first, Set<Integer> second) {
+        first.removeAll(second);
+        return first;
     }
 }

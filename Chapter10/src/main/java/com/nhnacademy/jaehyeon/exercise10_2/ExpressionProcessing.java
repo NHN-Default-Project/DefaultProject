@@ -17,8 +17,8 @@ public class ExpressionProcessing {
 
     public ExpressionProcessing(String expression) {
         this.expression = expression;
-        firstNumberSet = new TreeSet<>();
-        secondNumberSet = new TreeSet<>();
+        this.firstNumberSet = new TreeSet<>();
+        this.secondNumberSet = new TreeSet<>();
         extractOperator();
         extractNumberSet();
     }
@@ -41,7 +41,7 @@ public class ExpressionProcessing {
         setNumber(parts);
     }
 
-    public void setNumber(String[] parts) {
+    private void setNumber(String[] parts) {
         List<Set<Integer>> list = Arrays.stream(parts)
                 .map(s -> s.replaceAll("\\[", "")
                         .replaceAll("\\]", ""))

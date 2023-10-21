@@ -1,6 +1,8 @@
 package com.nhnacademy.jaehyeon.exercise10_6;
 
 
+import java.io.FileNotFoundException;
+
 /*
  * https://math.hws.edu/javanotes/c10/exercises.html
  * 주어진 입력 파일에서 문서를 읽어와, 각 단어와 해당 단어가 나타난 줄 번호를 포함하는 색인을 생성하는 프로그램을 작성합니다.
@@ -9,16 +11,21 @@ package com.nhnacademy.jaehyeon.exercise10_6;
  */
 public class Exercise10_6 {
     public static void main(String[] args) {
-        FileSelector fileSelector = new FileSelector();
-        String readFilePath = fileSelector.selectReadFile();
+        try {
+            FileSelector fileSelector = new FileSelector();
+            String readFilePath = fileSelector.selectReadFile();
 
-        FileRead fileRead = new FileRead(readFilePath);
-        fileRead.readFileOneLine();
+            FileRead fileRead = new FileRead(readFilePath);
+            fileRead.readFileOneLine();
 
-        String writeFilePath = fileSelector.selectWriteFile();
-        FileWrite fileWrite = new FileWrite(writeFilePath);
+            String writeFilePath = fileSelector.selectWriteFile();
+            FileWrite fileWrite = new FileWrite(writeFilePath);
 
-        fileWrite.writeFile(fileRead.getWordList());
+            fileWrite.writeFile(fileRead.getWordList());
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+
         System.exit(0);
     }
 }

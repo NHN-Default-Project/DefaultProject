@@ -23,4 +23,14 @@ public class ScoreInfo {
     public int getScore() {
         return score;
     }
+
+    @SuppressWarnings("checkstyle:OperatorWrap")
+    @Override
+    public String toString() {
+        return "ScoreInfo{" +
+                "lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", score=" + score +
+                '}';
+    }
 }

@@ -13,7 +13,7 @@ public class FileRead {
 
     public FileRead(String filePath) {
         this.selectFilePath = filePath;
-        this.wordList = new HashMap<>();
+        this.wordList = new TreeMap<>();
     }
 
 
@@ -46,14 +46,16 @@ public class FileRead {
 
     private void intoMap(List<String> lines, int countLine) {
         for (String str : lines) {
-            if (this.wordList.containsKey(str)) {
-                this.wordList.get(str).add(countLine);
-            } else {
-                List<Integer> count = new ArrayList<>();
-                count.add(countLine);
-                this.wordList.put(str, count);
-            }
+            List<Integer> currentList = this.wordList.getOrDefault(str, new ArrayList<>());
+            currentList.add(countLine);
+            currentList = distinctList(currentList);
+            this.wordList.put(str, currentList);
         }
+    }
+
+
+    private List<Integer> distinctList(List<Integer> a) {
+        return a.stream().distinct().collect(Collectors.toList());
     }
 
     public Map<String, List<Integer>> getWordList() {
