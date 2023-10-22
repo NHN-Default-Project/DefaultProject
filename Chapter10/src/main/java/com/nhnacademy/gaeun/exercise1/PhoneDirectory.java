@@ -1,7 +1,5 @@
 package com.nhnacademy.gaeun.exercise1;
 
-import lombok.Getter;
-
 import java.util.Iterator;
 import java.util.TreeMap;
 import java.util.regex.Matcher;
@@ -13,14 +11,15 @@ import java.util.regex.Pattern;
  * a given name, and to specify the phone number for a given name.
  */
 public class PhoneDirectory {
+    private static Pattern pattern = Pattern.compile("^\\d{3}-\\d{4}-\\d{4}$");
+
     private final TreeMap<String, String> treeMapData;
 
-    @Getter
-    private int dataCount;
-
     public PhoneDirectory() {
-        treeMapData = new TreeMap<>();
-        dataCount = 0;
+        this.treeMapData = new TreeMap<>();
+    }
+    public TreeMap<String, String> getTreeMapData() {
+        return treeMapData;
     }
 
     /**
@@ -31,9 +30,10 @@ public class PhoneDirectory {
      */
     public int find(String name) {
         Iterator<String> keyItr = treeMapData.keySet().iterator();
-        for (int i = 0; i < dataCount; i++) {
+        int index = 0;
+        while (keyItr.hasNext()) {
             if (keyItr.next().equals(name)) {
-                return i;
+                return index;
             }
         }
         return -1;
@@ -63,13 +63,17 @@ public class PhoneDirectory {
         if (name.isEmpty() || number.isEmpty()) {
             throw new IllegalArgumentException("name and number cannot be null");
         }
-        Pattern pattern = Pattern.compile("^\\d{3}-\\d{4}-\\d{4}$");
         Matcher matcher = pattern.matcher(number);
         if (!matcher.find()) {
             throw new IllegalArgumentException("000-0000-0000 형식으로 입력해주세요!");
         }
         treeMapData.put(name, number);
-        dataCount = treeMapData.size();
     }
 
+    @Override
+    public String toString() {
+        return "PhoneDirectory{" +
+                "treeMapData=" + treeMapData +
+                '}';
+    }
 } // end class PhoneDirectory

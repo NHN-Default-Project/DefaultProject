@@ -13,11 +13,14 @@ public class Exercise10_6 {
     private static void readUserSelectedFile() {
         try {
             Frame frame = new Frame();
-            ReadFile readFile = ReadFile.ofSelectFile(frame);
-            WriteFile writeFile = WriteFile.ofSelectFile(frame);
+            FileHandler readFile = FileHandler.fromSelectFile(frame);
+            FileHandler writeFile = FileHandler.fromSelectFile(frame);
 
             Concordance wordList = new Concordance();
-            wordList.initialSetting(StringConvertor.get().convertToWordMap(readFile.readLines()));
+            StringConvertor stringConvertor = new StringConvertor();
+            stringConvertor.convertToWordMap(readFile.readLines());
+//            stringConvertor.sortWordMap();
+            wordList.initialSetting(stringConvertor.getWordToMap());
             writeFile.writeFile(wordList.getConcordance());
         } catch (IOException e) {
             System.out.println(e.getMessage());

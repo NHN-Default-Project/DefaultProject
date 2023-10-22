@@ -1,4 +1,4 @@
-package com.nhnacademy.gaeun.exercise5;
+package com.nhnacademy.gaeun.exercise4;
 
 import lombok.Getter;
 

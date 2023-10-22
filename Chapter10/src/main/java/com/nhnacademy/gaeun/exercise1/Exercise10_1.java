@@ -7,8 +7,9 @@ public class Exercise10_1 {
 
         try {
             System.out.println("전화번호 저장하기");
-            kaeunPhoneDirectory.putNumber("엄마", "010-4610-0303");
-            kaeunPhoneDirectory.putNumber("아빠", "010-2680-8949");
+            kaeunPhoneDirectory.putNumber("엄마", "010-0000-0333");
+            kaeunPhoneDirectory.putNumber("아빠", "010-1234-1234");
+            System.out.println(kaeunPhoneDirectory.toString());
             System.out.println();
 
             System.out.println("전화번호 가져오기");
@@ -20,7 +21,7 @@ public class Exercise10_1 {
             System.out.println();
 
             System.out.println("전화번호 업데이트");
-            kaeunPhoneDirectory.putNumber("엄마", "010-9321-0379");
+            kaeunPhoneDirectory.putNumber("엄마", "010-2222-0379");
             System.out.printf("엄마: %s\n", kaeunPhoneDirectory.getNumber("엄마"));
             System.out.println();
         } catch (IllegalArgumentException e) {

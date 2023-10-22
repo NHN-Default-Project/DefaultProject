@@ -5,10 +5,10 @@ import java.util.List;
 
 public class HashTable {
     private class Node {
-        private String key;
-        private String value;
+        String key;
+        String value;
 
-        protected Node(String key, String value) {
+        Node(String key, String value) {
             this.key = key;
             this.value = value;
         }
@@ -33,7 +33,7 @@ public class HashTable {
     }
 
     private int getIndex(int hashCode) {
-        return hashCode % data.length;
+        return Math.abs(hashCode) % data.length;
     }
 
     public void put(String key, String value) {

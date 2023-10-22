@@ -5,14 +5,14 @@ import java.util.stream.Collectors;
 
 public class StringConvertor {
 
-    private static Map<String, List<Integer>> wordToMap;
+    private Map<String, List<Integer>> wordToMap;
 
-    private StringConvertor() {
-        wordToMap = new HashMap<>();
+    public StringConvertor() {
+        wordToMap = new TreeMap<>();
     }
 
-    public static StringConvertor get() {
-        return new StringConvertor();
+    public Map<String, List<Integer>> getWordToMap() {
+        return wordToMap;
     }
 
     /**
@@ -22,13 +22,12 @@ public class StringConvertor {
      * @param readLines 처리할 문자열 목록입니다.
      * @return 단어와 인덱스를 매핑한 맵(Map)입니다.
      */
-    public Map<String, List<Integer>> convertToWordMap(List<String> readLines) {
+    public void convertToWordMap(List<String> readLines) {
         int index = 1;
         for (String oneLine : readLines) {
             convertToWord(oneLine, index);
             index = index + 1;
         }
-        return wordToMap;
     }
 
     /**
@@ -42,7 +41,7 @@ public class StringConvertor {
                 .map(n -> n.replaceAll("^\\.|\\.$", ""))
                 .map(n -> n.replaceAll("[^a-zA-Z0-9가-힣.]", ""))
                 .filter(n -> n.length() >= 3)
-                .map(n -> n.replace("\\bthe\\b", "").toLowerCase())
+                .map(n -> n.replaceAll("(?i)\\bthe\\b", "").toLowerCase())
                 .collect(Collectors.toList());
 
         // 처리된 단어 목록과 인덱스를 저장하는 메서드를 호출합니다.
@@ -50,17 +49,24 @@ public class StringConvertor {
     }
 
     private void saveWordToMap(List<String> words, int index) {
+        words = words.stream().distinct().collect(Collectors.toList());
         for (String word : words) {
             if (word.isEmpty()) {
                 continue;
             }
-            if (wordToMap.containsKey(word)) {
-                wordToMap.get(word).add(index);
-            } else {
-                List<Integer> countLineList = new ArrayList<>();
-                countLineList.add(index);
-                wordToMap.put(word, countLineList);
-            }
+            this.wordToMap.put(word, this.wordToMap.getOrDefault(word, new ArrayList<>()));
+            this.wordToMap.get(word).add(index);
         }
+    }
+
+    public void sortWordMap() {
+        Map<String, List<Integer>> sortMap = new LinkedHashMap<>();
+        List<String> keySet = new ArrayList<>(wordToMap.keySet());
+        Collections.sort(keySet);
+
+        for (String key : keySet) {
+            sortMap.put(key, wordToMap.get(key));
+        }
+        this.wordToMap = sortMap;
     }
 }

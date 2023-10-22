@@ -37,7 +37,7 @@ class PhoneDirectoryTest {
         kaeunPhoneDirectory.putNumber("엄마", "010-4610-0303");
         kaeunPhoneDirectory.putNumber("아빠", "010-2680-8949");
 
-        assertEquals(kaeunPhoneDirectory.getDataCount(), 2);
+        assertEquals(kaeunPhoneDirectory.getTreeMapData().size(), 2);
         assertThrows(IllegalArgumentException.class, () -> kaeunPhoneDirectory.putNumber("", ""));
     }
 }

@@ -1,5 +1,5 @@
 Exercise 7.6 asked you to read a file,
-make an alphabetical list of all the words that occur in the file,
+make an alphabetical list of all the words that occur in the file, make make
 nd write the list to another file. In that exercise,
 you were asked to use to store the words.
 Write a new version of the same program that stores the words in a binary sort tree instead of
