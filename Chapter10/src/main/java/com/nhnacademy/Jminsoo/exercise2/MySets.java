@@ -32,6 +32,7 @@ public class MySets {
         StringBuilder expression; //
         StringBuilder sb = new StringBuilder(inputStr);
         SetFormula result = new SetFormula();
+        char tempReader;
 
         //초기값 삽입
 
@@ -41,18 +42,22 @@ public class MySets {
 
 
         while (sb.length() > 0) {
-            if (sb.toString().contains("+")) {
+            tempReader = sb.toString().charAt(0);
+            if (tempReader == '+') {
                 expression = new StringBuilder("+");
-            } else if (sb.toString().contains("-")) {
+            } else if (tempReader == '-') {
                 expression = new StringBuilder("-");
-            } else if (sb.toString().contains("*")) {
+            } else if (tempReader == '*') {
                 expression = new StringBuilder("*");
             } else {
                 throw new ArithmeticException("수식이 올바르지 않습니다! 문제 위치 : inputStringToTempFormula");
             }
             result.addExp(expression.toString());
             sb.delete(0, 1);
-
+            tempReader = sb.toString().charAt(0);
+            if (tempReader != '[') {
+                throw new ArithmeticException("수식이 올바르지 않습니다! 문제 위치 : inputStringToTempFormula");
+            }
             setStr = new StringBuilder(sb.substring(0, sb.indexOf("]") + 1));
             result.addSet(stringToSetApply(setStr.toString()));
             sb.delete(0, sb.indexOf("]") + 1);

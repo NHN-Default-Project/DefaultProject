@@ -3,10 +3,7 @@ package com.nhnacademy.Jminsoo.exercise3;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 import java.util.function.Function;
 
 public class MyInterpreter {
@@ -50,12 +47,18 @@ public class MyInterpreter {
 
     public Queue<String> readLine(String inputStr) throws IOException {
         //입력 받기
-
+        checkInputStr(inputStr);
 
         List<String> inputStringList = Arrays.asList(inputStr.split(" "));
         //첫 명령어 소문자로 변경(대/소문자 구분안하기 위함)
         inputStringList.set(0, inputStringList.get(0).toLowerCase());
         return new LinkedList<>(inputStringList);
+    }
+
+    private void checkInputStr(String inputStr) {
+        if (inputStr.isEmpty() || inputStr.split(" ").length == 0) {
+            throw new IllegalArgumentException("값이 올바르지 않습니다!");
+        }
     }
 
     private void execute() {
@@ -114,7 +117,7 @@ public class MyInterpreter {
                     throw new IllegalArgumentException("입력 값에 이상이 있습니다!");
                 }
                 break;
-                
+
             case GET:
             case REMOVE:
             case CONTAINS_KEY:
@@ -147,12 +150,8 @@ public class MyInterpreter {
 
 
     private Commands getCommand(String str) {
-        for (Commands command : Commands.values()) {
-            if (command.value.equals(str)) {
-                return command;
-            }
-        }
-        throw new IllegalArgumentException();
+        Map<String, Commands> cmdMap = Commands.getMap();
+        return cmdMap.get(str);
     }
 
 
@@ -174,6 +173,14 @@ public class MyInterpreter {
 
         Commands(String value) {
             this.value = value;
+        }
+
+        private static Map<String, Commands> getMap() {
+            Map<String, Commands> result = new HashMap<>();
+            Arrays.stream(Commands.values())
+                    .forEach(x -> result.put(x.value, x));
+
+            return result;
         }
     }
 

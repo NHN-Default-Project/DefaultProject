@@ -18,10 +18,10 @@ public class Exercise10_2 {
                 if (input.isEmpty()) {
                     break;
                 } else {
-                    treeSets.readUserInputForMakeSet(input);
+                    treeSets.stringToSet(input);
                     treeSets.calculate();
                 }
-            } catch (IOException | IllegalArgumentException e) {
+            } catch (IOException e) {
                 System.out.println(e.getMessage());
             }
         }

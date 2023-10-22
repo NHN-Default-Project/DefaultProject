@@ -37,8 +37,8 @@ public class Exercise10_5 {
         printElementCount(scoreData);
         printAverageScore(scoreData);
         printCountScoreUpperA(scoreData);
-        printListOfScore(makeListOfScoreUpper70(scoreData));
-        printSortByFirstName(scoreData);
+        printListOfScore(makeListOfScoreLower70(scoreData));
+        printSortByLastName(scoreData);
         printSortByScore(scoreData);
     }
 
@@ -68,10 +68,10 @@ public class Exercise10_5 {
     }
 
     //4번문제
-    public static List<String> makeListOfScoreUpper70(ScoreInfo[] array) {
+    public static List<String> makeListOfScoreLower70(ScoreInfo[] array) {
         return Arrays
                 .stream(array)
-                .filter(info -> info.getScore() >= 90)
+                .filter(info -> info.getScore() < 70)
                 .map(info -> String.format(info.getLastName() + " " + info.getFirstName()))
                 .collect(Collectors.toList());
     }
@@ -82,10 +82,10 @@ public class Exercise10_5 {
                 .forEach(System.out::println);
     }
 
-    public static void printSortByFirstName(ScoreInfo[] array) {
+    public static void printSortByLastName(ScoreInfo[] array) {
         Arrays.stream(array)
-                .sorted(Comparator.comparing(ScoreInfo::getFirstName))
-                .map(info -> info.getLastName() + "의 성적 : " + info.getScore())
+                .sorted(Comparator.comparing(ScoreInfo::getLastName))
+                .map(info -> info.getFirstName() + "의 성적 : " + info.getScore())
                 .forEach(System.out::println);
     }
 

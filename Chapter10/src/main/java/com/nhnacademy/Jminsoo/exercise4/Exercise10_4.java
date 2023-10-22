@@ -1,5 +1,6 @@
 package com.nhnacademy.Jminsoo.exercise4;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -15,15 +16,15 @@ public class Exercise10_4 {
         testList.add("나");
         testList.add("다");
 
-        System.out.println("삭제 전 리스트 요소");
-        testList.stream()
-                .forEach(System.out::println);
+        List<String> correctList = new ArrayList<>();
+        correctList.add("나");
+        correctList.add("다");
+
         Predicate<String> predicate = value -> value.equals("가");
         Predicates.remove(testList, predicate);
 
-        System.out.println("\"가\"삭제 후 리스트 요소");
-        testList.stream()
-                .forEach(System.out::println);
+        Assertions.assertEquals(testList, correctList);
+
     }
 
     @Test
@@ -34,15 +35,15 @@ public class Exercise10_4 {
         testList.add("나");
         testList.add("다");
 
-        System.out.println("삭제 전 리스트 요소");
-        testList.stream()
-                .forEach(System.out::println);
+        List<String> correctList = new ArrayList<>();
+        correctList.add("가");
+        correctList.add("가");
+
         Predicate<String> predicate = value -> value.equals("가");
         Predicates.retain(testList, predicate);
 
-        System.out.println("\"가\"제외 삭제 후 리스트 요소");
-        testList.stream()
-                .forEach(System.out::println);
+        Assertions.assertEquals(testList, correctList);
+
     }
 
     @Test
@@ -53,15 +54,15 @@ public class Exercise10_4 {
         testList.add("나");
         testList.add("다");
 
-        System.out.println("삭제 전 리스트 요소");
-        testList.stream()
-                .forEach(System.out::println);
+        List<String> correctList = new ArrayList<>();
+        correctList.add("가");
+        correctList.add("가");
+
         Predicate<String> predicate = value -> value.equals("가");
         List<String> result = Predicates.collect(testList, predicate);
 
-        System.out.println("\"가\"가만 가져오기!");
-        result.stream()
-                .forEach(System.out::println);
+        Assertions.assertEquals(result, correctList);
+
     }
 
     @Test
@@ -72,13 +73,8 @@ public class Exercise10_4 {
         testList.add("나");
         testList.add("다");
 
-        System.out.println("삭제 전 리스트 요소");
-        testList.stream()
-                .forEach(System.out::println);
         Predicate<String> predicate = value -> value.equals("가");
         int result = Predicates.find(testList, predicate);
-
-        System.out.println("\"가\"제외 삭제 후 리스트 개수");
-        System.out.println(result);
+        Assertions.assertEquals(result, 2);
     }
 }

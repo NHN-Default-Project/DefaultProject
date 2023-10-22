@@ -8,6 +8,9 @@ import java.util.function.Predicate;
 
 public class Predicates {
 
+    /**
+     * pred.test(obj)가 true인 경우 coll에서 모든 객체 obj를 제거합니다. (coll.removeIf(pred)와 동일합니다.)
+     */
     public static <T> void remove(Collection<T> coll, Predicate<T> pred) {
         Iterator<T> iter = coll.iterator();
         while (iter.hasNext()) {
@@ -17,7 +20,10 @@ public class Predicates {
             }
         }
     }
-    // pred.test(obj)가 true인 경우 coll에서 모든 객체 obj를 제거합니다. (coll.removeIf(pred)와 동일합니다.)
+
+    /**
+     * pred.test(obj)가 false인 경우 coll에서 모든 객체 obj를 제거합니다. (즉, 조건이 참인 객체만 유지합니다.)
+     */
 
     public static <T> void retain(Collection<T> coll, Predicate<T> pred) {
         Iterator<T> iter = coll.iterator();
@@ -28,8 +34,10 @@ public class Predicates {
             }
         }
     }
-    // pred.test(obj)가 false인 경우 coll에서 모든 객체 obj를 제거합니다. (즉, 조건이 참인 객체만 유지합니다.)
 
+    /**
+     * pred.test(obj)가 true인 경우 컬렉션 coll의 모든 객체 obj를 포함하는 List를 반환합니다.
+     */
     public static <T> List<T> collect(Collection<T> coll, Predicate<T> pred) {
         List<T> resultList = new ArrayList<>();
         Iterator<T> iter = coll.iterator();
@@ -42,13 +50,12 @@ public class Predicates {
 
         return resultList;
     }
-    // pred.test(obj)가 true인 경우 컬렉션 coll의 모든 객체 obj를 포함하는 List를 반환합니다.
 
     public static <T> int find(List<T> list, Predicate<T> pred) {
         Iterator<T> iter = list.iterator();
         while (iter.hasNext()) {
             T data = iter.next();
-            if (!pred.test(data)) {
+            if (pred.test(data)) {
                 return list.indexOf(data);
             }
         }
