@@ -8,7 +8,7 @@ import java.util.TreeSet;
  * <p>
  * 이 프로그램은 Java의 일반 프로그래밍 프레임워크인 TreeMap, List 정렬, 비교자(Comparators) 등을 활용하는 몇 가지 요소를 데모합니다.
  */
-public class WordData {
+public class Word {
     /**
      * 단어에 관한 필요한 데이터를 나타냅니다: 단어와 해당 단어의 출현 횟수.
      */
@@ -17,11 +17,11 @@ public class WordData {
     private int count;
     private final TreeSet<Integer> treeSet;
 
-    public WordData(String w) {
+    public Word(String w) {
         // 새로운 단어를 만날 때 WordData 객체를 만드는 생성자.
         word = w;
         count = 1; // 출현 횟수의 초기 값은 1입니다.
-        treeSet = new TreeSet<>();
+        treeSet = new TreeSet<>(); //
     }
     // end class WordData
 

@@ -5,7 +5,7 @@ import com.nhnacademy.parkminsu.exercise10_6.textio.TextIO;
 import java.util.*;
 
 public class Exercise10_6 {
-    private static int newLineCnt = 0;
+    private static int newLineCnt = 1;
 
     public static void main(String[] args) {
         System.out.println("\n\n   이 프로그램은 입력 파일을 선택하라고 요청합니다.");
@@ -25,13 +25,12 @@ public class Exercise10_6 {
             }
 
             // 데이터를 보유할 TreeMap을 생성합니다. 파일을 읽고 파일에서 발견한 단어에 대한 데이터를 기록합니다.
-            TreeMap<String, WordData> words = new TreeMap<>();
+            TreeMap<String, Word> words = new TreeMap<>();
             Map<String, TreeSet<Integer>> map = new TreeMap<>();
-
             String word = readNextWord();
             while (word != null) {
                 word = word.toLowerCase(); // 단어를 소문자로 변환합니다.
-                WordData data = words.get(word);
+                Word data = words.get(word);
                 TreeSet<Integer> tree = map.get(word);
                 if (word.length() < 3 || word.equals("the")) {
                     word = readNextWord();
@@ -39,7 +38,7 @@ public class Exercise10_6 {
                 }
                 if (data == null) {
                     map.put(word, new TreeSet<>(Collections.singleton(newLineCnt)));
-                    words.put(word, new WordData(word));
+                    words.put(word, new Word(word));
                 } else {
                     tree.add(newLineCnt);
                     map.put(word, tree);
@@ -59,17 +58,17 @@ public class Exercise10_6 {
 
             // 단어 데이터를 ArrayList로 복사하고, 단어의 출현 빈도 순서로 정렬합니다.
             // 정렬에 사용할 비교자(Comparator)로 람다 표현식을 사용합니다.
-            ArrayList<WordData> wordsByFrequency = new ArrayList<>(words.values());
+            ArrayList<Word> wordsByFrequency = new ArrayList<>(words.values());
             Collections.sort(wordsByFrequency, (a, b) -> b.getCount() - a.getCount());
 
             // TreeMap 및 목록에서 데이터를 출력합니다.
             TextIO.writeUserSelectedFile(); // 사용자가 취소하면 출력은 자동으로 표준 출력으로 전환됩니다.
             TextIO.putln(words.size() + " 파일에서 발견된 단어:\n");
             TextIO.putln("알파벳 순서로 정렬된 단어 목록 (괄호 안에 출현 횟수):\n");
-            for (WordData data : words.values())
+            for (Word data : words.values())
                 TextIO.putln("   " + data.getWord() + " (" + data.getCount() + ")" + " (" + map.get(data.getWord()) + ")");
             TextIO.putln("\n\n출현 빈도 순서로 정렬된 단어 목록:\n");
-            for (WordData data : wordsByFrequency)
+            for (Word data : wordsByFrequency)
                 TextIO.putln("   " + data.getWord() + " (" + data.getCount() + ")" + " (" + map.get(data.getWord()) + ")");
 
             System.out.println("\n\n완료되었습니다.\n\n");
@@ -93,7 +92,7 @@ public class Exercise10_6 {
 
     private static String readNextWord() {
         char ch = TextIO.peek(); // 입력에서 다음 문자를 살펴봅니다.
-        if (ch == '\n') {
+        if (ch == '\n' || ch == '.' || ch == ',') {
             newLineCnt++;
         }
         while (ch != TextIO.EOF && !Character.isLetter(ch)) {
