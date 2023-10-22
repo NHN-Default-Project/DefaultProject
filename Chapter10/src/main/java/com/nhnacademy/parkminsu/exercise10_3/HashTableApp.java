@@ -10,15 +10,11 @@ import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 
 public class HashTableApp {
-    // get
-    // put
-    // 해쉬테이블 목록
-    // remove
-    // containkey
-    // size
-    // TODO 데이터 입력 시 조건문을 옮겨야할듯 User에 있는게 이상함
-    // TODo 메소드 명 변경
 
+    /**
+     * 해당 인터프리터방식의 프로그램을 실행시키는 메서드
+     * 입력하는 데이터의 방식 또는 타입이 다르면 Throw를 던짐
+     */
     public void progress() {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
             System.out.println("해시테이블의 size를 입력해주세요");
@@ -44,6 +40,10 @@ public class HashTableApp {
         }
     }
 
+    /**
+     * 사용자의 입력을 받는 메서드
+     * return 공백을 제거한 String의 값으로 반환
+     */
     public String inputData(BufferedReader br) throws IOException {
         String inputStringData = "";
         inputStringData = br.readLine().trim();
@@ -54,7 +54,7 @@ public class HashTableApp {
     public String checkEnterData(BufferedReader br) throws IOException, NegativeNumException, DataEntryFormatException {
         String data = inputData(br);
         InputDataFrameRule.isCheckStringDataFrame(data);
-        return data; // 여기 메소드도 분리
+        return data;
     }
 
     public void inputDataToHashTable(BufferedReader br, HashTable hashTable) throws IOException, DataEntryFormatException {
@@ -121,7 +121,7 @@ public class HashTableApp {
                 return executeMethod(hashTable::remove, methodData);
             case CONTAINKEY:
                 Predicate<String> predicate = hashTable::containKey;
-                return predicate;
+                return predicate.test(methodData);
             default:
                 throw new DataEntryFormatException("입력 값을 잘못 입력하셨습니다");
         }
@@ -147,7 +147,7 @@ public class HashTableApp {
     }
 
     public void printMethodResultValue(Object value) {
-        System.out.println("결과: " + value);
+        System.out.println("결과: " + value.toString());
     }
 
 }

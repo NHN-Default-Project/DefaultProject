@@ -13,9 +13,9 @@ public class WordData {
      * 단어에 관한 필요한 데이터를 나타냅니다: 단어와 해당 단어의 출현 횟수.
      */
 
-    private String word;
+    private final String word;
     private int count;
-    private TreeSet<Integer> treeSet;
+    private final TreeSet<Integer> treeSet;
 
     public WordData(String w) {
         // 새로운 단어를 만날 때 WordData 객체를 만드는 생성자.
