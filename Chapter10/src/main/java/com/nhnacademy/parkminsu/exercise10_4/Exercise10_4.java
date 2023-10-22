@@ -55,8 +55,8 @@ public class Exercise10_4 {
         System.out.println("결과 값: " + randomValueList.getListOfRandomValues());
     }
 
-    public static void predicateRetainTest(BufferedReader br, Function<Random, Integer> radomInt, int listSize) throws IOException, NegativeNumException {
-        ListRandomOfValue<Integer> randomValueList = createListRandomOfValue(radomInt, listSize);
+    public static void predicateRetainTest(BufferedReader br, Function<Random, Integer> randomInt, int listSize) throws IOException, NegativeNumException {
+        ListRandomOfValue<Integer> randomValueList = createListRandomOfValue(randomInt, listSize);
         System.out.println("랜덤으로 생성된 리스트의 값: " + randomValueList.getListOfRandomValues());
         System.out.println("찾는 값을 입력하세요");
         Predicate<Integer> pred = declarationPredicate(Integer.parseInt(br.readLine()));
@@ -64,24 +64,24 @@ public class Exercise10_4 {
         System.out.println("결과 값: " + randomValueList.getListOfRandomValues());
     }
 
-    public static void predicateCollectTest(BufferedReader br, Function<Random, Integer> radomInt, int listSize) throws IOException, NegativeNumException {
-        ListRandomOfValue<Integer> randomValueList = createListRandomOfValue(radomInt, listSize);
+    public static void predicateCollectTest(BufferedReader br, Function<Random, Integer> randomInt, int listSize) throws IOException, NegativeNumException {
+        ListRandomOfValue<Integer> randomValueList = createListRandomOfValue(randomInt, listSize);
         System.out.println("랜덤으로 생성된 리스트의 값: " + randomValueList.getListOfRandomValues());
-        System.out.println("찾고 싶은 값 입력");
+        System.out.println("일치하는 값 입력");
         Predicate<Integer> pred = declarationPredicate(Integer.parseInt(br.readLine()));
         List<Integer> list = Predicates.collect(randomValueList.getListOfRandomValues(), pred);
         System.out.println("결과 값: " + list.toString());
     }
 
-    public static void predicateFindTest(BufferedReader br, Function<Random, Integer> radomInt, int listSize) throws IOException, NegativeNumException {
-        ListRandomOfValue<Integer> randomValueList = createListRandomOfValue(radomInt, listSize);
-        System.out.println("일치하는지 확인하고 싶은 값 입력");
+    public static void predicateFindTest(BufferedReader br, Function<Random, Integer> randomInt, int listSize) throws IOException, NegativeNumException {
+        ListRandomOfValue<Integer> randomValueList = createListRandomOfValue(randomInt, listSize);
+        System.out.println("일치하는 값 입력" + randomValueList.getListOfRandomValues());
         Predicate<Integer> pred = declarationPredicate(Integer.parseInt(br.readLine()));
         int idx = Predicates.find(randomValueList.getListOfRandomValues(), pred);
         if (idx == -1) {
             System.out.println("일치하는 항목이 없습니다!");
         } else {
-            System.out.println("결과 값: " + idx);
+            System.out.println("일치하는 데이터의 인덱스 값: " + idx);
         }
     }
 
