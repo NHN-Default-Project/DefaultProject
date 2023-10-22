@@ -49,8 +49,14 @@ public class Exercise10_2 {
 
     public static void verify(String inputStr) throws NotMatchExpression {
         String regex =
-                "\\[\\s*\\d+\\s*(,\\s*\\d+\\s*)*\\]\\s*[+*-]\\s*\\[\\s*\\d+\\s*(,\\s*\\d+\\s*)*\\]"; //이거에 관한건 Main에 있습니다.
-
+                "\\[\\s*\\d+\\s*(,\\s*\\d+\\s*)*\\]\\s*[+*-]\\s*\\[\\s*\\d+\\s*(,\\s*\\d+\\s*)*\\]";
+/*        "\\[" + //    \\[ , \\] : [와 ] 를 나타낸다
+                "\\s*" +       //     \\s* : 공백문자의 0 회 이상의 발생을 나타냄
+                "\\d+" +       //      \\d : 하나 이상의 숫자 (0-9) 를 나타냄
+                "\\s*" +       //       \\s* : 공백문자의 0 회 이상의 발생을 나타냄
+                "(,\\s*\\d+\\s*)*]";    // , 쉼표로 구분된 숫자를 나타낸다.
+        //  쉼표로 구분된 숫자가 0 회 이상 반복되는 것을 나타낸다 따라서 숫자와 쉼표의 반복되는 패턴을 나타냄
+*/
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(inputStr);
         if (!matcher.matches()) {

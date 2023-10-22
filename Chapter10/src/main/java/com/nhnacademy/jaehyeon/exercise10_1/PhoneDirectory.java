@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 
 public class PhoneDirectory {
-
+    static Pattern pattern;
     private final TreeMap<String, String> phoneMap;
 
     public PhoneDirectory() {
@@ -30,14 +30,14 @@ public class PhoneDirectory {
         try {
             String phoneNumberPattern = "^01[016789]-\\d{3,4}-\\d{4}$";
 
-            Pattern pattern = Pattern.compile(phoneNumberPattern);
+            pattern = Pattern.compile(phoneNumberPattern);
             Matcher matcher = pattern.matcher(number);
 
             if (!matcher.matches()) {
-                throw new NotCorrectPhoneNumberFormat("전화번호를 알맞게 입력하세요");
+                throw new NotCorrectPhoneNumberFormatException("전화번호를 알맞게 입력하세요");
             }
             return true;
-        } catch (NotCorrectPhoneNumberFormat e) {
+        } catch (NotCorrectPhoneNumberFormatException e) {
             System.out.println(e.getMessage());
             return false;
         }
@@ -45,7 +45,7 @@ public class PhoneDirectory {
 
     public boolean verifyName(String name) {
         String namePattern = "^[a-zA-Z가-힣]+$";
-        Pattern pattern = Pattern.compile(namePattern);
+        pattern = Pattern.compile(namePattern);
         Matcher matcher = pattern.matcher(name);
         return matcher.matches();
     }
@@ -75,9 +75,9 @@ public class PhoneDirectory {
     public void isExist(String find) {
         try {
             if (find == null) {
-                throw new NothingLookingFor("찾기를 원하시는 항목이 없습니다.");
+                throw new NothingLookingForException("찾기를 원하시는 항목이 없습니다.");
             }
-        } catch (NothingLookingFor e) {
+        } catch (NothingLookingForException e) {
             System.out.println(e.getMessage());
         }
     }
