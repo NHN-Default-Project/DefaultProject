@@ -10,6 +10,7 @@ import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 
 public class HashTableApp {
+    private final String endCommand = "end";
 
     /**
      * 해당 인터프리터방식의 프로그램을 실행시키는 메서드
@@ -27,7 +28,7 @@ public class HashTableApp {
             while (true) {
                 printInstructions(); // 안내 문구
                 String inputInstructions = inputData(br); // 사용자가 입력받음
-                if (inputInstructions.equals("0")) {
+                if (inputInstructions.toLowerCase().equals(this.endCommand)) {
                     break;
                 }
 
@@ -59,10 +60,10 @@ public class HashTableApp {
 
     public void inputDataToHashTable(BufferedReader br, HashTable hashTable) throws IOException, DataEntryFormatException {
         while (true) {
-            System.out.println("데이터를 입력하세요(공백으로 구분, 0 입력 시 입력 종료)");
+            System.out.println("데이터를 입력하세요(공백으로 구분, end 입력 시 입력 종료)");
             String str = inputData(br);
             InputDataFrameRule.isCheckHashTableDataFrame(str);
-            if (str.equals("0")) {
+            if (str.toLowerCase().equals(this.endCommand)) {
                 break;
             } else if (InputDataFrameRule.isCheckHashTableDataFrame(str)) {
                 String[] splitStr = str.split(" ");
@@ -76,9 +77,9 @@ public class HashTableApp {
 
     private void execute(String inputData, BufferedReader br, HashTable hashTable) throws IOException, DataEntryFormatException, NegativeNumException {
         while (true) {
-            System.out.println("해당 메소드에 들어갈 데이터를 입력하세요(0 입력 시 이전으로 돌아감)");
+            System.out.println("해당 메소드에 들어갈 데이터를 입력하세요(end 입력 시 이전으로 돌아감)");
             String methodData = checkEnterData(br);
-            if (methodData.equals("0")) {
+            if (methodData.toLowerCase().equals(this.endCommand)) {
                 break;
             }
             Object getData = executeConditionMethod(inputData, methodData, hashTable);
