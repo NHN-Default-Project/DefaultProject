@@ -5,13 +5,17 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class Concordance {
-    TreeMap<String, TreeSet<Integer>> index;
+    private TreeMap<String, TreeSet<Integer>> index;
 
     public Concordance() {
         this.index = new TreeMap<>(String::compareToIgnoreCase);
     }
 
-    void addReference(String term, int lineNum) {
+    public TreeMap<String, TreeSet<Integer>> getIndex() {
+        return this.index;
+    }
+
+    public void addReference(String term, int lineNum) {
         TreeSet<Integer> references = index.get(term);
 
         if (references == null) {
@@ -23,7 +27,7 @@ public class Concordance {
         }
     }
 
-    void printIndex() {
+    public void printIndex() {
         for (Map.Entry<String, TreeSet<Integer>> entry : index.entrySet()) {
             String term = entry.getKey();
             TreeSet<Integer> lineNumSet = entry.getValue();

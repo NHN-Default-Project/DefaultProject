@@ -27,7 +27,7 @@ public class Exercise10_3 {
         HashMap hashMap = new HashMap(CAPACITY);
         hashMap = makeHashMap(hashMap);
 
-        hashMap.printHashMap();
+        System.out.println(hashMap);
 
         System.out.printf("%n * get 테스트 해본 결과 : %b * %n%n", testGet(hashMap));
         System.out.printf("%n * remove 테스트 해본 결과 : %b * %n%n", testRemove(hashMap));
@@ -60,11 +60,7 @@ public class Exercise10_3 {
     }
 
     public static boolean testContainsKey(HashMap hashMap) {
-        if (hashMap.containsKey("Kim Ji Un")) {
-            return true;
-        } else {
-            return false;
-        }
+        return hashMap.containsKey("Kim Ji Un");
     }
 
     public static HashMap makeHashMap(HashMap hashMap) {

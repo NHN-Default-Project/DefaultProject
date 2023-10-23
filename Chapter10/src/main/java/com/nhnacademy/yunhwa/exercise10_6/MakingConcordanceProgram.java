@@ -27,21 +27,20 @@ public class MakingConcordanceProgram {
                 Concordance concordance = new Concordance();
                 makeIndexOfFile(concordance, 1);
 
-                System.out.printf("파일에서 찾은 다른 단어들의 수 : %d%n", concordance.index.size());
-                if (concordance.index.isEmpty()) {
+                System.out.printf("파일에서 찾은 다른 단어들의 수 : %d%n", concordance.getIndex().size());
+                if (concordance.getIndex().isEmpty()) {
                     throw new NodataException("파일에 단어들이 존재하지 않습니다. 유의미한 파일을 다시 입력해주세요.");
                 }
 
                 WriteFile.writeUserSelectedFile();
                 writeIndexToOutputFile(concordance);
                 System.out.println("\n\n========================= 끝 ============================\n\n");
-
+                break;
             } catch (Exception e) {
                 System.out.println("죄송합니다. 에러가 발생했습니다.");
                 System.out.println("에러 메세지 : " + e.getMessage());
                 e.printStackTrace();
             }
-            break;
         }
     }
 
@@ -78,9 +77,9 @@ public class MakingConcordanceProgram {
     }
 
     public static void writeIndexToOutputFile(Concordance concordance) {
-        TextIO.putln(concordance.index.size() + " 개의 단어들이 파일에서 찾아졌습니다.\n");
+        TextIO.putln(concordance.getIndex().size() + " 개의 단어들이 파일에서 찾아졌습니다.\n");
         TextIO.putln("===================== 단어들 색인 리스트 ========================");
-        for (Map.Entry<String, TreeSet<Integer>> entry : concordance.index.entrySet()) {
+        for (Map.Entry<String, TreeSet<Integer>> entry : concordance.getIndex().entrySet()) {
             TextIO.putln(String.format("  %-20s", entry.getKey()) +  entry.getValue());
         }
         TextIO.putln("============================================================");

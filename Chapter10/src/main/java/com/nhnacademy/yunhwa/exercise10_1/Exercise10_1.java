@@ -9,11 +9,8 @@ import java.util.Map;
  * */
 public class Exercise10_1 {
     public static void main(String[] args) {
-        PhoneDirectory phoneDirectory = new PhoneDirectory();
-
-        phoneDirectory = makeSamplePhoneDirectory(phoneDirectory);
+        PhoneDirectory phoneDirectory = makeSamplePhoneDirectory();
         System.out.printf("%n * get 테스트 해본 결과 : %b * %n%n", testGet(phoneDirectory));
-
         System.out.println(phoneDirectory);
     }
 
@@ -28,7 +25,9 @@ public class Exercise10_1 {
         return true;
     }
 
-    public static PhoneDirectory makeSamplePhoneDirectory(PhoneDirectory phoneDirectory) {
+    public static PhoneDirectory makeSamplePhoneDirectory() {
+        PhoneDirectory phoneDirectory = new PhoneDirectory();
+
         phoneDirectory.putNameAndPhoneNumber("John Doe", "123-456-7890");
         phoneDirectory.putNameAndPhoneNumber("Jane Smith", "987-654-3210");
         phoneDirectory.putNameAndPhoneNumber("David Johnson", "555-123-4567");

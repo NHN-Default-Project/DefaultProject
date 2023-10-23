@@ -32,16 +32,16 @@ public class Exercise10_5 {
         System.out.printf("== 학생 수 : %d%n%n", Arrays.stream(scoreData).count());
 
         System.out.printf("== 모든 학생의 평균 점수 : %.2f%n%n", (Arrays.stream(scoreData)
-                .mapToInt(info -> info.score)
+                .mapToInt(info -> info.getScore())
                 .average().getAsDouble()));
 
         System.out.printf("== A 를 받은 학생의 수 (90 점 이상) : %d%n%n", Arrays.stream(scoreData)
-                .filter(info -> info.score >= 90)
+                .filter(info -> info.getScore() >= 90)
                 .count());
 
         List<String> namesUnder70 = Arrays.stream(scoreData)
-                .filter(info -> info.score < 70)
-                .map(info -> info.lastName + info.firstName)
+                .filter(info -> info.getScore() < 70)
+                .map(info -> info.getLastName() + info.getFirstName())
                 .collect(Collectors.toList());
 
         System.out.println("== 점수가 70점 미만인 학생의 이름 리스트 (이름 + 성) ==");
@@ -50,13 +50,13 @@ public class Exercise10_5 {
         System.out.println("\n== 성 순으로 정렬한 학생의 이름과 점수 리스트 ==");
         Arrays.stream(scoreData)
                 .sorted(Comparator.comparing(ScoreInfo::getLastName))
-                .map(info -> "이름 : " + String.format("%-10s", info.lastName) + " 점수 : " + info.score)
+                .map(info -> "이름 : " + String.format("%-10s", info.getLastName()) + " 점수 : " + info.getScore())
                 .forEach(System.out::println);
 
         System.out.println("\n== 점수 순으로 정렬한 학생의 이름과 점수 리스트 ==");
         Arrays.stream(scoreData)
                 .sorted(Comparator.comparing(ScoreInfo::getScore))
-                .map(info -> "이름 : " + String.format("%-13s", info.lastName) + " 점수 : " + info.score)
+                .map(info -> "이름 : " + String.format("%-13s", info.getLastName()) + " 점수 : " + info.getScore())
                 .forEach(System.out::println);
     }
 }

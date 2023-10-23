@@ -18,8 +18,8 @@ public class SetCalculator {
         while (true) {
             Scanner sc = new Scanner(System.in);
             try {
-                this.setA = new TreeSet<>();
-                this.setB = new TreeSet<>();
+                this.setA.clear();
+                this.setB.clear();
 
                 beforeInputPrintInformation();
                 makeTwoSetAndOperator(sc.nextLine());

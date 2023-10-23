@@ -1,6 +1,11 @@
 package com.nhnacademy.yunhwa.exercise10_3;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.LinkedList;
+import java.util.stream.Collectors;
+
+import static java.util.Arrays.stream;
 
 public class HashMap {
     private final int capacity;
@@ -40,14 +45,8 @@ public class HashMap {
     }
 
     private int getIndex(String key) {
-        int hashCode = key.hashCode();
-        int index = hashCode % this.capacity; // 배열 인덱스 계산
-
-        if (index < 0) {
-            index += capacity;
-        }
-
-        return index;
+        int hashCode = key.hashCode() & 0x7fffffff;
+        return hashCode % this.capacity;
     }
 
     public String get(String key) {
@@ -103,15 +102,15 @@ public class HashMap {
         return count;
     }
 
-    public void printHashMap() {
-        System.out.println(" ----------------- HashMap ------------------ ");
-        System.out.println("         key         |         value      ");
-        System.out.println(" -------------------------------------------- ");
-        for (LinkedList<Node> linkedList : this.buckets) {
-            for (Node node : linkedList) {
-                System.out.printf("   %-17s |      %-20s%n", node.key, node.value);
-            }
-        }
-        System.out.println(" -------------------------------------------- ");
+    @Override
+    public String toString() {
+        return " ----------------- HashMap ------------------ \n"
+                + "         key         |         value      \n"
+                + " -------------------------------------------- \n"
+                + stream(this.buckets)
+                .flatMap(Collection::stream)
+                .map(node -> String.format("   %-17s |      %-20s%n", node.key, node.value))
+                .collect(Collectors.joining(""))
+                + " -------------------------------------------- ";
     }
 }
