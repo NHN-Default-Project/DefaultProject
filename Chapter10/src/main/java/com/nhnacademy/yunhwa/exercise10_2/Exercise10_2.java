@@ -12,6 +12,5 @@ public class Exercise10_2 {
     public static void main(String[] args) throws IOException {
         SetCalculator setCalculator = new SetCalculator();
         setCalculator.run();
-
     }
 }

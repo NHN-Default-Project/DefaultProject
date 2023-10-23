@@ -39,8 +39,6 @@ public class SetCalculator {
         }
     }
 
-
-
     private void makeTwoSetAndOperator(String line) throws NegativeIntegerException, IllegalArgumentException {
         char[] lineChr = line.toCharArray();
 

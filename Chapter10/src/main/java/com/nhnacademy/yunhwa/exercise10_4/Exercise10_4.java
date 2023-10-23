@@ -57,7 +57,7 @@ public class Exercise10_4 {
     }
 
     @Test
-    public void findTest() { // 20의 배수들 중 가장 첫 번째 항목의 인덱스 (0부터 인덱스 시작)
+    public void findTest() { // 20의 배수들 중 가장 첫 번째 항목의 인덱스 (0부터 인덱스 시작) = 19
         ArrayList<Integer> arrList = new ArrayList<>(IntStream.range(1, 101).boxed().collect(Collectors.toList()));
         Assert.assertTrue(Predicates.find(arrList, x -> x % 20 == 0) == 19);
     }
