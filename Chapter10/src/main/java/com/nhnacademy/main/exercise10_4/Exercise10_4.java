@@ -1,8 +1,9 @@
-package com.nhnacademy.yunhwa.exercise10_4;
+package com.nhnacademy.main.exercise10_4;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,12 +11,12 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /* 10 - 4
- * 자바의 java.util.function 패키지의 Predicate<T> 활용해보는 문제
- * 자바의 Collection 에 정의된 Predicate<T> 가 활용되는 메서드 중
- * 4개의 유사한 메서드를 직접 작성해보자
- * 클래스 명 : Predicates
- * 스트림 API 사용 x
- * */
+* 자바의 java.util.function 패키지의 Predicate<T> 활용해보는 문제
+* 자바의 Collection 에 정의된 Predicate<T> 가 활용되는 메서드 중
+* 4개의 유사한 메서드를 직접 작성해보자
+* 클래스 명 : Predicates
+* 스트림 API 사용 x
+* */
 public class Exercise10_4 {
 
     @Test

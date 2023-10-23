@@ -5,7 +5,7 @@ import java.util.TreeSet;
 
 public class ConsoleUserInterface {
 
-    public static void beforeInputPrintInformation() {
+    public void beforeInputPrintInformation() {
         System.out.println();
         System.out.println("0 이상의 정수 집합 2개를 만들고 두 개의 합집합, 교집합, 차집합을 구하려고 합니다.");
         System.out.println("0 이상의 정수 집합 2개와 연산자를 아래의 형식에 맞게 입력해주세요 \n");
@@ -17,6 +17,14 @@ public class ConsoleUserInterface {
         System.out.println("위의 전체 입력 형식에 맞게 입력해주세요 [ 연산자 : + - * ]");
     }
 
+    public boolean isUserWantToBeContinued(Scanner sc) {
+        System.out.println("계속 입력하시겠습니까? NO 입력하시면 종료 아니면 TO BE CONTINUED ");
+        String continueFlag = sc.nextLine().trim().toLowerCase();
+        if (continueFlag.equals("no")) {
+            return false;
+        }
+        return true;
+    }
     public static void printCalculationResult(TreeSet<Integer> resultSet, TreeSet<Integer> setA, TreeSet<Integer> setB, char operator) {
 
         System.out.println("-------------------------------");
@@ -37,14 +45,5 @@ public class ConsoleUserInterface {
         }
 
         System.out.println("-------------------------------");
-    }
-
-    public static boolean isUserWantToBeContinued(Scanner sc) {
-        System.out.println("계속 입력하시겠습니까? NO 입력하시면 종료 아니면 TO BE CONTINUED ");
-        String continueFlag = sc.nextLine().trim().toLowerCase();
-        if (continueFlag.equals("no")) {
-            return false;
-        }
-        return true;
     }
 }

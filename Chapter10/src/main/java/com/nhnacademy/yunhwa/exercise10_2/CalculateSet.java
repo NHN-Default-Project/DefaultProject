@@ -19,4 +19,6 @@ public class CalculateSet {
                 throw new NoSuchElementException("(여기 들어오지 않게 미리 처리했지만 혹시 모르니) 계산하는 중 존재해서는 안되는 연산자가 들어왔습니다.");
         }
     }
+
+
 }
