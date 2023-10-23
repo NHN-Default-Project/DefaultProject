@@ -1,5 +1,8 @@
 package com.nhnacademy.yunhwa.exercise10_1;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.Map;
 
 /* 10 - 1
@@ -10,19 +13,18 @@ import java.util.Map;
 public class Exercise10_1 {
     public static void main(String[] args) {
         PhoneDirectory phoneDirectory = makeSamplePhoneDirectory();
-        System.out.printf("%n * get 테스트 해본 결과 : %b * %n%n", testGet(phoneDirectory));
         System.out.println(phoneDirectory);
     }
 
-    public static boolean testGet(PhoneDirectory phoneDirectory) {
-        for (Map.Entry<String, String> entry : phoneDirectory.getData().entrySet()) {
-            String myGetPhoneNumber = phoneDirectory.getPhoneNumber(entry.getKey());
-            String entryGetPhoneNumber = entry.getValue();
-            if (! myGetPhoneNumber.equals(entryGetPhoneNumber)) {
-                return false;
-            }
-        }
-        return true;
+    @Test
+    public void getTest() {
+        PhoneDirectory phoneDirectory = makeSamplePhoneDirectory();
+        Assert.assertTrue(phoneDirectory.getData().entrySet().stream()
+                .map(entry -> phoneDirectory.getPhoneNumber(entry.getKey())
+                        .equals(entry.getValue()))
+                .filter(bool -> bool.equals(true))
+                .count() ==
+                phoneDirectory.getData().size());
     }
 
     public static PhoneDirectory makeSamplePhoneDirectory() {

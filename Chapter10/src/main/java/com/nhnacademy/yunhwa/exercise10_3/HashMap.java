@@ -1,6 +1,5 @@
 package com.nhnacademy.yunhwa.exercise10_3;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.stream.Collectors;

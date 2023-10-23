@@ -1,6 +1,9 @@
 package com.nhnacademy.yunhwa.exercise10_3;
 
-import java.util.LinkedList;
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.util.Arrays;
 
 /* 10 - 3
 * 자바에 있는 Collections 의 HashMap 사용하지 말고
@@ -25,42 +28,40 @@ public class Exercise10_3 {
 
     public static void main(String[] args) {
         HashMap hashMap = new HashMap(CAPACITY);
-        hashMap = makeHashMap(hashMap);
-
-        System.out.println(hashMap);
-
-        System.out.printf("%n * get 테스트 해본 결과 : %b * %n%n", testGet(hashMap));
-        System.out.printf("%n * remove 테스트 해본 결과 : %b * %n%n", testRemove(hashMap));
-        System.out.printf("%n * containsKey 테스트 해본 결과 : %b * %n%n", testContainsKey(hashMap));
+        System.out.println(makeHashMap(hashMap));
     }
 
-    public static boolean testGet(HashMap hashMap) {
-        for (LinkedList<HashMap.Node> linkedList : hashMap.getBuckets()) {
-            for (int i = 0; i < linkedList.size(); i++) {
-                HashMap.Node thisNode = linkedList.get(i);
-                if (! hashMap.get(thisNode.getKey()).equals(thisNode.getValue())) {
-                    return false;
-                }
-            }
-        }
-        return true;
+    @Test
+    public void getTest() {
+        HashMap hashMap = new HashMap(CAPACITY);
+        HashMap finalHashMap = makeHashMap(hashMap);
+        Assert.assertTrue(Arrays.stream(hashMap.getBuckets())
+                .map(linkedList -> linkedList.stream()
+                        .map(node -> finalHashMap
+                                .get(node.getKey())
+                                .equals(node.getValue()))
+                        .filter(x -> x))
+                .count() == hashMap.getBuckets().length);
     }
 
-    public static boolean testRemove(HashMap hashMap) {
-        hashMap.remove("Robert Anderson");
+    @Test
+    public void removeTest() {
+        HashMap hashMap = new HashMap(CAPACITY);
+        HashMap finalHashMap = makeHashMap(hashMap);
+        finalHashMap.remove("Robert Anderson");
 
-        for (LinkedList<HashMap.Node> linkedList : hashMap.getBuckets()) {
-            for (HashMap.Node node : linkedList) {
-                if (node.getKey().equals("Robert Anderson")) {
-                    return false;
-                }
-            }
-        }
-        return true;
+        Assert.assertTrue(Arrays.stream(hashMap.getBuckets())
+                .map(linkedList -> linkedList.stream()
+                        .map(node -> !node.getKey().equals("Robert Anderson"))
+                        .filter(x -> x))
+                .count() == hashMap.getBuckets().length);
     }
 
-    public static boolean testContainsKey(HashMap hashMap) {
-        return hashMap.containsKey("Kim Ji Un");
+    @Test
+    public void containsKeyTest() {
+        HashMap hashMap = new HashMap(CAPACITY);
+        HashMap finalHashMap = makeHashMap(hashMap);
+        Assert.assertTrue(finalHashMap.containsKey("Kim Ji Un"));
     }
 
     public static HashMap makeHashMap(HashMap hashMap) {

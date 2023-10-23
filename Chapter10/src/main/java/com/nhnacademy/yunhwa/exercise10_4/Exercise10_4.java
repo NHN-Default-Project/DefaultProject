@@ -1,5 +1,8 @@
 package com.nhnacademy.yunhwa.exercise10_4;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,50 +16,50 @@ import java.util.stream.IntStream;
 * 스트림 API 사용 x
 * */
 public class Exercise10_4 {
-    public static void main(String[] args) {
-        predicatesTest();
+
+    @Test
+    public void predicatesTest() {
+        removeTest();
+        collectTest();
+        retainTest();
+        findTest();
     }
 
-    public static void predicatesTest() {
-        System.out.println("\n1 부터 100 까지의 숫자가 담긴 리스트로 간단하게 테스트 해보겠습니다.\n");
-
+    @Test
+    public void removeTest() { // 짝수인 것들 제거
         List<Integer> integerList = IntStream.range(1, 101).boxed().collect(Collectors.toList());
-        System.out.println("짝수인 것들 제거한 결과");
-        removeTest(integerList, x -> x % 2 == 0);
+        Predicates.remove(integerList, x -> x % 2 == 0);
+        List<Integer> intStreamList = IntStream.range(1, 101)
+                .boxed()
+                .filter(x -> x % 2 == 1).collect(Collectors.toList());
+        Assert.assertTrue(integerList.equals(intStreamList));
+    }
 
-        integerList = IntStream.range(1, 101).boxed().collect(Collectors.toList());
-        System.out.println("10의 배수인 것들 수집해서 리턴된 새로운 리스트");
-        collectTest(integerList, x -> x % 10 == 0);
+    @Test
+    public void collectTest() { // 10 의 배수인 것들만 수집
+        List<Integer> integerList = IntStream.range(1, 101).boxed().collect(Collectors.toList());
+        Assert.assertTrue(Predicates.collect(integerList, x -> x % 10 == 0)
+                .equals(IntStream.range(1, 101)
+                        .boxed()
+                        .filter(x -> x % 10 == 0)
+                        .collect(Collectors.toList())));
+    }
 
-        integerList = IntStream.range(1, 101).boxed().collect(Collectors.toList());
-        System.out.println("5의 배수가 아닌 것들 제거한 결과");
-        retainTest(integerList, x -> x % 5 == 0);
+    @Test
+    public void retainTest() { // 5의 배수가 아닌 것들 제거 == 5의 배수인 것들만 남기기
+        List<Integer> integerList = IntStream.range(1, 101).boxed().collect(Collectors.toList());
+        Predicates.retain(integerList, x -> x % 5 == 0);
+        Assert.assertTrue(integerList
+                .equals(IntStream.range(1, 101)
+                        .boxed()
+                        .filter(x -> x % 5 == 0)
+                        .collect(Collectors.toList())));
+    }
 
+    @Test
+    public void findTest() { // 20의 배수들 중 가장 첫 번째 항목의 인덱스 (0부터 인덱스 시작)
         ArrayList<Integer> arrList = new ArrayList<>(IntStream.range(1, 101).boxed().collect(Collectors.toList()));
-        System.out.print("20의 배수들 중 가장 첫 번째 항목의 인덱스 (0부터 인덱스 시작) : ");
-        findTest(arrList, x -> x % 20 == 0);
-    }
-
-    public static void removeTest(List<Integer> integerList, Predicate<Integer> predicate) {
-        Predicates.remove(integerList, predicate);
-        System.out.println(integerList);
-        System.out.println();
-    }
-
-    public static void collectTest(List<Integer> integerList, Predicate<Integer> predicate) {
-        System.out.println(Predicates.collect(integerList, predicate));
-        System.out.println();
-    }
-
-    public static void retainTest(List<Integer> integerList, Predicate<Integer> predicate) {
-        Predicates.retain(integerList, predicate);
-        System.out.println(integerList);
-        System.out.println("참고 : 5의 배수만 collect 한 결과와 동일하나, retain 은 기존의 콜렉션 내용을 변경함.");
-        System.out.println();
-    }
-
-    public static void findTest(ArrayList<Integer> arrList, Predicate<Integer> predicate) {
-        System.out.println(Predicates.find(arrList, predicate));
+        Assert.assertTrue(Predicates.find(arrList, x -> x % 20 == 0) == 19);
     }
 
 

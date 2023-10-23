@@ -2,8 +2,6 @@ package com.nhnacademy.yunhwa.exercise10_6;
 
 import com.nhnacademy.yunhwa.exercise10_6.exceptions.FileNotSelectedException;
 import com.nhnacademy.yunhwa.exercise10_6.exceptions.NodataException;
-import com.nhnacademy.yunhwa.exercise10_6.read_write.ReadFile;
-import com.nhnacademy.yunhwa.exercise10_6.read_write.WriteFile;
 import com.nhnacademy.yunhwa.exercise10_6.text_io.TextIO;
 
 import java.util.Map;
@@ -20,22 +18,26 @@ public class MakingConcordanceProgram {
                     break;
                 }
 
-                if (!ReadFile.readUserSelectedFile()) {
+                if (!TextIO.readUserSelectedFile()) {
                     throw new FileNotSelectedException("input file 이 선택되지 않았습니다. 다시 입력해주세요");
                 }
 
                 Concordance concordance = new Concordance();
                 makeIndexOfFile(concordance, 1);
-
                 System.out.printf("파일에서 찾은 다른 단어들의 수 : %d%n", concordance.getIndex().size());
+
                 if (concordance.getIndex().isEmpty()) {
                     throw new NodataException("파일에 단어들이 존재하지 않습니다. 유의미한 파일을 다시 입력해주세요.");
                 }
 
-                WriteFile.writeUserSelectedFile();
+                if (!TextIO.writeUserSelectedFile()) {
+                    throw new FileNotSelectedException("output file 이 선택되지 않았습니다. 다시 입력해주세요");
+                }
+
                 writeIndexToOutputFile(concordance);
                 System.out.println("\n\n========================= 끝 ============================\n\n");
                 break;
+
             } catch (Exception e) {
                 System.out.println("죄송합니다. 에러가 발생했습니다.");
                 System.out.println("에러 메세지 : " + e.getMessage());
@@ -61,7 +63,7 @@ public class MakingConcordanceProgram {
     }
 
     public static void makeIndexOfFile(Concordance concordance, int lineCount) {
-        String term = ReadFile.readNextWord();
+        String term = readNextWord();
 
         while (term != null) { // 파일의 끝이 아닐 때까지
             if (term.equals("\n")) { // 각 줄의 끝이라면
@@ -72,7 +74,7 @@ public class MakingConcordanceProgram {
                     concordance.addReference(term, lineCount);
                 }
             }
-            term = ReadFile.readNextWord();
+            term = readNextWord();
         }
     }
 
@@ -83,5 +85,38 @@ public class MakingConcordanceProgram {
             TextIO.putln(String.format("  %-20s", entry.getKey()) +  entry.getValue());
         }
         TextIO.putln("============================================================");
+    }
+
+    public static String readNextWord() {
+        char ch = TextIO.peek();
+
+        while (ch != TextIO.EOF && !Character.isLetter(ch)) {
+            if (ch == '\n') { // 각 줄의 끝에 도달 했다면
+                TextIO.getAnyChar();
+                return "\n"; // "\n" 리턴
+            }
+            TextIO.getAnyChar();
+            ch = TextIO.peek();
+        }
+        if (ch == TextIO.EOF)
+            return null;
+        String word = "";
+        while (true) {
+            word += TextIO.getAnyChar();
+            ch = TextIO.peek();
+            if (ch == '\'') {
+                TextIO.getAnyChar();
+                ch = TextIO.peek();
+                if (Character.isLetter(ch)) {
+                    word += "\'" + TextIO.getAnyChar();
+                    ch = TextIO.peek();
+                } else
+                    break;
+            }
+            if (!Character.isLetter(ch)) {
+                break;
+            }
+        }
+        return word;
     }
 }

@@ -2,6 +2,7 @@ package com.nhnacademy.yunhwa.exercise10_1;
 
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class PhoneDirectory {
@@ -20,10 +21,18 @@ public class PhoneDirectory {
     }
 
     public void putNameAndPhoneNumber(String name, String number) {
+        String nameFormat = "^[a-zA-Zㄱ-ㅎ가-힣\\s]*$";
+        String numberFormat = "^\\d{2,3}-?\\d{3,4}-?\\d{4}$";
+
         if (name == null || number == null) {
             throw new IllegalArgumentException("name and number cannot be null");
+        } else if (!Pattern.matches(nameFormat, name)) {
+            throw new IllegalArgumentException("name format didn't match at all");
+        } else if (!Pattern.matches(numberFormat, number)) {
+            throw new IllegalArgumentException("number format didn't match at all");
+        } else {
+            this.data.put(name, number);
         }
-        this.data.put(name, number);
     }
 
     @Override
