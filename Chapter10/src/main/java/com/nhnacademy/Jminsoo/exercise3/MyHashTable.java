@@ -46,12 +46,10 @@ public class MyHashTable {
         int count = 0;
         for (LinkedList<Node> list : this.nodeList) {
             if (list != null) {
-                for (Node node : list) {
-                    count++;
-                }
+                return list.size();
             }
         }
-        return count;
+        throw new IllegalArgumentException("값이 비어있습니다!");
     }
 
     public boolean isEmpty() {
@@ -62,9 +60,7 @@ public class MyHashTable {
         int hashCode = Objects.hashCode(key);
         int index = convertIndexByHash(hashCode);
 
-        LinkedList<Node> list = this.nodeList[index];
-
-        Node node = getNodeByKey(list, key);
+        Node node = getNodeByKey(this.nodeList[index], key);
         return node == null ? null : node.value;
 
     }
@@ -76,7 +72,7 @@ public class MyHashTable {
         LinkedList<Node> list = this.nodeList[index];
 
         for (Node node : list) {
-            if (node.key.equals(key)) {
+            if (node.key.equals(key) && Objects.hashCode(node.key) == Objects.hashCode(key)) {
                 return true;
             }
         }

@@ -11,9 +11,8 @@ public class Exercise10_2 {
         System.out.println("입출력 공백 입력 시 종료");
         System.out.println("-------------------");
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        while (true) {
-            try {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
+            while (true) {
                 String input = br.readLine();
                 if (input.isEmpty()) {
                     break;
@@ -21,9 +20,9 @@ public class Exercise10_2 {
                     treeSets.stringToSet(input);
                     treeSets.calculate();
                 }
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
             }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
 }
