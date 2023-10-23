@@ -1,9 +1,6 @@
 package com.nhnacademy.Jminsoo.exercise2;
 
-import java.util.LinkedList;
-import java.util.Objects;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 
 public class SetFormula {
     private final Queue<Set<Integer>> setQueue;
@@ -33,17 +30,15 @@ public class SetFormula {
                 case "-":
                     Objects.requireNonNull(result).removeAll(Objects.requireNonNull(this.setQueue.poll()));
                     break;
-
                 case "*":
                     Objects.requireNonNull(result).retainAll(Objects.requireNonNull(this.setQueue.poll()));
                     break;
-
                 default:
                     throw new ArithmeticException("잘못된 수식입니다!");
             }
         }
-
-        return result;
+        
+        return Objects.requireNonNullElseGet(result, HashSet::new);
     }
 
 }

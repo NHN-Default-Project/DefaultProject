@@ -1,4 +1,4 @@
-package com.nhnacademy.Jminsoo.exercise7;
+package com.nhnacademy.main.exercise7;
 
 /**
  * 이 프로그램은 숫자, 변수, 괄호 및 연산자 +, -, *, /, ^ (거듭 제곱을 나타냄)를 포함하는 표현식을 계산할 수 있습니다.
@@ -34,7 +34,7 @@ package com.nhnacademy.Jminsoo.exercise7;
  * 함수의 이름 뒤에는 괄호로 둘러싸인 식이 따라와야 한다.
  */
 
-import com.nhnacademy.Jminsoo.exercise7.textio.TextIO;
+import com.nhnacademy.main.exercise7.textio.TextIO;
 
 import java.util.HashMap;
 

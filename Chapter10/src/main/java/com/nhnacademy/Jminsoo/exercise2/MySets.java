@@ -2,67 +2,52 @@ package com.nhnacademy.Jminsoo.exercise2;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MySets {
+
+    private static final Pattern numberPattern = Pattern.compile("\\d+");
+    private static final Pattern correctSetPattern = Pattern.compile("^((\\[[0-9,]*\\][*+-])*)\\[[0-9,]*\\]$");
+
+    private static final Pattern setFormulaPattern = Pattern.compile("\\[[0-9,\\]]+");
+    private static final Pattern expressionPattern = Pattern.compile("[*+-]+");
+
     public static Set<Integer> stringToSetApply(String inputStr) {
-
         Set<Integer> result = new HashSet<>();
-
-        //괄호를 못찾을 시 StringIndexOutOfBoundsException 발생
-        StringBuilder setStringBuilder = new StringBuilder(
-                inputStr.substring(
-                        inputStr.indexOf("[") + 1,
-                        inputStr.indexOf("]")));
-
-        //,을 못찾을 시 PatternSyntaxException 발생
-        //숫자가 아닐시 NumberFormatException 발생
-        for (String number : setStringBuilder.toString().split(",")) {
-            int integerNum = Integer.parseInt(number);
-            if (integerNum < 0) {
-                throw new NumberFormatException("값이 0보다 작습니다!");
-            }
-            result.add(integerNum);
+        Matcher matcher = numberPattern.matcher(inputStr);
+        while (matcher.find()) {
+            result.add(Integer.valueOf(matcher.group()));
         }
 
         return result;
     }
 
+
     public static SetFormula stringToSetFormulaApply(String inputStr) {
-        StringBuilder setStr; //[1,2,3]의 형태의 set이 들어가는 변수
-        StringBuilder expression; //
-        StringBuilder sb = new StringBuilder(inputStr);
-        SetFormula result = new SetFormula();
-        char tempReader;
-
-        //초기값 삽입
-
-        setStr = new StringBuilder(sb.substring(0, sb.indexOf("]") + 1));
-        result.addSet(stringToSetApply(setStr.toString()));
-        sb.delete(0, sb.indexOf("]") + 1);
-
-
-        while (sb.length() > 0) {
-            tempReader = sb.toString().charAt(0);
-            if (tempReader == '+') {
-                expression = new StringBuilder("+");
-            } else if (tempReader == '-') {
-                expression = new StringBuilder("-");
-            } else if (tempReader == '*') {
-                expression = new StringBuilder("*");
-            } else {
-                throw new ArithmeticException("수식이 올바르지 않습니다! 문제 위치 : inputStringToTempFormula");
-            }
-            result.addExp(expression.toString());
-            sb.delete(0, 1);
-            tempReader = sb.toString().charAt(0);
-            if (tempReader != '[') {
-                throw new ArithmeticException("수식이 올바르지 않습니다! 문제 위치 : inputStringToTempFormula");
-            }
-            setStr = new StringBuilder(sb.substring(0, sb.indexOf("]") + 1));
-            result.addSet(stringToSetApply(setStr.toString()));
-            sb.delete(0, sb.indexOf("]") + 1);
+        if (!isExp(inputStr)) {
+            throw new IllegalArgumentException("수식에 이상이 있습니다!");
         }
+
+        inputStr = inputStr.replaceAll("\\s", "");
+        SetFormula result = new SetFormula();
+
+        Matcher matcher = expressionPattern.matcher(inputStr);
+        while (matcher.find()) {
+            result.addExp(matcher.group());
+        }
+
+        matcher = setFormulaPattern.matcher(inputStr);
+        while (matcher.find()) {
+            result.addSet(MySets.stringToSetApply(matcher.group()));
+        }
+
         return result;
+    }
+
+    private static boolean isExp(String inputStr) {
+        Matcher matcher = correctSetPattern.matcher(inputStr);
+        return matcher.find();
     }
 
 }

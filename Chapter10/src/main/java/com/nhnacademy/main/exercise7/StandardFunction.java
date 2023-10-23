@@ -1,4 +1,4 @@
-package com.nhnacademy.Jminsoo.exercise7;
+package com.nhnacademy.main.exercise7;
 
 
 public class StandardFunction {
