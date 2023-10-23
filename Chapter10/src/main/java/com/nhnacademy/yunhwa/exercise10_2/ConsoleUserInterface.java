@@ -3,7 +3,7 @@ package com.nhnacademy.yunhwa.exercise10_2;
 import java.util.Scanner;
 import java.util.TreeSet;
 
-public class ConsoleUserInferface {
+public class ConsoleUserInterface {
 
     public static void beforeInputPrintInformation() {
         System.out.println();

@@ -21,12 +21,12 @@ public class SetCalculator {
                 this.setA.clear();
                 this.setB.clear();
 
-                ConsoleUserInferface.beforeInputPrintInformation();
+                ConsoleUserInterface.beforeInputPrintInformation();
                 makeTwoSetAndOperator(sc.nextLine());
                 TreeSet originA = new TreeSet(setA);
-                ConsoleUserInferface.printCalculationResult(calculateResult(), originA, setB, operator);
+                ConsoleUserInterface.printCalculationResult(calculateResult(), originA, setB, operator);
 
-                if (! ConsoleUserInferface.isUserWantToBeContinued(sc)) {
+                if (! ConsoleUserInterface.isUserWantToBeContinued(sc)) {
                     sc.close();
                     break;
                 }
