@@ -34,7 +34,7 @@ public class FileRead {
 
     private void lineNormalize(String line, int countLine) {
         List<String> normalizeString = Arrays.stream(line.split(" "))
-                .map(s -> s.replaceAll("[^0-9a-zA-Z가-힣]", ""))
+                .map(s -> s.replaceAll("[^0-9a-zA-Z가-힣`']", ""))
                 .map(s -> s.replace(" ", ""))
                 .filter(s -> s.length() >= 3)
                 .filter(s -> !s.equals("the"))
