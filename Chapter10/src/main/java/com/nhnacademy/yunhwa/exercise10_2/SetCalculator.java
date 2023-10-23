@@ -23,8 +23,11 @@ public class SetCalculator {
 
                 ConsoleUserInterface.beforeInputPrintInformation();
                 makeTwoSetAndOperator(sc.nextLine());
-                TreeSet originA = new TreeSet(setA);
-                ConsoleUserInterface.printCalculationResult(calculateResult(), originA, setB, operator);
+
+                TreeSet<Integer> originA = new TreeSet<>(setA);
+                TreeSet<Integer> resultSet = CalculateSet.calculateResult(setA, setB, operator);
+
+                ConsoleUserInterface.printCalculationResult(resultSet, originA, setB, operator);
 
                 if (! ConsoleUserInterface.isUserWantToBeContinued(sc)) {
                     sc.close();
@@ -36,21 +39,7 @@ public class SetCalculator {
         }
     }
 
-    private TreeSet<Integer> calculateResult() {
-        switch (this.operator) {
-            case '+':
-                this.setA.addAll(this.setB);
-                return this.setA;
-            case '*':
-                this.setA.retainAll(this.setB);
-                return this.setA;
-            case '-':
-                this.setA.removeAll(this.setB);
-                return this.setA;
-            default:
-                throw new NoSuchElementException("(여기 들어오지 않게 미리 처리했지만 혹시 모르니) 계산하는 중 존재해서는 안되는 연산자가 들어왔습니다.");
-        }
-    }
+
 
     private void makeTwoSetAndOperator(String line) throws NegativeIntegerException, IllegalArgumentException {
         char[] lineChr = line.toCharArray();
