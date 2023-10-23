@@ -21,11 +21,12 @@ public class SetCalculator {
                 this.setA.clear();
                 this.setB.clear();
 
-                beforeInputPrintInformation();
+                ConsoleUserInferface.beforeInputPrintInformation();
                 makeTwoSetAndOperator(sc.nextLine());
-                printCalculationResult(calculateResult());
+                TreeSet originA = new TreeSet(setA);
+                ConsoleUserInferface.printCalculationResult(calculateResult(), originA, setB, operator);
 
-                if (! isUserWantToBeContinued(sc)) {
+                if (! ConsoleUserInferface.isUserWantToBeContinued(sc)) {
                     sc.close();
                     break;
                 }
@@ -35,16 +36,7 @@ public class SetCalculator {
         }
     }
 
-    public boolean isUserWantToBeContinued(Scanner sc) {
-        System.out.println("계속 입력하시겠습니까? NO 입력하시면 종료 아니면 TO BE CONTINUED ");
-        String continueFlag = sc.nextLine().trim().toLowerCase();
-        if (continueFlag.equals("no")) {
-            return false;
-        }
-        return true;
-    }
-
-    public TreeSet<Integer> calculateResult() {
+    private TreeSet<Integer> calculateResult() {
         switch (this.operator) {
             case '+':
                 this.setA.addAll(this.setB);
@@ -60,41 +52,7 @@ public class SetCalculator {
         }
     }
 
-    public void printCalculationResult(TreeSet<Integer> resultSet) {
-
-        System.out.println("-------------------------------");
-        System.out.println("집합 A : " + this.setA);
-        System.out.println("집합 B : " + this.setB);
-        System.out.println("-------------------------------");
-
-        switch (this.operator) {
-            case '+':
-                System.out.println("합집합 : " + resultSet);
-                break;
-            case '*':
-                System.out.println("교집합 : " + resultSet);
-                break;
-            case '-':
-                System.out.println("차집합 : " + resultSet);
-                break;
-        }
-
-        System.out.println("-------------------------------");
-    }
-
-    public static void beforeInputPrintInformation() {
-        System.out.println();
-        System.out.println("0 이상의 정수 집합 2개를 만들고 두 개의 합집합, 교집합, 차집합을 구하려고 합니다.");
-        System.out.println("0 이상의 정수 집합 2개와 연산자를 아래의 형식에 맞게 입력해주세요 \n");
-        System.out.println("------------------------------------------------------------");
-        System.out.println("      [입 력 형 식 : 쉼표는 필수, 공백은 선택적]                  \n");
-        System.out.println(" 집합 입력 형식 :  [1,2,3]   or   [17, 42, 9, 53, 108]        \n");
-        System.out.println(" 전체 입력 형식 :  [1, 2, 3] * [3,  5,  7]                    \n");
-        System.out.println("------------------------------------------------------------");
-        System.out.println("위의 전체 입력 형식에 맞게 입력해주세요 [ 연산자 : + - * ]");
-    }
-
-    public void makeTwoSetAndOperator(String line) throws NegativeIntegerException, IllegalArgumentException {
+    private void makeTwoSetAndOperator(String line) throws NegativeIntegerException, IllegalArgumentException {
         char[] lineChr = line.toCharArray();
 
         boolean openBracket = false;
@@ -136,7 +94,7 @@ public class SetCalculator {
         }
     }
 
-    public void makeOneNumAndAddToSet(StringBuilder sb, boolean isSetBStart) throws NegativeIntegerException {
+    private void makeOneNumAndAddToSet(StringBuilder sb, boolean isSetBStart) throws NegativeIntegerException {
         int num = Integer.parseInt(sb.toString());
 
         if (num < 0) {
