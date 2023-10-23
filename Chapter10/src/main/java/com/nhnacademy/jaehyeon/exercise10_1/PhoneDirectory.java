@@ -11,6 +11,8 @@ public class PhoneDirectory {
     static Pattern pattern;
     private final TreeMap<String, String> phoneMap;
 
+
+
     public PhoneDirectory() {
         phoneMap = new TreeMap<>();
     }
@@ -80,6 +82,10 @@ public class PhoneDirectory {
         } catch (NothingLookingForException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public TreeMap<String, String> getPhoneMap() {
+        return phoneMap;
     }
 
 
