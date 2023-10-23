@@ -1,4 +1,4 @@
-package org.example;
+package org.example.gaeun;
 
 import org.example.gaeun.parseFile.UpgradeDictionary;
 import org.junit.jupiter.api.Assertions;
