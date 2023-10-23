@@ -12,7 +12,6 @@ import java.util.regex.Pattern;
  */
 public class PhoneDirectory {
 
-
     private final Map<String, String> nameAndNumberDataMap;
 
     /**
