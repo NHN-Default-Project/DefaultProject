@@ -7,7 +7,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Exercise10_1 {
-    static final Pattern pattern = Pattern.compile("^[a-zA-Z가-힣]* (01[016789]\\-\\d{3,4}\\-\\d{4})*$");
 
     public static void main(String[] args) {
         PhoneDirectory phoneDirectory = new PhoneDirectory();
@@ -34,6 +33,7 @@ public class Exercise10_1 {
      * 사용자가 형식에 맞춰서 입력했는지 확인
      */
     public static void isCheckDataEntryFormat(String inputData) throws DataEntryFormatException {
+        Pattern pattern = Pattern.compile("^[a-zA-Z가-힣]* (01[016789]\\-\\d{3,4}\\-\\d{4})*$");
         Matcher matcher = pattern.matcher(inputData);
         if (!isDataEntryFormat(matcher)) {
             throw new DataEntryFormatException("데이터 형식을 맞추지 않았습니다.");

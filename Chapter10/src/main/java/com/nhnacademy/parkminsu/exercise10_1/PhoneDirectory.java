@@ -11,6 +11,8 @@ import java.util.regex.Pattern;
  * 특정 이름에 대한 전화번호를 찾거나, 주어진 이름에 대한 전화번호를 지정하는 것이 가능합니다.
  */
 public class PhoneDirectory {
+    static final Pattern numberPattern = Pattern.compile("(01[01678]\\-\\d{3,4}\\-\\d{4})*$");
+    static final Pattern namePattern = Pattern.compile("^[a-zA-Z가-힣]*$");
 
     private final Map<String, String> nameAndNumberDataMap;
 
@@ -58,8 +60,7 @@ public class PhoneDirectory {
      * 사용자가 형식에 맞춰서 입력했는지 확인
      */
     public void isCheckNameData(String inputData) throws DataEntryFormatException {
-        Pattern pattern = Pattern.compile("^[a-zA-Z가-힣]*$");
-        Matcher matcher = pattern.matcher(inputData);
+        Matcher matcher = this.namePattern.matcher(inputData);
 
         if (!isDataEntryFormat(matcher)) {
             throw new DataEntryFormatException("이름을 잘못 입력하셨습니다.");
@@ -67,8 +68,7 @@ public class PhoneDirectory {
     }
 
     public void isCheckNumberData(String inputData) throws DataEntryFormatException {
-        Pattern pattern = Pattern.compile("(01[01678]\\-\\d{3,4}\\-\\d{4})*$");
-        Matcher matcher = pattern.matcher(inputData);
+        Matcher matcher = this.numberPattern.matcher(inputData);
 
         if (!isDataEntryFormat(matcher)) {
             throw new DataEntryFormatException("전화번호를 잘못 입력하셨습니다.");
