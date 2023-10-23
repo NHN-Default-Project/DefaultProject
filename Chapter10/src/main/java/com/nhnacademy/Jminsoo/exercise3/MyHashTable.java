@@ -16,7 +16,7 @@ public class MyHashTable {
     }
 
     public int convertIndexByHash(int hashcode) {
-        return hashcode % this.nodeList.length;
+        return (hashcode & 0x7FFFFFFF) % this.nodeList.length;
     }
 
 
@@ -43,7 +43,6 @@ public class MyHashTable {
     }
 
     public int size() {
-        int count = 0;
         for (LinkedList<Node> list : this.nodeList) {
             if (list != null) {
                 return list.size();
