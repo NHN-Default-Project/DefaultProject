@@ -26,7 +26,7 @@ public class PhoneDirectory {
 
     }
 
-    public boolean verifyPhoneNumber(String number) {
+    private boolean verifyPhoneNumber(String number) {
         try {
             String phoneNumberPattern = "^01[016789]-\\d{3,4}-\\d{4}$";
 
@@ -43,7 +43,7 @@ public class PhoneDirectory {
         }
     }
 
-    public boolean verifyName(String name) {
+    private boolean verifyName(String name) {
         String namePattern = "^[a-zA-Z가-힣]+$";
         pattern = Pattern.compile(namePattern);
         Matcher matcher = pattern.matcher(name);
@@ -72,7 +72,7 @@ public class PhoneDirectory {
 
     }
 
-    public void isExist(String find) {
+    private void isExist(String find) {
         try {
             if (find == null) {
                 throw new NothingLookingForException("찾기를 원하시는 항목이 없습니다.");
