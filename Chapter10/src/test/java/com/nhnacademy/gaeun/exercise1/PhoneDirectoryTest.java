@@ -11,8 +11,8 @@ class PhoneDirectoryTest {
     @DisplayName("find test")
     void findTest() {
         PhoneDirectory kaeunPhoneDirectory = new PhoneDirectory();
-        kaeunPhoneDirectory.putNumber("엄마", "010-4610-0303");
-        kaeunPhoneDirectory.putNumber("아빠", "010-2680-8949");
+        kaeunPhoneDirectory.putNumber("엄마", "010-4610-0000");
+        kaeunPhoneDirectory.putNumber("아빠", "010-2680-0000");
 
         assertEquals(kaeunPhoneDirectory.find("엄마"), 1);
         assertEquals(kaeunPhoneDirectory.find("동생"), -1);
@@ -25,8 +25,8 @@ class PhoneDirectoryTest {
         kaeunPhoneDirectory.putNumber("엄마", "010-4610-0303");
         kaeunPhoneDirectory.putNumber("아빠", "010-2680-8949");
 
-        assertEquals(kaeunPhoneDirectory.getNumber("엄마"), "010-4610-0303");
-        assertEquals(kaeunPhoneDirectory.getNumber("아빠"), "010-2680-8949");
+        assertEquals(kaeunPhoneDirectory.getNumber("엄마"), "010-1234-1234");
+        assertEquals(kaeunPhoneDirectory.getNumber("아빠"), "010-0000-0000");
         assertThrows(IllegalArgumentException.class, () -> kaeunPhoneDirectory.getNumber("개구리"));
     }
 
@@ -34,8 +34,8 @@ class PhoneDirectoryTest {
     @DisplayName("putNumber test")
     void putNumberTest() {
         PhoneDirectory kaeunPhoneDirectory = new PhoneDirectory();
-        kaeunPhoneDirectory.putNumber("엄마", "010-4610-0303");
-        kaeunPhoneDirectory.putNumber("아빠", "010-2680-8949");
+        kaeunPhoneDirectory.putNumber("엄마", "010-1234-1234");
+        kaeunPhoneDirectory.putNumber("아빠", "010-0000-0000");
 
         assertEquals(kaeunPhoneDirectory.getTreeMapData().size(), 2);
         assertThrows(IllegalArgumentException.class, () -> kaeunPhoneDirectory.putNumber("", ""));
