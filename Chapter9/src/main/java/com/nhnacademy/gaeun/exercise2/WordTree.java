@@ -9,11 +9,11 @@ package com.nhnacademy.gaeun.exercise2;
  *  are output.  The program ends when the user enters an empty string.
  */
 public class WordTree {
-    protected static class TreeNode {
-        protected String item;
-        protected TreeNode left;
-        protected TreeNode right;
-        protected TreeNode(String str) {
+    static class TreeNode {
+        String item;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(String str) {
             item = str;
         }
     }

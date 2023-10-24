@@ -25,7 +25,9 @@ public class Fibonacci {
         if (saveFibonacciVal.containsKey(bigInteger)) {
             return saveFibonacciVal.get(bigInteger);
         }
-        return fibonacci(bigInteger.subtract(BigInteger.ONE), saveFibonacciVal)
+        BigInteger result = fibonacci(bigInteger.subtract(BigInteger.ONE), saveFibonacciVal)
                 .add(fibonacci(bigInteger.subtract(BigInteger.TWO), saveFibonacciVal));
+        saveFibonacciVal.put(bigInteger, result);
+        return result;
     }
 }

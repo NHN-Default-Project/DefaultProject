@@ -1,4 +1,4 @@
-package org.example;
+package org.example.gaeun;
 
 import org.example.gaeun.parseFile.CsvDictionary;
 import org.junit.jupiter.api.Assertions;
