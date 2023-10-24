@@ -3,113 +3,87 @@ package com.nhnacademy.yunhwa.exercise9_5;
 
 import java.util.*;
 
-public class TreeNodes<T> {
+public class TreeNodes<T extends Comparable<T>> {
+    private static class TreeNode<T> {
+        T item;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(T realNum) {
+            item = realNum;
+        }
+    }
+
     List<Integer> depthList;
 
     public TreeNodes() {
         this.depthList = new ArrayList<>();
     }
 
-    private static class TreeNode<T> {
-        T item;      // The data in this node.
-        TreeNode left;    // Pointer to left subtree.
-        TreeNode right;   // Pointer to right subtree.
 
-        TreeNode(T realNum) {
-            // Constructor.  Make a node containing the specified string.
-            // Note that left and right pointers are initially null.
-            item = realNum;
-        }
-    }  // end nested class TreeNode
 
-    private TreeNode root;  // Pointer to the root node in a binary tree.
-    // This tree is used in this program as a
-    // binary sort tree.  When the tree is empty,
-    // root is null (as it is initially).
+    private TreeNode root;
 
     public TreeNode getRoot() {
         return root;
     }
 
 
-    /**
-     * Add the item to the binary sort tree to which the global variable
-     * "root" refers.  (Note that root can't be passed as a parameter to
-     * this routine because the value of root might change, and a change
-     * in the value of a formal parameter does not change the actual parameter.)
-     */
     public void treeInsert(T newItem) {
         if (root == null) {
-            // The tree is empty.  Set root to point to a new node containing
-            // the new item.  This becomes the only node in the tree.
+
             root = new TreeNode(newItem);
             return;
         }
-        TreeNode runner;  // Runs down the tree to find a place for newItem.
-        runner = root;   // Start at the root.
+        TreeNode runner;
+        runner = root;
         while (true) {
-            if (((Comparable<T>) newItem).compareTo((T) runner.item) < 0) {
-                // Since the new item is less than the item in runner,
-                // it belongs in the left subtree of runner.  If there
-                // is an open space at runner.left, add a new node there.
-                // Otherwise, advance runner down one level to the left.
+            if ((newItem.compareTo((T) runner.item)) < 0) {
+
                 if (runner.left == null) {
                     runner.left = new TreeNode(newItem);
-                    return;  // New item has been added to the tree.
+                    return;
                 } else
                     runner = runner.left;
             } else {
-                // Since the new item is greater than or equal to the item in
-                // runner it belongs in the right subtree of runner.  If there
-                // is an open space at runner.right, add a new node there.
-                // Otherwise, advance runner down one level to the right.
+
                 if (runner.right == null) {
                     runner.right = new TreeNode(newItem);
-                    return;  // New item has been added to the tree.
+                    return;
                 } else
                     runner = runner.right;
             }
-        } // end while
-    }  // end treeInsert()
+        }
+    }
 
-    /**
-     * Return true if item is one of the items in the binary
-     * sort tree to which root points.  Return false if not.
-     */
-    boolean treeContains(TreeNode root, T item) {
+    public boolean treeContains(TreeNode root, T item) {
         if (root == null) {
-            // Tree is empty, so it certainly doesn't contain item.
             return false;
         } else if (item.equals(root.item)) {
-            // Yes, the item has been found in the root node.
             return true;
-        } else if (((Comparable<T>) item).compareTo((T) root.item) < 0) {
-            // If the item occurs, it must be in the left subtree.
+        } else if (item.compareTo((T) root.item) < 0) {
             return treeContains(root.left, item);
         } else {
-            // If the item occurs, it must be in the right subtree.
             return treeContains(root.right, item);
         }
-    }  // end treeContains()
+    }
 
-
-    /**
-     * Print the items in the tree in inorder, one item to a line.
-     * Since the tree is a sort tree, the output will be in increasing order.
-     */
     public void treeList(TreeNode node) {
         if (node != null) {
-            treeList(node.left);             // Print items in left subtree.
-            System.out.println("  " + node.item);  // Print item in the node.
-            treeList(node.right);            // Print items in the right subtree.
+            treeList(node.left);
+            System.out.println("  " + node.item);
+            treeList(node.right);
         }
-    } // end treeList()
+    }
 
     public void makeDepthListOfAllTheLeaves(TreeNode node, int count, int depth) {
         if (node != null) {
-            this.depthList.add(depth);
-            makeDepthListOfAllTheLeaves(node.left, count++, depth + 1);
-            makeDepthListOfAllTheLeaves(node.right, count++, depth + 1);
+            if (node.left == null && node.right == null) { // 리프 노드일 때 추가
+                this.depthList.add(depth);
+            } else {
+                makeDepthListOfAllTheLeaves(node.left, count + 1, depth + 1);
+                makeDepthListOfAllTheLeaves(node.right, count + 1, depth + 1);
+            }
         }
     }
 
@@ -127,10 +101,9 @@ public class TreeNodes<T> {
 
     public void printTreeList(TreeNode node) {
         if (node != null) {
-            printTreeList(node.left);             // Print items in left subtree.
-            System.out.println("  " + node.item);  // Print item in the node.
-            printTreeList(node.right);            // Print items in the right subtree.
+            printTreeList(node.left);
+            System.out.println("  " + node.item);
+            printTreeList(node.right);
         }
-    } // end treeList()
-
+    }
 }
