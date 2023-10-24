@@ -2,9 +2,19 @@ package com.nhnacademy.gaeun.exercise5;
 
 import java.util.Random;
 
-public class BinaryTree {
-    private Node root;
-    private final int SIZE = 1023;
+public class BinaryTree<T extends Comparable> {
+    private static class Node<T> {
+        T value;
+        Node<T> left;
+        Node<T> right;
+
+        public Node(T value) {
+            this.value = value;
+            this.right = null;
+            this.left = null;
+        }
+    }
+    private Node<T> root;
     private int sum;
     private int countNode;
     private int maxDepth;
@@ -32,15 +42,9 @@ public class BinaryTree {
         System.out.println("모든 잎의 최대 깊이: " + maxDepth);
     }
 
-    public void treeInsert() {
-        Random random = new Random();
-        for (int i = 0; i < SIZE; i++) {
-            add(random.nextDouble() * 1024);
-        }
-    }
 
     public void add(double value) {
-        Node newNode = new Node(value);
+        Node<T> newNode = new Node(value);
 
         if (root == null) {
             root = newNode;
@@ -49,31 +53,30 @@ public class BinaryTree {
         }
     }
 
-    public  Node addNode(Node node, Node newNode) {
+    private  Node<T> addNode(Node<T> node, Node<T> newNode) {
         if (node == null) {
             return newNode;
         }
-        if (node.compareTo(newNode) > 0) {
+        if (node.value.compareTo(newNode.value) > 0) {
             node.left = addNode(node.left, newNode);
-        } else if (node.compareTo(newNode) < 0) {
+        } else if (node.value.compareTo(newNode.value) < 0) {
             node.right = addNode(node.right, newNode);
         }
         return node;
     }
 
 
-    public int calLeafNodeCount(Node node) { //노드 총 개수
-        countNode++;
+    private void calLeafNodeCount(Node<T> node) { //노드 총 개수
+        this.countNode++;
         if (node.left != null) {
             calLeafNodeCount(node.left);
         }
         if (node.right != null) {
             calLeafNodeCount(node.right);
         }
-        return countNode;
     }
 
-    public int sumLeafNodeDepth(Node node, int depth) { //노드 깊이의 합
+    private void sumLeafNodeDepth(Node<T> node, int depth) { //노드 깊이의 합
         if (node.left != null) {
             sumLeafNodeDepth(node.left, depth + 1);
         }
@@ -82,10 +85,9 @@ public class BinaryTree {
             sumLeafNodeDepth(node.right, depth + 1);
         }
         sum += depth;
-        return depth;
     }
 
-    public int calMaxDepth(Node node, int depth) { //최대 깊이 계산
+    private void calMaxDepth(Node<T> node, int depth) { //최대 깊이 계산
         if (node.left == null && node.right == null) {
             if (maxDepth < depth) {
                 maxDepth = depth;
@@ -97,6 +99,5 @@ public class BinaryTree {
         if (node.right != null) {
             calMaxDepth(node.right, depth + 1);
         }
-        return depth;
     }
 }

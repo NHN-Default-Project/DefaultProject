@@ -4,4 +4,4 @@ nd write the list to another file. In that exercise,
 you were asked to use an ArrayList<String> to store the words.
 Write a new version of the same program that stores the words in a binary sort tree instead of
 in an arraylist. You can use the binary sort tree routines from SortTreeDemo.java,
-which was discussed in Subsection 9.4.2.
+which was discussed in Subsection the

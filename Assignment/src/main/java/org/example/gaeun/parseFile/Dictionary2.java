@@ -1,8 +1,5 @@
-<<<<<<<< HEAD:Assignment/src/main/java/org/example/gaeun/parseFile/Dictionary2.java
+
 package org.example.gaeun.parseFile;
-========
-package org.example.jaehyeon.dict;
->>>>>>>> main:Assignment/src/main/java/org/example/jaehyeon/dict/Dictionary2.java
 
 import java.util.List;
 

@@ -48,6 +48,8 @@ public class Exercise9_6_7 {
         abstract void printStackCommands();
         abstract ExpNode derivative();
         abstract void printInfix();
+
+        abstract void print();
     }
 
     /**
@@ -76,6 +78,11 @@ public class Exercise9_6_7 {
         }
 
         @Override
+        void print() {
+            System.out.printf("(" + number + ")");
+        }
+
+        @Override
         ExpNode derivative() {
             derivative = new ConstNode(0);
             return derivative;
@@ -84,7 +91,7 @@ public class Exercise9_6_7 {
 
     public static class VariableNode extends ExpNode {
         double number;  // The number.
-        ExpNode derivative;
+        ExpNode derivative = null;
 
         VariableNode() {
             // Construct a ConstNode containing the specified number.
@@ -108,6 +115,10 @@ public class Exercise9_6_7 {
         ExpNode derivative() {
             derivative = new ConstNode(1);
             return derivative;
+        }
+        @Override
+        void print() {
+            System.out.printf("( x )");
         }
     }
 
@@ -166,12 +177,14 @@ public class Exercise9_6_7 {
         ExpNode derivative() {
             switch (op) {
                 case '+':
-                    return new ConstNode(left.derivative().value(value) + right.derivative().value(value));
+                    return new BinOpNode('+', new ConstNode(left.derivative().value(value)),
+                            new ConstNode(right.derivative().value(value)));
                 case '-':
                     return new ConstNode(left.derivative().value(value) - right.derivative().value(value));
                 case '*':
-                    return new ConstNode(left.value(value) * right.derivative().value(value)
-                            + right.value(value) * left.derivative().value(value));
+                    BinOpNode A = new BinOpNode('*', left, right.derivative());
+                    BinOpNode B = new BinOpNode('*', right, left.derivative());
+                    return new BinOpNode('+', A, B);
                 case '/':
                     return new ConstNode((right.derivative().value(value) - left.value(value) * right.derivative().value(value))
                             / (right.value(value) * right.value(value)));
@@ -183,11 +196,22 @@ public class Exercise9_6_7 {
         @Override
         void printInfix() {
             System.out.printf("(");
-            left.printInfix();
-            System.out.printf(" %s ", op);
-            right.printInfix();
-            System.out.printf(")");
+            if(left instanceof ConstNode) {
+                left.print();
+            } else {
+                left.printInfix();
             }
+            System.out.printf(" %s ", op);
+            if(right instanceof ConstNode) {
+                right.print();
+            } else {
+                right.printInfix();
+            }
+            System.out.printf(")");
+        }
+        @Override
+        void print() {
+        }
     }/**
      * An expression node to represent a unary minus operator.
      */
@@ -227,6 +251,11 @@ public class Exercise9_6_7 {
         void printInfix() {
             derivative = new ConstNode(value(0));
         }
+
+        @Override
+        void print() {
+            System.out.printf("(" + neg + ")");
+        }
     }
 
 
@@ -265,7 +294,7 @@ public class Exercise9_6_7 {
                     throw new ParseError("Extra data after end of expression.");
                 TextIO.getln();
                 System.out.println("\nValue is " + exp.value(xValue));
-                System.out.println("\nValue is " + exp.derivative().value(xValue));
+                System.out.println("\nDerivative value is " + exp.derivative().value(xValue));
                 System.out.println("\nOrder of postfix evaluation is:\n");
                 exp.printStackCommands();
                 exp.printInfix();
