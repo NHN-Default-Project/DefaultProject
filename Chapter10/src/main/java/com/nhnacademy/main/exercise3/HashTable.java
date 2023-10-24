@@ -52,7 +52,7 @@ public class HashTable {
             data[index].add(new Node(key, value));
         } else {
             for (Node node : data[index]) {
-                if (node.key.hashCode() == key.hashCode()) {
+                if (node.key.equals(key)) {
                     data[index].remove(node);
                     data[index].add(new Node(key, value));
                     return;
@@ -78,8 +78,8 @@ public class HashTable {
 
     public boolean containsKey(String key) {
         int index = getIndex(key);
-        if (data[index] != null) {
-            for (Node node : data[index]) {
+        if (this.data[index] != null) {
+            for (Node node : this.data[index]) {
                 if (node.key.equals(key)) {
                     return true;
                 }
@@ -90,7 +90,7 @@ public class HashTable {
 
     public int size() {
         int size = 0;
-        for (List list : data) {
+        for (List list : this.data) {
             if (list != null) {
                 size += list.size();
             }
