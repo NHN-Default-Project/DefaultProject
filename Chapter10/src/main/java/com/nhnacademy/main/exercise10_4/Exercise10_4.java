@@ -20,15 +20,6 @@ import java.util.stream.IntStream;
 public class Exercise10_4 {
 
     @Test
-    @DisplayName("predicates Test")
-    void predicatesTest() {
-        removeTest();
-        collectTest();
-        retainTest();
-        findTest();
-    }
-
-    @Test
     @DisplayName("remove Test")
     void removeTest() { // 짝수인 것들 제거
         List<Integer> integerList = IntStream.range(1, 101).boxed().collect(Collectors.toList());
