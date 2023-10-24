@@ -28,7 +28,7 @@ public class FileRead {
                 List<String> wordOneLine = Arrays.stream(line.split(" "))
                         .map(x -> x.replaceAll("[^a-zA-Z0-9]", ""))
                         .collect(Collectors.toList());
-                wordOneLine.stream()
+                wordOneLine
                         .forEach(System.out::println);
             }
         } catch (IOException e) {

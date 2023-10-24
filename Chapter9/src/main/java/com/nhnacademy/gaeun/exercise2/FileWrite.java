@@ -6,29 +6,25 @@ import java.io.IOException;
 public class FileWrite {
 
     private final String path;
-    private WordTree wordTree;
 
     public FileWrite(String path) {
         this.path = path;
-        wordTree = new WordTree();
     }
 
     public void writeToFile(WordTree wordTree) {
-        try {
-            FileWriter fileWriter = new FileWriter(path, true);
-            treeList(wordTree.getRoot(), fileWriter);
-            fileWriter.close();
+        try (FileWriter fileWriter = new FileWriter(path, true)){
+            writeNodeToFile(wordTree.getRoot(), fileWriter);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public static void treeList(WordTree.TreeNode node, FileWriter fileWriter) throws IOException {
+    public void writeNodeToFile(WordTree.TreeNode node, FileWriter fileWriter) throws IOException {
         if (node != null) {
-            treeList(node.left, fileWriter);
+            writeNodeToFile(node.left, fileWriter);
             fileWriter.write(node.item);
             fileWriter.write("\n");// Print item in the node.
-            treeList(node.right, fileWriter);            // Print items in the right subtree.
+            writeNodeToFile(node.right, fileWriter);            // Print items in the right subtree.
         }
     }
 }
