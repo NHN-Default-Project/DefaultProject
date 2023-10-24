@@ -24,7 +24,8 @@ public class SetCalculator {
                 consoleUI.beforeInputPrintInformation();
 
                 String line = consoleUI.userInput(br);
-                if (!makeSets(line) || !makeOperators(line)) {
+
+                if (!makeSets(line) || !makeOperators(line)) { // try with resources 사용하게 되면서, catch를 메서드 내부에서 잡게 되면서 continue 로 변경
                     continue;
                 }
 
@@ -60,7 +61,9 @@ public class SetCalculator {
         return null;
     }
 
-    private boolean makeSets(String line) {
+
+    private boolean makeSets(String line) { // 원래 리턴 void 타입 -> try with resources 사용하게 되면서, 버퍼드리더 catch로 넘어가지 않기 위해 boolean 타입으로 변환
+        boolean result = false;
         try {
             //  [1,2,3]  [3,5,7] ... 만들어 주기
             List<String> tmpSets = Arrays.stream(line.split("\\+|\\*|-"))
@@ -93,14 +96,15 @@ public class SetCalculator {
                     setQueue.add(set);
                 }
             }
-            return true;
+            result = true;
         } catch (NegativeIntegerException | IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return false;
         }
+        return result;
     }
 
-    private boolean makeOperators(String line) {
+    private boolean makeOperators(String line) { // 원래 리턴 void 타입 -> try with resources 사용하게 되면서, 버퍼드리더 catch로 넘어가지 않기 위해 boolean 타입으로 변환
+        boolean result = false;
         try {
             line = line.replace(" ", "");
 
@@ -120,13 +124,10 @@ public class SetCalculator {
                     throw new IllegalArgumentException("입력값에 이상한 값이 들어왔습니다. 형식에 맞춰서 다시 적어주세요");
                 }
             }
-            return true;
+            result = true;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return false;
         }
+        return result;
     }
-
-
-
 }
