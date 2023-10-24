@@ -11,8 +11,8 @@ import java.util.regex.Pattern;
  * 특정 이름에 대한 전화번호를 찾거나, 주어진 이름에 대한 전화번호를 지정하는 것이 가능합니다.
  */
 public class PhoneDirectory {
-    static final Pattern numberPattern = Pattern.compile("^01(?:0|1|[6-9])-(?:\\d{3}|\\d{4})-\\d{4}$");
-    static final Pattern namePattern = Pattern.compile("^[a-zA-Z가-힣]*$"); //
+    private static final Pattern numberPattern = Pattern.compile("^01(?:0|1|[6-9])-(?:\\d{3}|\\d{4})-\\d{4}$");
+    private static final Pattern namePattern = Pattern.compile("^[a-zA-Z가-힣]*$"); //
 
     private final Map<String, String> nameAndNumberDataMap;
 
@@ -20,7 +20,7 @@ public class PhoneDirectory {
      * 생성자는 초기에 비어 있는 전화번호 목록을 만듭니다.
      */
     public PhoneDirectory() {
-        nameAndNumberDataMap = new TreeMap<>();
+        this.nameAndNumberDataMap = new TreeMap<>();
     }
 
 

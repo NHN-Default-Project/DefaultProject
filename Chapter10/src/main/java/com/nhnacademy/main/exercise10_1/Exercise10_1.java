@@ -32,7 +32,7 @@ public class Exercise10_1 {
     /**
      * 사용자가 형식에 맞춰서 입력했는지 확인
      */
-    public static void isCheckDataEntryFormat(String inputData) throws DataEntryFormatException {
+    private static void isCheckDataEntryFormat(String inputData) throws DataEntryFormatException {
         Pattern pattern = Pattern.compile("^[a-zA-Z가-힣]* (01[016789]\\-\\d{3,4}\\-\\d{4})*$");
         Matcher matcher = pattern.matcher(inputData);
         if (!isDataEntryFormat(matcher)) {
@@ -40,7 +40,7 @@ public class Exercise10_1 {
         }
     }
 
-    public static boolean isDataEntryFormat(Matcher matcher) {
+    private static boolean isDataEntryFormat(Matcher matcher) {
         return matcher.find();
     }
 
