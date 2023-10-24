@@ -1,100 +1,132 @@
 package com.nhnacademy.yunhwa.exercise10_2;
 
-import java.util.NoSuchElementException;
-import java.util.Scanner;
-import java.util.TreeSet;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static com.nhnacademy.yunhwa.exercise10_2.CheckingStandards.*;
 
 public class SetCalculator {
-    private TreeSet<Integer> setA;
-    private TreeSet<Integer> setB;
-    private char operator;
+    private final Queue<TreeSet<Integer>> setQueue;
+    private final Queue<Character> operatorQueue;
 
     public SetCalculator() {
-        this.setA = new TreeSet<>();
-        this.setB = new TreeSet<>();
+        this.setQueue = new LinkedList<>();
+        this.operatorQueue = new LinkedList<>();
     }
 
     public void run() {
-        while (true) {
-            Scanner sc = new Scanner(System.in);
-            try {
-                this.setA.clear();
-                this.setB.clear();
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in));) {
+            while (true) {
+                ConsoleUserInterface consoleUI = new ConsoleUserInterface();
+                consoleUI.beforeInputPrintInformation();
 
-                ConsoleUserInterface consoleUserInterface = new ConsoleUserInterface();
+                String line = consoleUI.userInput(br);
+                if (!makeSets(line) || !makeOperators(line)) {
+                    continue;
+                }
 
-                consoleUserInterface.beforeInputPrintInformation();
-                makeTwoSetAndOperator(sc.nextLine());
-
-                TreeSet<Integer> originA = new TreeSet<>(setA);
-                TreeSet<Integer> resultSet = CalculateSet.calculateResult(setA, setB, operator);
-
-                ConsoleUserInterface.printCalculationResult(resultSet, originA, setB, operator);
-
-                if (! consoleUserInterface.isUserWantToBeContinued(sc)) {
-                    sc.close();
+                System.out.println("계산 결과 집합 : " + calculateAllSets());
+                if (!consoleUI.isUserWantToBeContinued(br)) {
                     break;
                 }
-            } catch (NegativeIntegerException | IllegalArgumentException e) {
-                System.out.println(e.getMessage());
             }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
 
-    private void makeTwoSetAndOperator(String line) throws NegativeIntegerException, IllegalArgumentException {
-        char[] lineChr = line.toCharArray();
-
-        boolean openBracket = false;
-        boolean isSetBStart = false;
-
-        StringBuilder sb = new StringBuilder();
-
-        for (char c : lineChr) {
-            if (c == '[') {
-                openBracket = true;
-
-            } else if (c == ']') {
-                makeOneNumAndAddToSet(sb, isSetBStart);
-                sb.setLength(0);
-                openBracket = false;
-
-            } else if (c == '+' || c == '*' || c == '-') {
-                if (openBracket) { // 집합 안의 값이 음수인 경우 -> 존재하면 안되는 경우
-                    sb.append(c); // 일단 부호 넣어주고 num 만들어지는 부분에서 처리
-                } else {
-                    this.operator = c;
-                    isSetBStart = true;
-                }
-
-            } else if (Character.isDigit(c)) {
-                if (openBracket) {
-                    sb.append(c);
-                }
-
-            } else if (c == ',') {
-                if (openBracket) {
-                    makeOneNumAndAddToSet(sb, isSetBStart);
-                    sb.setLength(0);
-                }
-
-            } else if (c != ' ') {
-                throw new IllegalArgumentException("잘못된 문자가 들어왔습니다. 식을 잘못 적으신 것 같아요. 입력 형식에 맞춰 다시 입력해주세요");
+    private Set<Integer> calculateAllSets() {
+        TreeSet<Integer> setA;
+        try {
+            if (setQueue.peek() != null) {
+                setA = setQueue.poll(); // 처음 집합 미리 꺼내기
+            } else {
+                throw new NoSuchElementException("set queue 에 아무 값이 존재하지 않습니다. 연산을 종료합니다.");
             }
+
+            while (setQueue.peek() != null && operatorQueue.peek() != null) {
+                char operator = operatorQueue.poll();
+                TreeSet<Integer> setB = setQueue.poll();
+                setA = CalculateSet.calculateResult(setA, setB, operator);
+            }
+            return setA;
+
+        } catch (NoSuchElementException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    private boolean makeSets(String line) {
+        try {
+            //  [1,2,3]  [3,5,7] ... 만들어 주기
+            List<String> tmpSets = Arrays.stream(line.split("\\+|\\*|-"))
+                    .map(string -> string.replace(" ", ""))
+                    .collect(Collectors.toList());
+
+            checkValidInput(line);
+            checkNegativeIntegerBySetCount(line, tmpSets);
+
+            // []로 감싸진 숫자 문자열들 -> int로 만들어 set에 넣어주기
+            for (String tmpSet : tmpSets) {
+                TreeSet<Integer> set = new TreeSet<>();
+
+                String strNums = tmpSet
+                        .replace("[", "")
+                        .replace("]", "");
+
+                if (!strNums.contains(",")) { // 숫자 하나만 존재하는 집합
+                    int num = Integer.parseInt(strNums);
+                    checkNegativeInteger(num);
+                    set.add(num);
+                    setQueue.add(set);
+                } else { // 숫자 여러 개 존재하는 집합
+                    String[] tmpNums = strNums.split(",");
+                    for (String strNum : tmpNums) {
+                        int num = Integer.parseInt(strNum);
+                        checkNegativeInteger(num);
+                        set.add(num);
+                    }
+                    setQueue.add(set);
+                }
+            }
+            return true;
+        } catch (NegativeIntegerException | IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return false;
         }
     }
 
-    private void makeOneNumAndAddToSet(StringBuilder sb, boolean isSetBStart) throws NegativeIntegerException {
-        int num = Integer.parseInt(sb.toString());
+    private boolean makeOperators(String line) {
+        try {
+            line = line.replace(" ", "");
 
-        if (num < 0) {
-            throw new NegativeIntegerException("음의 정수가 입력되었습니다. 0 이상의 정수만 처리하는 집합 계산기입니다. 0 이상의 정수로 다시 입력해주세요");
-        }
+            char[] lineChr = line.toCharArray();
 
-        if (isSetBStart) {
-            this.setB.add(num);
-        } else {
-            this.setA.add(num);
+            boolean openBracket = false;
+            for (char c : lineChr) {
+                if (c == '[') {
+                    openBracket = true;
+                } else if (c == ']') {
+                    openBracket = false;
+                } else if (c == '+' || c == '*' || c == '-') {
+                    if (!openBracket) {
+                        operatorQueue.add(c);
+                    }
+                } else if (c != ',' && !Character.isDigit(c)) {
+                    throw new IllegalArgumentException("입력값에 이상한 값이 들어왔습니다. 형식에 맞춰서 다시 적어주세요");
+                }
+            }
+            return true;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return false;
         }
     }
+
+
 
 }

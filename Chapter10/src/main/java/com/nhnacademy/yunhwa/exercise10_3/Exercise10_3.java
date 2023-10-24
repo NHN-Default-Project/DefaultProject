@@ -35,13 +35,16 @@ public class Exercise10_3 {
     public void getTest() {
         HashMap hashMap = new HashMap(CAPACITY);
         HashMap finalHashMap = makeHashMap(hashMap);
-        Assert.assertTrue(Arrays.stream(hashMap.getBuckets())
-                .map(linkedList -> linkedList.stream()
-                        .map(node -> finalHashMap
-                                .get(node.getKey())
-                                .equals(node.getValue()))
-                        .filter(x -> x))
-                .count() == hashMap.getBuckets().length);
+
+        Assert.assertTrue(finalHashMap.get("Angela Merkel").equals("010-2345-6789"));
+
+//        Assert.assertTrue(Arrays.stream(hashMap.getBuckets())
+//                .map(linkedList -> linkedList.stream()
+//                        .map(node -> finalHashMap
+//                                .get(node.getKey())
+//                                .equals(node.getValue()))
+//                        .filter(x -> x))
+//                .count() == hashMap.getBuckets().length);
     }
 
     @Test
