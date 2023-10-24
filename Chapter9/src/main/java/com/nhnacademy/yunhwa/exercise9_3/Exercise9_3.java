@@ -17,6 +17,7 @@ public class Exercise9_3 {
         LinkedList linkedList = makeRandomIntLinkedList(size, randomMax);
         System.out.println("--------원래 LinkedList--------");
         linkedList.printList();
+
         LinkedList reversedLinkedList = linkedList.reverseList();
         System.out.println("--------순서 정반대로 복사한 LinkedList--------");
         reversedLinkedList.printList();
@@ -27,7 +28,6 @@ public class Exercise9_3 {
 
         int size = 0;
         int randomMax = 0;
-
 
         while (true) {
             try {
