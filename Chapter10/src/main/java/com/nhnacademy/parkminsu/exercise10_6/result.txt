@@ -1,0 +1,16 @@
+An example in Subsection 10.4.2 concerns the problem of making an index for a book
+A related problem is making a concordance for a document
+A concordance lists every word that occurs in the document, and for each word it gives the line number of every line in the document where the word occurs
+All the subroutines for creating an index that were presented in Subsection 10.4.2 can also be used to create a concordance. The only real difference is that the integers in a concordance are line numbers rather than page numbers
+Write a program that can create a concordance
+The document should be read from an input file, and the concordance data should be written to an output file
+You can use the indexing subroutines from Subsection 10.4.2, modified to write the data to TextIO instead of to System.out
+(You will need to make these subroutines static.)
+The input and output files should be selected by the user when the program is run
+The sample program WordCount.java, from Subsection 10.4.4, can be used as a model of how to use files
+That program also has a useful subroutine that reads one word from input
+As you read the file, you want to take each word that you encounter and add it to the concordance along with the current line number
+Keeping track of the line numbers is one of the trickiest parts of the problem. In an input file, the end of each line in the file is marked by the newline character
+Every time you encounter this character, you have to add one to the line number. WordCount.java ignores ends of lines. Because you need to find and count the end-of-line characters, your program cannot process the input file in exactly the same way as does WordCount.java
+Also, you will need to detect the end of the file
+The function TextIO.peek(), which is used to look ahead at the next character in the input, returns the value TextIO.EOF at end-of-file, after all the characters in the file have been read
