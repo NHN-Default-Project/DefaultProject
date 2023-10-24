@@ -10,26 +10,6 @@ public class HashMap {
     private final int capacity;
     private final LinkedList<Node>[] buckets;
 
-    public static class Node {
-        private String key;
-        private String value;
-        private Node next;
-
-        public Node(String key, String value) {
-            this.key = key;
-            this.value = value;
-            this.next = null;
-        }
-
-        public String getKey() {
-            return this.key;
-        }
-
-        public String getValue() {
-            return this.value;
-        }
-    }
-
     public HashMap(int capacity) {
         this.capacity = capacity;
         this.buckets = new LinkedList[capacity];
@@ -52,8 +32,8 @@ public class HashMap {
         int index = getIndex(key);
 
         for (Node node : this.buckets[index]) {
-            if (node.key.equals(key)) {
-                return node.value;
+            if (node.getKey().equals(key)) {
+                return node.getValue();
             }
         }
         return null;
@@ -73,7 +53,7 @@ public class HashMap {
         int index = getIndex(key);
 
         for (Node node : this.buckets[index]) {
-            if (!node.key.equals(key)) {
+            if (!node.getKey().equals(key)) {
                 removedList.add(node);
             }
         }
@@ -84,7 +64,7 @@ public class HashMap {
     public boolean containsKey(String key) {
         int index = getIndex(key);
         for (Node node : this.buckets[index]) {
-            if (node.key.equals(key)) {
+            if (node.getKey().equals(key)) {
                 return true;
             }
         }
@@ -108,7 +88,7 @@ public class HashMap {
                 + " -------------------------------------------- \n"
                 + stream(this.buckets)
                 .flatMap(Collection::stream)
-                .map(node -> String.format("   %-17s |      %-20s%n", node.key, node.value))
+                .map(node -> String.format("   %-17s |      %-20s%n", node.getKey(), node.getValue()))
                 .collect(Collectors.joining(""))
                 + " -------------------------------------------- ";
     }
