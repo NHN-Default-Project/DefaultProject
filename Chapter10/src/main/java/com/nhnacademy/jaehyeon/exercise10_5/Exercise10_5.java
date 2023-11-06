@@ -24,7 +24,7 @@ public class Exercise10_5 {
         System.out.println("score가 70미만인 학생들 리스트 생성: ");
         printScoreLessThan70Student();
         System.out.println("lastName을 기준으로 정렬");
-        printSortFirstName();
+        printSortLastName();
         System.out.println("score을 기준으로 정렬");
         printSortScore();
     }
@@ -76,7 +76,7 @@ public class Exercise10_5 {
                 .forEach(System.out::println);
     }
 
-    public static void printSortFirstName() {
+    public static void printSortLastName() {
         Arrays.stream(scoreData)
                 .sorted(Comparator.comparing(ScoreInfo::getLastName))
                 .forEach(System.out::println);
