@@ -1,6 +1,6 @@
 package com.nhnacademy.yunhwa._2_runnable_interface.exam03;
 
-import com.nhnacademy.thread.src.bootcamp._2_runnable_interface.quiz01.RunnableCounter;
+import com.nhnacademy.yunhwa._2_runnable_interface.quiz01.RunnableCounter;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
