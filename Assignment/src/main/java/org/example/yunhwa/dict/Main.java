@@ -1,4 +1,4 @@
-package com.nhnacademy.yunhwa;
+package org.example.yunhwa.dict;
 
 public class Main
 {
