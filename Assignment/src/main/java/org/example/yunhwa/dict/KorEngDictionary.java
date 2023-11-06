@@ -1,4 +1,4 @@
-package com.nhnacademy.yunhwa;
+package org.example.yunhwa.dict;
 
 import java.util.Collection;
 import java.util.List;

@@ -1,6 +1,5 @@
-package com.nhnacademy.yunhwa;
+package org.example.yunhwa.dict;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class KorEngs {

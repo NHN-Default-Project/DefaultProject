@@ -66,10 +66,7 @@
 * [x] Chapter 7: Arrays, ArrayLists, and Records
 * [x] Chapter 8: Correctness, Robustness, Efficiency
 * [x] Chapter 9: Linked Data Structures and Recursion
-* [ ] Chapter 10: Generic Programming and Collection Classes
-* [ ] Chapter 11: Input/Output Streams, Files, and Networking
-* [ ] Chapter 12: Threads and Multiprocessing
-
+* [x] Chapter 10: Generic Programming and Collection Classes
 
 .기타 사항(추가 서브 과정)
 - 진행상황

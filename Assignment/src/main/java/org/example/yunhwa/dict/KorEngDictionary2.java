@@ -1,7 +1,6 @@
-package com.nhnacademy.yunhwa;
+package org.example.yunhwa.dict;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 
 /**
