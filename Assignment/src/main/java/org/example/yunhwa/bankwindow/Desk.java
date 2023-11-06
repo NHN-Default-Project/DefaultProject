@@ -44,6 +44,8 @@ public class Desk extends Thread {
                     System.out.printf("%d 번 창구에서 %d 번 고객님의 업무가 처리 완료되었습니다. %n", this.deskNumber, currentCustomerNumber);
                     System.out.printf("%d 번 창구에서 서비스 대기중 입니다... %n", this.deskNumber);
                 }
+                isInterrupted();
+                interrupted();
 
             } catch (InterruptedException e) {
                 System.out.println(e.getMessage());
