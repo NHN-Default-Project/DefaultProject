@@ -1,4 +1,4 @@
-package parkminsu.privatestudy.thread.assignment;
+package com.nhnacademy.parkminsu.assignment;
 
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;

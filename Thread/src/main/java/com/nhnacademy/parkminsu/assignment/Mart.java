@@ -1,6 +1,7 @@
-package parkminsu.privatestudy.thread.assignment;
+package com.nhnacademy.parkminsu.assignment;
 
-import parkminsu.privatestudy.thread.assignment.exception.NegativeNumException;
+
+import com.nhnacademy.parkminsu.assignment.exception.NegativeNumException;
 
 public class Mart {
     private Store[] store;

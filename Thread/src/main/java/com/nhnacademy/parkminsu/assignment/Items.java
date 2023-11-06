@@ -1,4 +1,4 @@
-package parkminsu.privatestudy.thread.assignment;
+package com.nhnacademy.parkminsu.assignment;
 
 public enum Items {
     과자(1500),

@@ -1,4 +1,4 @@
-package parkminsu.privatestudy.thread.exam;
+package com.nhnacademy.parkminsu.exam;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {

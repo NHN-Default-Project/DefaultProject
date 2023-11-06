@@ -1,7 +1,9 @@
-package parkminsu.privatestudy.thread.assignment;
+package com.nhnacademy.parkminsu.assignment;
+
+
+import com.nhnacademy.parkminsu.assignment.exception.NegativeNumException;
 
 import java.util.concurrent.ThreadLocalRandom;
-import parkminsu.privatestudy.thread.assignment.exception.NegativeNumException;
 
 
 public class Main {

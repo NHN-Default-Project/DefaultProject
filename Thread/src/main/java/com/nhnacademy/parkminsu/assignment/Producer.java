@@ -1,4 +1,4 @@
-package parkminsu.privatestudy.thread.assignment;
+package com.nhnacademy.parkminsu.assignment;
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;

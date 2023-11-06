@@ -1,4 +1,4 @@
-package parkminsu.privatestudy.thread.assignment.exception;
+package com.nhnacademy.parkminsu.assignment.exception;
 
 public class NegativeNumException extends Exception {
     public NegativeNumException(String message) {
