@@ -1,4 +1,4 @@
-package org.example.thread.example;
+package com.nhnacademy.gaeun.example;
 
 import java.util.ArrayList;
 import java.util.List;

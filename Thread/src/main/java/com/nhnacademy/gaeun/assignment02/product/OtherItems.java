@@ -1,6 +1,6 @@
-package org.example.thread.assignment02.product;
+package com.nhnacademy.gaeun.assignment02.product;
 
-import org.example.thread.assignment02.Product;
+import com.nhnacademy.gaeun.assignment02.Product;
 
 public class OtherItems extends Product {
     public OtherItems(String name, int amount) {

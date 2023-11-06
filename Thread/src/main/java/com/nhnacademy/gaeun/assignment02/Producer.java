@@ -1,14 +1,11 @@
-package org.example.thread.assignment02;
+package com.nhnacademy.gaeun.assignment02;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
-import org.example.thread.assignment02.product.CannedFoods;
-import org.example.thread.assignment02.product.DriedSeafood;
-import org.example.thread.assignment02.product.OtherItems;
-import org.example.thread.assignment02.product.ProcessedFood;
-import org.example.thread.assignment02.product.Vegetable;
+
+import com.nhnacademy.gaeun.assignment02.product.*;
 
 public class Producer implements Runnable {
     private Store store;

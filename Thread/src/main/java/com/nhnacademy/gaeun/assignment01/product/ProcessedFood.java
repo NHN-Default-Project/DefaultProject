@@ -1,6 +1,5 @@
-package org.example.thread.assignment01.product;
-
-import org.example.thread.assignment01.Product;
+package com.nhnacademy.gaeun.assignment01.product;
+import com.nhnacademy.gaeun.assignment01.Product;
 
 public class ProcessedFood extends Product {
     public ProcessedFood(String name, int amount) {

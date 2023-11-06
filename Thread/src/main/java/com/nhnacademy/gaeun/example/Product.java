@@ -1,4 +1,4 @@
-package org.example.thread.example;
+package com.nhnacademy.gaeun.example;
 
 public class Product {
 }

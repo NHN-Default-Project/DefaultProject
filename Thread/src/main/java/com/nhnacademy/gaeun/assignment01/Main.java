@@ -1,5 +1,4 @@
-package org.example.thread.assignment01;
-
+package com.nhnacademy.gaeun.assignment01;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;

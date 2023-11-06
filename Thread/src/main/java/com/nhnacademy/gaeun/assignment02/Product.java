@@ -1,4 +1,5 @@
-package org.example.thread.assignment02;
+package com.nhnacademy.gaeun.assignment02;
+
 
 public class Product {
 

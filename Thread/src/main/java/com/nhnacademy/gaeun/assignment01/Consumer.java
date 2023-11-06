@@ -1,4 +1,4 @@
-package org.example.thread.assignment01;
+package com.nhnacademy.gaeun.assignment01;
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
