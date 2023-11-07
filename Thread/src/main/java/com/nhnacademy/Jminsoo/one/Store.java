@@ -3,37 +3,31 @@ package com.nhnacademy.Jminsoo.one;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Store {
-    private final AtomicInteger maxGoodsCount;
+    private final AtomicInteger MAX_GOODS_COUNTS = new AtomicInteger(10);
+    private final AtomicInteger MAX_CONSUMER_COUNTS = new AtomicInteger(5);
     private AtomicInteger goodsCount;
 
-    private final AtomicInteger maxConsumerCount;
     private AtomicInteger consumerCount;
 
     private String name;
 
 
     public Store(String name) {
-        this.maxGoodsCount = new AtomicInteger(10);
-        this.maxConsumerCount = new AtomicInteger(5);
         this.goodsCount = new AtomicInteger(0);
         this.consumerCount = new AtomicInteger(0);
         this.name = name;
     }
 
     public void enter() {
-        while (true) {
+        while (this.getConsumerCount() >= this.getMaxConsumerCount()) {
             try {
-                if (this.getConsumerCount() < this.getMaxConsumerCount()) {
-                    this.consumerCount.addAndGet(1);
-                    System.out.println("[구매자] " + this.name + " 입장! 현재 손님 수 : " + this.getConsumerCount());
-                    break;
-                } else {
-                    wait();
-                }
+                wait();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
+        this.consumerCount.addAndGet(1);
+        System.out.println("[구매자] " + this.name + " 입장! 현재 손님 수 : " + this.getConsumerCount());
 
     }
 
@@ -56,17 +50,13 @@ public class Store {
 
     public synchronized void sell() throws InterruptedException {
 
-        while (true) {
-            if (this.goodsCount.get() <= 0) {
-                System.out.println("[구매자] " + this.name + " 구매자 물건 없어서 대기!");
-                wait();
-            } else {
-                this.goodsCount.addAndGet(-1);
-                System.out.println("[구매자] " + this.name + " 물건 판매! 현재 물건 개수 : " + this.getGoodsCount());
-                notifyAll();
-                break;
-            }
+        while (this.goodsCount.get() <= 0) {
+            System.out.println("[구매자] " + this.name + " 구매자 물건 없어서 대기!");
+            wait();
         }
+        this.goodsCount.addAndGet(-1);
+        System.out.println("[구매자] " + this.name + " 물건 판매! 현재 물건 개수 : " + this.getGoodsCount());
+        notifyAll();
     }
 
     public synchronized int getGoodsCount() {
@@ -78,11 +68,11 @@ public class Store {
     }
 
     public synchronized int getMaxGoodsCount() {
-        return this.maxGoodsCount.intValue();
+        return this.MAX_GOODS_COUNTS.intValue();
     }
 
     public synchronized int getMaxConsumerCount() {
-        return this.maxConsumerCount.intValue();
+        return this.MAX_CONSUMER_COUNTS.intValue();
     }
 
 

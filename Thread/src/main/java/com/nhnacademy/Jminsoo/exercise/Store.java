@@ -18,16 +18,14 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 매장에서 물건이 들어오면 소비자에게 알려 준다. : 빈 물건이 들어오면 깬다.
  */
 public class Store {
-    private final AtomicInteger maxGoodsCount;
+    private final AtomicInteger MAX_GOODS_COUNTS = new AtomicInteger(10);
+    private final AtomicInteger MAX_CONSUMER_COUNTS = new AtomicInteger(5);
     private AtomicInteger goodsCount;
 
-    private final AtomicInteger maxConsumerCount;
     private AtomicInteger consumerCount;
 
 
     public Store() {
-        this.maxGoodsCount = new AtomicInteger(10);
-        this.maxConsumerCount = new AtomicInteger(5);
         this.goodsCount = new AtomicInteger(0);
         this.consumerCount = new AtomicInteger(0);
 
@@ -35,7 +33,7 @@ public class Store {
 
     public void enter() throws InterruptedException {
 
-        if (this.consumerCount.get() >= this.maxConsumerCount.get()) {
+        if (this.consumerCount.get() >= this.MAX_CONSUMER_COUNTS.get()) {
             wait();
         }
         this.consumerCount.addAndGet(1);
@@ -46,29 +44,21 @@ public class Store {
     }
 
     public synchronized void buy() throws InterruptedException {
-        while (true) {
-            if (this.goodsCount.get() >= this.maxGoodsCount.get()) {
-                System.out.println("창고가 꽉 찼다! 대기!");
-                wait();
-            } else {
-                this.goodsCount.addAndGet(1);
-                notifyAll();
-                break;
-            }
-        }
+        while (this.goodsCount.get() >= this.MAX_GOODS_COUNTS.get()) {
+            System.out.println("창고가 꽉 찼다! 대기!");
+            wait();
 
+        }
+        this.goodsCount.addAndGet(1);
+        notifyAll();
     }
 
     public synchronized void sell() throws InterruptedException {
-        while (true) {
-            if (this.goodsCount.get() <= 0) {
-                wait();
-            } else {
-                this.goodsCount.addAndGet(-1);
-                notifyAll();
-                break;
-            }
+        while (this.goodsCount.get() <= 0) {
+            wait();
         }
+        this.goodsCount.addAndGet(-1);
+        notifyAll();
     }
 
     public synchronized int getGoodsCount() {
@@ -79,12 +69,12 @@ public class Store {
         return this.consumerCount.intValue();
     }
 
-    public synchronized int getMaxGoodsCount() {
-        return this.maxGoodsCount.intValue();
+    public synchronized int getMAX_GOODS_COUNTS() {
+        return this.MAX_GOODS_COUNTS.intValue();
     }
 
-    public synchronized int getMaxConsumerCount() {
-        return this.maxConsumerCount.intValue();
+    public synchronized int getMAX_CONSUMER_COUNTS() {
+        return this.MAX_CONSUMER_COUNTS.intValue();
     }
 }
 

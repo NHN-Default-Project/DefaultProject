@@ -10,14 +10,12 @@ import java.util.concurrent.ThreadLocalRandom;
  * Thread내에서 난수 생성을 위해서는 ThreadLocalRandom.current().nextInt()를 사용하면 된다
  */
 public class Producer implements Runnable {
-    Thread thread;
-    Store store;
-    int randNum;
+    private Thread thread;
+    private Store store;
 
     public Producer(Store store) {
         this.thread = new Thread(this);
         this.store = store;
-        this.randNum = 0;
     }
 
     public void start() {
@@ -29,12 +27,15 @@ public class Producer implements Runnable {
         try {
             while (true) {
                 System.out.println("물건 공급 중!");
-                int randNum = ThreadLocalRandom.current().nextInt(1, 11);
-                Thread.sleep(randNum * 1_000L);
+                Thread.sleep(getRandNum() * 1_000L);
                 this.store.buy();
                 System.out.println("물건 공급 완료! 현재 물건 개수 : " + this.store.getGoodsCount());
             }
         } catch (InterruptedException ignore) {
         }
+    }
+
+    private int getRandNum() {
+        return ThreadLocalRandom.current().nextInt(1, 11);
     }
 }

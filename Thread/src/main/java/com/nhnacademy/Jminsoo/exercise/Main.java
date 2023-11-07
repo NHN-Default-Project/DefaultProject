@@ -12,12 +12,12 @@ public class Main {
         producer.start();
         int index = 0;
         while (true) {
-            if (store.getConsumerCount() < store.getMaxConsumerCount()) {
-                index++;
-                executorService.submit(new Consumer("손님" + index, store));
-                int randNum = ThreadLocalRandom.current().nextInt(1, 11);
-                Thread.sleep(randNum * 1_000L);
-            }
+//            if (store.getConsumerCount() < store.getMAX_CONSUMER_COUNTS()) {
+            index++;
+            executorService.submit(new Consumer("손님" + index, store));
+            int randNum = ThreadLocalRandom.current().nextInt(1, 11);
+            Thread.sleep(randNum * 1_000L);
+//            }
         }
 
     }

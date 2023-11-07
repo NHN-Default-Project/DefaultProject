@@ -13,20 +13,15 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class Consumer implements Runnable {
 
-    Store store;
-    String name;
-    Thread thread;
-    int randNum;
-
-    boolean isRun;
+    private Store store;
+    private String name;
+    private Thread thread;
 
 
     public Consumer(String name, Store store) {
         this.name = name;
         this.store = store;
         this.thread = new Thread(this, name);
-        this.randNum = 0;
-        this.isRun = true;
     }
 
     public void start() {
@@ -38,13 +33,10 @@ public class Consumer implements Runnable {
         try {
             this.store.enter();
             System.out.println(this.name + " 입장! 현재 손님 수 : " + this.store.getConsumerCount());
-            while (isRun) {
-                int randNum = ThreadLocalRandom.current().nextInt(1, 11);
-                Thread.sleep(randNum * 1_000L);
-                this.store.sell();
-                System.out.println(this.name + " 구매! 현재 물건 개수 : " + this.store.getGoodsCount());
-                isRun = false;
-            }
+            int randNum = ThreadLocalRandom.current().nextInt(1, 11);
+            Thread.sleep(randNum * 1_000L);
+            this.store.sell();
+            System.out.println(this.name + " 구매! 현재 물건 개수 : " + this.store.getGoodsCount());
             this.store.exit();
             System.out.println(
                     this.name + " 퇴장! 현재 손님 수 : " + this.store.getConsumerCount());

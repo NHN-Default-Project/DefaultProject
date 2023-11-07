@@ -4,17 +4,15 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Consumer implements Runnable {
 
-    Mart mart;
-    String name;
-    Thread thread;
-    int randNum;
+    private Mart mart;
+    private String name;
+    private Thread thread;
 
 
     public Consumer(String name, Mart mart) {
         this.name = name;
         this.mart = mart;
         this.thread = new Thread(this, name);
-        this.randNum = 0;
     }
 
     public void start() {
