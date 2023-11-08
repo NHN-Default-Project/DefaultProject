@@ -13,10 +13,11 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 매장에서 물건이 들어오면 소비자에게 알려줌
  */
 public class Store {
-    AtomicInteger consumerCount;
-    AtomicInteger thingsCount;
-    Semaphore semaphore;
+    private final AtomicInteger consumerCount;
+    private final AtomicInteger thingsCount;
+    private final Semaphore semaphore;
 
+    @SuppressWarnings("checkstyle:MissingJavadocMethod")
     public Store() {
         semaphore = new Semaphore(5);
         consumerCount = new AtomicInteger(0);

@@ -16,7 +16,7 @@ public class Consumer implements Runnable {
 
 
     public Consumer(String name, Store store) {
-        thread = new Thread(this, name);
+        this.thread = new Thread(this, name);
         this.store = store;
         this.isCheck = new AtomicBoolean(false);
     }
@@ -33,17 +33,16 @@ public class Consumer implements Runnable {
     @Override
     public void run() {
         store.enter();
-        while (!isCheck.get()) {
-            try {
-                Thread.sleep(ThreadLocalRandom.current().nextInt(1000, 10000));
-                store.sell();
-                System.out.println(thread.getName() + "가 구매했습니다");
-                isCheck.set(true);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                System.out.println(e.getMessage());
-            }
+        try {
+            Thread.sleep(ThreadLocalRandom.current().nextInt(1000, 10000));
+            store.sell();
+            System.out.println(thread.getName() + "가 구매했습니다");
+            isCheck.set(true);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            System.out.println(e.getMessage());
         }
+
         store.exit();
     }
 }

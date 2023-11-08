@@ -13,7 +13,7 @@ public class Consumer implements Runnable {
 
     public Consumer(Mart mart, String name) {
         this.mart = mart;
-        thread = new Thread(this, name);
+        this.thread = new Thread(this, name);
         this.isCheck = new AtomicBoolean(false);
     }
 
@@ -37,23 +37,22 @@ public class Consumer implements Runnable {
     @Override
     public void run() {
         getBuyItem();
-        mart.enterStore(buyItem);
-        while (!isCheck.get()) {
-            try {
-                Thread.sleep(ThreadLocalRandom.current().nextInt(1000, 10000));
-                mart.sellStoreItem(buyItem);
-                System.out.println(thread.getName() + "가 구매했습니다");
-                isCheck.set(true);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                System.out.println(e.getMessage());
-            }
+        this.mart.enterStore(buyItem);
+        try {
+            Thread.sleep(ThreadLocalRandom.current().nextInt(1000, 10000));
+            this.mart.sellStoreItem(buyItem);
+            System.out.println(thread.getName() + "가 구매했습니다");
+            isCheck.set(true);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            System.out.println(e.getMessage());
+
         }
-        mart.exitStore(buyItem);
+        this.mart.exitStore(buyItem);
     }
 
-    public void getBuyItem() {
+    private void getBuyItem() {
         Random random = new Random();
-        this.buyItem = random.nextInt(mart.getStore().length);
+        this.buyItem = random.nextInt(this.mart.getStore().length);
     }
 }
