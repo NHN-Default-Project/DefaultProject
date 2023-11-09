@@ -1,49 +1,54 @@
 package com.nhnacademy.gaeun.assignment01;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 public class Store {
-    private List<Consumer> people;
 
-    private FoodStand foodStand;
-
-    public static final int PEOPLE_NUM_LIMIT = 5;
+    private String name;
+    private int amount;
+    private static final int MAX_NUM = 30;
 
     public Store() {
-        people = new ArrayList<>();
-        foodStand = new FoodStand();
+        this.name = "";
+        this.amount = 0;
+    }
+    public Store(String name, int amount) {
+        this.name = name;
+        this.amount = amount;
+    }
+    public String getName() {
+        return name;
     }
 
-    public FoodStand getFoodStand() {
-        return foodStand;
-    }
-
-    public synchronized boolean isAbleEnter() {
-        return people.size() < PEOPLE_NUM_LIMIT;
-    }
-
-    public synchronized void enter(Consumer consumer) {
-        if (consumer == null) {
-            throw new IllegalArgumentException("consumer is null");
+    public synchronized boolean isAbleBuy(int amount) {
+        if (this.amount + amount > MAX_NUM) {
+            System.out.println(this.name + "의 재고는 30개까지만 가능합니다.");
+            return false;
         }
-        while (!isAbleEnter()) {
+        return true;
+    }
+
+    public synchronized boolean isAbleSell(int amount) {
+        return (this.amount - amount >= 0);
+    }
+
+    public synchronized void add(int amount) {
+        if (isAbleBuy(amount)) {
+            this.amount += amount;
+            System.out.printf("%s %d개가 가판대에 추가 되었습니다.\n", this.name, amount);
+            notifyAll();
+        }
+    }
+
+    public synchronized void sell(int amount) { //상품 판매
+        while (!isAbleSell(amount)) {
             try {
-                System.out.println("대기중입니다 ...");
                 wait();
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
         }
-        people.add(consumer);
-        System.out.println(consumer.getName() + " enter");
-    }
-
-    public synchronized void exit(Consumer consumer) {
-        if (people.contains(consumer)) {
-            people.remove(consumer);
-            System.out.println(consumer.getName() + " exit");
+        if(isAbleSell(amount)) {
+            this.amount -= amount;
+            System.out.printf("%s %d개 구매 완료.\n", this.name, amount);
+            System.out.printf("남은 %s의 수량: %d\n", this.name, this.amount);
             notifyAll();
         }
     }

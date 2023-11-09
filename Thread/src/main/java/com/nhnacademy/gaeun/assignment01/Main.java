@@ -4,8 +4,8 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        Store store = new Store();
+    public static void main(String[] args) {
+        Mart store = new Mart();
         Producer producer = new Producer(store);
         Thread producerThread = new Thread(producer);
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);

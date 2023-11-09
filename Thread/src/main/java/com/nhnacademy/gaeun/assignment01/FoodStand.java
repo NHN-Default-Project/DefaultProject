@@ -1,23 +1,20 @@
 package com.nhnacademy.gaeun.assignment01;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class FoodStand {
-    private List<Product> productList;
+    private List<Store> productList;
 
     public FoodStand() {
         this.productList = new ArrayList<>();
     }
 
 
-    public List<Product> getFoodsList() {
+    public List<Store> getFoodsList() {
         return this.productList;
     }
 
-    public void add(Product product, int amount) {
+    public void add(Store product, int amount) {
         if(productList.contains(product)) {
             product.add(amount);
         } else {
@@ -25,7 +22,7 @@ public class FoodStand {
         }
     }
 
-    public void sell(Product product, int amount) { //상품 판매
+    public void sell(Store product, int amount) { //상품 판매
         if(productList.contains(product)) {
             product.sell(amount);
         } else {

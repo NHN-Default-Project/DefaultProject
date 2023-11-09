@@ -4,18 +4,23 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Consumer implements Runnable {
-    private Store store;
+    private Mart store;
     private String name;
     private Random random;
-    public static int count = 0;
 
-    public Consumer(String name, Store store) {
+    private static int count = 0;
+
+    public Consumer(String name, Mart store) {
         this.store = store;
-        this.name = name + ++count;
+        addCount();
+        this.name = name + this.count;
     }
 
     public String getName() {
         return name;
+    }
+    public void addCount() {
+        this.count = count + 1;
     }
 
     @Override
@@ -42,7 +47,7 @@ public class Consumer implements Runnable {
     public void pickFoods() {
         int productNum = randomProductNum();
         int amount = randomAmount();
-        Product product = store.getFoodStand().getFoodsList().get(productNum);
+        Store product = store.getFoodStand().getFoodsList().get(productNum);
         store.getFoodStand().sell(product, amount);
     }
 

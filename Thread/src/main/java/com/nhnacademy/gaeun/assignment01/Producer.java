@@ -7,13 +7,14 @@ import java.util.concurrent.ThreadLocalRandom;
 import com.nhnacademy.gaeun.assignment01.product.*;
 
 public class Producer implements Runnable {
-    private Store store;
-    private List<Product> itemList;
+    private Mart store;
+    private List<Store> itemList;
     private Random random;
 
-    public Producer(Store store) {
+    public Producer(Mart store) {
         this.store = store;
         this.itemList = new ArrayList<>();
+        this.random = new Random();
         initialSetting();
     }
 
@@ -42,21 +43,19 @@ public class Producer implements Runnable {
     private void randomDelivery() {
         int deliveryNum = randomDeliveryNum();
         int amount = randomAmount();
-        Product product = bringProduct(deliveryNum);
-        store.getFoodStand().add(product, amount);
+        Store product = bringProduct(deliveryNum);
+        this.store.addFoodStand(product, amount);
 
     }
     private int randomAmount() {
-        random = new Random();
-        return random.nextInt(10) + 1;
+        return this.random.nextInt(10) + 1;
     }
 
     private int randomDeliveryNum() {
-        random = new Random();
-        return random.nextInt(itemList.size());
+        return this.random.nextInt(itemList.size());
     }
 
-    private Product bringProduct(int deliveryNum) {
-        return itemList.get(deliveryNum);
+    private Store bringProduct(int deliveryNum) {
+        return this.itemList.get(deliveryNum);
     }
 }
